@@ -1,12 +1,12 @@
 # Soevereinestelsel 2.0
 
-Open index.html rechtstreeks met atlas-data.js in dezelfde map. De atlas heeft geen installatie of server nodig. Externe bronnen openen afzonderlijk en vereisen internet. Een dossierlink gebruikt #node=… en werkt op een ander apparaat als daar ook een exemplaar van de atlas beschikbaar is.
+Open index.html rechtstreeks. Alle gegevens, scripts en afbeeldingen zijn in dit ene HTML-bestand opgenomen. De atlas heeft geen installatie of server nodig. Externe bronnen openen afzonderlijk en vereisen internet. Een dossierlink gebruikt #node=… en werkt op een ander apparaat als daar ook een exemplaar van de atlas beschikbaar is.
 
-De dossier- en stelseltoelichtingen staan in atlas-data.js. Voeg nieuwe dossiers toe aan `atlasAdditions`, met een bestaande categorienaam, ontwikkelfase, toelichting en een openbare bron als paar van titel en URL. Gebruik `parent` voor een onderdeel dat via het hoofddossier en Zoeken bereikbaar is. Laat `parent` weg voor een zelfstandig kaartobject. Zet onderbouwde verbindingen in `atlasAdditionRelations`. Het optionele bronnummer verwijst naar `references` van het eerste object en begint bij 1. Zonder nummer gebruikt de verbinding de hoofdbron van dat object.
+De dossier- en stelseltoelichtingen staan in het eerste scriptblok van index.html. Voeg nieuwe dossiers toe aan `atlasAdditions`, met een bestaande categorienaam, ontwikkelfase, toelichting en een openbare bron als paar van titel en URL. Gebruik `parent` voor een onderdeel dat via het hoofddossier en Zoeken bereikbaar is. Laat `parent` weg voor een zelfstandig kaartobject. Zet onderbouwde verbindingen in `atlasAdditionRelations`. Het optionele bronnummer verwijst naar `references` van het eerste object en begint bij 1. Zonder nummer gebruikt de verbinding de hoofdbron van dat object.
 
 De oorspronkelijke objecten, bronrecords en verbindingen worden nog in index.html geregistreerd. Voeg een groene of rode bevinding pas toe als de gekoppelde openbare bron de precieze formulering ondersteunt. Laat een open vraag neutraal. De toelichting bij een verbinding vermeldt of die is onderbouwd, een vergelijking toont of nog onderzocht wordt.
 
-De functionele subcategorieën binnen Oplossingen staan in `solutionGroups` in atlas-data.js. Neem ieder oplossingsdossier in precies één groep op. `infrastructureGroups` verdeelt Infrastructuur verder naar type. De indeling verschijnt in het stelseloverzicht, de dossiermetadata en de zoekfilters. Onderdelen bij een hoofddossier zijn ook via deze groepen te openen.
+De functionele subcategorieën binnen Oplossingen staan in `solutionGroups` in het eerste scriptblok van index.html. Neem ieder oplossingsdossier in precies één groep op. `infrastructureGroups` verdeelt Infrastructuur verder naar type. De indeling verschijnt in het stelseloverzicht, de dossiermetadata en de zoekfilters. Onderdelen bij een hoofddossier zijn ook via deze groepen te openen.
 
 De eerdere versie staat in backup/index-voor-2.0.html.
 
