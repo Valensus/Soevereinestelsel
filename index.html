@@ -216,7 +216,7 @@ const systemExplanations = new Map([
   ["Bedrijven",["Dit stelsel bevat bedrijven die technologie, infrastructuur en diensten voor digitale werkplekken leveren. Sommige zijn rechtstreeks betrokken bij een samenwerkplatform, andere ondersteunen de cloud- of beheerlaag. Cloudwise werkt bijvoorbeeld met Nextcloud en Previder aan onderwijsomgevingen; Info Support draagt met TNO en andere partners bij aan federatieve cloudinfrastructuur. Per dossier staat welke bijdrage publiek is beschreven. De naam of vestigingsplaats van een leverancier geeft op zichzelf geen garantie voor digitale zeggenschap: beheerrechten, gegevensverwerking, voorwaarden en mogelijkheden om over te stappen moeten per dienst worden beoordeeld.", ["Cloudwise", "Info Support", "KPN"]]],
   ["Gemeenten",["Amsterdam, Ede, Zaanstad en ’s-Hertogenbosch werken mee aan de proef met een Linux-laptop met DAWO en de samenwerkomgeving MijnBureau. De praktijkrol van gemeenten is belangrijk omdat een alternatieve werkplek pas bruikbaar wordt als medewerkers hun taken kunnen uitvoeren en bestaande systemen ermee kunnen samenwerken. De gezamenlijke proef verzamelt ervaringen voor verdere ontwikkeling en onderzoekt welke groepen als eerste met MijnBureau zouden kunnen werken. De VNG is betrokken bij de samenwerking. De openbare aankondiging beschrijft gezamenlijke doelen. De dossiers schrijven geen afzonderlijke uitkomsten toe aan gemeenten waarvoor die uitkomsten niet zijn gepubliceerd.",["VNG","DAWO","MijnBureau"]]],
   ["Europa",["Dit stelsel laat zien hoe Europese overheden en publieke organisaties alternatieven ontwikkelen, testen en organiseren. Het Zwitserse PoC BOSS beproefde openDesk. Frankrijk kondigde invoering van La Suite bij de zorgverzekering aan. Digital Commons EDIC organiseert daarnaast samenwerking rond gedeelde digitale bouwstenen. Voor een soevereine werkplek zijn dat verschillende vormen van bijdrage: praktijkbewijs, invoering bij een grote afnemer en gezamenlijk onderhoud van technologie. De landen en organisaties hebben hun eigen inrichting en voorwaarden. Een Europese herkomst of samenwerking geeft op zichzelf geen antwoord op wie een specifieke dienst beheert of gegevens kan overdragen.",["PoC BOSS","Cnam","Digital Commons EDIC"]]],
-  ["Wereldwijd",["Dit stelsel bevat desktopprojecten van buiten Europa. Pardus, BOSS Linux en openKylin bieden elk een eigen technische Linuxbasis voor de werkplek. Daarmee wordt zichtbaar welke keuzes een organisatie kan maken over pakketten, updates en ondersteuning. De distributies leveren een besturingssysteem. Voor gebruik als werkplek moeten organisaties daarnaast bepalen welke kantoor- en vakapplicaties bruikbaar zijn en hoe gebruikers bij bestanden en samenwerking komen. De projecten dienen als vergelijkingsmateriaal voor DAWO. Hun publieke projectinformatie onderbouwt geen gezamenlijke ontwikkeling met de Nederlandse werkplek.",["Pardus","BOSS Linux","openKylin"]]],
+  ["Wereldwijd",["Dit stelsel toont publieke werkplekinitiatieven en concrete praktijkvoorbeelden buiten Europa. De voorbeelden omvatten documentbewerking, mail, berichten, samenwerking, onderwijswerkplekken en infrastructuur onder lokale of publieke regie. KITE in Kerala combineert bijvoorbeeld een Linux-werkplek met LibreOffice en eigen beheer. Taiwan ontwikkelt ODF-gereedschap voor overheidsmedewerkers en Nube FING gebruikt Nextcloud op eigen faculteitsservers. De dossiers maken onderscheid tussen beschikbare diensten, aangekondigde invoering, scholing en historische voorbeelden. Nationale herkomst, opensourcecode en digitale soevereiniteit zijn verschillende kenmerken. Een publieke dienst is niet automatisch volledig opensource en een aankondiging bewijst geen voltooide migratie.", ["KITE GNU/Linux", "MODA ODF-programma", "Nube FING"]]],
 ]);
 const explanationSources = new Map([
   ["Regeerakkoord",[["Digitale overheid in het regeerakkoord","https://www.rijksoverheid.nl/regering/regeerakkoord/nederland-werkt/nederland-koploper-in-een-digitale-wereld"]]],
@@ -248,6 +248,256 @@ const explanationSources = new Map([
   ["DAWO",[["DAWO-installatiecode","https://code.overheid.nl/MinBZK/DAWO-Installatie"]]],
 ]);
 const atlasAdditions = [
+  {
+    "name": "MODA ODF-programma",
+    "system": "Wereldwijd",
+    "region": "Taiwan",
+    "role": "Documentbewerking voor overheidsmedewerkers",
+    "phase": "Beschikbaar",
+    "source": [
+      "Taiwan MODA: ODF Application Tools",
+      "https://moda.gov.tw/en/digital-affairs/digital-service/app-services/248"
+    ],
+    "explanation": "Het Taiwanese Ministry of Digital Affairs biedt ODF Application Tools aan voor documentbewerking door overheidsmedewerkers. Het ministerie documenteert ook een afzonderlijke ODF Cloud Solution voor gezamenlijk online werken. De voorziening omvat onder meer sjablonen, ondersteuning en hulpmiddelen voor het omzetten van documenten. Dit is direct relevant voor een autonome werkplek: open documentformaten en een door de overheid ingerichte voorziening kunnen de afhankelijkheid van één kantooromgeving verkleinen. De Engelstalige productbeschrijvingen zijn bijgewerkt in 2023 en 2024. Zij onderbouwen het aanbod en de technische richting, niet de huidige gebruiksomvang van de hele Taiwanese overheid.",
+    "classification": "Vergelijkingsmateriaal",
+    "references": [
+      [
+        "MODA: ODF Cloud Solution",
+        "https://moda.gov.tw/en/digital-affairs/digital-service/app-services/252"
+      ],
+      [
+        "Taiwan NLSC: LibreOffice als basis van MODA ODF",
+        "https://www.nlsc.gov.tw/cp.aspx?n=15757"
+      ]
+    ]
+  },
+  {
+    "name": "KITE GNU/Linux",
+    "system": "Wereldwijd",
+    "region": "India",
+    "role": "Digitale schoolwerkplekken in Kerala",
+    "phase": "In gebruik",
+    "source": [
+      "Kerala Development Report 2026: KITE GNU/Linux",
+      "https://spb.kerala.gov.in/wp-content/uploads/2026/01/kerala-development-report_2026.pdf"
+    ],
+    "explanation": "KITE organiseert in de Indiase deelstaat Kerala een opensourcewerkplek voor het publieke onderwijs. Het Kerala Development Report 2026 beschrijft KITE GNU/Linux als een aangepaste Ubuntu-omgeving met onder meer LibreOffice, educatieve software en lokale taalondersteuning. Volgens dit overheidsrapport wordt de omgeving op meer dan 200.000 schoolcomputers gebruikt; een eigen team organiseert updates en beveiligingspatches. De casus laat zien dat invoering ook opleiding, beheer en toepassingskeuze vraagt. Het gaat om een onderwijsomgeving, niet om bewijs dat de gehele Indiase overheid dezelfde desktop gebruikt. De gerapporteerde aantallen komen uit de overheidsbron.",
+    "classification": "Vergelijkingsmateriaal",
+    "references": [
+      [
+        "KITE: publieke onderwijsorganisatie",
+        "https://kite.kerala.gov.in/"
+      ]
+    ]
+  },
+  {
+    "name": "GCcollab / GCconnex",
+    "system": "Wereldwijd",
+    "region": "Canada",
+    "role": "Publieke samenwerking en kennisdeling",
+    "phase": "Publiek gedocumenteerde dienst",
+    "source": [
+      "Canadese overheid: GCcollab en openbronbasis",
+      "https://gccollab.ca/faq"
+    ],
+    "explanation": "GCcollab is een door de Canadese overheid gehost platform voor samenwerking en kennisuitwisseling tussen publieke medewerkers en toegelaten onderwijs- en onderzoekspartners. De officiële FAQ noemt Elgg als opensourcebasis. Het Canadese Open Resource Exchange-register vermeldt daarnaast de broncode voor GCconnex en GCcollab. De bijdrage aan een digitale werkplek zit in groepen, kennisdeling en het samenbrengen van mensen rond werkonderwerpen. Het is geen complete kantoorautomatiseringssuite. De openbare FAQ bevat ook oudere pilotformuleringen; daaruit volgt geen actuele gebruiksomvang of volledige beschrijving van alle beheerafspraken. De platforminhoud zelf vereist een account; de aangehaalde informatie is openbaar.",
+    "classification": "Vergelijkingsmateriaal",
+    "references": [
+      [
+        "Canadese overheid: register met GCconnex/GCcollab-broncode",
+        "https://code.open.canada.ca/en/open-source-codes.html"
+      ]
+    ]
+  },
+  {
+    "name": "Expresso Livre (Paraná)",
+    "system": "Wereldwijd",
+    "region": "Brazilië",
+    "role": "Publieke mail, agenda en samenwerking",
+    "phase": "Gebruik gedocumenteerd in 2025",
+    "source": [
+      "Paraná: regeling voor gebruik van Expresso Mail",
+      "https://www.legislacao.pr.gov.br/legislacao/listarAtosAno.do?action=exibir&codAto=356276"
+    ],
+    "explanation": "Expresso Livre is een door Celepar ontwikkeld platform voor mail, agenda en adresboeken, met een historische basis in EGroupware. Een officiële regeling van maart 2025 schrijft Expresso Mail voor als voorkeurskanaal voor institutionele communicatie bij twee publieke sportorganisaties in Paraná. De technische achtergrondpublicatie beschrijft ontwikkeling op basis van vrije software. Daarmee is dit een concreet voorbeeld van publieke regie over een dagelijkse werkplekfunctie. De recente regeling bewijst gebruik in de genoemde organisaties, niet dat iedere Braziliaanse overheidsorganisatie deze omgeving gebruikt. De actuele componentversies en licentievoorwaarden moeten per installatie worden vastgesteld.",
+    "classification": "Vergelijkingsmateriaal",
+    "references": [
+      [
+        "Celepar: technische achtergrond Expresso Livre",
+        "https://www.batebyte.pr.gov.br/Pagina/E-livre-rapido-e-seguro"
+      ]
+    ]
+  },
+  {
+    "name": "Nube FING",
+    "system": "Wereldwijd",
+    "region": "Uruguay",
+    "role": "Zelfgehoste bestanden voor een publieke universiteit",
+    "phase": "In gebruik",
+    "source": [
+      "Universidad de la República: Nextcloud op faculteitsservers",
+      "https://www.fing.edu.uy/es/node/43849"
+    ],
+    "explanation": "De Facultad de Ingeniería van de Universidad de la República biedt Nube FING aan voor gedeelde bestanden. De eigen servicebeschrijving vermeldt expliciet dat de Nextcloud-omgeving op servers van de faculteit staat. Gebruikers kunnen via een browser of synchronisatieclient werken. De casus is relevant als concrete bestandsvoorziening onder institutioneel beheer, naast bijvoorbeeld de SURF- en Nextcloud-voorbeelden elders op de kaart. Het is een universitaire voorziening, geen nationaal overheidsprogramma. De faculteit beschrijft haar cloud als aanvulling op bestaande bestandsdiensten, met eigen opslag- en capaciteitsgrenzen.",
+    "classification": "Vergelijkingsmateriaal",
+    "references": [
+      [
+        "FING: toegang via de Nextcloud-client",
+        "https://www.fing.edu.uy/es/node/50621"
+      ]
+    ]
+  },
+  {
+    "name": "AGETIC / EGPP",
+    "system": "Wereldwijd",
+    "region": "Bolivia",
+    "role": "Invoering en scholing rond vrije software",
+    "phase": "Programma aangekondigd in 2025",
+    "source": [
+      "AGETIC en EGPP: opleiding in vrije software en open standaarden",
+      "https://agetic.gob.bo/comunicacion/noticias/notas-de-prensa/AGETIC-y-la-EGPP-lanzan-el-programa-desarrollo-de-capacidades-en-software-libre-y-est%C3%A1ndares-abiertos"
+    ],
+    "explanation": "AGETIC en de Escuela de Gestión Pública Plurinacional kondigden op 4 juni 2025 een opleidingsprogramma aan voor vrije software en open standaarden. LibreOffice-vaardigheden vormen een concreet onderdeel van het programma. De aankondiging plaatst de scholing binnen het nationale implementatieplan voor vrije software. Voor een soevereine werkplek is die invoeringskant belangrijk: medewerkers moeten nieuwe toepassingen kunnen gebruiken en organisaties moeten de verandering kunnen begeleiden. De bron onderbouwt het aangekondigde programma, niet dat alle opleidingen zijn afgerond of de gehele overheid is gemigreerd. Het betreft een beleids- en scholingsinitiatief, geen afzonderlijke werkpleksuite.",
+    "classification": "Kader of kennis",
+    "references": [
+      [
+        "CTIC: werkgroep vrije software",
+        "https://www.ctic.gob.bo/software-libre/"
+      ]
+    ]
+  },
+  {
+    "name": "GovDrive (NIC)",
+    "system": "Wereldwijd",
+    "region": "India",
+    "role": "Publieke bestandsopslag en documenten delen",
+    "phase": "Publieke dienst",
+    "source": [
+      "GovDrive: dienstbeschrijving van de Indiase overheid",
+      "https://www.drive.gov.in/web/"
+    ],
+    "explanation": "GovDrive is de bestands- en samenwerkingsdienst van het Indiase National Informatics Centre. De openbare beschrijving en voorwaarden noemen centrale opslag, documentdeling en toegang voor overheidsmedewerkers. De dienst is relevant als voorbeeld van een overheid die de exploitatie van een werkplekvoorziening zelf organiseert. Dat is een andere vraag dan de beschikbaarheid van opensourcecode. De bronnen geven geen voldoende basis om GovDrive als volledig opensource aan te merken. Ook nationale exploitatie betekent op zichzelf geen onafhankelijk getoetste soevereiniteit: beheerrechten, koppelingen, overdraagbaarheid en voorwaarden blijven van belang.",
+    "classification": "Vergelijkingsmateriaal",
+    "references": [
+      [
+        "NIC: GovDrive-voorwaarden",
+        "https://drive.gov.in/termsAndCondition/"
+      ],
+      [
+        "GovDrive: mobiele gebruikershandleiding",
+        "https://drive.gov.in/static/assets/MobileUserManual.pdf"
+      ]
+    ]
+  },
+  {
+    "name": "Sandes",
+    "system": "Wereldwijd",
+    "region": "India",
+    "role": "Publieke berichtenvoorziening van NIC",
+    "phase": "Beschikbaar",
+    "source": [
+      "NIC: Sandes privacybeleid en platformbeschrijving",
+      "https://www.sandes.gov.in/privacy"
+    ],
+    "explanation": "Sandes is het berichtenplatform van het Indiase National Informatics Centre. NIC beschrijft het als een op opensourcetechnologie gebaseerd platform en vermeldt opslag van accountgegevens op overheidsinfrastructuur. Volgens het privacybeleid zijn berichten end-to-end versleuteld; tegelijk worden gebruiks- en berichtmetadata verwerkt. Voor een digitale werkplek is het een concreet voorbeeld van een publiek georganiseerde communicatiedienst. De omschrijving open source driven bewijst niet dat alle onderdelen vrij herbruikbaar zijn of op eigen servers buiten deze dienst kunnen worden ingericht. De kaart beschrijft de publieke regie en functie, zonder een onafhankelijke beveiligingsbeoordeling te veronderstellen.",
+    "classification": "Vergelijkingsmateriaal"
+  },
+  {
+    "name": "BharatVC",
+    "system": "Wereldwijd",
+    "region": "India",
+    "role": "Videobijeenkomsten voor de overheid",
+    "phase": "Gebruik publiek gedocumenteerd",
+    "source": [
+      "NIC: gebruik van BharatVC bij een overheidsbijeenkomst",
+      "https://informatics.nic.in/news/1669"
+    ],
+    "explanation": "BharatVC is een videobijeenkomstendienst in het Indiase overheidsecosysteem. NIC beschrijft concreet gebruik door medewerkers uit verschillende districten, en documentatie van het Gov.in Secure Intranet noemt koppeling met BharatVC. Het officiële OpenForge-register vermeldt ook een project onder deze naam met een BSD-licentievermelding. De bijdrage aan de werkplek zit in de organisatie van online overleg onder publieke regie. Een registervermelding is geen bewijs dat iedere component van de daadwerkelijk aangeboden dienst onder dezelfde licentie beschikbaar is. De operationele inrichting, toegang en gegevensverwerking moeten afzonderlijk worden beoordeeld.",
+    "classification": "Vergelijkingsmateriaal",
+    "references": [
+      [
+        "OpenForge: publieke projectvermelding BharatVC",
+        "https://openforge.gov.in/softwaremap/trove_list.php?form_cat=95"
+      ]
+    ]
+  },
+  {
+    "name": "Gov.in Secure Intranet",
+    "system": "Wereldwijd",
+    "region": "India",
+    "role": "Geïntegreerde digitale overheidswerkplek",
+    "phase": "Publiek gedocumenteerde dienst",
+    "source": [
+      "NIC Informatics: Gov.in Secure Intranet, januari 2026",
+      "https://informatics.nic.in/files/websites/january-2026/gov.in-secure-intranet.php"
+    ],
+    "explanation": "Gov.in Secure Intranet is de door NIC beschreven gezamenlijke toegang tot Indiase overheidsapplicaties en werkfuncties. De publicatie van januari 2026 noemt een rolgebaseerde interface, Parichay voor eenmalig aanmelden en functies voor taken, agenda en het organiseren van bijeenkomsten. BharatVC is een van de gekoppelde vergaderplatforms; ook commerciële diensten kunnen worden aangesloten. De casus is relevant als publieke integratielaag voor de digitale werkplek. Een door de overheid ontwikkeld portaal maakt niet alle aangesloten diensten opensource of onafhankelijk. De openbare beschrijving onderbouwt functie en organisatie, niet de volledige licentie- en beheerpositie van ieder onderdeel.",
+    "classification": "Vergelijkingsmateriaal",
+    "references": [
+      [
+        "Gov.in Secure Intranet: officiële dienstbeschrijving",
+        "https://govintranet.gov.in/"
+      ]
+    ]
+  },
+  {
+    "name": "Hancom Gooroom",
+    "system": "Wereldwijd",
+    "region": "Zuid-Korea",
+    "role": "Open besturingssysteem en beheer voor publieke werkplekken",
+    "phase": "Beschikbaar aanbod",
+    "source": [
+      "Hancom: Gooroom voor publieke en private werkplekken",
+      "https://www.hancom.com/product/solution/gooroom"
+    ],
+    "explanation": "Hancom beschrijft Gooroom als een open besturingssysteem dat samen met het Zuid-Koreaanse National Security Research Institute is ontwikkeld. Het aanbod is gericht op publieke en private werkplekken, met mogelijkheden voor centrale configuratie, een eigen browser en aansluiting op gevirtualiseerde omgevingen. De relatie met de soevereine werkplek zit in een lokaal georganiseerd alternatief voor de desktop- en beheerlaag. De productpagina noemt ook ondersteuning voor Hancom Office; dat maakt de totale omgeving niet automatisch volledig opensource. De bron onderbouwt het product en de samenwerking, niet een voltooide vervanging van Windows bij de gehele Zuid-Koreaanse overheid.",
+    "classification": "Vergelijkingsmateriaal"
+  },
+  {
+    "name": "Canaima GNU/Linux",
+    "system": "Wereldwijd",
+    "region": "Venezuela",
+    "role": "Nationaal ontwikkelde desktopomgeving",
+    "phase": "Publiek gedocumenteerd project",
+    "source": [
+      "Debian: herkomst en desktopfunctie van Canaima",
+      "https://wiki.debian.org/Derivatives/Census/Canaima"
+    ],
+    "explanation": "Canaima GNU/Linux is een Venezolaanse desktopdistributie op basis van Debian, gericht op lokaal ontwikkelde en aangepaste vrije software. Het project past bij de vraag hoe een land de technische basis van publieke en educatieve werkplekken kan organiseren. De Debian-projectinventaris beschrijft de herkomst en verwijst naar de eigen projectwebsite. Dit kaartje behandelt de desktopbasis als nationaal initiatief. Het geeft geen garantie dat alle overheidsapparaten ermee werken of dat iedere actuele editie dezelfde ondersteuning biedt. De huidige landelijke gebruiksomvang en de onderhoudsstatus van afzonderlijke versies zijn hiermee niet vastgesteld.",
+    "classification": "Vergelijkingsmateriaal",
+    "references": [
+      [
+        "Canaima: officiële projectwebsite",
+        "https://canaima.softwarelibre.gob.ve/"
+      ]
+    ]
+  },
+  {
+    "name": "Maya OS — defensietraining",
+    "system": "Wereldwijd",
+    "region": "India",
+    "role": "Gedocumenteerde werkplektraining bij defensie",
+    "phase": "Training aangekondigd in 2024",
+    "source": [
+      "CGDA: trainingssessie over Maya OS in november 2024",
+      "https://cgda.nic.in/adm/circular/EDP-Trg-131124.pdf"
+    ],
+    "explanation": "Een openbare circulaire van de Indiase Controller General of Defence Accounts kondigt voor 19 november 2024 een trainingssessie aan over het gebruik van Maya OS. De sessie was bedoeld voor medewerkers in Delhi en deelnemers op afstand, met kennisoverdracht naar hun eigen kantoren. Daarmee is concreet vastgelegd dat het besturingssysteem onderdeel was van een publiek werkplektraject. De circulaire bewijst geen voltooide landelijke migratie, actuele gebruiksomvang of volledige opensourcelicentie van het systeem. Dit kaartje beschrijft daarom de gedocumenteerde training en maakt geen bredere invoeringsclaim.",
+    "classification": "Vergelijkingsmateriaal"
+  },
+  {
+    "name": "Huayra GNU/Linux",
+    "system": "Wereldwijd",
+    "region": "Argentinië",
+    "role": "Historisch onderwijswerkplekprogramma",
+    "phase": "Historisch praktijkvoorbeeld",
+    "source": [
+      "Educ.ar: lesmateriaal over Huayra GNU/Linux",
+      "https://www.educ.ar/recursos/155461/coleccion-de-recursos-huayra-gnu-linux"
+    ],
+    "explanation": "Huayra GNU/Linux is ontwikkeld binnen het Argentijnse publieke onderwijsprogramma als vrije werkplekomgeving voor leerlingen en docenten. De officiële Educ.ar-collectie bevat gebruiksmateriaal en beschrijft de door de staat ontwikkelde software. De casus laat zien hoe een publieke onderwijsomgeving besturingssysteem, toepassingen en scholing kan combineren. Het kaartje is een historisch praktijkvoorbeeld. De beschikbare bronnen geven geen voldoende bevestiging van de huidige onderhoudsstatus, landelijke ondersteuning of een actuele uitrol. Het wordt daarom niet gepresenteerd als een nu volledig ondersteund alternatief voor een productieomgeving.",
+    "classification": "Vergelijkingsmateriaal"
+  },
   {
     "name": "Thunderbird",
     "system": "Technologie",
@@ -1282,6 +1532,14 @@ const atlasAdditions = [
 
 // [object, tegenpartij, soort, toelichting, optioneel nummer van aanvullende bron]
 const atlasAdditionRelations = [
+  ["MODA ODF-programma", "LibreOffice", "Hergebruik", "De Taiwanese overheidsbron beschrijft LibreOffice als basis van de ODF-toepassingen.", 2],
+  ["KITE GNU/Linux", "LibreOffice", "Implementatie", "Het overheidsrapport noemt LibreOffice als onderdeel van de schoolwerkplekken."],
+  ["Expresso Livre (Paraná)", "EGroupware", "Historische basis", "Celepar beschrijft Expresso Livre als aangepaste versie van EGroupware.", 1],
+  ["Nube FING", "Nextcloud", "Implementatie", "De faculteit documenteert Nextcloud op eigen servers."],
+  ["AGETIC / EGPP", "LibreOffice", "Scholing", "Het aangekondigde opleidingsprogramma bevat LibreOffice-vaardigheden."],
+  ["Gov.in Secure Intranet", "BharatVC", "Techniek", "NIC noemt koppeling met BharatVC voor het organiseren van bijeenkomsten."],
+  ["Canaima GNU/Linux", "Debian", "Techniek", "De Debian-projectinventaris beschrijft Canaima als afgeleide desktopdistributie."],
+
   ["Twake Workplace", "ONLYOFFICE Docs", "Techniek", "De productpagina van Twake noemt integratie met ONLYOFFICE voor documentbewerking."],
   ["BlueMind", "Thunderbird", "Techniek", "BlueMind noemt Thunderbird met ondersteuning voor samenwerkingsfuncties."],
   ["Carbonio CE", "Zimbra", "Vergelijking", "Vergelijking van mail en samenwerking; geen veronderstelde technische integratie."],
@@ -2617,7 +2875,8 @@ systems.forEach((system,i)=>{
   const [x,y,tilt] = centers[i];
   const flatten = [.57,.68,.51,.74,.62,.55,.65,.52,.69][i];
   const members = [...nodes].filter(([,node])=>node.system===i&&(!node.parent||i===solutionSystem));
-  const sun = {...system,x,y,sun:true,tilt,flatten,system:i};
+  const outerRadius=system.name==='Wereldwijd'&&members.length>12?165:125;
+  const sun = {...system,x,y,sun:true,tilt,flatten,outerRadius,system:i};
   worlds.push(sun);
   membership.push([hub,sun]);
   const clusters=i===solutionSystem?[...solutionGroups.keys()].map((name,index)=>{
@@ -2630,7 +2889,7 @@ systems.forEach((system,i)=>{
   members.forEach(([name,node],j)=>{
     const inner = j<6;
     const angle = (inner ? j/6 : (j-6)/Math.max(1,members.length-6))*Math.PI*2+i*.91+Math.sin(j*13)*.12;
-    const radius = inner ? 67 : 125;
+    const radius = inner ? 67 : outerRadius;
     const dx=Math.cos(angle)*radius, dy=Math.sin(angle)*radius*flatten;
     const id=({
       DAWO:'nl-dawo', MijnBureau:'nl-mijnbureau', openDesk:'de-opendesk',
@@ -2750,7 +3009,7 @@ function draw(){
     glow.addColorStop(0,w.tone+'39');glow.addColorStop(1,w.tone+'00');
     dot(0,0,155*k,glow);
     ctx.restore();
-    (w.system===solutionSystem?[]:[67,125]).forEach(radius=>{
+    (w.system===solutionSystem?[]:[67,w.outerRadius]).forEach(radius=>{
       ctx.beginPath();ctx.ellipse(x,y,radius*k,radius*k*w.flatten,w.tilt,0,Math.PI*2);
       ctx.globalAlpha=.35+detail*.65;
       ctx.strokeStyle=w.tone+'32';ctx.lineWidth=1;ctx.stroke();
@@ -2973,7 +3232,7 @@ function openWorld(world,showOverview=false){
   dossierNote.textContent=world.parent?'Onderdeel bij '+world.parent:'';
   dossierNote.hidden=!world.parent;
   info.querySelector('h2').textContent=world.name;
-  info.querySelector('p').textContent=[solutionLabel(world),world.role,world.region].filter(Boolean).join(' · ');
+  info.querySelector('p').textContent=[solutionLabel(world),world.role,world.region,systems[world.system].name==='Wereldwijd'?world.phase:null].filter(Boolean).join(' · ');
   const assessment=renderExplanation(dossierExplanations.get(world.name),sourcesForExplanation(world.name));
 
   const researchNotes=document.createElement('ul');
