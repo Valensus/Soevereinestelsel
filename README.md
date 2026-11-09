@@ -6,7 +6,7 @@ De dossier- en stelseltoelichtingen staan in het eerste scriptblok van index.htm
 
 De oorspronkelijke objecten, bronrecords en verbindingen worden nog in index.html geregistreerd. Voeg een groene of rode bevinding pas toe als de gekoppelde openbare bron de precieze formulering ondersteunt. Laat een open vraag neutraal. De toelichting bij een verbinding vermeldt of die is onderbouwd, een vergelijking toont of nog onderzocht wordt.
 
-De functionele subcategorieën binnen Oplossingen staan in `solutionGroups` in het eerste scriptblok van index.html. Neem ieder oplossingsdossier in precies één groep op. `infrastructureGroups` verdeelt Infrastructuur verder naar type. De indeling verschijnt in het stelseloverzicht, de dossiermetadata en de zoekfilters. Onderdelen bij een hoofddossier zijn ook via deze groepen te openen.
+De functionele subcategorieën binnen Technologie staan in `solutionGroups` in het eerste scriptblok van index.html. Neem ieder oplossingsdossier in precies één groep op. `infrastructureGroups` verdeelt Infrastructuur verder naar type. De indeling verschijnt in het stelseloverzicht, de dossiermetadata en de zoekfilters. Onderdelen bij een hoofddossier zijn ook via deze groepen te openen.
 
 De eerdere versie staat in backup/index-voor-2.0.html.
 
