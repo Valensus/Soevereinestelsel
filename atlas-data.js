@@ -121,6 +121,116 @@ const explanationSources = new Map([
 ]);
 const atlasAdditions = [
   {
+    "name": "ONLYOFFICE Docs",
+    "system": "Oplossingen",
+    "region": "Internationaal",
+    "role": "Documentbewerking in de browser",
+    "phase": "Beschikbaar",
+    "source": [
+      "ONLYOFFICE Docs Community Edition zelf installeren",
+      "https://helpcenter.onlyoffice.com/docs/installation/docs-community-install-ubuntu.aspx"
+    ],
+    "explanation": "ONLYOFFICE Docs biedt online editors voor tekstdocumenten, spreadsheets en presentaties. De officiële installatiehandleiding beschrijft hoe de Community Edition op een eigen Linux-server draait en met een samenwerkplatform kan worden geïntegreerd. Voor een digitale werkplek is dit een alternatief voor de documentbewerkingslaag: bestanden en de editor kunnen onder een zelf gekozen beheeromgeving blijven. Vergelijk de gekozen editie op licentie, gelijktijdige gebruikers, ondersteuning en compatibiliteit met de eigen documenten. Eigen hosting geeft ruimte voor zeggenschap over verwerking en beheer; de feitelijke inrichting en eventuele externe koppelingen blijven bepalend. Een toepassing binnen MijnBureau of openDesk wordt hier niet gesteld.",
+    "classification": "Vergelijkingsmateriaal"
+  },
+  {
+    "name": "Zimbra",
+    "system": "Oplossingen",
+    "region": "Internationaal",
+    "role": "Mail, agenda en contacten",
+    "phase": "Beschikbaar",
+    "source": [
+      "Officiële Zimbra-documentatie en installatiegidsen",
+      "https://www.zimbra.com/product/documentation/"
+    ],
+    "explanation": "Zimbra is een platform voor e-mail, agenda en contacten. De openbare documentatie bevat installatie-, beheer- en migratiegidsen voor de serveromgeving. Daarmee is Zimbra relevant als alternatief voor de mail- en groupwarelaag van een werkplek: een organisatie kan de exploitant en de inrichting van haar mailomgeving beoordelen en kiezen. De beschikbare functies, ondersteuning en gebruiksrechten hangen af van de editie en licentie. Zelf beheren betekent ook verantwoordelijkheid voor beveiliging, updates, back-ups en bereikbaarheid. Opname op de kaart is geen beoordeling dat iedere aangeboden Zimbra-dienst soeverein is en onderbouwt geen koppeling met de Nederlandse overheidsinitiatieven.",
+    "classification": "Vergelijkingsmateriaal"
+  },
+  {
+    "name": "Keycloak",
+    "system": "Oplossingen",
+    "region": "Internationaal",
+    "role": "Identiteit en toegangsbeheer",
+    "phase": "Beschikbaar",
+    "source": [
+      "Keycloak: functies voor identiteit en toegang",
+      "https://www.keycloak.org/"
+    ],
+    "explanation": "Keycloak is opensourcesoftware voor identiteit en toegangsbeheer. Het verzorgt onder meer eenmalig aanmelden, tweefactorauthenticatie en aansluiting op bestaande LDAP- of Active Directory-omgevingen. Het ondersteunt OpenID Connect en SAML voor het koppelen van toepassingen. Voor een digitale werkplek is dit een belangrijke bouwsteen: de organisatie kan de authenticatievoorziening zelf organiseren in plaats van die uitsluitend bij een externe werkplekleverancier onder te brengen. De beheerder moet beschikbaarheid, beveiligingsupdates, herstel en koppelingen zelf inrichten. Keycloak levert geen complete werkpleksuite. De vergelijking met Univention Nubus betreft de rol bij identiteit en toegang; zij impliceert geen identieke functies of onderlinge integratie.",
+    "classification": "Bouwsteen"
+  },
+  {
+    "name": "OpenStack",
+    "system": "Oplossingen",
+    "region": "Internationaal",
+    "role": "Zelfbeheerde cloudinfrastructuur",
+    "phase": "Beschikbaar",
+    "source": [
+      "OpenStack: software voor cloudinfrastructuur",
+      "https://www.openstack.org/software/"
+    ],
+    "explanation": "OpenStack is opensourcesoftware om cloudinfrastructuur voor rekenkracht, opslag en netwerken te organiseren. Organisaties en dienstverleners kunnen daarmee een eigen cloudomgeving beheren waarop werkplekapplicaties draaien. Voor digitale zeggenschap is vooral de scheiding tussen applicaties, infrastructuursoftware en exploitant relevant: de technische basis kan worden ingericht zonder alle infrastructuurkeuzes aan één gesloten cloudplatform te koppelen. OpenStack is geen kant-en-klare kantooromgeving. Hardware, beheerrechten, beveiliging, netwerkverbindingen en contracten bepalen hoe onafhankelijk een concrete dienst is. Cleura documenteert het gebruik van OpenStack; die bron onderbouwt de verbinding op de kaart, zonder een specifieke overheidsimplementatie te veronderstellen.",
+    "classification": "Infrastructuur",
+    "references": [
+      [
+        "OpenStack bij Cleura",
+        "https://docs.cleura.cloud/kna1/howto/openstack/"
+      ]
+    ]
+  },
+  {
+    "name": "Debian",
+    "system": "Oplossingen",
+    "region": "Internationaal",
+    "role": "Linux-besturingssysteem voor werkplek en server",
+    "phase": "Beschikbaar",
+    "source": [
+      "Over het Debian-project en besturingssysteem",
+      "https://www.debian.org/intro/about"
+    ],
+    "explanation": "Debian is een door een gemeenschap ontwikkeld vrij besturingssysteem, bekend als basis voor Linux-werkplekken en servers. Het project bundelt softwarepakketten en pakketbeheer waarmee organisaties hun eigen systeemomgeving kunnen samenstellen en onderhouden. Voor een soevereine werkplek biedt dat keuze over het besturingssysteem en de daarop geïnstalleerde toepassingen. Daar horen praktische vragen bij over hardwareondersteuning, beveiligingsupdates, apparaatbeheer en aansluiting op bestaande vakapplicaties. Debian is een technische basis en geen complete vervanger voor een beheerde werkplekdienst. De vergelijking met DAWO gaat over Linux op de werkplek; zij betekent niet dat DAWO op Debian is gebaseerd.",
+    "classification": "Bouwsteen"
+  },
+  {
+    "name": "Seafile",
+    "system": "Oplossingen",
+    "region": "Internationaal",
+    "role": "Bestandssynchronisatie en delen",
+    "phase": "Beschikbaar",
+    "source": [
+      "Seafile: functies en zelfbeheerde installatie",
+      "https://www.seafile.com/en/home/"
+    ],
+    "explanation": "Seafile is software voor bestandssynchronisatie, delen en samenwerking. De productinformatie beschrijft toegang via verschillende apparaten, deelrechten, versiegeschiedenis en installatie op eigen infrastructuur. Daarmee is het een relevant alternatief voor de bestandslaag van een werkplek, naast bijvoorbeeld Nextcloud. De organisatie kan bepalen waar de server draait en wie de omgeving beheert. Onderzoek bij de gekozen editie welke functies, exportmogelijkheden en ondersteuning beschikbaar zijn. Bij migratie moeten niet alleen bestanden, maar ook gedeelde toegang, historie en synchronisatie worden beoordeeld. Eventuele AI-functies en externe verwerkingsdiensten vragen een afzonderlijke keuze. Er is hier geen integratie met MijnBureau of openDesk vastgesteld.",
+    "classification": "Vergelijkingsmateriaal"
+  },
+  {
+    "name": "Rocket.Chat",
+    "system": "Oplossingen",
+    "region": "Internationaal",
+    "role": "Chat en teamcommunicatie",
+    "phase": "Beschikbaar",
+    "source": [
+      "Rocket.Chat: zelfbeheerde en afgeschermde installatie",
+      "https://docs.rocket.chat/docs/deploy-rocketchat"
+    ],
+    "explanation": "Rocket.Chat is een communicatieplatform waarvoor de officiële documentatie verschillende installatiemogelijkheden beschrijft, waaronder eigen servers en afgeschermde omgevingen zonder internetverbinding. Voor een digitale werkplek is het relevant als alternatief voor teamchat waarbij de organisatie de infrastructuur en het gegevensbeheer zelf kan organiseren. De documentatie onderscheidt zelfbeheer van door de leverancier gehoste diensten. Onderzoek per editie de licentie, beschikbare functies, mobiele notificaties en eventuele verbindingen met externe diensten. Een installatie op eigen servers maakt het beheer niet vanzelf onafhankelijk. De vergelijking met Element betreft teamcommunicatie; er wordt geen gedeeld protocol of onderlinge uitwisselbaarheid verondersteld.",
+    "classification": "Vergelijkingsmateriaal"
+  },
+  {
+    "name": "ownCloud Infinite Scale",
+    "system": "Oplossingen",
+    "region": "Internationaal",
+    "role": "Bestanden delen en databeheer",
+    "phase": "Beschikbaar",
+    "source": [
+      "ownCloud Infinite Scale: beheer en installatie",
+      "https://doc.owncloud.com/ocis/8.2/index.html"
+    ],
+    "explanation": "ownCloud Infinite Scale is een platform voor het organiseren, delen en beheren van bestanden en metadata. De officiële documentatie beschrijft installatie, configuratie en beheer van de serveromgeving. Voor een digitale werkplek biedt het een afzonderlijk te beoordelen bestandsvoorziening, waarbij de organisatie keuzes kan maken over hosting, toegang en beheer. Het is relevant naast andere bestandsplatforms zoals Nextcloud en Seafile. Controleer voor een concrete invoering de productieversie, gebruiksvoorwaarden, ondersteuning en overdraagbaarheid van bestanden, rechten en metadata. De documentatie maakt expliciet dat gebruiksvoorwaarden van toepassing zijn. Opname in dit stelsel is geen verklaring dat elke editie of gehoste dienst zonder leveranciersafhankelijkheid inzetbaar is.",
+    "classification": "Vergelijkingsmateriaal"
+  },
+  {
     "name": "Cleura",
     "system": "Bedrijven",
     "region": "Zweden",
@@ -805,6 +915,15 @@ const atlasAdditions = [
 
 // [object, tegenpartij, soort, toelichting, optioneel nummer van aanvullende bron]
 const atlasAdditionRelations = [
+  ["ONLYOFFICE Docs", "Collabora Online", "Vergelijking", "Vergelijking van online documenteditors; geen aangetoonde samenwerking."],
+  ["Zimbra", "grommunio", "Vergelijking", "Vergelijking van mail- en groupwareplatforms; geen aangetoonde samenwerking."],
+  ["Keycloak", "Univention Nubus", "Vergelijking", "Vergelijking van bouwstenen voor identiteit en toegang; functies en integraties verschillen."],
+  ["OpenStack", "Cleura", "Techniek", "Cleura documenteert het gebruik van OpenStack voor zijn cloudinfrastructuur.", 1],
+  ["Debian", "DAWO", "Vergelijking", "Vergelijking van Linux als werkplekbasis; DAWO wordt hier niet als Debian-gebaseerd aangeduid."],
+  ["Seafile", "Nextcloud", "Vergelijking", "Vergelijking van platforms voor bestanden en samenwerking."],
+  ["Rocket.Chat", "Element", "Vergelijking", "Vergelijking van teamcommunicatie; geen aangetoonde protocolkoppeling."],
+  ["ownCloud Infinite Scale", "Nextcloud", "Vergelijking", "Vergelijking van platforms voor bestandsdeling en databeheer."],
+
   ["The Good Cloud","Nextcloud","Techniek","Biedt Nextcloud als beheerde dienst aan."],
   ["Office.eu","Nextcloud","Techniek","Gebruikt Nextcloud als een van zijn bouwstenen."],
   ["Bye Bye Big Tech","The Good Cloud","Samenwerking","The Good Cloud is consortiumpartner."],
