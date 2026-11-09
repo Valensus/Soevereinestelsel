@@ -1176,9 +1176,21 @@ for(const [infrastructureType,names] of infrastructureGroups){
 function solutionLabel(world){return [world.subcategory,world.infrastructureType].filter(Boolean).join(' · ');}
 
 const centers = [
-  [-365,-185,-.42],[115,-235,.27],[-180,175,.55],
-  [345,120,-.29],[25,365,-.36],[-140,-360,.42],
-  [-420,45,.28],[-360,300,-.48],[365,-150,.38]
+  [-350,-380,-.42],[150,-380,.27],[-70,380,.55],
+  [600,50,-.29],[520,600,-.36],[-100,-650,.42],
+  [-650,50,.28],[-650,600,-.48]
+];
+// Vaste, asymmetrische compositie: elk groepje krijgt een eigen baan en kleur.
+const solutionClusterLayouts = [
+  [-40,-235,82,58,-.18,'#cfb5ff'],
+  [190,-190,75,60,.38,'#a9caff'],
+  [300,0,72,80,-.2,'#91d9e8'],
+  [210,220,90,58,-.3,'#bdc3ff'],
+  [0,300,80,65,.22,'#e4b6dc'],
+  [-220,230,66,70,-.4,'#a8d4c9'],
+  [-300,40,48,78,.5,'#c3b6f4'],
+  [-260,-170,100,70,.2,'#a7c5df'],
+  [-130,110,45,35,.3,'#e2c89c']
 ];
 const hub = {name:'Soevereinestelsel van de Werkplek',x:0,y:0,tone:'#e2ebff',sun:true,hub:true};
 const planetArt = new Image();
@@ -1201,8 +1213,10 @@ systems.forEach((system,i)=>{
   worlds.push(sun);
   membership.push([hub,sun]);
   const clusters=i===solutionSystem?[...solutionGroups.keys()].map((name,index)=>{
-    const angle=index/solutionGroups.size*Math.PI*2-Math.PI/2;
-    const cluster={name,x:x+Math.cos(angle)*165,y:y+Math.sin(angle)*150,tone:system.tone};
+    const [dx,dy,rx,ry,rotation,tone]=solutionClusterLayouts[index];
+    const cluster={name,x:x+dx,y:y+dy,rx,ry,rotation,tone,index};
+    cluster.labelY=cluster.y-Math.hypot(rx*Math.sin(rotation),ry*Math.cos(rotation))-16;
+    membership.push([sun,cluster]);
     solutionClusters.push(cluster);return cluster;
   }):[];
   members.forEach(([name,node],j)=>{
@@ -1215,17 +1229,21 @@ systems.forEach((system,i)=>{
       'La Suite':'fr-la-suite', [rijksProject]:'nl-rijkswerkplek'
     })[name]||nodeId(name);
     let px=x+dx*Math.cos(tilt)-dy*Math.sin(tilt),py=y+dx*Math.sin(tilt)+dy*Math.cos(tilt);
+    let cluster;
     if(i===solutionSystem){
-      const cluster=clusters.find(group=>group.name===node.subcategory);
+      cluster=clusters.find(group=>group.name===node.subcategory);
       const peers=members.filter(([,peer])=>peer.subcategory===node.subcategory);
       const index=peers.findIndex(([peer])=>peer===name);
-      const localAngle=index/peers.length*Math.PI*2-Math.PI/2;
-      const radius=peers.length===1?0:peers.length>5?40:32;
-      px=cluster.x+Math.cos(localAngle)*radius;py=cluster.y+Math.sin(localAngle)*radius;
+      const localAngle=index/peers.length*Math.PI*2+cluster.rotation+Math.sin(index*2.7)*.12;
+      const spread=peers.length===1?0:.64+(index%3)*.11;
+      const dx=Math.cos(localAngle)*cluster.rx*spread,dy=Math.sin(localAngle)*cluster.ry*spread;
+      px=cluster.x+dx*Math.cos(cluster.rotation)-dy*Math.sin(cluster.rotation);
+      py=cluster.y+dx*Math.sin(cluster.rotation)+dy*Math.cos(cluster.rotation);
     }
-    const planet = {...node,id,name,tone:system.tone,x:px,y:py};
+    const visualScale=cluster ? .84+(j%4)*.09 : 1;
+    const planet = {...node,id,name,tone:cluster?.tone||system.tone,visualScale,x:px,y:py};
     worlds.push(planet);
-    membership.push([sun,planet]);
+    membership.push([cluster||sun,planet]);
   });
 });
 function nodeId(name){
@@ -1249,7 +1267,7 @@ function resize(){
   canvas.width=width*dpr;
   canvas.height=height*dpr;
   ctx.setTransform(dpr,0,0,dpr,0,0);
-  scale=Math.min(width/1180,height/980);
+  scale=Math.min(width/1850,height/1850);
   draw();
 }
 function screen(x,y){return [width/2+(x-camera.x)*camera.z*scale,height/2+(y-camera.y)*camera.z*scale]}
@@ -1336,11 +1354,18 @@ function draw(){
     ctx.globalAlpha=Math.min(1,detail*1.5);
     for(const cluster of solutionClusters){
       const [x,y]=screen(cluster.x,cluster.y);
-      const glow=ctx.createRadialGradient(x,y,0,x,y,58*k);
+      const glow=ctx.createRadialGradient(x,y,0,x,y,Math.max(cluster.rx,cluster.ry)*1.2*k);
       glow.addColorStop(0,cluster.tone+'20');glow.addColorStop(1,cluster.tone+'00');
-      dot(x,y,58*k,glow);
-      ctx.beginPath();ctx.ellipse(x,y,53*k,48*k,0,0,Math.PI*2);
-      ctx.strokeStyle=cluster.tone+'55';ctx.lineWidth=1;ctx.stroke();
+      dot(x,y,Math.max(cluster.rx,cluster.ry)*1.2*k,glow);
+      ctx.setLineDash(cluster.index%3===1?[3,7]:[]);
+      ctx.beginPath();ctx.ellipse(x,y,cluster.rx*k,cluster.ry*k,cluster.rotation,0,Math.PI*2);
+      ctx.strokeStyle=cluster.tone+'65';ctx.lineWidth=cluster.index%3===2?1.3:.8;ctx.stroke();
+      ctx.setLineDash([]);
+      if(cluster.index%3===2){
+        ctx.beginPath();ctx.ellipse(x,y,cluster.rx*k*1.1,cluster.ry*k*1.1,cluster.rotation,.2,Math.PI*1.2);
+        ctx.strokeStyle=cluster.tone+'30';ctx.lineWidth=.7;ctx.stroke();
+      }
+      dot(x,y,Math.max(1.5,2.4*k),cluster.tone+'a0');
     }
     ctx.restore();
   }
@@ -1381,8 +1406,8 @@ function draw(){
     const emphasized=w===selected||neighbors.has(w)||w===hovered||nextStops.has(w);
     ctx.globalAlpha=w.sun||emphasized?1:Math.max(.55,detail)*(selected?.7:1);
     const [x,y]=screen(w.x,w.y);
-    const radius=w.sun?Math.min(22,10+k*5):Math.min(10,2+k*2);
-    const badgeWidth=Math.min(50,Math.max(21,k*16));
+    const radius=w.sun?Math.min(22,10+k*5):Math.min(10,2+k*2)*(w.visualScale||1);
+    const badgeWidth=Math.min(50,Math.max(21,k*16))*(w.visualScale||1);
     const showBadge=!w.sun&&(detail>.35||emphasized);
     const light=ctx.createRadialGradient(x-radius*.35,y-radius*.35,0,x,y,radius);
     light.addColorStop(0,w.sun&&!w.hub?w.tone:'#fffdf0');
@@ -1430,7 +1455,7 @@ function draw(){
   if(detail>.25){
     ctx.save();ctx.globalAlpha=Math.min(1,detail*1.5);
     for(const cluster of solutionClusters){
-      const [x,y]=screen(cluster.x,cluster.y-58);
+      const [x,y]=screen(cluster.x,cluster.labelY);
       const size=13;ctx.font='700 '+size+'px Segoe UI, system-ui, sans-serif';
       const half=ctx.measureText(cluster.name).width/2+7;
       if(x+half<0||x-half>width||y<0||y>height)continue;
@@ -1525,7 +1550,7 @@ function openWorld(world,showOverview=false){
       button.onclick=()=>openWorld(item);
       list.append(button);
     }
-    const overviewZoom=world.system===solutionSystem?Math.max(1.9,Math.min(width/(460*scale),height/(490*scale))):Math.max(3,camera.z);
+    const overviewZoom=world.system===solutionSystem?Math.max(1.9,Math.min(width/(880*scale),height/(940*scale))):Math.max(3,camera.z);
     flyTo(world,world.hub?1:overviewZoom);
     return;
   }
