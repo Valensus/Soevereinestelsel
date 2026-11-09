@@ -1,0 +1,75 @@
+name: Eenmalig HTML samenvoegen
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/eenmalig-html.yml']
+permissions:
+  contents: write
+jobs:
+  samenvoegen:
+    if: github.event.head_commit.message == 'Voeg tijdelijke actie toe voor zelfstandig HTML-bestand'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Gegevens insluiten en scripts controleren
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from html.parser import HTMLParser
+          import subprocess, tempfile
+          html_path = Path("index.html")
+          html = html_path.read_text(encoding="utf-8")
+          data = Path("atlas-data.js").read_text(encoding="utf-8")
+          marker = '<script src="atlas-data.js"></script>'
+          assert html.count(marker) == 1, "Verwacht precies een gegevensbestand"
+          assert "</script" not in data.lower()
+          merged = html.replace(marker, "<script>\n" + data + "\n</script>")
+          class Scripts(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.active = False
+                  self.parts = []
+                  self.scripts = []
+              def handle_starttag(self, tag, attrs):
+                  attrs = dict(attrs)
+                  if tag == "script":
+                      assert "src" not in attrs, "Los script gevonden"
+                      self.active = True
+                      self.parts = []
+                  if tag in ("script", "img", "link", "source"):
+                      for key in ("src", "href"):
+                          value = attrs.get(key, "")
+                          assert not value or value.startswith(("data:", "#")), "Externe bestandsafhankelijkheid"
+              def handle_data(self, text):
+                  if self.active:
+                      self.parts.append(text)
+              def handle_endtag(self, tag):
+                  if tag == "script" and self.active:
+                      self.scripts.append("".join(self.parts))
+                      self.active = False
+          parser = Scripts()
+          parser.feed(merged)
+          assert len(parser.scripts) == 2
+          with tempfile.TemporaryDirectory() as directory:
+              for i, script in enumerate(parser.scripts):
+                  file = Path(directory) / (str(i) + ".js")
+                  file.write_text(script, encoding="utf-8")
+                  subprocess.run(["node", "--check", str(file)], check=True)
+          html_path.write_text(merged, encoding="utf-8")
+          readme = Path("README.md")
+          text = readme.read_text(encoding="utf-8")
+          text = text.replace("Open index.html rechtstreeks met atlas-data.js in dezelfde map.", "Open index.html rechtstreeks. Alle gegevens, scripts en afbeeldingen zijn in dit ene HTML-bestand opgenomen.")
+          text = text.replace("staan in atlas-data.js", "staan in het eerste scriptblok van index.html")
+          text = text.replace("in atlas-data.js", "in het eerste scriptblok van index.html")
+          readme.write_text(text, encoding="utf-8")
+          Path("atlas-data.js").unlink()
+          print("Gecontroleerd: twee geldige scripts, geen losse bestanden nodig.")
+          PY
+      - name: Zelfstandig HTML-bestand opslaan
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html README.md atlas-data.js
+          git commit -m "Bundel alle atlasgegevens in een zelfstandig HTML-bestand"
+          git push origin HEAD:main
