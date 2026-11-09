@@ -263,7 +263,7 @@ const developmentGuides = new Map([
   [
     "Gemeenten",
     {
-      "intro": "Vergelijk een werkplekpilot met de bestuurlijke, financiële en inkoopaanpak die invoering mogelijk maakt. Deelnemers aan dezelfde pilot zijn geen afzonderlijke bewezen migraties.",
+      "intro": "Hier staan Nederlandse gemeenten en hun samenwerkingsverbanden. Vergelijk een werkplekpilot met de bestuurlijke, financiële en inkoopaanpak die invoering mogelijk maakt. Buitenlandse gemeentelijke voorbeelden staan bij Europa of Wereldwijd.",
       "questions": [
         "Kies één werkproces en een representatieve groep medewerkers voor een proef.",
         "Leg koppelingen, ondersteuning, gebruikservaring en terugval vast voordat je opschaalt.",
@@ -273,7 +273,9 @@ const developmentGuides = new Map([
         "Amsterdam",
         "Groningen",
         "Arnhem",
-        "Gemeente Valkenburg aan de Geul"
+        "Gemeente Valkenburg aan de Geul",
+        "Den Haag",
+        "Neerijnen — historisch"
       ]
     }
   ],
@@ -401,6 +403,11 @@ const developmentGuides = new Map([
   ]
 ]);
 const developmentSteps = new Map([
+  ["Den Haag", "Definieer welke werkplekfuncties behouden moeten blijven en vergelijk alternatieven met een kleine gebruikersgroep voordat je besluiten over bredere invoering neemt."],
+  ["Neerijnen — historisch", "Gebruik de historische ervaringen om medewerkers te betrekken en een testset op te stellen voor sjablonen, complexe documenten en uitwisseling met andere gemeenten."],
+  ["Lyon", "Onderzoek welke ontwikkeling en exploitatie je samen met andere organisaties kunt organiseren en leg per component eigenaarschap, ondersteuning en overdracht vast."],
+  ["Tirana", "Vergelijk de rol van lokale kennispartners bij invoering en opleiding en controleer actuele ondersteuning voordat je historische softwarekeuzes overneemt."],
+
   [
     "Regeerakkoord",
     "Vertaal de politieke ambitie naar een eigen beslisdocument: welke afhankelijkheid moet verminderen, wie is eigenaar en wanneer wordt het resultaat beoordeeld?"
@@ -1407,6 +1414,59 @@ const technologyQuestions = new Map([
 ]);
 
 const atlasAdditions = [
+  {
+    "name": "Den Haag",
+    "system": "Gemeenten",
+    "region": "Nederland",
+    "role": "Verkenning van autonome werkplekken",
+    "phase": "Raadsbrief juni 2026: onderzoek en experimenten",
+    "classification": "Gemeentelijke praktijkverkenning",
+    "source": [
+      "Gemeente Den Haag: afdoening motie digitale onafhankelijkheid, 23 juni 2026",
+      "https://denhaag.raadsinformatie.nl/document/17127559/2/RIS324583%2BAfdoening%2Bmotie%2B%E2%80%98Digitale%2Bonafhankelijkheid%2Bis%2Been%2Bprioriteit%2Bvoor%2BDen%2BHaag?connection_id=13519282&connection_type=17"
+    ],
+    "explanation": "Den Haag beschrijft in een raadsbrief van 23 juni 2026 onderzoek en experimenten met alternatieven voor digitale en mobiele werkplekken. De gemeente wil autonomie vergroten en tegelijk voldoende functionaliteit behouden om productieverlies te beperken. Zij onderzoekt beschikbare autonome en opensourceomgevingen en ervaringen bij andere Europese overheden. Het document verbindt dit aan een meerjarenaanpak met de G4 en VNG. De brief onderbouwt de verkenning en beoogde experimenten; zij toont geen afgeronde overstap naar een specifieke suite. Voor de eigen organisatie is dit een voorbeeld van gefaseerd onderzoeken met expliciete eisen aan dagelijks gebruik."
+  },
+  {
+    "name": "Neerijnen — historisch",
+    "system": "Gemeenten",
+    "region": "Nederland",
+    "role": "Historische migratie naar LibreOffice",
+    "phase": "Historische casus: invoering vanaf 2011, studie uit 2014",
+    "classification": "Historisch praktijkvoorbeeld",
+    "source": [
+      "Europese Commissie / OSOR: LibreOffice in the municipality of Neerijnen",
+      "https://interoperable-europe.ec.europa.eu/collection/open-source-observatory-osor/document/libreoffice-municipality-neerijnen"
+    ],
+    "explanation": "De gearchiveerde OSOR-praktijkstudie uit 2014 beschrijft hoe Neerijnen na een besluit in 2011 overstapte naar LibreOffice. De casus noemt vrijheid en flexibiliteit als voordelen en bespreekt het meenemen van medewerkers en documentuitwisseling met andere gemeenten als uitdagingen. Dit is een concreet Nederlands voorbeeld van verandering van kantoorsoftware. De historische studie bewijst geen huidige gemeentelijke werkplekstandaard, actuele besparing of volledige soevereiniteit van de infrastructuur. Gebruik vooral de beschreven invoeringsvraagstukken om een eigen proef met documenten, ondersteuning en samenwerking te ontwerpen."
+  },
+  {
+    "name": "Lyon",
+    "system": "Europa",
+    "region": "Frankrijk",
+    "role": "Gemeentelijke samenwerking en vrije kantoorsoftware",
+    "phase": "Transitie en gedeeld gebruik beschreven in juli 2025",
+    "classification": "Gemeentelijk praktijkvoorbeeld",
+    "source": [
+      "SITIV: Lyon versterkt digitale soevereiniteit, 15 juli 2025",
+      "https://www.sitiv.fr/la-ville-de-lyon-renforce-sa-souverainete-numerique-avec-le-soutien-du-sitiv/"
+    ],
+    "explanation": "De Franse publieke IT-samenwerking SITIV beschrijft in juli 2025 hoe Lyon vrije software en digitale soevereiniteit onderdeel maakt van de gemeentelijke werkplek. De stad, de Métropole de Lyon en SITIV werken aan Territoire Numérique Ouvert, een samenwerkomgeving met Jitsi, ONLYOFFICE en Nextcloud in regionale datacenters. De publicatie meldt gebruik binnen meerdere lokale overheden; die gezamenlijke schaal is geen afzonderlijk gebruikersaantal voor Lyon. Het dossier laat vooral zien hoe gemeenten samen ontwikkeling en dienstverlening organiseren. De beschreven transitie bewijst geen volledige vervanging van alle systemen of onafhankelijke beoordeling van iedere component."
+  },
+  {
+    "name": "Tirana",
+    "system": "Europa",
+    "region": "Albanië",
+    "role": "Gemeentelijke invoering van vrije samenwerksoftware",
+    "phase": "Trajecten uit 2017, beschreven in OSOR-inventaris 2025",
+    "classification": "Gemeentelijk praktijkvoorbeeld",
+    "source": [
+      "Europese Commissie / OSOR: Albania Policy Factsheet 2025",
+      "https://interoperable-europe.ec.europa.eu/sites/default/files/inline-files/albania-osor-factsheet-2025.pdf"
+    ],
+    "explanation": "De OSOR-inventaris voor Albanië uit 2025 beschrijft gemeentelijke trajecten in Tirana met Nextcloud en LibreOffice uit 2017. De opensourcegemeenschap Open Labs hielp gemeentelijke afdelingen bij de overgang naar LibreOffice; Nextcloud werd ingezet voor bestanden en samenwerking. Dit maakt de rol van lokale kennispartners en afzonderlijke werkplekfuncties zichtbaar. De beschrijving van historische invoering is geen nieuwe meting van de huidige gebruiksomvang of onderhoudssituatie. Voor hergebruik moet de eigen organisatie actuele versies, beheer en ondersteuning opnieuw onderzoeken. Albanië ligt in Europa; dit dossier staat daarom bij Europa, ook al is het geen EU-lidstaat."
+  }
+,
   {
     "name": "Groningen",
     "system": "Gemeenten",
@@ -3034,6 +3094,13 @@ const atlasAdditions = [
 
 // [object, tegenpartij, soort, toelichting, optioneel nummer van aanvullende bron]
 const atlasAdditionRelations = [
+  ["Neerijnen — historisch", "LibreOffice", "Historisch gebruik", "De OSOR-studie beschrijft de overstap naar LibreOffice vanaf 2011."],
+  ["Lyon", "Nextcloud", "Techniek", "SITIV noemt Nextcloud als onderdeel van Territoire Numérique Ouvert."],
+  ["Lyon", "ONLYOFFICE Docs", "Techniek", "SITIV noemt ONLYOFFICE voor gezamenlijke documentbewerking in de samenwerkomgeving."],
+  ["Lyon", "Jitsi", "Techniek", "SITIV noemt Jitsi voor videoconferenties in de samenwerkomgeving."],
+  ["Tirana", "Nextcloud", "Historisch gebruik", "De OSOR-inventaris beschrijft de gemeentelijke Nextcloud-invoering uit 2017."],
+  ["Tirana", "LibreOffice", "Historisch gebruik", "De inventaris noemt de ondersteuning van Open Labs bij de overgang naar LibreOffice in 2017."],
+
   ["Échirolles", "Nextcloud", "Gebruik", "De gemeente noemt Nextcloud als gebruikte samenwerkvoorziening."],
   ["Échirolles", "LibreOffice", "Gebruik", "De gemeentelijke website noemt LibreOffice voor dagelijkse kantoortaken."],
   ["Échirolles", "BigBlueButton", "Gebruik", "De gemeente noemt BigBlueButton voor videoconferenties."],
@@ -4450,7 +4517,7 @@ const categoryExplanationUpdates = [
   [
     "Gemeenten",
     [
-      "Gemeenten onderzoeken autonomie via praktijkproeven, inkoop en bestuurlijke keuzes. De gezamenlijke DAWO/MijnBureau-proef en SOLID bieden verschillende testomgevingen. Groningen laat zien hoe digitale afhankelijkheden in de begroting en risicoanalyse terechtkomen; Arnhem beschrijft een inkoopafweging. Amsterdam heeft daarnaast een eigen Nextcloud-pilotrichting. Deze bronnen tonen verschillende fasen en ambities; deelname of een plan is geen bewijs van een afgeronde gemeentebrede overstap.",
+      "Nederlandse gemeenten onderzoeken autonomie via praktijkproeven, inkoop en bestuurlijke keuzes. Den Haag beschrijft werkplekverkenningen; Neerijnen biedt een historische LibreOffice-casus. Buitenlandse gemeenten staan geografisch bij Europa of Wereldwijd. De gezamenlijke DAWO/MijnBureau-proef en SOLID bieden verschillende testomgevingen. Groningen laat zien hoe digitale afhankelijkheden in de begroting en risicoanalyse terechtkomen; Arnhem beschrijft een inkoopafweging. Amsterdam heeft daarnaast een eigen Nextcloud-pilotrichting. Deze bronnen tonen verschillende fasen en ambities; deelname of een plan is geen bewijs van een afgeronde gemeentebrede overstap.",
       [
         "Amsterdam",
         "Groningen",

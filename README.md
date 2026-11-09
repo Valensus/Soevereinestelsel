@@ -30,3 +30,5 @@ Alle acht stelsels hebben een leeswijzer met drie vervolgstappen en aanklikbare 
 `technologyQuestions` geeft vaste vergelijkingsvragen per technologische subcategorie. Onderbouwde productkenmerken staan in `documentedProfiles` en `verifiedComparisons`, met bronverwijzingen. Licenties en dienstvoorwaarden moeten per component en editie worden beoordeeld. Verzin geen kenmerken om een vergelijking te vullen.
 
 Zoeken doorzoekt namen, rollen, regio’s, fasen, toelichtingen, productkenmerken en vervolgstappen. De snelle zoekbalk toont rechtstreekse naamtreffers bovenaan. Het stelsel en de bestaande subcategorieën blijven behouden.
+
+De categorie Gemeenten bevat uitsluitend Nederlandse gemeenten en hun relevante samenwerkingsverbanden. Buitenlandse gemeentelijke voorbeelden staan geografisch bij Europa of Wereldwijd. Europa is ruimer dan de EU; Tirana staat dus bij Europa. Maak geen dubbele dossiers om een gemeente in meerdere stelsels te tonen. Markeer historische voorbeelden expliciet in naam en ontwikkelfase.
