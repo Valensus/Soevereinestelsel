@@ -40,9 +40,6 @@ aside>.relations:not(:empty){display:grid;gap:6px;margin-top:14px}
 .detail-badge[hidden]{display:none}
 .detail-badge{display:block;margin:0 0 .6rem;width:62px;height:62px;cursor:default;touch-action:auto;background:none}
 aside .context{border:0;padding:0}
-.development-start{display:flex;flex-wrap:wrap;gap:6px;margin:.7rem 0}
-.development-start button{font-size:.8rem}
-.context li{margin:.5rem 0}
 .documented-facts{margin:.4rem 0}
 .documented-facts dt{font-weight:700;color:var(--tone);margin-top:.6rem}
 .documented-facts dd{margin:.2rem 0;color:#d0daee}
@@ -220,14 +217,96 @@ const dossierExplanations = new Map([
   ["Europese cloudinkoop","De Europese Commissie gunde vier contracten voor clouddiensten voor EU-instellingen en gebruikte haar Cloud Sovereignty Framework om aanbiedingen te beoordelen. Zij koos meerdere leveranciers om de afhankelijkheid van één aanbieder te beperken. De Commissie meldt dat de geselecteerde diensten verschillende niveaus van zeggenschap bereikten. Voor een werkplek is de bijdrage indirect: als bestanden of samenwerking in de cloud worden ondergebracht, kan een opdrachtgever de zeggenschap over die infrastructuur al bij inkoop beoordelen. De gunning betreft clouddiensten voor EU-instellingen. Zij legt geen keuze voor een Nederlandse werkpleksuite vast."],
 ]);
 const systemExplanations = new Map([
-  ["Beleid",["Beleid verbindt ambities voor digitale autonomie met concrete keuzes voor de werkplek. Dit stelsel bevat beleidsvisies, wetgeving, contractvoorwaarden en praktische handreikingen. De kaarten maken duidelijk voor wie een kader bedoeld is en wat de status is. Open source, open standaarden, privacy, beveiliging, informatiebeheer en overstappen vragen elk eigen afwegingen. Niet elk kader geldt voor iedere organisatie of dienst. Gebruik de dossiers om passende eisen te formuleren voor inkoop, inrichting en beheer; geen van deze kaders bewijst op zichzelf dat een product volledig soeverein is.",["Visie digitale autonomie","Pas toe of leg uit","Gemeentelijke cloudeisen","Data Act","DUTO-raamwerk"]]],
-  ["Rijksoverheid",["Hier staan organisaties en projecten die een publieke werkplek ontwikkelen, beproeven of in gebruik nemen. SSC-ICT bouwt met DAWO aan de desktoplaag. BZK brengt met MijnBureau bestaande samenwerkcomponenten bijeen. De gemeentepilot toetst de combinatie en de rijksopdracht brengt meerdere ICT-dienstverleners bij elkaar. De betekenis voor zeggenschap zit in het kunnen kiezen en aanpassen van werkpleklagen, onderbouwd met ervaringen van gebruikers. De dossiers maken onderscheid tussen een opdrachtgever, een ontwikkelaar en een deelnemer aan een proef. Ook bestaande werkplekkeuzes geven context voor wat bij een overstap moet worden meegenomen.",["DAWO","MijnBureau","Rijksbrede Soevereine Digitale Werkomgeving"]]],
-  ["Technologie",["Technologie omvat software en infrastructuur voor de digitale werkplek: van bestanden, documenten, projectplanning en communicatie tot rekenkracht, opslag en hosting. De architectuur van openDesk laat zien hoe Nextcloud, OpenProject en Element verschillende functies vervullen en waar ze aan elkaar gekoppeld zijn. SURF Works laat zien hoe Nextcloud ook in een andere omgeving kan worden beproefd. Voor de werkplek is van belang welke componenten een organisatie zelf kan laten beheren en welke bestanden en instellingen bruikbaar blijven als zij één onderdeel vervangt. De dossiers onderscheiden software die zelf een werkplekfunctie levert van organisaties die de ontwikkeling daarvan ondersteunen.",["openDesk","Nextcloud","SURF Works"]]],
-  ["Kennis",["Onderzoek en praktijkproeven helpen om aannames over een werkplek te toetsen. Zuyd is genoemd als partner bij SOLID, dat lokale infrastructuur voor samenwerking en AI onderzoekt. Radboud Universiteit beschrijft ervaringen met de Nextcloud-proef van SURF. Die casussen beantwoorden verschillende vragen: wat kan lokaal worden verwerkt en wat hebben gebruikers nodig om met alternatieve software te werken? De bijdrage van dit stelsel ligt bij bewijs voor ontwerp- en invoeringskeuzes. Een proef geeft informatie over de geteste omgeving en gebruikers. Voor andere organisaties blijft relevant welke eigen processen en koppelingen zij moeten beproeven.",["SOLID","SURF Works","Radboud Universiteit"]]],
-  ["Bedrijven",["Dit stelsel bevat bedrijven die technologie, infrastructuur en diensten voor digitale werkplekken leveren. Sommige zijn rechtstreeks betrokken bij een samenwerkplatform, andere ondersteunen de cloud- of beheerlaag. Cloudwise werkt bijvoorbeeld met Nextcloud en Previder aan onderwijsomgevingen; Info Support draagt met TNO en andere partners bij aan federatieve cloudinfrastructuur. Per dossier staat welke bijdrage publiek is beschreven. De naam of vestigingsplaats van een leverancier geeft op zichzelf geen garantie voor digitale zeggenschap: beheerrechten, gegevensverwerking, voorwaarden en mogelijkheden om over te stappen moeten per dienst worden beoordeeld.", ["Cloudwise", "Info Support", "KPN"]]],
-  ["Gemeenten",["Amsterdam, Ede, Zaanstad en ’s-Hertogenbosch werken mee aan de proef met een Linux-laptop met DAWO en de samenwerkomgeving MijnBureau. De praktijkrol van gemeenten is belangrijk omdat een alternatieve werkplek pas bruikbaar wordt als medewerkers hun taken kunnen uitvoeren en bestaande systemen ermee kunnen samenwerken. De gezamenlijke proef verzamelt ervaringen voor verdere ontwikkeling en onderzoekt welke groepen als eerste met MijnBureau zouden kunnen werken. De VNG is betrokken bij de samenwerking. De openbare aankondiging beschrijft gezamenlijke doelen. De dossiers schrijven geen afzonderlijke uitkomsten toe aan gemeenten waarvoor die uitkomsten niet zijn gepubliceerd.",["VNG","DAWO","MijnBureau"]]],
-  ["Europa",["Dit stelsel laat zien hoe Europese overheden en publieke organisaties alternatieven ontwikkelen, testen en organiseren. Het Zwitserse PoC BOSS beproefde openDesk. Frankrijk kondigde invoering van La Suite bij de zorgverzekering aan. Digital Commons EDIC organiseert daarnaast samenwerking rond gedeelde digitale bouwstenen. Voor een soevereine werkplek zijn dat verschillende vormen van bijdrage: praktijkbewijs, invoering bij een grote afnemer en gezamenlijk onderhoud van technologie. De landen en organisaties hebben hun eigen inrichting en voorwaarden. Een Europese herkomst of samenwerking geeft op zichzelf geen antwoord op wie een specifieke dienst beheert of gegevens kan overdragen.",["PoC BOSS","Cnam","Digital Commons EDIC"]]],
-  ["Wereldwijd",["Dit stelsel toont publieke werkplekinitiatieven en concrete praktijkvoorbeelden buiten Europa. De voorbeelden omvatten documentbewerking, mail, berichten, samenwerking, onderwijswerkplekken en infrastructuur onder lokale of publieke regie. KITE in Kerala combineert bijvoorbeeld een Linux-werkplek met LibreOffice en eigen beheer. Taiwan ontwikkelt ODF-gereedschap voor overheidsmedewerkers en Nube FING gebruikt Nextcloud op eigen faculteitsservers. De dossiers maken onderscheid tussen beschikbare diensten, aangekondigde invoering, scholing en historische voorbeelden. Nationale herkomst, opensourcecode en digitale soevereiniteit zijn verschillende kenmerken. Een publieke dienst is niet automatisch volledig opensource en een aankondiging bewijst geen voltooide migratie.", ["KITE GNU/Linux", "MODA ODF-programma", "Nube FING"]]],
+  [
+    "Beleid",
+    [
+      "Beleid verbindt ambities voor digitale autonomie met concrete keuzes voor de werkplek. Dit stelsel bevat beleidsvisies, wetgeving, contractvoorwaarden en praktische handreikingen. De kaarten maken duidelijk voor wie een kader bedoeld is en wat de status is. Open source, open standaarden, privacy, beveiliging, informatiebeheer en overstappen vragen elk eigen afwegingen. Niet elk kader geldt voor iedere organisatie of dienst.",
+      [
+        "Visie digitale autonomie",
+        "Pas toe of leg uit",
+        "Gemeentelijke cloudeisen",
+        "Data Act",
+        "DUTO-raamwerk"
+      ]
+    ]
+  ],
+  [
+    "Rijksoverheid",
+    [
+      "Hier staan organisaties en projecten die een publieke werkplek ontwikkelen, beproeven of in gebruik nemen. SSC-ICT bouwt met DAWO aan de desktoplaag. BZK brengt met MijnBureau bestaande samenwerkcomponenten bijeen. De gemeentepilot toetst de combinatie en de rijksopdracht brengt meerdere ICT-dienstverleners bij elkaar. De betekenis voor zeggenschap zit in het kunnen kiezen en aanpassen van werkpleklagen, onderbouwd met ervaringen van gebruikers. De dossiers maken onderscheid tussen een opdrachtgever, een ontwikkelaar en een deelnemer aan een proef. Ook bestaande werkplekkeuzes geven context voor wat bij een overstap moet worden meegenomen.",
+      [
+        "DAWO",
+        "MijnBureau",
+        "Rijksbrede Soevereine Digitale Werkomgeving"
+      ]
+    ]
+  ],
+  [
+    "Technologie",
+    [
+      "Technologie omvat software en infrastructuur voor de digitale werkplek: van bestanden, documenten, projectplanning en communicatie tot rekenkracht, opslag en hosting. De architectuur van openDesk laat zien hoe Nextcloud, OpenProject en Element verschillende functies vervullen en waar ze aan elkaar gekoppeld zijn. SURF Works laat zien hoe Nextcloud ook in een andere omgeving kan worden beproefd. Voor de werkplek is van belang welke componenten een organisatie zelf kan laten beheren en welke bestanden en instellingen bruikbaar blijven als zij één onderdeel vervangt. De dossiers onderscheiden software die zelf een werkplekfunctie levert van organisaties die de ontwikkeling daarvan ondersteunen.",
+      [
+        "openDesk",
+        "Nextcloud",
+        "SURF Works"
+      ]
+    ]
+  ],
+  [
+    "Kennis",
+    [
+      "Zuyd is genoemd als partner bij SOLID, dat lokale infrastructuur voor samenwerking en AI onderzoekt. Radboud Universiteit beschrijft ervaringen met de Nextcloud-proef van SURF. Die casussen beantwoorden verschillende vragen: wat kan lokaal worden verwerkt en wat hebben gebruikers nodig om met alternatieve software te werken? De bijdrage van dit stelsel ligt bij bewijs voor ontwerp- en invoeringskeuzes. Een proef geeft informatie over de geteste omgeving en gebruikers. Voor andere organisaties blijft relevant welke eigen processen en koppelingen zij moeten beproeven.",
+      [
+        "SOLID",
+        "SURF Works",
+        "Radboud Universiteit"
+      ]
+    ]
+  ],
+  [
+    "Bedrijven",
+    [
+      "Dit stelsel bevat bedrijven die technologie, infrastructuur en diensten voor digitale werkplekken leveren. Sommige zijn rechtstreeks betrokken bij een samenwerkplatform, andere ondersteunen de cloud- of beheerlaag. Cloudwise werkt bijvoorbeeld met Nextcloud en Previder aan onderwijsomgevingen; Info Support draagt met TNO en andere partners bij aan federatieve cloudinfrastructuur. Per dossier staat welke bijdrage publiek is beschreven. De naam of vestigingsplaats van een leverancier geeft op zichzelf geen garantie voor digitale zeggenschap: beheerrechten, gegevensverwerking, voorwaarden en mogelijkheden om over te stappen moeten per dienst worden beoordeeld.",
+      [
+        "Cloudwise",
+        "Info Support",
+        "KPN"
+      ]
+    ]
+  ],
+  [
+    "Gemeenten",
+    [
+      "Amsterdam, Ede, Zaanstad en ’s-Hertogenbosch werken mee aan de proef met een Linux-laptop met DAWO en de samenwerkomgeving MijnBureau. De praktijkrol van gemeenten is belangrijk omdat een alternatieve werkplek pas bruikbaar wordt als medewerkers hun taken kunnen uitvoeren en bestaande systemen ermee kunnen samenwerken. De gezamenlijke proef verzamelt ervaringen voor verdere ontwikkeling en onderzoekt welke groepen als eerste met MijnBureau zouden kunnen werken. De VNG is betrokken bij de samenwerking. De openbare aankondiging beschrijft gezamenlijke doelen. De dossiers schrijven geen afzonderlijke uitkomsten toe aan gemeenten waarvoor die uitkomsten niet zijn gepubliceerd.",
+      [
+        "VNG",
+        "DAWO",
+        "MijnBureau"
+      ]
+    ]
+  ],
+  [
+    "Europa",
+    [
+      "Dit stelsel laat zien hoe Europese overheden en publieke organisaties alternatieven ontwikkelen, testen en organiseren. Het Zwitserse PoC BOSS beproefde openDesk. Frankrijk kondigde invoering van La Suite bij de zorgverzekering aan. Digital Commons EDIC organiseert daarnaast samenwerking rond gedeelde digitale bouwstenen. Voor een soevereine werkplek zijn dat verschillende vormen van bijdrage: praktijkbewijs, invoering bij een grote afnemer en gezamenlijk onderhoud van technologie. De landen en organisaties hebben hun eigen inrichting en voorwaarden. Een Europese herkomst of samenwerking geeft op zichzelf geen antwoord op wie een specifieke dienst beheert of gegevens kan overdragen.",
+      [
+        "PoC BOSS",
+        "Cnam",
+        "Digital Commons EDIC"
+      ]
+    ]
+  ],
+  [
+    "Wereldwijd",
+    [
+      "Dit stelsel toont publieke werkplekinitiatieven en concrete praktijkvoorbeelden buiten Europa. De voorbeelden omvatten documentbewerking, mail, berichten, samenwerking, onderwijswerkplekken en infrastructuur onder lokale of publieke regie. KITE in Kerala combineert bijvoorbeeld een Linux-werkplek met LibreOffice en eigen beheer. Taiwan ontwikkelt ODF-gereedschap voor overheidsmedewerkers en Nube FING gebruikt Nextcloud op eigen faculteitsservers. De dossiers maken onderscheid tussen beschikbare diensten, aangekondigde invoering, scholing en historische voorbeelden. Nationale herkomst, opensourcecode en digitale soevereiniteit zijn verschillende kenmerken. Een publieke dienst is niet automatisch volledig opensource en een aankondiging bewijst geen voltooide migratie.",
+      [
+        "KITE GNU/Linux",
+        "MODA ODF-programma",
+        "Nube FING"
+      ]
+    ]
+  ]
 ]);
 const explanationSources = new Map([
   ["Regeerakkoord",[["Digitale overheid in het regeerakkoord","https://www.rijksoverheid.nl/regering/regeerakkoord/nederland-werkt/nederland-koploper-in-een-digitale-wereld"]]],
@@ -259,856 +338,6 @@ const explanationSources = new Map([
   ["DAWO",[["DAWO-installatiecode","https://code.overheid.nl/MinBZK/DAWO-Installatie"]]],
 ]);
 
-const developmentGuides = new Map([
-  [
-    "Gemeenten",
-    {
-      "intro": "Hier staan Nederlandse gemeenten en hun samenwerkingsverbanden. Vergelijk een werkplekpilot met de bestuurlijke, financiële en inkoopaanpak die invoering mogelijk maakt. Buitenlandse gemeentelijke voorbeelden staan bij Europa of Wereldwijd.",
-      "questions": [
-        "Kies één werkproces en een representatieve groep medewerkers voor een proef.",
-        "Leg koppelingen, ondersteuning, gebruikservaring en terugval vast voordat je opschaalt.",
-        "Vergelijk de gezamenlijke DAWO-pilot met de begrotingsaanpak in Groningen en de inkoopafweging in Arnhem."
-      ],
-      "start": [
-        "Amsterdam",
-        "Groningen",
-        "Arnhem",
-        "Gemeente Valkenburg aan de Geul",
-        "Den Haag",
-        "Neerijnen — historisch"
-      ]
-    }
-  ],
-  [
-    "Bedrijven",
-    {
-      "intro": "Vergelijk de rol van een bedrijf en de concrete dienst die je afneemt. Een ontwikkelaar, integrator, infrastructuurbeheerder en praktijkgebruiker leveren verschillende bijdragen.",
-      "questions": [
-        "Vraag wie applicatie, infrastructuur, identiteit en back-ups beheert en welke onderaannemers betrokken zijn.",
-        "Leg toegang, onderhoud, aansprakelijkheid en een uitvoerbare overdracht contractueel vast.",
-        "Vergelijk een beheerde dienst met zelfbeheer op totale kosten, capaciteit en vervangbaarheid."
-      ],
-      "start": [
-        "The Good Cloud",
-        "Centric",
-        "KPN",
-        "YourData"
-      ]
-    }
-  ],
-  [
-    "Kennis",
-    {
-      "intro": "Gebruik deze categorie als gereedschapskist: meet afhankelijkheden, bereid een migratie voor en organiseer onderhoud. Een onderzoek of pilot levert pas resultaten wanneer die daadwerkelijk zijn gepubliceerd.",
-      "questions": [
-        "Breng het huidige applicatielandschap in kaart met de DAAF-meetlat.",
-        "Maak een proefplan met documenten, macro’s, gebruikersopleiding en ondersteuning.",
-        "Spreek bij gezamenlijke ontwikkeling eigenaarschap, financiering en overdraagbare documentatie af."
-      ],
-      "start": [
-        "DAAF autonomiemeetlat",
-        "LibreOffice Migration Protocol",
-        "SILL softwarecatalogus",
-        "OSOR communityrichtlijnen"
-      ]
-    }
-  ],
-  [
-    "Rijksoverheid",
-    {
-      "intro": "Volg de keten van beleidsverantwoordelijke naar opdrachtgever, uitvoerder en gebruiker. Maak onderscheid tussen een opdracht, ontwikkelwerk, een aangekondigde pilot en ingebruikname.",
-      "questions": [
-        "Begin bij de opdrachtgever en de afbakening van het programma.",
-        "Bekijk daarna de concrete componenten en hun technische documentatie.",
-        "Stel vast welke onderdelen bruikbaar zijn voor een eigen proef en welke ondersteuning nog nodig is."
-      ],
-      "start": [
-        "ICBR",
-        "Rijksbrede Soevereine Digitale Werkomgeving",
-        "DAWO",
-        "MijnBureau"
-      ]
-    }
-  ],
-  [
-    "Europa",
-    {
-      "intro": "Vergelijk Europese voorbeelden op dezelfde punten: aanleiding, aantoonbare fase, ingevoerde functies en organisatie van beheer. Een nationale suite en een gemeentelijke praktijkcasus hebben een andere schaal.",
-      "questions": [
-        "Gebruik aangekondigde aantallen niet als bewijs van gerealiseerde invoering.",
-        "Zoek naast software ook naar lessen over documentcompatibiliteit, ondersteuning en bestuurlijk draagvlak.",
-        "Bekijk zowel nieuwe pilots als historische koerswijzigingen en beëindigde programma’s."
-      ],
-      "start": [
-        "Schleswig-Holstein",
-        "Stadt Zürich/BFH",
-        "Échirolles",
-        "München / LiMux",
-        "dPhoenixSuite"
-      ]
-    }
-  ],
-  [
-    "Wereldwijd",
-    {
-      "intro": "Gebruik voorbeelden buiten Europa om verschillende routes te onderzoeken: eigen distributies, publieke diensten, opleiding en lokaal beheer. Nationale herkomst is geen bewijs dat alle onderdelen open of zelfstandig te beheren zijn.",
-      "questions": [
-        "Noteer het jaar en de context van ieder voorbeeld voordat je er conclusies aan verbindt.",
-        "Onderscheid daadwerkelijk gebruik, aangeboden diensten, aangekondigde scholing en historische projecten.",
-        "Neem een werkwijze over wanneer die past; verifieer licentie, ondersteuning en juridische context opnieuw."
-      ],
-      "start": [
-        "KITE GNU/Linux",
-        "MODA ODF-programma",
-        "Nube FING",
-        "AGETIC / EGPP",
-        "Huayra GNU/Linux"
-      ]
-    }
-  ],
-  [
-    "Technologie",
-    {
-      "intro": "Vergelijk technologie per werkplekfunctie. Onderzoek de precieze editie, licentie, beheervorm, koppelingen en mogelijkheden om gegevens en configuratie mee te nemen. Een los pakket vervangt niet automatisch een complete werkplek.",
-      "questions": [
-        "Begin bij een werktaak en vergelijk twee of drie kandidaten binnen dezelfde subcategorie.",
-        "Test met eigen documenten, accounts, apparaten en samenwerkingspartners.",
-        "Bereken naast licentiekosten ook implementatie, hosting, opleiding, onderhoud en een toekomstige overstap."
-      ],
-      "start": [
-        "Nextcloud",
-        "LibreOffice",
-        "Keycloak",
-        "Proxmox VE"
-      ]
-    }
-  ],
-  [
-    "Beleid",
-    {
-      "intro": "Vertaal een kader naar een concrete beslissing. Bepaal eerst of het voor de eigen organisatie en dienst geldt en of het gaat om wetgeving, beleid, contractvoorwaarden of advies.",
-      "questions": [
-        "Leg per eis vast uit welk kader zij komt en waarom die van toepassing is.",
-        "Vertaal algemene ambities naar toetsbare eisen voor inkoop, inrichting en beheer.",
-        "Verbind privacy, beveiliging, informatiebeheer en overstappen aan dezelfde werkplekproef."
-      ],
-      "start": [
-        "Visie digitale autonomie",
-        "Gemeentelijke cloudeisen",
-        "GIBIT",
-        "Data Act",
-        "DUTO-raamwerk"
-      ]
-    }
-  ]
-]);
-const developmentSteps = new Map([
-  ["Den Haag", "Definieer welke werkplekfuncties behouden moeten blijven en vergelijk alternatieven met een kleine gebruikersgroep voordat je besluiten over bredere invoering neemt."],
-  ["Neerijnen — historisch", "Gebruik de historische ervaringen om medewerkers te betrekken en een testset op te stellen voor sjablonen, complexe documenten en uitwisseling met andere gemeenten."],
-  ["Lyon", "Onderzoek welke ontwikkeling en exploitatie je samen met andere organisaties kunt organiseren en leg per component eigenaarschap, ondersteuning en overdracht vast."],
-  ["Tirana", "Vergelijk de rol van lokale kennispartners bij invoering en opleiding en controleer actuele ondersteuning voordat je historische softwarekeuzes overneemt."],
-
-  [
-    "Regeerakkoord",
-    "Vertaal de politieke ambitie naar een eigen beslisdocument: welke afhankelijkheid moet verminderen, wie is eigenaar en wanneer wordt het resultaat beoordeeld?"
-  ],
-  [
-    "NDS",
-    "Bepaal welke overheidsbrede samenwerking of voorziening bruikbaar is voor jullie organisatie en welk besluit jullie zelf moeten nemen."
-  ],
-  [
-    "Cloud Sovereignty Framework",
-    "Beoordeel één concrete clouddienst per criterium; verzamel onderbouwing over rechtsmacht, beheer, technologie en continuïteit."
-  ],
-  [
-    "Rijkscloudbeleid",
-    "Stel eerst vast of jullie organisatie binnen de reikwijdte valt en vertaal de voorwaarden daarna naar de gekozen werkplekdienst."
-  ],
-  [
-    "Europese cloudinkoop",
-    "Bestudeer hoe soevereiniteitscriteria in een aanbesteding worden gebruikt en bepaal welke aanpak bij jullie eigen inkoop past."
-  ],
-  [
-    "Visie digitale autonomie",
-    "Maak de gewenste zeggenschap concreet voor gegevens, software en beheer en koppel daaraan meetbare ontwikkeldoelen."
-  ],
-  [
-    "Open, tenzij",
-    "Leg bij eigen softwareontwikkeling licentie, publicatie, uitzonderingen, documentatie en onderhoud vooraf vast."
-  ],
-  [
-    "Pas toe of leg uit",
-    "Loop de standaardenlijst langs voor documenten, identiteit en communicatie; registreer toepasselijke standaarden en de onderbouwing van afwijkingen."
-  ],
-  [
-    "Gemeentelijke cloudeisen",
-    "Gebruik eisen en gunningscriteria bij een passende IaaS- of PaaS-uitvraag en werk een toekomstige verhuizing technisch uit."
-  ],
-  [
-    "Handreiking digitale autonomie",
-    "Onderzoek of gezamenlijke inkoop of ontwikkeling past bij de eigen afhankelijkheden en laat de concrete juridische ruimte beoordelen."
-  ],
-  [
-    "Data Act",
-    "Vraag bij een clouddienst naar exportformaten, ondersteuning bij vertrek, termijnen en kosten; test de export vóór contractverlenging."
-  ],
-  [
-    "AVG en internationale doorgifte",
-    "Breng gegevensstromen, beheer op afstand en onderaannemers in kaart en beoordeel de verwerking en doorgifte per dienst."
-  ],
-  [
-    "BIO2",
-    "Koppel risico’s aan maatregelen voor accounts, updates, logging, back-ups en herstel en wijs per maatregel een verantwoordelijke aan."
-  ],
-  [
-    "DUTO-raamwerk",
-    "Neem mail, bestanden, metagegevens, bewaartermijnen en vernietiging mee in een migratieproef; test of informatie na export bruikbaar blijft."
-  ],
-  [
-    "Cyberbeveiligingswet",
-    "Toets de reikwijdte voor de eigen organisatie en verbind toepasselijke verplichtingen aan de inrichting en incidentafspraken van de werkplek."
-  ],
-  [
-    "Interoperable Europe Act",
-    "Bepaal eerst of een wijziging relevante grensoverschrijdende publieke diensten raakt voordat je een wettelijke beoordelingsplicht aanneemt."
-  ],
-  [
-    "ARBIT",
-    "Werk de voorwaarden uit in een overeenkomst met concrete afspraken over gebruiksrechten, overdracht en ondersteuning bij vertrek."
-  ],
-  [
-    "GIBIT",
-    "Gebruik de actuele toolbox proportioneel voor het contract en specificeer de benodigde afspraken voor cloud, gegevens, onderhoud en beëindiging."
-  ],
-  [
-    "Standpunt generatieve AI",
-    "Kies één AI-werktaak en beoordeel doel, gegevens, risico’s en menselijke controle voordat je een assistent breed beschikbaar maakt."
-  ],
-  [
-    "Algoritmekader",
-    "Gebruik het kader om benodigde beoordelingen en verantwoordelijkheden voor de gekozen AI-toepassing te bepalen en documenteer besluiten."
-  ],
-  [
-    "NeRDS inkoopstrategie",
-    "Vergelijk totale kosten en overstapbaarheid van meerdere inkooproutes, inclusief een modulaire combinatie van diensten."
-  ],
-  [
-    "BZK",
-    "Volg hoe beleidsdoelen in MijnBureau worden vertaald naar productkeuzes en bepaal wie binnen de eigen organisatie vergelijkbaar eigenaarschap krijgt."
-  ],
-  [
-    "ICBR",
-    "Maak voor jullie eigen traject expliciet wie opdracht geeft, de scope vaststelt en besluit over ingebruikname en vervolgfinanciering."
-  ],
-  [
-    "SSC-ICT",
-    "Bekijk de scheiding tussen ontwikkeling van de Linux-werkplek en de samenwerkomgeving en bepaal welk beheer jullie zelf kunnen organiseren."
-  ],
-  [
-    "DICTU",
-    "Zoek in de gezamenlijke opdracht welke bijdrage per uitvoerder is afgesproken; neem geen specifieke componentverantwoordelijkheid aan zonder bron."
-  ],
-  [
-    "DUO-ICT",
-    "Gebruik de gezamenlijke ontwikkelopdracht als voorbeeld om taken tussen uitvoerders en gebruikersorganisaties expliciet te beleggen."
-  ],
-  [
-    "DAWO",
-    "Test naast de Linux-basis ook apparaten, randapparatuur, bedrijfsapplicaties en samenwerking met de bestaande omgeving."
-  ],
-  [
-    "MijnBureau",
-    "Kies enkele dagelijkse samenwerkingstaken en test de samenhang van componenten, accounts, documentbewerking en beheer."
-  ],
-  [
-    "Rijksbrede Soevereine Digitale Werkomgeving",
-    "Vergelijk de gezamenlijke opdracht met de eigen behoeften en onderscheid te ontwikkelen functies van al beschikbare onderdelen."
-  ],
-  [
-    "Beter Samen Werken",
-    "Neem samenwerking en informatiehuishouding samen op in de proef: waar komen bestanden en berichten terecht en hoe blijven die terugvindbaar?"
-  ],
-  [
-    "DAWO-NixOS",
-    "Onderzoek of reproduceerbare configuratie past bij jullie beheerorganisatie en test updates en herstel van een werkplekconfiguratie."
-  ],
-  [
-    "Bureaublad",
-    "Beoordeel het portaal als één component: test toegang tot toepassingen, accountkoppelingen en de ervaring van medewerkers."
-  ],
-  [
-    "Belastingdienst",
-    "Gebruik de gefaseerde aanpak om mail, agenda en bestanden apart te plannen; de gepubliceerde planning voor 2027–2028 is geen gerealiseerde uitrol."
-  ],
-  [
-    "Douane",
-    "Onderzoek welke gedeelde functies samen met andere organisaties kunnen worden ontwikkeld en welke eigen operationele eisen behouden blijven."
-  ],
-  [
-    "Toeslagen",
-    "Werk voor iedere fase uit hoe medewerkers blijven samenwerken met de bestaande omgeving en welke voorwaarden gelden voor overstappen."
-  ],
-  [
-    "KPN",
-    "Vraag voor de concrete KPN-dienst welke laag STACKIT levert en wie toegang heeft tot beheer, gegevens en back-ups; beoordeel de dienstketen."
-  ],
-  [
-    "Centric",
-    "Laat een implementatievoorstel uitwerken met concrete Nextcloud-componenten, beheerafspraken en een overdraagbare configuratie."
-  ],
-  [
-    "Info Support",
-    "Onderzoek welke ECOFED-resultaten of diensten bruikbaar zijn voor jullie infrastructuur en test portabiliteit met een echte workload."
-  ],
-  [
-    "Intermax",
-    "Vraag een verdeling van verantwoordelijkheden tussen applicatiebeheer, infrastructuurbeheer en de eigen organisatie en test herstel en overdracht."
-  ],
-  [
-    "Nebul",
-    "Bepaal eerst welke AI-werktaak extra rekenkracht vraagt en onderzoek daarna toegang tot modellen, gegevens en beheer van de aangeboden infrastructuur."
-  ],
-  [
-    "Previder",
-    "Vraag welke infrastructuur en beheertaken worden geleverd en wie verantwoordelijk is voor de samenwerkapplicatie en een toekomstige verhuizing."
-  ],
-  [
-    "Uniserver",
-    "Breng zowel de directe leverancier als de achterliggende infrastructuurpartij in beeld en leg afspraken over incidenten en vertrek in beide lagen vast."
-  ],
-  [
-    "YourData",
-    "Vraag welke onderdelen binnen SOLID worden ontwikkeld en hoe beheerkennis en configuraties beschikbaar komen voor praktijkpartners."
-  ],
-  [
-    "STACKIT",
-    "Vergelijk de rechtstreeks afgenomen dienst met een dienst via een partner; controleer per route rechtsmacht, operationele toegang en exportmogelijkheden."
-  ],
-  [
-    "Serpro",
-    "Onderzoek de rol van de publieke IT-dienstverlener in het cloudbeheer en onderscheid die rol van de levering van kantoorapplicaties."
-  ],
-  [
-    "Cleura",
-    "Test hoe een workload met configuratie, netwerk en opslag kan worden overgezet; een open platform alleen maakt niet iedere verhuizing eenvoudig."
-  ],
-  [
-    "The Good Cloud",
-    "Vergelijk de beheerde Nextcloud-dienst met zelfbeheer op ondersteuning, koppelingen, beheerrechten, gegevensuitvoer en totale kosten."
-  ],
-  [
-    "Cloudwise",
-    "Laat de onderwijsfuncties, loginvoorziening, Nextcloud-componenten en infrastructuur expliciet uitwerken en test het dagelijks gebruik door onderwijsmedewerkers."
-  ],
-  [
-    "Bundesdruckerei",
-    "Vraag welke diensten al beschikbaar zijn en welke samenwerking nog op een intentie berust voordat je een uitvoerbare werkplekdienst verwacht."
-  ],
-  [
-    "Jouw Advocaten",
-    "Gebruik de praktijkrol om eisen rond vertrouwelijke dossiers, lokaal AI-gebruik en beroepsgeheim te verzamelen; vraag naar gepubliceerde proefresultaten."
-  ],
-  [
-    "Forum Standaardisatie",
-    "Gebruik de standaardenlijst en inkoophulpmiddelen om concrete uitwisselings- en beveiligingseisen op te stellen."
-  ],
-  [
-    "Sovereign Tech Agency",
-    "Onderzoek welke essentiële opensourcecomponenten jullie gebruiken en hoe onderhoud of financiering daarvan duurzaam kan worden georganiseerd."
-  ],
-  [
-    "Open Cloud Alliantie",
-    "Vraag welke interfaces en overdrachtsafspraken daadwerkelijk worden ondersteund en beproef een verhuizing tussen deelnemende diensten."
-  ],
-  [
-    "Zuyd Hogeschool",
-    "Gebruik het praktijkonderzoek om een eigen evaluatieopzet te maken voor lokale AI, samenwerking en gegevensverwerking."
-  ],
-  [
-    "TNO",
-    "Volg de openbare ECOFED-resultaten en vertaal federatieprincipes naar een proef met verplaatsbare infrastructuurdiensten."
-  ],
-  [
-    "DINL",
-    "Gebruik sectorkennis om een volledige leveranciersketen te tekenen; beoordeel individuele diensten op eigen bewijs en afspraken."
-  ],
-  [
-    "Radboud Universiteit",
-    "Neem de ervaringen uit de SURF Works-pilot mee in een test van teammappen, teamchat en de aansluiting op mail."
-  ],
-  [
-    "Bye Bye Big Tech",
-    "Zoek de openbare juridische en praktische opbrengsten en gebruik die bij een overstapplan voor een organisatie met beperkte eigen IT-capaciteit."
-  ],
-  [
-    "Open Productivity",
-    "Breng per suitecomponent de onderhoudende partij en het wijzigingsproces in beeld en spreek af wie problemen tussen componenten oplost."
-  ],
-  [
-    "DAZM",
-    "Volg of de aangekondigde pilots evaluaties opleveren over techniek, organisatie en kosten; onderscheid het onderzoeksplan van aangetoonde resultaten."
-  ],
-  [
-    "DoCoNEXT",
-    "Vraag welke concrete bijdrage, documentatie en overdraagbare resultaten deze projectpartner binnen SOLID levert."
-  ],
-  [
-    "DAAF autonomiemeetlat",
-    "Beoordeel eerst de huidige werkplek en daarna twee alternatieven met dezelfde meetlat; noteer aannames en ontbrekend bewijs."
-  ],
-  [
-    "LibreOffice Migration Protocol",
-    "Maak een representatieve testset van sjablonen, macro’s en complexe documenten en organiseer opleiding en ondersteuning vóór opschaling."
-  ],
-  [
-    "SILL softwarecatalogus",
-    "Gebruik de catalogus om kandidaten te vinden en controleer daarna per pakket versie, ondersteuning en aansluiting op jullie werkprocessen."
-  ],
-  [
-    "Standard for Public Code",
-    "Gebruik de criteria bij afspraken over eigen code, zodat een andere partij het project kan begrijpen, bouwen en onderhouden."
-  ],
-  [
-    "OSOR communityrichtlijnen",
-    "Spreek eigenaarschap, financiering en de afhandeling van bijdragen af voordat meerdere organisaties samen op één codebasis gaan bouwen."
-  ],
-  [
-    "VNG",
-    "Gebruik gezamenlijke vraagstelling om ervaringen tussen gemeenten vergelijkbaar te maken en eigen eisen in de ontwikkeling in te brengen."
-  ],
-  [
-    "Amsterdam",
-    "Vergelijk de DAWO/MijnBureau-proef met de eigen Nextcloud-pilotrichting in de meerjarenstrategie en bepaal hoe alternatieven naast bestaande tools kunnen werken."
-  ],
-  [
-    "Ede",
-    "Leg vooraf vast welke medewerkers en taken representatief zijn voor jullie eigen proef en welke functies nodig zijn voor dagelijks gebruik."
-  ],
-  [
-    "Zaanstad",
-    "Maak een lijst van bestaande koppelingen en test per koppeling wat in een alternatieve werkplek behouden of vervangen moet worden."
-  ],
-  [
-    "’s-Hertogenbosch",
-    "Meet gebruikservaring, ondersteuning en ontbrekende functies met dezelfde vragen als bij andere deelnemers; de gezamenlijke aankondiging bevat geen eigen meetresultaten."
-  ],
-  [
-    "SOLID",
-    "Vergelijk lokale verwerking van AI en bestanden met uitbestede diensten en beschrijf welke kennis en infrastructuur lokaal nodig zijn."
-  ],
-  [
-    "Gemeente Valkenburg aan de Geul",
-    "Gebruik de gemeentelijke validatiecontext om concrete werkprocessen en eisen aan vertrouwelijke gegevens te bepalen; vraag om de gepubliceerde bevindingen."
-  ],
-  [
-    "Groningen",
-    "Neem afhankelijkheden ook op in de bestuurlijke risicoanalyse en reserveer ruimte voor verkenning, migratie en structureel beheer."
-  ],
-  [
-    "Arnhem",
-    "Zet een voorkeur voor Europese diensten om in toetsbare eisen en een risicoafweging per dienst; gebruik de brief als historisch inkoopvoorbeeld."
-  ],
-  [
-    "Digital Commons EDIC",
-    "Onderzoek welke gezamenlijke bouwsteen of financieringsroute past bij jullie ontwikkelvraag en welke deelnamevoorwaarden gelden."
-  ],
-  [
-    "openDesk",
-    "Test de geïntegreerde suite op eigen taken en onderzoek naast componentlicenties ook wie updates, ondersteuning en koppelingen coördineert."
-  ],
-  [
-    "ZenDiS",
-    "Bekijk hoe producteigenaarschap en samenwerking tussen componentleveranciers worden georganiseerd en vergelijk dat met jullie eigen beoogde beheer."
-  ],
-  [
-    "La Suite",
-    "Kies welke afzonderlijke La Suite-functies bruikbaar zijn en onderzoek of jullie die zelf beheren, integreren of als dienst kunnen afnemen."
-  ],
-  [
-    "DINUM",
-    "Gebruik de publieke productorganisatie als voorbeeld voor eigenaarschap, documentatie en gedeelde ontwikkeling van werkplekcomponenten."
-  ],
-  [
-    "Denemarken",
-    "Lees de SIA Open-pilot als afgebakende praktijkproef; beoordeel welke taken zijn getest voordat je conclusies trekt over een nationale overstap."
-  ],
-  [
-    "Schleswig-Holstein",
-    "Onderzoek de volgorde van document-, mail- en desktopmigratie en welke ondersteuning de overheid daarvoor organiseert."
-  ],
-  [
-    "SIA Open",
-    "Gebruik de gepubliceerde pilotervaringen om je eigen testvragen op te stellen, inclusief ontbrekende functies en samenwerking met bestaande systemen."
-  ],
-  [
-    "PoC BOSS",
-    "Maak onderscheid tussen een noodvoorziening voor kritieke processen en een complete dagelijkse werkplek en stel voor beide andere acceptatiecriteria op."
-  ],
-  [
-    "dPhoenixSuite",
-    "Neem beëindiging en verlies van doorontwikkeling mee in de risicoanalyse; regel een overdraagbare configuratie en een alternatief onderhoudspad."
-  ],
-  [
-    "Cnam",
-    "Volg de aangekondigde invoering per functie en zoek naar aantoonbare ingebruikname en ervaringen voordat je schaal of resultaten overneemt."
-  ],
-  [
-    "GovDigital",
-    "Vergelijk een gedeelde beheerde suite met eigen beheer en controleer de status en voorwaarden van de SaaS-pilot."
-  ],
-  [
-    "EU Sovereign Tech Fund",
-    "Onderzoek of een financieringsproef ook aansluit op het onderhoud van componenten die jullie werkplek nodig heeft."
-  ],
-  [
-    "SCHULE@BW",
-    "Vergelijk de onderwijscontext met jullie eigen gebruikers: welke functies, identiteiten en ondersteuning verschillen van een algemene kantooromgeving?"
-  ],
-  [
-    "Thüringen",
-    "Gebruik een afzonderlijke videodienst als voorbeeld van gefaseerde vervanging en test externe deelnemers, geluidskwaliteit en ondersteuning."
-  ],
-  [
-    "Franse Linux-werkplekmigratie",
-    "Scheid het vervangen van het besturingssysteem van de keuze voor samenwerksoftware en test apparaten en bedrijfsapplicaties afzonderlijk."
-  ],
-  [
-    "Framaspace",
-    "Vergelijk de voorwaarden en doelgroep van de dienst met jullie organisatie en bepaal of een kleinschalige samenwerkruimte voldoende is."
-  ],
-  [
-    "Oostenrijks BMWET",
-    "Onderzoek welke bestaande taken door Nextcloud worden ondersteund en hoe de dienst naast andere kantoorvoorzieningen wordt gebruikt."
-  ],
-  [
-    "Oostenrijkse krijgsmacht",
-    "Gebruik de kantoorsoftwaremigratie om documentcompatibiliteit en opleiding te onderzoeken; trek er geen conclusie uit over de volledige infrastructuur."
-  ],
-  [
-    "KRZN NOVA",
-    "Bekijk hoe gemeentelijke identiteit, bestanden en kantoorsoftware worden samengebracht en bepaal welke componenten jullie afzonderlijk kunnen hergebruiken."
-  ],
-  [
-    "International Criminal Court",
-    "Onderzoek welke continuïteits- en vertrouwelijkheidseisen de keuze voor een suite sturen en vergelijk die met jullie eigen risicoprofiel."
-  ],
-  [
-    "SovereignDesk Rüsselsheim",
-    "Vraag per module naar daadwerkelijke ingebruikname, ondersteuning en koppelingen en onderscheid het aanbod van de praktijkervaring."
-  ],
-  [
-    "Stadt Zürich/BFH",
-    "Gebruik de gepubliceerde toets van openDesk als tweede bron om eigen criteria voor documenten, beheer en samenwerking op te stellen."
-  ],
-  [
-    "Mecklenburg-Vorpommern",
-    "Onderzoek welke beheertaken de deelstaat zelf uitvoert en wat nodig is om Nextcloud duurzaam te exploiteren."
-  ],
-  [
-    "Échirolles",
-    "Vergelijk het interne beheer van meerdere vrije hulpmiddelen met een ingekochte suite en beoordeel de benodigde kennis en ondersteuning."
-  ],
-  [
-    "München / LiMux",
-    "Werk uit hoe bestuurlijk eigenaarschap, gebruikerssteun en beheer blijven bestaan bij politieke of organisatorische veranderingen."
-  ],
-  [
-    "Pardus",
-    "Onderzoek taalondersteuning, beheer, pakketonderhoud en compatibiliteit voordat je een nationale desktopdistributie als kandidaat overneemt."
-  ],
-  [
-    "BOSS Linux",
-    "Vergelijk het doel en de ondersteuning van deze distributie met jullie apparaat- en applicatielandschap; nationale ontwikkeling alleen is geen selectiecriterium."
-  ],
-  [
-    "openKylin",
-    "Controleer actuele hardwareondersteuning, onderhoud en componentlicenties voordat je de distributie in een eigen werkplekproef gebruikt."
-  ],
-  [
-    "Nuvem Brasileira",
-    "Vergelijk de publieke regie over infrastructuur met jullie eigen hostingmodel en houd kantoorsoftware en cloudbeheer als aparte keuzes zichtbaar."
-  ],
-  [
-    "MODA ODF-programma",
-    "Begin met open documentformaten en test sjablonen, conversie en ondersteuning; vergelijk lokale documentbewerking met online samenwerken."
-  ],
-  [
-    "KITE GNU/Linux",
-    "Gebruik de beschreven combinatie van software, lokale ondersteuning en opleiding om een eigen beheer- en adoptieplan te maken."
-  ],
-  [
-    "GCcollab / GCconnex",
-    "Onderzoek welke kennis- en samenwerkingsfuncties een afzonderlijk platform kan leveren zonder een hele kantooromgeving te vervangen."
-  ],
-  [
-    "Expresso Livre (Paraná)",
-    "Vergelijk de functionele eisen aan mail, agenda en adresboeken en controleer de actuele componenten; de historische basis is geen huidige versiebeschrijving."
-  ],
-  [
-    "Nube FING",
-    "Gebruik het facultaire Nextcloud-beheer als afgebakend voorbeeld en vergelijk beheerkennis, herstel en ondersteuning met de eigen schaal."
-  ],
-  [
-    "AGETIC / EGPP",
-    "Neem opleiding en open documentformaten als eigen werkstroom op in een migratie; een training bewijst geen organisatiebrede uitrol."
-  ],
-  [
-    "GovDrive (NIC)",
-    "Onderzoek bestanden, deelrechten, export en de beheerorganisatie van de dienst; veronderstel geen herbruikbare broncode zonder licentiebewijs."
-  ],
-  [
-    "Sandes",
-    "Beoordeel berichtinhoud, metagegevens, identiteit en beheer afzonderlijk en controleer welke onderdelen daadwerkelijk openbaar gelicentieerd zijn."
-  ],
-  [
-    "BharatVC",
-    "Test toegangsvoorwaarden, externe deelnemers, netwerkbelasting en beheer; een openbaar projectrecord zegt niet alles over de productiedienst."
-  ],
-  [
-    "Gov.in Secure Intranet",
-    "Vergelijk een portaal met gekoppelde werkfuncties met een geïntegreerde suite en breng de afhankelijkheden van alle achterliggende diensten in kaart."
-  ],
-  [
-    "Hancom Gooroom",
-    "Onderzoek de licentie en ondersteuning van elk onderdeel afzonderlijk; een open besturingssysteem maakt de volledige kantoorstack niet automatisch open."
-  ],
-  [
-    "Canaima GNU/Linux",
-    "Controleer actuele onderhoudsactiviteit en pakketten voordat je een historische publieke distributie als kandidaat voor productie gebruikt."
-  ],
-  [
-    "Maya OS — defensietraining",
-    "Gebruik het voorbeeld voor de rol van scholing en veranderbeheer; de aankondiging van een sessie bewijst geen brede defensiemigratie."
-  ],
-  [
-    "Huayra GNU/Linux",
-    "Neem de onderwijs- en taalcontext mee als ontwerples en verifieer actuele ondersteuning voordat je de historische omgeving hergebruikt."
-  ],
-  [
-    "Soevereine overheidscloud",
-    "Onderzoek welke onderdelen al bruikbaar zijn en welke nog worden ontwikkeld; test de overdracht van een eigen workload en verantwoordelijkheden voor beheer."
-  ],
-  [
-    "Nextcloud",
-    "Test teammappen, externe samenwerking, documentbewerking en de aansluiting op identiteit; voer ook een export- en herstelproef uit."
-  ],
-  [
-    "OpenProject",
-    "Migreer één project met taken, bijlagen en rechten en vergelijk noodzakelijke functies tussen Community en Enterprise."
-  ],
-  [
-    "Element",
-    "Test berichten en gesprekken met interne en externe deelnemers en bepaal de gewenste Matrix-federatie, sleutelherstel en moderatie."
-  ],
-  [
-    "SURF Works",
-    "Controleer doelgroep en pilotvoorwaarden en test dagelijks samenwerken inclusief functies die naast bestaande mail en agenda nodig blijven."
-  ],
-  [
-    "La Suite Visio",
-    "Test externe deelnemers, toegang vanuit verschillende browsers, schermdelen en de capaciteit van het gekozen beheer- of dienstmodel."
-  ],
-  [
-    "Euro-Office",
-    "Controleer beschikbaarheid en actuele integratievoorwaarden en test de aangekondigde desktopfunctie met eigen documenten en bestaande opslag."
-  ],
-  [
-    "Thunderbird",
-    "Test mail, gedeelde agenda’s en adresboeken met jullie eigen mailserver; een desktopclient vervangt de server- en beheerdienst niet."
-  ],
-  [
-    "Firefox",
-    "Test bedrijfsapplicaties, extensies, beleid en updates op beheerde apparaten en leg vast welke synchronisatie is toegestaan."
-  ],
-  [
-    "Twake Workplace",
-    "Test de samenhang van mail, bestanden, samenwerking en identiteit en controleer per onderdeel licentie en beheerafspraken."
-  ],
-  [
-    "BlueMind",
-    "Test gedeelde mailboxen, agenda’s, adresboeken en de gewenste desktopclients en vergelijk de aangeboden edities."
-  ],
-  [
-    "Carbonio CE",
-    "Test de Community-editie op jullie mail- en samenwerkingsbehoeften en bepaal welke ondersteuning of functies buiten die editie nodig zijn."
-  ],
-  [
-    "OPSI",
-    "Beproef installatie, updates en inventarisatie op representatieve apparaten en controleer welke modules en ondersteuning betaald zijn."
-  ],
-  [
-    "RustDesk",
-    "Test beheer op afstand met eigen infrastructuur en stel toegangsbeleid, logging en toestemming van gebruikers vast."
-  ],
-  [
-    "Passbolt CE",
-    "Test gedeelde geheimen, uitdiensttreding en herstel en vergelijk de benodigde bedrijfsfuncties met wat de Community-editie levert."
-  ],
-  [
-    "KeePassXC",
-    "Test lokaal wachtwoordbeheer, het delen van een database en herstel en bepaal of jullie centrale organisatie-eisen daarmee worden gedekt."
-  ],
-  [
-    "BigBlueButton",
-    "Beproef de gewenste groepsgrootte, externe deelname en opnamebeleid en bereken de benodigde server- en ondersteuningscapaciteit."
-  ],
-  [
-    "eXo Platform",
-    "Test kennisdeling en samenwerking met een echte gebruikersgroep en controleer de functies en licenties van de gekozen editie."
-  ],
-  [
-    "Zulip",
-    "Beproef gesprekken per onderwerp, notificaties, externe deelname en export en vergelijk dit met de huidige chatwerkwijze."
-  ],
-  [
-    "authentik",
-    "Koppel twee bestaande toepassingen en test aanmelden, MFA, beheertoegang en herstel als de identiteitsdienst uitvalt."
-  ],
-  [
-    "Joplin",
-    "Test notities, bijlagen en synchronisatie met de gekozen opslag; controleer de licentie en voorwaarden van app, server en clouddienst afzonderlijk."
-  ],
-  [
-    "COOL",
-    "Test de onderwijslogin samen met de gekozen Nextcloud-omgeving en controleer welke koppelingen en beheertaken bij welke leverancier liggen."
-  ],
-  [
-    "Proxmox VE",
-    "Migreer één virtuele machine en test updates, netwerk, opslag, herstel en beheer voordat je de virtualisatielaag breder vervangt."
-  ],
-  [
-    "Proxmox Backup Server",
-    "Voer een herstelproef uit van bestanden én een volledige machine en bepaal hoe back-ups bij verlies van de hoofdlocatie beschikbaar blijven."
-  ],
-  [
-    "ONLYOFFICE Docs",
-    "Test complexe documenten en de connector met jullie opslag; controleer editie, gelijktijdig gebruik en licentievoorwaarden van de installatie."
-  ],
-  [
-    "Zimbra",
-    "Vergelijk edities op mail, agenda, mobiele toegang, ondersteuning en onderhoud en test een migratie met bestaande mailboxen."
-  ],
-  [
-    "Keycloak",
-    "Test SSO, MFA, groepen en uitdiensttreding met twee bedrijfsapplicaties en leg beheer en herstel van de identiteitsdienst vast."
-  ],
-  [
-    "OpenStack",
-    "Beproef een workload met netwerk en opslag en vergelijk de benodigde platformkennis en exploitatiekosten met een beheerde clouddienst."
-  ],
-  [
-    "Debian",
-    "Test hardware, noodzakelijke bedrijfsapplicaties en de gewenste onderhoudsperiode en organiseer distributie van updates en configuratie."
-  ],
-  [
-    "Seafile",
-    "Migreer een representatieve gedeelde map en test synchronisatie, rechten, versieherstel en export; controleer editieverschillen."
-  ],
-  [
-    "Rocket.Chat",
-    "Test gastgebruik, bewaartermijnen, notificaties en koppelingen en controleer welke functies en gebruiksgrenzen bij de gekozen editie horen."
-  ],
-  [
-    "ownCloud Infinite Scale",
-    "Test grote mappen, externe samenwerking, rechten en bestandsuitvoer en controleer de actuele gebruiks- en ondersteuningsvoorwaarden."
-  ],
-  [
-    "GroupOffice",
-    "Test mail, agenda en gedeelde functies met eigen accounts en vergelijk de Community- en commerciële modules."
-  ],
-  [
-    "Murena",
-    "Beproef de gekozen apparaten of dienst met noodzakelijke mobiele apps en controleer account-, update- en synchronisatieafhankelijkheden."
-  ],
-  [
-    "Proton Workspace",
-    "Controleer per functie clients, gegevensuitvoer, beheermogelijkheden en contractvoorwaarden; een beheerde dienst vraagt een andere afweging dan zelfhosting."
-  ],
-  [
-    "grommunio",
-    "Test gedeelde agenda’s, mobiele clients en bestaande mailkoppelingen en bepaal welke editie en ondersteuning nodig zijn."
-  ],
-  [
-    "mailcow",
-    "Test mailmigratie, spamafhandeling, agenda’s en back-upherstel en reserveer capaciteit voor structureel serverbeheer."
-  ],
-  [
-    "EGroupware",
-    "Test gezamenlijke agenda’s, mail en rollen in één werkproces en vergelijk de benodigde modules en hostingmogelijkheden."
-  ],
-  [
-    "Infomaniak kSuite",
-    "Test dagelijkse samenwerking en volledige gegevensuitvoer en controleer rechtsmacht, onderaannemers en de grenzen van de beheerde dienst."
-  ],
-  [
-    "Office.eu",
-    "Vraag de precieze componenten, hosting, contractvoorwaarden en exportmogelijkheden op en toets het actuele aanbod met eigen werkprocessen."
-  ],
-  [
-    "LibreOffice",
-    "Test complexe spreadsheets, macro’s, sjablonen en uitwisseling met externe partijen en organiseer opleiding en ondersteuning."
-  ],
-  [
-    "OpenTalk",
-    "Test externe deelname, rechten, schermdelen en de beheer- of dienstvariant en toets de capaciteit voor jullie vergaderpraktijk."
-  ],
-  [
-    "Collabora Online",
-    "Test gelijktijdig bewerken en complexe bestanden via de gekozen opslagconnector en onderscheid de ontwikkelvariant van het ondersteunde aanbod."
-  ],
-  [
-    "OX App Suite",
-    "Test mail, agenda, adresboeken en beheer bij de concrete aanbieder en controleer export en toegang tot gegevens bij vertrek."
-  ],
-  [
-    "XWiki",
-    "Migreer een kennisdossier met bijlagen en rechten en test zoeken, versiebeheer en uitvoer naar een bruikbaar formaat."
-  ],
-  [
-    "Univention Nubus",
-    "Beproef accounts, groepen en gekoppelde applicaties en leg vast wie de identiteitsinfrastructuur beheert en bij uitval herstelt."
-  ],
-  [
-    "Jitsi",
-    "Test gesprekken met externe deelnemers en bepaal welke maatregelen nodig zijn voor toegangsbeheer, capaciteit en bescherming tegen misbruik."
-  ],
-  [
-    "CryptPad",
-    "Test documentfuncties, sleutelbeheer, delen en herstel met een kleine groep en beoordeel hoe versleuteling doorwerkt in beheer en informatiebewaring."
-  ],
-  [
-    "Nordeck/Neoboard",
-    "Test gezamenlijk tekenen vanuit jullie communicatieomgeving en controleer rechten, opslag en export van de gemaakte inhoud."
-  ],
-  [
-    "Tchap",
-    "Controleer of jullie doelgroep toegang heeft tot de dienst of zelf een variant kan exploiteren en test samenwerking met externe organisaties."
-  ],
-  [
-    "La Suite Docs",
-    "Test gelijktijdig schrijven, rechten en export en controleer welke functionaliteit nodig is naast gewone tekstdocumenten."
-  ],
-  [
-    "Grist",
-    "Bouw één gegevensgerichte werktaak na en test rollen, import, export en herstel; vergelijk dit met een bestaande spreadsheetwerkwijze."
-  ],
-  [
-    "La Suite Fichiers",
-    "Test bestandsdeling, externe toegang en volledige export en onderzoek het verschil tussen gebruik van de dienst en eigen installatie."
-  ],
-  [
-    "L'Assistant",
-    "Kies één AI-taak met afgebakende gegevens en beoordeel model, hosting, logging, menselijke controle en de toegangsvoorwaarden."
-  ],
-  [
-    "FranceTransfert",
-    "Test grote bestanden, ontvangers, vervaltermijnen en toegang en controleer of de aangeboden dienst voor jullie doelgroep beschikbaar is."
-  ],
-  [
-    "F13",
-    "Test een afgebakende AI-werktaak en breng model-, gegevens- en infrastructuurafhankelijkheden in kaart voordat je breder gebruik toestaat."
-  ]
-]);
 const contributionRoles = new Map([
   [
     "BZK",
@@ -1333,85 +562,6 @@ const evidenceStages = new Map([
     "Deelname aan SURF Works-pilot"
   ]
 ]);
-const technologyQuestions = new Map([
-  [
-    "Werkpleksuites",
-    [
-      "Test meerdere dagelijkse taken in samenhang; controleer of alle benodigde componenten in het aanbod zitten.",
-      "Controleer de licentie en commerciële voorwaarden per component en per aangeboden editie."
-    ]
-  ],
-  [
-    "Documenten",
-    [
-      "Vergelijk lokale en online bewerking, gelijktijdig werken en uitwisseling met externe partijen.",
-      "Controleer de gekozen editie, benodigde connectoren, gebruiksgrenzen en ondersteuningsvoorwaarden."
-    ]
-  ],
-  [
-    "Bestanden",
-    [
-      "Vergelijk synchronisatie, gedeelde mappen, rechten, versieherstel en volledige export.",
-      "Controleer server, clients, connectoren en eventuele commerciële functies afzonderlijk."
-    ]
-  ],
-  [
-    "Communicatie",
-    [
-      "Vergelijk gastgebruik, identiteit, interoperabiliteit, bewaartermijnen en benodigde capaciteit.",
-      "Controleer welke broncode en servereditie beschikbaar zijn en welke dienstvoorwaarden gelden."
-    ]
-  ],
-  [
-    "Mail & agenda",
-    [
-      "Vergelijk gedeelde mailboxen, agenda’s, adresboeken, mobiele clients en migratiegereedschap.",
-      "Controleer of je een client, server of dienst afneemt en welke functies bij de gekozen editie horen."
-    ]
-  ],
-  [
-    "Projecten & kennis",
-    [
-      "Vergelijk samenwerken met rechten, import, export, versiebeheer en koppelingen.",
-      "Controleer de licentie van het kernpakket en de voorwaarden voor uitbreidingen en beheer."
-    ]
-  ],
-  [
-    "Identiteit",
-    [
-      "Vergelijk rollen, MFA, in- en uitdiensttreding, herstel en beschikbaarheid van de identiteitsdienst.",
-      "Controleer server, clients, uitbreidingen en commerciële beheerfuncties afzonderlijk."
-    ]
-  ],
-  [
-    "Infrastructuur",
-    [
-      "Vergelijk beschikbaarheid, netwerk, opslag, updates, back-ups en een geteste verhuizing.",
-      "Controleer componentlicenties, abonnementen, onderhoudskanalen en de rechten bij beëindiging."
-    ]
-  ],
-  [
-    "AI-assistenten",
-    [
-      "Vergelijk de werktaak, model, hosting, gegevensgebruik, logging en menselijke controle.",
-      "Controleer applicatiecode, modellicentie, gegevensvoorwaarden en dienstafspraken afzonderlijk."
-    ]
-  ],
-  [
-    "Browsers",
-    [
-      "Vergelijk ondersteuning van bedrijfsapplicaties, centraal beleid, updates en accountafhankelijkheden.",
-      "Controleer distributie, extensies, synchronisatiediensten en onderhoudsafspraken afzonderlijk."
-    ]
-  ],
-  [
-    "Werkplekbeheer",
-    [
-      "Vergelijk uitrol, updates, inventarisatie, beheertoegang, logging en herstel.",
-      "Controleer welke beheerfuncties in de vrije editie zitten en waarvoor betaalde modules of diensten nodig zijn."
-    ]
-  ]
-]);
 
 const atlasAdditions = [
   {
@@ -1425,7 +575,7 @@ const atlasAdditions = [
       "Gemeente Den Haag: afdoening motie digitale onafhankelijkheid, 23 juni 2026",
       "https://denhaag.raadsinformatie.nl/document/17127559/2/RIS324583%2BAfdoening%2Bmotie%2B%E2%80%98Digitale%2Bonafhankelijkheid%2Bis%2Been%2Bprioriteit%2Bvoor%2BDen%2BHaag?connection_id=13519282&connection_type=17"
     ],
-    "explanation": "Den Haag beschrijft in een raadsbrief van 23 juni 2026 onderzoek en experimenten met alternatieven voor digitale en mobiele werkplekken. De gemeente wil autonomie vergroten en tegelijk voldoende functionaliteit behouden om productieverlies te beperken. Zij onderzoekt beschikbare autonome en opensourceomgevingen en ervaringen bij andere Europese overheden. Het document verbindt dit aan een meerjarenaanpak met de G4 en VNG. De brief onderbouwt de verkenning en beoogde experimenten; zij toont geen afgeronde overstap naar een specifieke suite. Voor de eigen organisatie is dit een voorbeeld van gefaseerd onderzoeken met expliciete eisen aan dagelijks gebruik."
+    "explanation": "Den Haag beschrijft in een raadsbrief van 23 juni 2026 onderzoek en experimenten met alternatieven voor digitale en mobiele werkplekken. De gemeente wil autonomie vergroten en tegelijk voldoende functionaliteit behouden om productieverlies te beperken. Zij onderzoekt beschikbare autonome en opensourceomgevingen en ervaringen bij andere Europese overheden. Het document verbindt dit aan een meerjarenaanpak met de G4 en VNG. De brief onderbouwt de verkenning en beoogde experimenten; zij toont geen afgeronde overstap naar een specifieke suite."
   },
   {
     "name": "Neerijnen — historisch",
@@ -1438,7 +588,7 @@ const atlasAdditions = [
       "Europese Commissie / OSOR: LibreOffice in the municipality of Neerijnen",
       "https://interoperable-europe.ec.europa.eu/collection/open-source-observatory-osor/document/libreoffice-municipality-neerijnen"
     ],
-    "explanation": "De gearchiveerde OSOR-praktijkstudie uit 2014 beschrijft hoe Neerijnen na een besluit in 2011 overstapte naar LibreOffice. De casus noemt vrijheid en flexibiliteit als voordelen en bespreekt het meenemen van medewerkers en documentuitwisseling met andere gemeenten als uitdagingen. Dit is een concreet Nederlands voorbeeld van verandering van kantoorsoftware. De historische studie bewijst geen huidige gemeentelijke werkplekstandaard, actuele besparing of volledige soevereiniteit van de infrastructuur. Gebruik vooral de beschreven invoeringsvraagstukken om een eigen proef met documenten, ondersteuning en samenwerking te ontwerpen."
+    "explanation": "De gearchiveerde OSOR-praktijkstudie uit 2014 beschrijft hoe Neerijnen na een besluit in 2011 overstapte naar LibreOffice. De casus noemt vrijheid en flexibiliteit als voordelen en bespreekt het meenemen van medewerkers en documentuitwisseling met andere gemeenten als uitdagingen. Dit is een concreet Nederlands voorbeeld van verandering van kantoorsoftware. De historische studie bewijst geen huidige gemeentelijke werkplekstandaard, actuele besparing of volledige soevereiniteit van de infrastructuur."
   },
   {
     "name": "Lyon",
@@ -1464,7 +614,7 @@ const atlasAdditions = [
       "Europese Commissie / OSOR: Albania Policy Factsheet 2025",
       "https://interoperable-europe.ec.europa.eu/sites/default/files/inline-files/albania-osor-factsheet-2025.pdf"
     ],
-    "explanation": "De OSOR-inventaris voor Albanië uit 2025 beschrijft gemeentelijke trajecten in Tirana met Nextcloud en LibreOffice uit 2017. De opensourcegemeenschap Open Labs hielp gemeentelijke afdelingen bij de overgang naar LibreOffice; Nextcloud werd ingezet voor bestanden en samenwerking. Dit maakt de rol van lokale kennispartners en afzonderlijke werkplekfuncties zichtbaar. De beschrijving van historische invoering is geen nieuwe meting van de huidige gebruiksomvang of onderhoudssituatie. Voor hergebruik moet de eigen organisatie actuele versies, beheer en ondersteuning opnieuw onderzoeken. Albanië ligt in Europa; dit dossier staat daarom bij Europa, ook al is het geen EU-lidstaat."
+    "explanation": "De OSOR-inventaris voor Albanië uit 2025 beschrijft gemeentelijke trajecten in Tirana met Nextcloud en LibreOffice uit 2017. De opensourcegemeenschap Open Labs hielp gemeentelijke afdelingen bij de overgang naar LibreOffice; Nextcloud werd ingezet voor bestanden en samenwerking. Dit maakt de rol van lokale kennispartners en afzonderlijke werkplekfuncties zichtbaar. De beschrijving van historische invoering is geen nieuwe meting van de huidige gebruiksomvang of onderhoudssituatie. Albanië ligt in Europa; dit dossier staat daarom bij Europa, ook al is het geen EU-lidstaat."
   }
 ,
   {
@@ -1478,7 +628,7 @@ const atlasAdditions = [
       "Gemeente Groningen: Begroting 2026, bedrijfsvoering en digitale soevereiniteit",
       "https://gemeente.groningen.nl/file/begroting-2026"
     ],
-    "explanation": "Groningen benoemt digitale soevereiniteit expliciet in de begroting 2026, zowel bij bedrijfsvoering als in de risicoanalyse. De gemeente koppelt zeggenschap aan infrastructuur, gegevens, technologie en continuïteit en houdt rekening met mogelijke extra investeringen. Voor een werkplek laat dit een andere invalshoek zien dan een softwarepilot: autonomie moet ook bestuurlijk en financieel worden georganiseerd. De begroting bewijst geen voltooide Linux-migratie of invoering van een specifieke suite. Gebruik deze casus om de eigen afhankelijkheden en benodigde investeringsruimte te bespreken."
+    "explanation": "Groningen benoemt digitale soevereiniteit expliciet in de begroting 2026, zowel bij bedrijfsvoering als in de risicoanalyse. De gemeente koppelt zeggenschap aan infrastructuur, gegevens, technologie en continuïteit en houdt rekening met mogelijke extra investeringen. Voor een werkplek laat dit een andere invalshoek zien dan een softwarepilot: autonomie moet ook bestuurlijk en financieel worden georganiseerd. De begroting bewijst geen voltooide Linux-migratie of invoering van een specifieke suite."
   },
   {
     "name": "Arnhem",
@@ -1491,7 +641,7 @@ const atlasAdditions = [
       "Gemeente Arnhem: Stappen naar digitale onafhankelijkheid",
       "https://arnhem.bestuurlijkeinformatie.nl/Document/View/66b341ce-75bd-4352-a2bb-f5c8be7e5abf"
     ],
-    "explanation": "Arnhem beschrijft in een raadsantwoord van 15 april 2025 een voorkeur voor Europese diensten en gegevensopslag binnen de EER, met een afweging per situatie. De gemeente verwijst naar samenwerking met de VNG en naar de ontwikkeling van criteria en een inkooptool door Amsterdam en AMS Institute. Dit is een bestuurlijk en inkoopgericht praktijkvoorbeeld, geen vastgestelde overstap naar een nieuwe werkpleksuite. De brief geeft de stand van april 2025 weer; de daarin beschreven beschikbaarheid van alternatieven is geen actuele marktbeoordeling. Voor de eigen organisatie is de les om voorkeuren om te zetten in toetsbare eisen en een haalbaar overstapplan."
+    "explanation": "Arnhem beschrijft in een raadsantwoord van 15 april 2025 een voorkeur voor Europese diensten en gegevensopslag binnen de EER, met een afweging per situatie. De gemeente verwijst naar samenwerking met de VNG en naar de ontwikkeling van criteria en een inkooptool door Amsterdam en AMS Institute. Dit is een bestuurlijk en inkoopgericht praktijkvoorbeeld, geen vastgestelde overstap naar een nieuwe werkpleksuite. De brief geeft de stand van april 2025 weer; de daarin beschreven beschikbaarheid van alternatieven is geen actuele marktbeoordeling."
   },
   {
     "name": "Échirolles",
@@ -1504,7 +654,7 @@ const atlasAdditions = [
       "Gemeente Échirolles: Logiciels libres",
       "https://www.echirolles.fr/la-ville/echirolles-territoire-numerique/logiciels-libres"
     ],
-    "explanation": "De Franse gemeente Échirolles beschrijft een stapsgewijze keuze voor vrije software sinds 2014 en noemt intern uitrollen en onderhouden als onderdeel van haar aanpak. De gemeentelijke website vermeldt LibreOffice, Nextcloud, BigBlueButton en Zorin OS als gebruikte hulpmiddelen. Dit biedt een concreet lokaal voorbeeld naast nationale werkpleksuites. Het is een eigen beschrijving van de gemeente, geen onafhankelijke evaluatie van kosten of volledige vervanging van alle bestaande toepassingen. Onderzoek bij hergebruik vooral welke beheerkennis, ondersteuning en aansluiting op gemeentelijke toepassingen nodig zijn."
+    "explanation": "De Franse gemeente Échirolles beschrijft een stapsgewijze keuze voor vrije software sinds 2014 en noemt intern uitrollen en onderhouden als onderdeel van haar aanpak. De gemeentelijke website vermeldt LibreOffice, Nextcloud, BigBlueButton en Zorin OS als gebruikte hulpmiddelen. Dit biedt een concreet lokaal voorbeeld naast nationale werkpleksuites. Het is een eigen beschrijving van de gemeente, geen onafhankelijke evaluatie van kosten of volledige vervanging van alle bestaande toepassingen."
   },
   {
     "name": "München / LiMux",
@@ -1517,7 +667,7 @@ const atlasAdditions = [
       "Europese Commissie / OSOR: Munich’s Long History with Open Source",
       "https://interoperable-europe.ec.europa.eu/collection/open-source-observatory-osor/document/munichs-long-history-open-source-public-administration"
     ],
-    "explanation": "De OSOR-casus uit 2024 beschrijft de lange geschiedenis van opensourcebeleid in München, waaronder de LiMux-werkplek, latere koerswijzigingen en hernieuwde plannen. LiMux is daarom relevant als leerervaring over bestuurlijke continuïteit, organisatieverandering en samenwerking. De historische Linux-uitrol mag niet als bewijs voor een actuele gemeentebrede Linux-standaard worden gelezen. Gebruik de casus om te onderzoeken hoe eigenaarschap, ondersteuning en draagvlak bij personele of politieke veranderingen behouden blijven. De beschreven ervaringen zijn contextgebonden en geen voorspelling van het resultaat van een eigen migratie."
+    "explanation": "De OSOR-casus uit 2024 beschrijft de lange geschiedenis van opensourcebeleid in München, waaronder de LiMux-werkplek, latere koerswijzigingen en hernieuwde plannen. LiMux is daarom relevant als leerervaring over bestuurlijke continuïteit, organisatieverandering en samenwerking. De historische Linux-uitrol mag niet als bewijs voor een actuele gemeentebrede Linux-standaard worden gelezen. De beschreven ervaringen zijn contextgebonden en geen voorspelling van het resultaat van een eigen migratie."
   },
   {
     "name": "DAAF autonomiemeetlat",
@@ -1530,7 +680,7 @@ const atlasAdditions = [
       "Universiteit Utrecht: Tools voor digitale autonomie",
       "https://www.uu.nl/organisatie/digitale-autonomie/tools"
     ],
-    "explanation": "De Universiteit Utrecht biedt het Digital Autonomy Assessment Framework (DAAF) aan om digitale kwetsbaarheden en afhankelijkheden van een organisatielandschap in kaart te brengen. Voor de werkplek helpt dit om niet alleen producten, maar ook afhankelijkheden in dagelijkse werkprocessen te bespreken. Het resultaat kan prioriteiten voor nader onderzoek en een pilot helpen bepalen. Het is een beoordelingshulpmiddel van een kennisinstelling, geen wettelijke norm of onafhankelijk certificaat voor leveranciers. Gebruik dezelfde beoordelingswijze voor de huidige omgeving en mogelijke alternatieven en leg aannames vast."
+    "explanation": "De Universiteit Utrecht biedt het Digital Autonomy Assessment Framework (DAAF) aan om digitale kwetsbaarheden en afhankelijkheden van een organisatielandschap in kaart te brengen. Voor de werkplek helpt dit om niet alleen producten, maar ook afhankelijkheden in dagelijkse werkprocessen te bespreken. Het resultaat kan prioriteiten voor nader onderzoek en een pilot helpen bepalen. Het is een beoordelingshulpmiddel van een kennisinstelling, geen wettelijke norm of onafhankelijk certificaat voor leveranciers."
   },
   {
     "name": "LibreOffice Migration Protocol",
@@ -1543,7 +693,7 @@ const atlasAdditions = [
       "The Document Foundation: LibreOffice Migration Protocol",
       "https://www.documentfoundation.org/media/tdf-migrationprotocol-v2.pdf"
     ],
-    "explanation": "The Document Foundation beschrijft in dit migratieprotocol hoe een organisatie de invoering van LibreOffice kan voorbereiden. De handleiding behandelt onder meer communicatie, opleiding, documentformaten, sjablonen, macro’s en ondersteuning. Daarmee levert zij praktische kennis voor een werkplekpilot. Het is een oudere proceshandleiding; concrete versies, technische mogelijkheden en actuele ondersteuning moeten apart worden gecontroleerd. Neem de aanpak over om een representatieve verzameling documenten en werksituaties te testen, niet om zonder eigen onderzoek een organisatiebrede migratie te beloven."
+    "explanation": "The Document Foundation beschrijft in dit migratieprotocol hoe een organisatie de invoering van LibreOffice kan voorbereiden. De handleiding behandelt onder meer communicatie, opleiding, documentformaten, sjablonen, macro’s en ondersteuning. Daarmee levert zij praktische kennis voor een werkplekpilot. Het is een oudere proceshandleiding; concrete versies, technische mogelijkheden en actuele ondersteuning moeten apart worden gecontroleerd."
   },
   {
     "name": "SILL softwarecatalogus",
@@ -1556,7 +706,7 @@ const atlasAdditions = [
       "DINUM: Socle interministériel de logiciels libres",
       "https://code.gouv.fr/sill/"
     ],
-    "explanation": "De Franse overheid publiceert via SILL een catalogus van aanbevolen vrije software. De catalogus helpt om kandidaten en onderhouds- of referentie-informatie te vinden voor functies binnen de digitale werkplek. Zij is bruikbaar naast productinformatie van leveranciers. Een Franse aanbeveling is geen Nederlandse inkoopverplichting, veiligheidscertificering of bewijs dat een pakket bij de eigen organisatie past. Controleer de actuele catalogusvermelding en vergelijk functies, ondersteuning en toepassingsgebied met de eigen eisen."
+    "explanation": "De Franse overheid publiceert via SILL een catalogus van aanbevolen vrije software. De catalogus helpt om kandidaten en onderhouds- of referentie-informatie te vinden voor functies binnen de digitale werkplek. Zij is bruikbaar naast productinformatie van leveranciers. Een Franse aanbeveling is geen Nederlandse inkoopverplichting, veiligheidscertificering of bewijs dat een pakket bij de eigen organisatie past."
   },
   {
     "name": "Standard for Public Code",
@@ -1569,7 +719,7 @@ const atlasAdditions = [
       "Foundation for Public Code: Criteria",
       "https://standard.publiccode.net/criteria/"
     ],
-    "explanation": "De Standard for Public Code bevat criteria voor publiek ontwikkelde code, waaronder documentatie, open licenties, hergebruik, versiebeheer en bijdragen van anderen. Voor een eigen werkplek of integratie helpt dit om te beoordelen of een project ook door andere organisaties onderhouden en aangepast kan worden. Het is een vrijwillig kader en geen algemene wettelijke verplichting of certificering van elk opensourceproject. Gebruik de criteria bij afspraken over maatwerk en gezamenlijke ontwikkeling, zodat openbare broncode ook praktisch overdraagbaar wordt."
+    "explanation": "De Standard for Public Code bevat criteria voor publiek ontwikkelde code, waaronder documentatie, open licenties, hergebruik, versiebeheer en bijdragen van anderen. Voor een eigen werkplek of integratie helpt dit om te beoordelen of een project ook door andere organisaties onderhouden en aangepast kan worden. Het is een vrijwillig kader en geen algemene wettelijke verplichting of certificering van elk opensourceproject."
   },
   {
     "name": "OSOR communityrichtlijnen",
@@ -1582,7 +732,7 @@ const atlasAdditions = [
       "Europese Commissie / OSOR: Sustainable Open Source Communities",
       "https://interoperable-europe.ec.europa.eu/collection/open-source-observatory-osor/guidelines-sustainable-open-source-communities-public-sector-online"
     ],
-    "explanation": "OSOR publiceert richtlijnen voor duurzame opensourcegemeenschappen in de publieke sector. Zij behandelen onder meer deelname, organisatie en financiering van een gemeenschap rond software. Voor de werkplek is dit van belang wanneer meerdere organisaties samen componenten willen onderhouden en doorontwikkelen. De richtlijnen zijn een hulpmiddel en geen bewijs dat een specifiek project voldoende onderhoudscapaciteit heeft. Gebruik ze om vóór een overstap eigenaarschap, financiering en de behandeling van fouten en bijdragen af te spreken."
+    "explanation": "OSOR publiceert richtlijnen voor duurzame opensourcegemeenschappen in de publieke sector. Zij behandelen onder meer deelname, organisatie en financiering van een gemeenschap rond software. Voor de werkplek is dit van belang wanneer meerdere organisaties samen componenten willen onderhouden en doorontwikkelen. De richtlijnen zijn een hulpmiddel en geen bewijs dat een specifiek project voldoende onderhoudscapaciteit heeft."
   }
 ,
   {
@@ -1597,7 +747,7 @@ const atlasAdditions = [
       "Rijksoverheid: Visie digitale autonomie en soevereiniteit",
       "https://www.rijksoverheid.nl/documenten/2025/12/18/bijlage-2-visie-digitale-autonomie-en-soevereiniteit-van-de-overheid"
     ],
-    "explanation": "Voor wie: Nederlandse overheid. Status: Vastgestelde visie. De visie geeft richting aan het versterken van digitale autonomie en soevereiniteit van de Nederlandse overheid. Voor een werkplek helpt zij om afhankelijkheden van leveranciers, technologie en beheer te beoordelen. Het is een beleidsvisie en geen certificaat voor een product. Vertaal de richting naar eigen eisen voor zeggenschap, vervangbaarheid en continuïteit; een specifieke werkpleksuite wordt hiermee niet voorgeschreven."
+    "explanation": "Voor wie: Nederlandse overheid. Status: Vastgestelde visie. De visie geeft richting aan het versterken van digitale autonomie en soevereiniteit van de Nederlandse overheid. Voor een werkplek helpt zij om afhankelijkheden van leveranciers, technologie en beheer te beoordelen. Het is een beleidsvisie en geen certificaat voor een product."
   },
   {
     "name": "Open, tenzij",
@@ -1611,7 +761,7 @@ const atlasAdditions = [
       "developer.overheid.nl: Open Source",
       "https://developer.overheid.nl/kennisbank/open-source/"
     ],
-    "explanation": "Voor wie: Software ontwikkeld door of voor de overheid. Status: Beleidsuitgangspunt. Open, tenzij is het beleidsuitgangspunt om software van de overheid zoveel mogelijk met een opensourcelicentie beschikbaar te maken, behalve wanneer goede redenen zich daartegen verzetten. Voor een eigen werkplek kunnen openbare broncode en hergebruik samenwerking en onafhankelijk onderhoud ondersteunen. Het gaat om overheidssoftware; hieruit volgt geen algemene wettelijke verplichting om uitsluitend opensourcepakketten in te kopen. Organiseer ook licenties, documentatie, onderhoud en een gemeenschap rond de code."
+    "explanation": "Voor wie: Software ontwikkeld door of voor de overheid. Status: Beleidsuitgangspunt. Open, tenzij is het beleidsuitgangspunt om software van de overheid zoveel mogelijk met een opensourcelicentie beschikbaar te maken, behalve wanneer goede redenen zich daartegen verzetten. Voor een eigen werkplek kunnen openbare broncode en hergebruik samenwerking en onafhankelijk onderhoud ondersteunen. Het gaat om overheidssoftware; hieruit volgt geen algemene wettelijke verplichting om uitsluitend opensourcepakketten in te kopen."
   },
   {
     "name": "Pas toe of leg uit",
@@ -1625,7 +775,7 @@ const atlasAdditions = [
       "Forum Standaardisatie: Pas toe of leg uit",
       "https://www.forumstandaardisatie.nl/pas-toe-leg-uit-beleid"
     ],
-    "explanation": "Voor wie: Overheden en uitvoeringsorganisaties; overige publieke sector: advies. Status: Verplicht binnen toepassingsgebied. Dit beleid verlangt bij ICT-aanschaf en ontwikkeling toepassing of uitvraag van relevante standaarden op de Pas toe of leg uit-lijst. Afwijkingen moeten worden verantwoord. Forum Standaardisatie beschrijft een verplichting voor overheden en uitvoeringsorganisaties en een dringend advies voor andere publieke organisaties. Voor een werkplek zijn uitwisselbare documenten, veilige verbindingen en toegankelijke diensten belangrijke onderwerpen. Controleer per standaard het functionele en organisatorische toepassingsgebied. Een open standaard en opensourceprogrammatuur zijn verschillende eigenschappen."
+    "explanation": "Voor wie: Overheden en uitvoeringsorganisaties; overige publieke sector: advies. Status: Verplicht binnen toepassingsgebied. Dit beleid verlangt bij ICT-aanschaf en ontwikkeling toepassing of uitvraag van relevante standaarden op de Pas toe of leg uit-lijst. Afwijkingen moeten worden verantwoord. Forum Standaardisatie beschrijft een verplichting voor overheden en uitvoeringsorganisaties en een dringend advies voor andere publieke organisaties. Voor een werkplek zijn uitwisselbare documenten, veilige verbindingen en toegankelijke diensten belangrijke onderwerpen. Een open standaard en opensourceprogrammatuur zijn verschillende eigenschappen."
   },
   {
     "name": "Gemeentelijke cloudeisen",
@@ -1639,7 +789,7 @@ const atlasAdditions = [
       "VNG via PIANOo: Eisen aan gemeentelijke cloudvoorzieningen",
       "https://www.pianoo.nl/nl/document/23873/eisen-aan-gemeentelijke-cloudvoorzieningen"
     ],
-    "explanation": "Voor wie: Gemeenten; IaaS en PaaS. Status: Advies en modelcriteria. De VNG-handreiking uit juli 2026 ondersteunt gemeentelijke inkoop van infrastructuur- en platformclouddiensten (IaaS en PaaS). Zij combineert een strategisch kader met eisen en gunningscriteria voor onder meer rechtsmacht, portabiliteit en continuïteit. Voor werkplekken raakt dit de infrastructuur onder bestanden, samenwerking en identiteit. De VNG adviseert toepassing bij komende aanbestedingen. Het is geen algemene wettelijke plicht of rechtstreeks compleet eisenpakket voor iedere SaaS-werkpleksuite. Gebruik het om een latere overstap uitvoerbaar te houden."
+    "explanation": "Voor wie: Gemeenten; IaaS en PaaS. Status: Advies en modelcriteria. De VNG-handreiking uit juli 2026 ondersteunt gemeentelijke inkoop van infrastructuur- en platformclouddiensten (IaaS en PaaS). Zij combineert een strategisch kader met eisen en gunningscriteria voor onder meer rechtsmacht, portabiliteit en continuïteit. Voor werkplekken raakt dit de infrastructuur onder bestanden, samenwerking en identiteit. De VNG adviseert toepassing bij komende aanbestedingen. Het is geen algemene wettelijke plicht of rechtstreeks compleet eisenpakket voor iedere SaaS-werkpleksuite."
   },
   {
     "name": "Handreiking digitale autonomie",
@@ -1667,7 +817,7 @@ const atlasAdditions = [
       "Europese Commissie: Data Act explained",
       "https://digital-strategy.ec.europa.eu/en/factpages/data-act-explained"
     ],
-    "explanation": "Voor wie: Onder meer aanbieders en klanten van dataverwerkingsdiensten. Status: Van toepassing; overgangsbepalingen. De Europese Data Act bevat onder meer regels voor overstappen tussen dataverwerkingsdiensten, waaronder clouddiensten. Voor de werkplek is dat relevant bij het terughalen van bestanden en digitale middelen of het vervangen van een aanbieder. Onderzoek bij inkoop welke export, ondersteuning en contractafspraken het overstappen mogelijk maken. Reikwijdte, uitzonderingen en overgangsbepalingen moeten per dienst worden bekeken. De verordening schrijft geen Europese leverancier of opensourcewerkplek voor en maakt verschillende pakketten niet automatisch functioneel uitwisselbaar."
+    "explanation": "Voor wie: Onder meer aanbieders en klanten van dataverwerkingsdiensten. Status: Van toepassing; overgangsbepalingen. De Europese Data Act bevat onder meer regels voor overstappen tussen dataverwerkingsdiensten, waaronder clouddiensten. Voor de werkplek is dat relevant bij het terughalen van bestanden en digitale middelen of het vervangen van een aanbieder. Reikwijdte, uitzonderingen en overgangsbepalingen moeten per dienst worden bekeken. De verordening schrijft geen Europese leverancier of opensourcewerkplek voor en maakt verschillende pakketten niet automatisch functioneel uitwisselbaar."
   },
   {
     "name": "AVG en internationale doorgifte",
@@ -1681,7 +831,7 @@ const atlasAdditions = [
       "Autoriteit Persoonsgegevens: Doorgifte buiten de EER",
       "https://autoriteitpersoonsgegevens.nl/themas/internationaal/doorgifte-binnen-en-buiten-de-eer/doorgifte-persoonsgegevens-buiten-de-eer"
     ],
-    "explanation": "Voor wie: Organisaties die persoonsgegevens verwerken. Status: Wettelijk kader. De AVG stelt eisen aan verwerking en bescherming van persoonsgegevens. Bij internationale doorgifte gelden aanvullende voorwaarden. Een werkplek verwerkt persoonsgegevens in mail, documenten, accounts en gebruiksgegevens; breng daarom ook beheer, ondersteuning en onderaannemers in beeld. Alleen een Europees datacentrum aanwijzen beantwoordt niet alle vragen over toegang en doorgifte. Controleer de verwerkingsafspraken en toepasselijke doorgiftegrond. Naleving van de AVG en digitale soevereiniteit zijn afzonderlijke beoordelingen; de AVG verplicht niet in het algemeen tot opensourcegebruik."
+    "explanation": "Voor wie: Organisaties die persoonsgegevens verwerken. Status: Wettelijk kader. De AVG stelt eisen aan verwerking en bescherming van persoonsgegevens. Bij internationale doorgifte gelden aanvullende voorwaarden. Een werkplek verwerkt persoonsgegevens in mail, documenten, accounts en gebruiksgegevens; breng daarom ook beheer, ondersteuning en onderaannemers in beeld. Alleen een Europees datacentrum aanwijzen beantwoordt niet alle vragen over toegang en doorgifte. Naleving van de AVG en digitale soevereiniteit zijn afzonderlijke beoordelingen; de AVG verplicht niet in het algemeen tot opensourcegebruik."
   },
   {
     "name": "BIO2",
@@ -1695,7 +845,7 @@ const atlasAdditions = [
       "Digitale Overheid: Baseline Informatiebeveiliging Overheid",
       "https://www.digitaleoverheid.nl/overzicht-van-alle-onderwerpen/cybersecurity/bio-en-ensia/baseline-informatiebeveiliging-overheid/"
     ],
-    "explanation": "Voor wie: Overheidsorganisaties; wettelijke reikwijdte apart toetsen. Status: Overheidsbaseline; wettelijke invulling waar toepasselijk. De BIO2 is de gezamenlijke risicogerichte beveiligingsbaseline voor de overheid, gebaseerd op internationale beveiligingsnormen en aanvullende overheidsmaatregelen. Voor organisaties onder de Cyberbeveiligingswet krijgt zij een wettelijke rol via de regeling voor de sector overheid. Voor de werkplek helpt dit eisen aan toegang, beheer, leveranciers, herstel en continuïteit te concretiseren. Bepaal welke verplichtingen voor de eigen organisatie gelden. Een beveiligingsbaseline kiest geen werkplekpakket en bewijst op zichzelf geen juridische of operationele soevereiniteit."
+    "explanation": "Voor wie: Overheidsorganisaties; wettelijke reikwijdte apart toetsen. Status: Overheidsbaseline; wettelijke invulling waar toepasselijk. De BIO2 is de gezamenlijke risicogerichte beveiligingsbaseline voor de overheid, gebaseerd op internationale beveiligingsnormen en aanvullende overheidsmaatregelen. Voor organisaties onder de Cyberbeveiligingswet krijgt zij een wettelijke rol via de regeling voor de sector overheid. Voor de werkplek helpt dit eisen aan toegang, beheer, leveranciers, herstel en continuïteit te concretiseren. Een beveiligingsbaseline kiest geen werkplekpakket en bewijst op zichzelf geen juridische of operationele soevereiniteit."
   },
   {
     "name": "DUTO-raamwerk",
@@ -1709,7 +859,7 @@ const atlasAdditions = [
       "Nationaal Archief: DUTO-raamwerk",
       "https://www.nationaalarchief.nl/archiveren/kennisbank/duto-raamwerk"
     ],
-    "explanation": "Voor wie: Overheidsinformatie en betrokken informatiesystemen. Status: Ontwerp- en beoordelingshulpmiddel. Het DUTO-raamwerk helpt overheidsinformatie duurzaam toegankelijk te maken. Het werkt processen uit voor registreren, bewaren, migreren, vernietigen en beschikbaar stellen. Voor de digitale werkplek betekent dit dat mail en documenten ook na een overstap vindbaar, leesbaar en bruikbaar moeten blijven, met passende metagegevens en bewaartermijnen. Neem dit mee in ontwerp en inkoop. Het raamwerk ondersteunt informatiebeheer en de uitvoering van verplichtingen, maar is zelf geen afzonderlijke wet en geen keurmerk voor soevereine software."
+    "explanation": "Voor wie: Overheidsinformatie en betrokken informatiesystemen. Status: Ontwerp- en beoordelingshulpmiddel. Het DUTO-raamwerk helpt overheidsinformatie duurzaam toegankelijk te maken. Het werkt processen uit voor registreren, bewaren, migreren, vernietigen en beschikbaar stellen. Voor de digitale werkplek betekent dit dat mail en documenten ook na een overstap vindbaar, leesbaar en bruikbaar moeten blijven, met passende metagegevens en bewaartermijnen. Het raamwerk ondersteunt informatiebeheer en de uitvoering van verplichtingen, maar is zelf geen afzonderlijke wet en geen keurmerk voor soevereine software."
   },
   {
     "name": "Cyberbeveiligingswet",
@@ -1723,7 +873,7 @@ const atlasAdditions = [
       "NCTV: Cyberbeveiligingswet",
       "https://www.nctv.nl/onderwerpen/c/cyberbeveiligingswet"
     ],
-    "explanation": "Voor wie: Organisaties binnen de wettelijke reikwijdte. Status: In werking sinds 15 augustus 2026. De Cyberbeveiligingswet zet de NIS2-richtlijn om in Nederlandse wetgeving en geldt sinds 15 augustus 2026. Organisaties binnen de reikwijdte krijgen verplichtingen rond registratie, zorg voor beveiliging en het melden van significante incidenten. Voor een werkplek zijn continuïteit, toegangsbeheer, herstel en leveranciersafhankelijkheden concrete aandachtspunten. Controleer sector, uitzonderingen en eventuele ontheffingen voor de eigen organisatie. De wet bevat geen algemene verplichting om alle niet-Europese software te vervangen. Beveiliging en autonomie vragen ieder een eigen beoordeling."
+    "explanation": "Voor wie: Organisaties binnen de wettelijke reikwijdte. Status: In werking sinds 15 augustus 2026. De Cyberbeveiligingswet zet de NIS2-richtlijn om in Nederlandse wetgeving en geldt sinds 15 augustus 2026. Organisaties binnen de reikwijdte krijgen verplichtingen rond registratie, zorg voor beveiliging en het melden van significante incidenten. Voor een werkplek zijn continuïteit, toegangsbeheer, herstel en leveranciersafhankelijkheden concrete aandachtspunten. De wet bevat geen algemene verplichting om alle niet-Europese software te vervangen. Beveiliging en autonomie vragen ieder een eigen beoordeling."
   },
   {
     "name": "Interoperable Europe Act",
@@ -1751,7 +901,7 @@ const atlasAdditions = [
       "Rijksoverheid: Voorwaarden voor Rijksopdrachten",
       "https://www.rijksoverheid.nl/themas/overheid-en-democratie/zakendoen-met-het-rijk/voorwaarden-voor-rijksopdrachten"
     ],
-    "explanation": "Voor wie: IT-opdrachten van de Rijksoverheid. Status: Contractvoorwaarden; ARBIT 2022. De Algemene Rijksvoorwaarden bij IT-overeenkomsten vormen contractvoorwaarden voor IT-opdrachten van het Rijk. De officiële overzichtspagina verwijst naar ARBIT 2022. Voor een werkplek zijn heldere afspraken over levering, gebruiksrechten, onderhoud en verantwoordelijkheden nodig om regie te kunnen uitoefenen. Leg de gewenste overdraagbaarheid en ondersteuning bij een overstap concreet vast in de overeenkomst. ARBIT is geen zelfstandige wet of soevereiniteitskeurmerk; de overeengekomen voorwaarden en aanvullende afspraken bepalen de contractuele positie."
+    "explanation": "Voor wie: IT-opdrachten van de Rijksoverheid. Status: Contractvoorwaarden; ARBIT 2022. De Algemene Rijksvoorwaarden bij IT-overeenkomsten vormen contractvoorwaarden voor IT-opdrachten van het Rijk. De officiële overzichtspagina verwijst naar ARBIT 2022. Voor een werkplek zijn heldere afspraken over levering, gebruiksrechten, onderhoud en verantwoordelijkheden nodig om regie te kunnen uitoefenen. ARBIT is geen zelfstandige wet of soevereiniteitskeurmerk; de overeengekomen voorwaarden en aanvullende afspraken bepalen de contractuele positie."
   },
   {
     "name": "GIBIT",
@@ -1779,7 +929,7 @@ const atlasAdditions = [
       "Rijksoverheid: Overheidsbreed standpunt generatieve AI",
       "https://www.rijksoverheid.nl/documenten/2025/04/16/het-overheidsbrede-standpunt-voor-de-inzet-van-generatieve-ai"
     ],
-    "explanation": "Voor wie: Overheidsorganisaties die generatieve AI inzetten. Status: Beleidsstandpunt en handreiking. Het overheidsbrede standpunt geeft richting aan waardevolle, verantwoorde en ethische inzet van generatieve AI. Voor de digitale werkplek raakt dit assistenten die documenten, berichten of andere organisatiegegevens verwerken. Beoordeel vooraf doel, risico’s, gegevensgebruik en organisatorische waarborgen en gebruik de bijbehorende handreiking. Een lokaal model, Europese aanbieder of opensourcelicentie neemt die beoordeling niet weg. Dit is een beleidsstandpunt; toepasselijke privacy-, beveiligings- en AI-wetgeving moet daarnaast afzonderlijk worden getoetst."
+    "explanation": "Voor wie: Overheidsorganisaties die generatieve AI inzetten. Status: Beleidsstandpunt en handreiking. Het overheidsbrede standpunt geeft richting aan waardevolle, verantwoorde en ethische inzet van generatieve AI. Voor de digitale werkplek raakt dit assistenten die documenten, berichten of andere organisatiegegevens verwerken. Een lokaal model, Europese aanbieder of opensourcelicentie neemt die beoordeling niet weg. Dit is een beleidsstandpunt; toepasselijke privacy-, beveiligings- en AI-wetgeving moet daarnaast afzonderlijk worden getoetst."
   },
   {
     "name": "Algoritmekader",
@@ -1793,7 +943,7 @@ const atlasAdditions = [
       "Nederlandse overheid: Over het Algoritmekader",
       "https://algoritmes.overheid.nl/nl/algoritmekader/over-het-algoritmekader"
     ],
-    "explanation": "Voor wie: Overheden die algoritmes of AI gebruiken. Status: Doorontwikkeld kennis- en toetsingskader. Het Algoritmekader bundelt eisen, uitleg en hulpmiddelen voor overheden die algoritmes en AI toepassen. Het ondersteunt afwegingen gedurende de levenscyclus van een toepassing. Voor de werkplek is dit relevant wanneer assistenten, zoekfuncties of andere AI-voorzieningen onderdeel worden van dagelijks werk. Gebruik het om verantwoordelijkheden en passende beoordelingen te bepalen. Het kader is een hulpmiddel met verwijzingen naar uiteenlopende normen en wetten; niet ieder advies daarin is zelf een wettelijke verplichting. Het verklaart geen model of leverancier automatisch soeverein."
+    "explanation": "Voor wie: Overheden die algoritmes of AI gebruiken. Status: Doorontwikkeld kennis- en toetsingskader. Het Algoritmekader bundelt eisen, uitleg en hulpmiddelen voor overheden die algoritmes en AI toepassen. Het ondersteunt afwegingen gedurende de levenscyclus van een toepassing. Voor de werkplek is dit relevant wanneer assistenten, zoekfuncties of andere AI-voorzieningen onderdeel worden van dagelijks werk. Het kader is een hulpmiddel met verwijzingen naar uiteenlopende normen en wetten; niet ieder advies daarin is zelf een wettelijke verplichting. Het verklaart geen model of leverancier automatisch soeverein."
   },
   {
     "name": "NeRDS inkoopstrategie",
@@ -2070,7 +1220,7 @@ const atlasAdditions = [
       "Thunderbird voor organisaties",
       "https://enterprise.thunderbird.net/"
     ],
-    "explanation": "Thunderbird is een opensource desktopclient voor e-mail, agenda en contacten. De officiële organisatiedocumentatie beschrijft centrale configuratie, beleidsinstellingen en ingebouwde ondersteuning voor berichtversleuteling. Voor een soevereine werkplek biedt dit keuze over de client waarmee medewerkers hun mailvoorziening gebruiken, ook op Linux. De client en de server zijn afzonderlijke onderdelen: Thunderbird levert zelf geen mailhosting en maakt een aangesloten dienst niet automatisch soeverein. Onderzoek daarom de gebruikte mailprotocollen, agenda-integratie, uitbreidingen en beheerinstellingen. De documentatie van BlueMind noemt Thunderbird als ondersteunde toegang tot zijn samenwerkingsfuncties.",
+    "explanation": "Thunderbird is een opensource desktopclient voor e-mail, agenda en contacten. De officiële organisatiedocumentatie beschrijft centrale configuratie, beleidsinstellingen en ingebouwde ondersteuning voor berichtversleuteling. Voor een soevereine werkplek biedt dit keuze over de client waarmee medewerkers hun mailvoorziening gebruiken, ook op Linux. De client en de server zijn afzonderlijke onderdelen: Thunderbird levert zelf geen mailhosting en maakt een aangesloten dienst niet automatisch soeverein. De documentatie van BlueMind noemt Thunderbird als ondersteunde toegang tot zijn samenwerkingsfuncties.",
     "classification": "Bouwsteen"
   },
   {
@@ -2083,7 +1233,7 @@ const atlasAdditions = [
       "Firefox: uitrol en beheer in organisaties",
       "https://firefox-admin-docs.mozilla.org/guides/getting-started/"
     ],
-    "explanation": "Firefox is een opensourcebrowser met de eigen Mozilla-browserengine. Firefox en de Extended Support Release kunnen met zakelijke beleidsinstellingen worden ingericht en beheerd. Voor een digitale werkplek is de browser een belangrijke toegang tot samenwerksoftware en webapplicaties. Keuze over configuratie, uitbreidingen, externe verbindingen en updates helpt organisaties hun browseromgeving zelf te sturen. Dat staat los van de zeggenschap over de websites en diensten die ermee worden bezocht. Maak onderscheid tussen Firefox of ESR en het aanvullende Firefox Enterprise-aanbod: beheerproducten, ondersteuning en voorwaarden kunnen verschillen.",
+    "explanation": "Firefox is een opensourcebrowser met de eigen Mozilla-browserengine. Firefox en de Extended Support Release kunnen met zakelijke beleidsinstellingen worden ingericht en beheerd. Voor een digitale werkplek is de browser een belangrijke toegang tot samenwerksoftware en webapplicaties. Keuze over configuratie, uitbreidingen, externe verbindingen en updates helpt organisaties hun browseromgeving zelf te sturen. Dat staat los van de zeggenschap over de websites en diensten die ermee worden bezocht.",
     "classification": "Bouwsteen"
   },
   {
@@ -2128,7 +1278,7 @@ const atlasAdditions = [
       "Carbonio CE: officiële beheer- en installatiehandleiding",
       "https://docs.zextras.com/carbonio-ce/html/basics/general.html"
     ],
-    "explanation": "Carbonio Community Edition is de opensource communicatie- en samenwerkingsomgeving van Zextras. De beheerdocumentatie beschrijft e-mail, contacten, agenda, chat, video en documentbewerking, met installatie op eigen infrastructuur. Daarmee kan een organisatie de exploitatie van meerdere werkplekfuncties onder eigen of gekozen beheer organiseren. Voor invoering moeten beschikbaarheid, beveiligingsupdates, migratie en ondersteuning worden ingericht. Maak onderscheid tussen de Community Edition en de commerciële Carbonio-edities: ondersteuning en beschikbare mogelijkheden kunnen verschillen. Eigen hosting biedt mogelijkheden voor zeggenschap, maar de feitelijke inrichting en afhankelijkheden bepalen hoe zelfstandig de omgeving kan worden gebruikt.",
+    "explanation": "Carbonio Community Edition is de opensource communicatie- en samenwerkingsomgeving van Zextras. De beheerdocumentatie beschrijft e-mail, contacten, agenda, chat, video en documentbewerking, met installatie op eigen infrastructuur. Daarmee kan een organisatie de exploitatie van meerdere werkplekfuncties onder eigen of gekozen beheer organiseren. Voor invoering moeten beschikbaarheid, beveiligingsupdates, migratie en ondersteuning worden ingericht. Eigen hosting biedt mogelijkheden voor zeggenschap, maar de feitelijke inrichting en afhankelijkheden bepalen hoe zelfstandig de omgeving kan worden gebruikt.",
     "classification": "Vergelijkingsmateriaal"
   },
   {
@@ -2141,7 +1291,7 @@ const atlasAdditions = [
       "OPSI: opensourcebeheer van werkplekapparaten",
       "https://opsi.org/en/"
     ],
-    "explanation": "OPSI is een opensourceplatform voor het beheren van Windows-, Linux- en macOS-apparaten. De officiële productinformatie beschrijft automatische softwaredistributie, patchbeheer, installatie van besturingssystemen en hardware- en software-inventarisatie. Dit vult een praktische laag van de soevereine werkplek in: de organisatie moet niet alleen alternatieve applicaties kiezen, maar ook apparaten kunnen installeren, bijwerken en beheren. Controleer welke basiscomponenten, uitbreidingen, pakketten en ondersteuning voor de gekozen inrichting nodig zijn. Opname op deze kaart betekent niet dat OPSI aantoonbaar wordt gebruikt in DAWO of een ander bestaand initiatief.",
+    "explanation": "OPSI is een opensourceplatform voor het beheren van Windows-, Linux- en macOS-apparaten. De officiële productinformatie beschrijft automatische softwaredistributie, patchbeheer, installatie van besturingssystemen en hardware- en software-inventarisatie. Dit vult een praktische laag van de soevereine werkplek in: de organisatie moet niet alleen alternatieve applicaties kiezen, maar ook apparaten kunnen installeren, bijwerken en beheren. Opname op deze kaart betekent niet dat OPSI aantoonbaar wordt gebruikt in DAWO of een ander bestaand initiatief.",
     "classification": "Bouwsteen"
   },
   {
@@ -2154,7 +1304,7 @@ const atlasAdditions = [
       "RustDesk: zelfbeheer en verschil tussen OSS en Pro",
       "https://rustdesk.com/docs/en/self-host/"
     ],
-    "explanation": "RustDesk ondersteunt toegang tot en ondersteuning van computers op afstand. De officiële documentatie onderscheidt RustDesk Server OSS van Server Pro en beschrijft hoe organisaties eigen ID- en relayservers kunnen inrichten. Voor een soevereine werkplek maakt dat het mogelijk de infrastructuur voor ondersteuning zelf te kiezen en te beheren. Dat vraagt expliciete configuratie van de clients; het gebruik van de app alleen bewijst niet dat alle verbindingen via eigen servers lopen. De OSS- en Pro-edities verschillen in beheermogelijkheden. Beoordeel daarnaast toestemming, toegangsrechten, registratie van beheersessies en beveiligingsupdates.",
+    "explanation": "RustDesk ondersteunt toegang tot en ondersteuning van computers op afstand. De officiële documentatie onderscheidt RustDesk Server OSS van Server Pro en beschrijft hoe organisaties eigen ID- en relayservers kunnen inrichten. Voor een soevereine werkplek maakt dat het mogelijk de infrastructuur voor ondersteuning zelf te kiezen en te beheren. Dat vraagt expliciete configuratie van de clients; het gebruik van de app alleen bewijst niet dat alle verbindingen via eigen servers lopen. De OSS- en Pro-edities verschillen in beheermogelijkheden.",
     "classification": "Bouwsteen"
   },
   {
@@ -2206,7 +1356,7 @@ const atlasAdditions = [
       "eXo Platform: functies en installatievarianten",
       "https://www.exoplatform.com/faq/"
     ],
-    "explanation": "eXo Platform is een opensource digitaal werkplatform dat intranet, interne communicatie, samenwerking en kennisdeling combineert. De leverancier beschrijft verschillende exploitatievormen, waaronder installatie op eigen infrastructuur. Het vult daarmee vooral de gezamenlijke werkomgeving van medewerkers in, niet alleen een afzonderlijke editor of bestandsopslag. Voor zeggenschap moeten de gebruikte editie, opslag, toegangsvoorziening en mogelijkheden voor gegevensoverdracht worden beoordeeld. Maak onderscheid tussen het community-aanbod, Enterprise-functies en ondersteuning. De productinformatie onderbouwt het platform en de installatiekeuzes, zonder een specifieke inzet in DAWO of MijnBureau aan te tonen.",
+    "explanation": "eXo Platform is een opensource digitaal werkplatform dat intranet, interne communicatie, samenwerking en kennisdeling combineert. De leverancier beschrijft verschillende exploitatievormen, waaronder installatie op eigen infrastructuur. Het vult daarmee vooral de gezamenlijke werkomgeving van medewerkers in, niet alleen een afzonderlijke editor of bestandsopslag. Voor zeggenschap moeten de gebruikte editie, opslag, toegangsvoorziening en mogelijkheden voor gegevensoverdracht worden beoordeeld. De productinformatie onderbouwt het platform en de installatiekeuzes, zonder een specifieke inzet in DAWO of MijnBureau aan te tonen.",
     "classification": "Vergelijkingsmateriaal"
   },
   {
@@ -2232,7 +1382,7 @@ const atlasAdditions = [
       "authentik: officiële broncode en projectbeschrijving",
       "https://github.com/goauthentik/authentik"
     ],
-    "explanation": "authentik is een zelf te hosten identityprovider voor eenmalig aanmelden en toegangsbeheer. De openbare projectrepository beschrijft ondersteuning voor onder meer OpenID Connect, SAML en LDAP. Voor een digitale werkplek kan de organisatie hiermee de authenticatievoorziening los van afzonderlijke applicaties organiseren. Het is een alternatief om naast Keycloak te beoordelen, geen complete werkpleksuite. De gebruikte protocollen, koppelingen, meervoudige authenticatie en herstelprocedures moeten bij de eigen omgeving passen. Controleer welke onderdelen onder de opensourcelicentie vallen en welke functies bij een Enterprise-aanbod horen. De vergelijking is geen vastgestelde technische integratie met Keycloak.",
+    "explanation": "authentik is een zelf te hosten identityprovider voor eenmalig aanmelden en toegangsbeheer. De openbare projectrepository beschrijft ondersteuning voor onder meer OpenID Connect, SAML en LDAP. Voor een digitale werkplek kan de organisatie hiermee de authenticatievoorziening los van afzonderlijke applicaties organiseren. Het is een alternatief om naast Keycloak te beoordelen, geen complete werkpleksuite. De gebruikte protocollen, koppelingen, meervoudige authenticatie en herstelprocedures moeten bij de eigen omgeving passen. De vergelijking is geen vastgestelde technische integratie met Keycloak.",
     "classification": "Bouwsteen"
   },
   {
@@ -2264,7 +1414,7 @@ const atlasAdditions = [
       "Cloudwise over COOL als loginvoorziening naast Nextcloud",
       "https://www.cloudwise.nl/blogs/waarom-digitale-autonomie-geen-overbodige-luxe-meer-is"
     ],
-    "explanation": "COOL is het digitale leer- en werkplatform van Cloudwise voor scholen. Het ondersteunt toegang tot applicaties en beheer van gebruikers en onderwijsomgevingen. In het aanbod rond digitale autonomie beschrijft Cloudwise COOL als loginvoorziening naast een samenwerk- en documentomgeving op basis van Nextcloud. Daarmee is de toegangslaag concreet te onderscheiden van de software voor bestanden en samenwerken. COOL kan ook toegang geven tot Microsoft- en Google-diensten. Het portaal maakt die onderliggende diensten niet automatisch soeverein. Beoordeel daarom welke accounts, applicaties, hosting en beheerafspraken in de gekozen inrichting worden gebruikt. De bron beschrijft het aanbod van de leverancier, geen onafhankelijk getoetste soevereiniteitsstatus.",
+    "explanation": "COOL is het digitale leer- en werkplatform van Cloudwise voor scholen. Het ondersteunt toegang tot applicaties en beheer van gebruikers en onderwijsomgevingen. In het aanbod rond digitale autonomie beschrijft Cloudwise COOL als loginvoorziening naast een samenwerk- en documentomgeving op basis van Nextcloud. Daarmee is de toegangslaag concreet te onderscheiden van de software voor bestanden en samenwerken. COOL kan ook toegang geven tot Microsoft- en Google-diensten. Het portaal maakt die onderliggende diensten niet automatisch soeverein. De bron beschrijft het aanbod van de leverancier, geen onafhankelijk getoetste soevereiniteitsstatus.",
     "classification": "Bouwsteen",
     "references": [
       [
@@ -2309,7 +1459,7 @@ const atlasAdditions = [
       "ONLYOFFICE Docs Community Edition zelf installeren",
       "https://helpcenter.onlyoffice.com/docs/installation/docs-community-install-ubuntu.aspx"
     ],
-    "explanation": "ONLYOFFICE Docs biedt online editors voor tekstdocumenten, spreadsheets en presentaties. De officiële installatiehandleiding beschrijft hoe de Community Edition op een eigen Linux-server draait en met een samenwerkplatform kan worden geïntegreerd. Voor een digitale werkplek is dit een alternatief voor de documentbewerkingslaag: bestanden en de editor kunnen onder een zelf gekozen beheeromgeving blijven. Vergelijk de gekozen editie op licentie, gelijktijdige gebruikers, ondersteuning en compatibiliteit met de eigen documenten. Eigen hosting geeft ruimte voor zeggenschap over verwerking en beheer; de feitelijke inrichting en eventuele externe koppelingen blijven bepalend. Een toepassing binnen MijnBureau of openDesk wordt hier niet gesteld.",
+    "explanation": "ONLYOFFICE Docs biedt online editors voor tekstdocumenten, spreadsheets en presentaties. De officiële installatiehandleiding beschrijft hoe de Community Edition op een eigen Linux-server draait en met een samenwerkplatform kan worden geïntegreerd. Voor een digitale werkplek is dit een alternatief voor de documentbewerkingslaag: bestanden en de editor kunnen onder een zelf gekozen beheeromgeving blijven. Eigen hosting geeft ruimte voor zeggenschap over verwerking en beheer; de feitelijke inrichting en eventuele externe koppelingen blijven bepalend. Een toepassing binnen MijnBureau of openDesk wordt hier niet gesteld.",
     "classification": "Vergelijkingsmateriaal"
   },
   {
@@ -2380,7 +1530,7 @@ const atlasAdditions = [
       "Seafile: functies en zelfbeheerde installatie",
       "https://www.seafile.com/en/home/"
     ],
-    "explanation": "Seafile is software voor bestandssynchronisatie, delen en samenwerking. De productinformatie beschrijft toegang via verschillende apparaten, deelrechten, versiegeschiedenis en installatie op eigen infrastructuur. Daarmee is het een relevant alternatief voor de bestandslaag van een werkplek, naast bijvoorbeeld Nextcloud. De organisatie kan bepalen waar de server draait en wie de omgeving beheert. Onderzoek bij de gekozen editie welke functies, exportmogelijkheden en ondersteuning beschikbaar zijn. Bij migratie moeten niet alleen bestanden, maar ook gedeelde toegang, historie en synchronisatie worden beoordeeld. Eventuele AI-functies en externe verwerkingsdiensten vragen een afzonderlijke keuze. Er is hier geen integratie met MijnBureau of openDesk vastgesteld.",
+    "explanation": "Seafile is software voor bestandssynchronisatie, delen en samenwerking. De productinformatie beschrijft toegang via verschillende apparaten, deelrechten, versiegeschiedenis en installatie op eigen infrastructuur. Daarmee is het een relevant alternatief voor de bestandslaag van een werkplek, naast bijvoorbeeld Nextcloud. De organisatie kan bepalen waar de server draait en wie de omgeving beheert. Bij migratie moeten niet alleen bestanden, maar ook gedeelde toegang, historie en synchronisatie worden beoordeeld. Eventuele AI-functies en externe verwerkingsdiensten vragen een afzonderlijke keuze. Er is hier geen integratie met MijnBureau of openDesk vastgesteld.",
     "classification": "Vergelijkingsmateriaal"
   },
   {
@@ -2393,7 +1543,7 @@ const atlasAdditions = [
       "Rocket.Chat: zelfbeheerde en afgeschermde installatie",
       "https://docs.rocket.chat/docs/deploy-rocketchat"
     ],
-    "explanation": "Rocket.Chat is een communicatieplatform waarvoor de officiële documentatie verschillende installatiemogelijkheden beschrijft, waaronder eigen servers en afgeschermde omgevingen zonder internetverbinding. Voor een digitale werkplek is het relevant als alternatief voor teamchat waarbij de organisatie de infrastructuur en het gegevensbeheer zelf kan organiseren. De documentatie onderscheidt zelfbeheer van door de leverancier gehoste diensten. Onderzoek per editie de licentie, beschikbare functies, mobiele notificaties en eventuele verbindingen met externe diensten. Een installatie op eigen servers maakt het beheer niet vanzelf onafhankelijk. De vergelijking met Element betreft teamcommunicatie; er wordt geen gedeeld protocol of onderlinge uitwisselbaarheid verondersteld.",
+    "explanation": "Rocket.Chat is een communicatieplatform waarvoor de officiële documentatie verschillende installatiemogelijkheden beschrijft, waaronder eigen servers en afgeschermde omgevingen zonder internetverbinding. Voor een digitale werkplek is het relevant als alternatief voor teamchat waarbij de organisatie de infrastructuur en het gegevensbeheer zelf kan organiseren. De documentatie onderscheidt zelfbeheer van door de leverancier gehoste diensten. Een installatie op eigen servers maakt het beheer niet vanzelf onafhankelijk. De vergelijking met Element betreft teamcommunicatie; er wordt geen gedeeld protocol of onderlinge uitwisselbaarheid verondersteld.",
     "classification": "Vergelijkingsmateriaal"
   },
   {
@@ -2406,7 +1556,7 @@ const atlasAdditions = [
       "ownCloud Infinite Scale: beheer en installatie",
       "https://doc.owncloud.com/ocis/8.2/index.html"
     ],
-    "explanation": "ownCloud Infinite Scale is een platform voor het organiseren, delen en beheren van bestanden en metadata. De officiële documentatie beschrijft installatie, configuratie en beheer van de serveromgeving. Voor een digitale werkplek biedt het een afzonderlijk te beoordelen bestandsvoorziening, waarbij de organisatie keuzes kan maken over hosting, toegang en beheer. Het is relevant naast andere bestandsplatforms zoals Nextcloud en Seafile. Controleer voor een concrete invoering de productieversie, gebruiksvoorwaarden, ondersteuning en overdraagbaarheid van bestanden, rechten en metadata. De documentatie maakt expliciet dat gebruiksvoorwaarden van toepassing zijn. Opname in dit stelsel is geen verklaring dat elke editie of gehoste dienst zonder leveranciersafhankelijkheid inzetbaar is.",
+    "explanation": "ownCloud Infinite Scale is een platform voor het organiseren, delen en beheren van bestanden en metadata. De officiële documentatie beschrijft installatie, configuratie en beheer van de serveromgeving. Voor een digitale werkplek biedt het een afzonderlijk te beoordelen bestandsvoorziening, waarbij de organisatie keuzes kan maken over hosting, toegang en beheer. Het is relevant naast andere bestandsplatforms zoals Nextcloud en Seafile. De documentatie maakt expliciet dat gebruiksvoorwaarden van toepassing zijn. Opname in dit stelsel is geen verklaring dat elke editie of gehoste dienst zonder leveranciersafhankelijkheid inzetbaar is.",
     "classification": "Vergelijkingsmateriaal"
   },
   {
@@ -4423,7 +3573,7 @@ const verifiedComparisons = [
   {
     "name": "Nextcloud",
     "fields": {
-      "Licentie & editie": "De servercode is beschikbaar onder AGPLv3; controleer uitbreidingen en contractvoorwaarden afzonderlijk."
+      "Licentie & editie": "De servercode is beschikbaar onder AGPLv3; uitbreidingen en contractvoorwaarden hebben een eigen toepassingsgebied."
     },
     "sources": [
       [
@@ -4473,7 +3623,7 @@ const verifiedComparisons = [
   {
     "name": "Proxmox VE",
     "fields": {
-      "Licentie & editie": "Proxmox publiceert de meeste eigen code onder AGPLv3 of een vergelijkbare vrije licentie; componentlicenties afzonderlijk controleren.",
+      "Licentie & editie": "Proxmox publiceert de meeste eigen code onder AGPLv3 of een vergelijkbare vrije licentie; met afzonderlijke licenties per component.",
       "Ondersteuning": "Abonnementen bieden toegang tot het Enterprise Repository; ondersteuningsniveau hangt af van het abonnement."
     },
     "sources": [
@@ -4539,7 +3689,7 @@ const categoryExplanationUpdates = [
   [
     "Bedrijven",
     [
-      "Bedrijven leveren verschillende lagen van een werkplek: softwareontwikkeling, implementatie, hosting en beheer. The Good Cloud biedt beheerde Nextcloud; KPN levert clouddiensten met STACKIT als genoemde technologiepartner. Andere dossiers beschrijven infrastructuur, samenwerking of een praktijkrol. Vergelijk de concrete dienst, de beheerketen en afspraken over toegang, herstel en vertrek. Een bedrijfsnaam of soevereiniteitsclaim bewijst geen volledige zeggenschap over iedere dienst.",
+      "Bedrijven leveren verschillende lagen van een werkplek: softwareontwikkeling, implementatie, hosting en beheer. The Good Cloud biedt beheerde Nextcloud; KPN levert clouddiensten met STACKIT als genoemde technologiepartner. Andere dossiers beschrijven infrastructuur, samenwerking of een praktijkrol. Een bedrijfsnaam of soevereiniteitsclaim bewijst geen volledige zeggenschap over iedere dienst.",
       [
         "The Good Cloud",
         "KPN",
@@ -4561,7 +3711,7 @@ const categoryExplanationUpdates = [
   [
     "Europa",
     [
-      "Europese voorbeelden laten uiteenlopende routes zien: publieke suites, zelfbeheerde diensten, lokale invoering en historische migraties. Schleswig-Holstein beschrijft een gefaseerde overstap; Zürich en BFH toetsen openDesk als tweede bron. Échirolles benoemt intern beheerde vrije software. München/LiMux en het beëindigde Phoenix-programma maken ook bestuurlijke continuïteit en onderhoud zichtbaar. Vergelijk fase, context en resultaten voordat je lessen toepast.",
+      "Europese voorbeelden laten uiteenlopende routes zien: publieke suites, zelfbeheerde diensten, lokale invoering en historische migraties. Schleswig-Holstein beschrijft een gefaseerde overstap; Zürich en BFH toetsen openDesk als tweede bron. Échirolles benoemt intern beheerde vrije software. München/LiMux en het beëindigde Phoenix-programma maken ook bestuurlijke continuïteit en onderhoud zichtbaar.",
       [
         "Schleswig-Holstein",
         "Stadt Zürich/BFH",
@@ -4584,7 +3734,7 @@ const categoryExplanationUpdates = [
   [
     "Technologie",
     [
-      "Technologie bevat software, samenwerkomgevingen en infrastructuur, geordend naar werkplekfunctie. Vergelijk binnen een subcategorie eerst de dagelijkse taken en daarna editie, licentie, beheer en overstapbaarheid. Bij dossiers staan een concrete proef en vaste vergelijkingsvragen; waar onderbouwd zijn ook productkenmerken opgenomen. Een besturingssysteem, identiteitsdienst of documenteditor is een eigen bouwsteen en vervangt niet zelfstandig een complete werkplek.",
+      "Technologie bevat software, samenwerkomgevingen en infrastructuur, geordend naar werkplekfunctie. Bij dossiers staan een concrete proef en vaste vergelijkingsvragen; waar onderbouwd zijn ook productkenmerken opgenomen. Een besturingssysteem, identiteitsdienst of documenteditor is een eigen bouwsteen en vervangt niet zelfstandig een complete werkplek.",
       [
         "Nextcloud",
         "LibreOffice",
@@ -4608,7 +3758,7 @@ const supplierDetailUpdates = [
     "Nebul",
     "https://docs.nebul.io/",
     "Nebul: technische documentatie",
-    "Nebul documenteert een Private NeoCloud op basis van OpenStack en een AI Factory met een OpenAI-compatibele inference-interface en beheer van sleutels, projecten en gebruik. Voor een werkplek zijn dit infrastructurele bouwstenen voor eigen of afgenomen AI-functionaliteit. De documentatie ontsluit ook voorwaarden en ondersteuningsinformatie. Compatibiliteit van een interface betekent niet dat gegevens bij OpenAI worden verwerkt; de feitelijke verwerking hangt af van de afgenomen dienst en configuratie. Onderzoek modellicenties, gegevensstromen en beheertoegang afzonderlijk. De bron onderbouwt geen gebruik door SOLID of MijnBureau."
+    "Nebul documenteert een Private NeoCloud op basis van OpenStack en een AI Factory met een OpenAI-compatibele inference-interface en beheer van sleutels, projecten en gebruik. Voor een werkplek zijn dit infrastructurele bouwstenen voor eigen of afgenomen AI-functionaliteit. De documentatie ontsluit ook voorwaarden en ondersteuningsinformatie. Compatibiliteit van een interface betekent niet dat gegevens bij OpenAI worden verwerkt; de feitelijke verwerking hangt af van de afgenomen dienst en configuratie. De bron onderbouwt geen gebruik door SOLID of MijnBureau."
   ],
   [
     "Uniserver",
@@ -4996,7 +4146,7 @@ function openWorld(world,showOverview=false){
     const sources=examples.flatMap(name=>sourcesForExplanation(name).slice(0,1));
     renderExplanation(explanation,sources);
     clearDocumentedFacts();
-    if(world.hub)info.querySelector('.context').replaceChildren();else renderDevelopment(world);
+    info.querySelector('.context').replaceChildren();
     sourceRecord.hidden=true;
     shareButton.hidden=true;
     info.querySelector('aside > small').textContent='';
@@ -5042,7 +4192,7 @@ function openWorld(world,showOverview=false){
   info.querySelector('p').textContent=[solutionLabel(world),world.role,world.region,world.phase].filter(Boolean).join(' · ');
   clearDocumentedFacts();
   const assessment=renderExplanation(dossierExplanations.get(world.name),sourcesForExplanation(world.name));
-  renderDevelopment(world);
+  renderSourcedCharacteristics(world);
 
   const researchNotes=document.createElement('ul');
   researchNotes.className='research-findings';
@@ -5221,29 +4371,9 @@ function appendDefinition(list,label,text){
   const description=document.createElement('dd');description.textContent=text;
   list.append(term,description);
 }
-function renderDevelopment(world){
+function renderSourcedCharacteristics(world){
   const context=info.querySelector('.context');
   context.replaceChildren();
-  const category=systems[world.system].name;
-  const assessment=info.querySelector('.assessment');
-  if(world.sun)assessment.before(context);else assessment.after(context);
-  const guide=developmentGuides.get(category);
-  const heading=document.createElement('h3');
-  heading.textContent=world.sun?'Aan de slag met '+category:'Voor de eigen ontwikkeling';
-  context.append(heading);
-  if(world.sun){
-    const intro=document.createElement('p');intro.textContent=guide.intro;context.append(intro);
-    const list=document.createElement('ul');
-    for(const question of guide.questions){const item=document.createElement('li');item.textContent=question;list.append(item);}
-    context.append(list);
-    const links=document.createElement('div');links.className='development-start';
-    for(const name of guide.start){
-      const peer=worldsByName.get(name);if(!peer)continue;
-      const button=document.createElement('button');button.type='button';button.textContent=name;
-      button.onclick=()=>focusWorld(peer);links.append(button);
-    }
-    context.append(links);return;
-  }
   const profile=documentedProfiles.get(world.name);
   if(profile){
     const fields=Object.entries(profile[1]).filter(([key])=>key!=='Ontwikkelfase');
@@ -5262,16 +4392,6 @@ function renderDevelopment(world){
       }
     }
   }
-  const suggestion=document.createElement('p');suggestion.className='development-step';
-  suggestion.textContent=developmentSteps.get(world.name);context.append(suggestion);
-  if(category==='Technologie'){
-    const questions=technologyQuestions.get(world.subcategory);
-    const list=document.createElement('dl');list.className='comparison-questions';
-    appendDefinition(list,'Functies vergelijken',questions[0]);
-    appendDefinition(list,'Editie en licentie controleren',questions[1]);
-    appendDefinition(list,'Beheer en overstappen','Leg vast wie updates, toegang, logging en herstel verzorgt en test het meenemen van gegevens en configuratie.');
-    context.append(list);
-  }
 }
 function clearDocumentedFacts(){
   for(const element of info.querySelectorAll('.documented-facts,.profile-citation')){
@@ -5283,7 +4403,7 @@ function searchCorpus(world){
   const fields=documentedProfiles.get(world.name)?.[1]||{};
   return normalize([world.name,world.region,world.role,reviewedRoles.get(world.name).label,
     solutionLabel(world),systems[world.system].name,world.phase,dossierExplanations.get(world.name),
-    developmentSteps.get(world.name),...Object.values(fields)].join(' '));
+    ...Object.values(fields)].join(' '));
 }
 
 function renderExplanation(explanation,sources){
