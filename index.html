@@ -41,6 +41,17 @@ aside>.relations:not(:empty){display:grid;gap:6px;margin-top:14px}
 aside .context{border:0;padding:0}
 aside .context h3,aside .relations h3{font-size:1rem;margin:1.15rem 0 .5rem;color:#edf4ff}
 aside .context dd{padding-bottom:.5rem;border-bottom:1px solid #ffffff14}
+
+.atlas-quick-search{position:fixed;z-index:3;top:150px;left:clamp(16px,3vw,42px);width:min(440px,calc(100% - 32px))}
+.quick-search-field input{box-sizing:border-box;width:100%;min-height:46px;padding:.75rem 1rem;font:inherit;font-size:.9rem;color:#eef3ff;background:#101a30f5;border:1px solid #647b9f;border-radius:12px;box-shadow:0 5px 24px #0005}
+.quick-search-field input::placeholder{color:#b6c9e9}
+.quick-search-field input:focus-visible{outline:2px solid #b9d7ff;outline-offset:2px}
+.quick-search-results{margin-top:8px;padding:10px;background:#0c1428fa;border:1px solid #526585;border-radius:12px;max-height:45dvh;overflow:auto;box-shadow:0 12px 35px #0008}
+.quick-search-results[hidden]{display:none}
+.quick-search-results p{margin:0 0 8px;color:#b6c9e9;font-size:.85rem}
+.quick-search-results button{width:100%;min-height:44px;padding:.65rem .75rem;font:inherit;color:#eef3ff;background:#141e36;border:1px solid #586a8b;border-radius:8px;cursor:pointer}
+.quick-search-results button:hover,.quick-search-results button:focus-visible{background:#263755;outline:2px solid #b9d7ff;outline-offset:-2px}
+@media(max-width:760px){header{right:16px}.atlas-quick-search{top:140px;left:16px;width:calc(100% - 32px)}.quick-search-results{max-height:35dvh}.atlas-tools,body:has(aside:not([hidden])) .atlas-tools{top:196px;bottom:auto;right:16px}}
 </style>
 <style>
 aside{width:clamp(550px,44vw,700px);max-height:85dvh;line-height:1.55}
@@ -90,7 +101,11 @@ aside{bottom:max(var(--atlas-bottom),2.5vw)}
 <canvas id="space-map" tabindex="0" aria-label="Sterrenkaart. Versleep of gebruik de pijltjestoetsen. Zoom met het muiswiel, twee vingers of plus en min. Home herstelt het overzicht."></canvas>
 <header><h1>Soevereinestelsel van de Werkplek</h1><p>Wie bouwt wat? Klik op een initiatief om het te ontdekken.</p><p>Sleep om te bewegen · scroll of knijp om te zoomen</p></header>
 <aside hidden aria-live="polite"><button type="button" aria-label="Sluiten">×</button><canvas class="detail-badge" width="168" height="168" aria-hidden="true"></canvas><h2></h2><p></p><p class="assessment"></p><div class="context"></div><section class="source-record" hidden><h3>Bronnen</h3><a class="source" target="_blank" rel="noopener noreferrer"></a><small class="source-meta"></small><details id="dossier-extra-sources" hidden><summary>Aanvullende bronnen</summary><ul></ul></details></section><small>Conceptkaart · verbanden om te toetsen</small><div class="relations"></div><div class="panel-actions"><button id="atlas-share" type="button" hidden>Kopieer link</button><button id="atlas-expand" type="button" aria-expanded="false">Paneel vergroten</button></div><p id="atlas-share-status" role="status"></p></aside>
-<nav class="atlas-tools" aria-label="Kaartnavigatie"><button id="atlas-search" type="button">Zoeken</button><button id="atlas-home" type="button">Centrum</button><button id="atlas-help" type="button">Legenda</button></nav>
+<nav class="atlas-tools" aria-label="Kaartnavigatie"><button id="atlas-search" type="button">Filters</button><button id="atlas-home" type="button">Centrum</button><button id="atlas-help" type="button">Legenda</button></nav>
+<section class="atlas-quick-search" aria-label="Zoeken op de kaart">
+  <div class="quick-search-field"><input id="atlas-quick-query" type="search" aria-label="Zoek een organisatie, initiatief of oplossing" placeholder="Zoek een organisatie, initiatief of oplossing…" autocomplete="off" aria-controls="atlas-quick-results" aria-expanded="false"></div>
+  <div id="atlas-quick-results" class="quick-search-results" hidden><p id="atlas-quick-count" role="status"></p><div class="atlas-results"></div></div>
+</section>
 <footer class="atlas-note">Alle informatie in dit stelsel komt uit openbare bronnen. Research en development met hulp van generatieve AI.</footer>
 <dialog class="atlas-dialog" id="atlas-directory" aria-labelledby="directory-title">
   <form method="dialog"><button>Sluiten</button></form>
@@ -107,7 +122,7 @@ aside{bottom:max(var(--atlas-bottom),2.5vw)}
 <dialog class="atlas-dialog" id="atlas-legend" aria-labelledby="legend-title">
   <form method="dialog"><button>Sluiten</button></form>
   <h2 id="legend-title">Zo lees je de atlas</h2>
-  <p>Sleep of gebruik de pijltjestoetsen om te bewegen. Zoom met scrollen, twee vingers of de toetsen + en −. Met Zoeken kun je elk dossier ook zonder kaart openen.</p>
+  <p>Sleep of gebruik de pijltjestoetsen om te bewegen. Zoom met scrollen, twee vingers of de toetsen + en −. Met de zoekbalk kun je elk dossier ook zonder kaart openen. Via Filters kun je uitgebreider zoeken.</p>
   <p>De centrale ster brengt je terug naar het overzicht. Grote planeten openen een stelsel. Kleine planeten openen een dossier.</p>
   <p>Dunne lijnen tonen de indeling. Bij een geselecteerd dossier zijn onderbouwde verbindingen doorgetrokken, vergelijkingen gestippeld en onderzoeksvragen gestreept.</p>
   <ul id="legend-systems"></ul>
@@ -1746,7 +1761,51 @@ document.querySelector('#atlas-reset').onclick=()=>{
   renderDirectory();
   query.focus();
 };
-document.querySelector('#atlas-search').onclick=()=>{renderDirectory();directory.showModal();query.focus()};
+const quickQuery=document.querySelector('#atlas-quick-query');
+const quickPanel=document.querySelector('#atlas-quick-results');
+const quickResults=quickPanel.querySelector('.atlas-results');
+function closeQuickSearch(){
+  quickPanel.hidden=true;
+  quickQuery.setAttribute('aria-expanded','false');
+}
+function renderQuickSearch(){
+  const text=quickQuery.value.trim();
+  quickResults.replaceChildren();
+  if(!text){closeQuickSearch();return;}
+  const words=normalize(text).split(/\s+/);
+  const matches=[...worldsById.values()].filter(world=>{
+    const haystack=normalize([world.name,world.region,world.role,reviewedRoles.get(world.name).label,systems[world.system].name].join(' '));
+    return words.every(word=>haystack.includes(word));
+  });
+  document.querySelector('#atlas-quick-count').textContent=matches.length?matches.length+' resultaten':'Geen resultaten. Probeer een andere naam of term.';
+  for(const world of matches){
+    const button=document.createElement('button');
+    button.type='button';
+    button.textContent=world.name;
+    const metadata=document.createElement('small');
+    metadata.textContent=systems[world.system].name+(world.region?' · '+world.region:'');
+    button.append(metadata);
+    button.onclick=()=>{closeQuickSearch();focusWorld(world);info.querySelector('button').focus();};
+    quickResults.append(button);
+  }
+  quickPanel.hidden=false;
+  quickQuery.setAttribute('aria-expanded','true');
+}
+quickQuery.addEventListener('input',renderQuickSearch);
+quickQuery.addEventListener('focus',renderQuickSearch);
+quickQuery.addEventListener('keydown',event=>{
+  if((event.key==='ArrowDown'||event.key==='Enter')&&!quickPanel.hidden){
+    event.preventDefault();
+    const first=quickResults.querySelector('button');
+    if(event.key==='Enter')first?.click();else first?.focus();
+  }
+});
+document.querySelector('.atlas-quick-search').addEventListener('keydown',event=>{
+  if(event.key==='Escape'){event.preventDefault();event.stopPropagation();closeQuickSearch();quickQuery.focus();closeQuickSearch();}
+});
+document.addEventListener('pointerdown',event=>{if(!event.target.closest('.atlas-quick-search'))closeQuickSearch();});
+document.querySelector('.atlas-quick-search').addEventListener('focusout',event=>{if(!event.currentTarget.contains(event.relatedTarget))closeQuickSearch();});
+document.querySelector('#atlas-search').onclick=()=>{closeQuickSearch();query.value=quickQuery.value;renderDirectory();directory.showModal();query.focus()};
 document.querySelector('#atlas-help').onclick=()=>legend.showModal();
 document.querySelector('#atlas-home').onclick=()=>openWorld(hub);
 
