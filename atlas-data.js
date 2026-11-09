@@ -121,6 +121,19 @@ const explanationSources = new Map([
 ]);
 const atlasAdditions = [
   {
+    "name": "COOL",
+    "system": "Oplossingen",
+    "region": "Nederland",
+    "role": "Digitaal leer- en werkportaal voor onderwijs",
+    "phase": "Beschikbaar",
+    "source": [
+      "Cloudwise over het digitale leer- en werkplatform COOL",
+      "https://www.cloudwise.nl/oplossingen/dlwo-digitale-leer-en-werk-omgeving"
+    ],
+    "explanation": "COOL is het digitale leer- en werkplatform van Cloudwise voor scholen. Het portaal brengt toegang tot onderwijsapplicaties en werkmiddelen voor leerlingen en medewerkers samen. De bijdrage aan de digitale werkplek zit in de toegangs- en integratielaag. Beoordeel die afzonderlijk van de onderliggende toepassingen, accounts en opslagdiensten: een eigen portaal betekent niet dat alle gekoppelde diensten onder dezelfde zeggenschap vallen. Cloudwise biedt ook diensten rond Google Workspace for Education. COOL staat daarom als concreet product bij de oplossingen en Cloudwise als leverancier bij Bedrijven. Deze opname is vergelijkingsmateriaal en geen kwalificatie dat COOL een zelfstandig soevereine werkpleksuite is.",
+    "classification": "Vergelijkingsmateriaal"
+  },
+  {
     "name": "Proxmox VE",
     "system": "Oplossingen",
     "region": "Oostenrijk",
@@ -553,7 +566,7 @@ const atlasAdditions = [
   },
   {
     "name": "Cloudwise",
-    "system": "Oplossingen",
+    "system": "Bedrijven",
     "region": "Nederland",
     "role": "Digitale onderwijsomgeving en integratie",
     "phase": "Beschikbaar",
@@ -912,7 +925,7 @@ const atlasAdditions = [
   },
   {
     "name": "Jouw Advocaten",
-    "system": "Kennis",
+    "system": "Bedrijven",
     "region": "Nederland",
     "role": "Validatiepartner uit de juridische praktijk",
     "phase": "Pilot",
@@ -941,6 +954,7 @@ const atlasAdditions = [
 
 // [object, tegenpartij, soort, toelichting, optioneel nummer van aanvullende bron]
 const atlasAdditionRelations = [
+  ["COOL","Cloudwise","Leverancier","Cloudwise biedt COOL aan als digitaal leer- en werkplatform voor scholen."],
   ["Proxmox Backup Server","Proxmox VE","Techniek","De officiële productinformatie beschrijft integratie voor back-up en herstel van virtuele machines en containers."],
 
   ["ONLYOFFICE Docs", "Collabora Online", "Vergelijking", "Vergelijking van online documenteditors; geen aangetoonde samenwerking."],
@@ -1007,7 +1021,7 @@ const solutionGroups = new Map([
       "Proton Workspace",
       "Infomaniak kSuite",
       "Office.eu",
-      "Cloudwise"
+      "COOL"
     ]
   ],
   [
@@ -1017,7 +1031,8 @@ const solutionGroups = new Map([
       "Collabora Online",
       "ONLYOFFICE Docs",
       "Euro-Office",
-      "La Suite Docs"
+      "La Suite Docs",
+      "CryptPad"
     ]
   ],
   [
@@ -1058,10 +1073,7 @@ const solutionGroups = new Map([
       "OpenProject",
       "XWiki",
       "Grist",
-      "CryptPad",
-      "Nordeck/Neoboard",
-      "L'Assistant",
-      "F13"
+      "Nordeck/Neoboard"
     ]
   ],
   [
@@ -1078,8 +1090,14 @@ const solutionGroups = new Map([
       "Debian",
       "Proxmox VE",
       "Proxmox Backup Server",
-      "Soevereine overheidscloud",
-      "Nuvem Brasileira"
+      "Soevereine overheidscloud"
+    ]
+  ],
+  [
+    "AI-assistenten",
+    [
+      "L'Assistant",
+      "F13"
     ]
   ]
 ]);
@@ -1111,8 +1129,7 @@ const infrastructureGroups = new Map([
   [
     "Clouddienst",
     [
-      "Soevereine overheidscloud",
-      "Nuvem Brasileira"
+      "Soevereine overheidscloud"
     ]
   ]
 ]);
