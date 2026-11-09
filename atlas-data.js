@@ -121,6 +121,32 @@ const explanationSources = new Map([
 ]);
 const atlasAdditions = [
   {
+    "name": "Proxmox VE",
+    "system": "Oplossingen",
+    "region": "Oostenrijk",
+    "role": "Virtualisatie van servers en containers",
+    "phase": "Beschikbaar",
+    "source": [
+      "Proxmox VE: officiële productbeschrijving",
+      "https://www.proxmox.com/en/products/proxmox-virtual-environment/overview"
+    ],
+    "explanation": "Proxmox Virtual Environment is een opensourceplatform voor servervirtualisatie. Het combineert KVM voor virtuele machines en LXC voor Linux-containers met beheer van opslag, netwerken en clusters via een webinterface. Voor een digitale werkplek vormt het een infrastructuurbasis waarop organisaties eigen toepassingen en servers kunnen laten draaien. Dat biedt keuze over hardware, hosting en beheer, zonder dat een complete publieke cloud nodig is. Proxmox VE levert zelf geen kantoorsoftware of samenwerkdiensten. De organisatie blijft verantwoordelijk voor beveiligingsupdates, beschikbaarheid, beheerrechten en herstel. Professionele ondersteuning is beschikbaar; de gekozen inrichting en dienstverlening bepalen de feitelijke zeggenschap.",
+    "classification": "Infrastructuur"
+  },
+  {
+    "name": "Proxmox Backup Server",
+    "system": "Oplossingen",
+    "region": "Oostenrijk",
+    "role": "Back-up en herstel",
+    "phase": "Beschikbaar",
+    "source": [
+      "Proxmox Backup Server: officiële productbeschrijving",
+      "https://www.proxmox.com/en/products/proxmox-backup-server/overview"
+    ],
+    "explanation": "Proxmox Backup Server is een opensourceoplossing voor back-up en herstel van virtuele machines, containers en fysieke hosts. Het ondersteunt onder meer incrementele back-ups, deduplicatie, versleuteling en controle van gegevensintegriteit. De officiële productinformatie beschrijft integratie met Proxmox VE en opslag op eigen locaties of op afstand. Voor een soevereine werkplek is herstelbaarheid een afzonderlijke bouwsteen: een organisatie moet ook na een storing of incident bij haar gegevens kunnen. De zeggenschap hangt mede af van de locatie van back-ups, toegang tot sleutels, bewaarbeleid en aantoonbaar geteste herstelprocedures. De software vervangt geen organisatiebreed continuïteitsplan.",
+    "classification": "Infrastructuur"
+  },
+  {
     "name": "ONLYOFFICE Docs",
     "system": "Oplossingen",
     "region": "Internationaal",
@@ -915,6 +941,8 @@ const atlasAdditions = [
 
 // [object, tegenpartij, soort, toelichting, optioneel nummer van aanvullende bron]
 const atlasAdditionRelations = [
+  ["Proxmox Backup Server","Proxmox VE","Techniek","De officiële productinformatie beschrijft integratie voor back-up en herstel van virtuele machines en containers."],
+
   ["ONLYOFFICE Docs", "Collabora Online", "Vergelijking", "Vergelijking van online documenteditors; geen aangetoonde samenwerking."],
   ["Zimbra", "grommunio", "Vergelijking", "Vergelijking van mail- en groupwareplatforms; geen aangetoonde samenwerking."],
   ["Keycloak", "Univention Nubus", "Vergelijking", "Vergelijking van bouwstenen voor identiteit en toegang; functies en integraties verschillen."],
@@ -967,3 +995,124 @@ const atlasAdditionRelations = [
   ["Tchap","Cnam","Migratie","De Franse overheid noemt Tchap bij de aangekondigde invoering bij Cnam.",1],
   ["FranceTransfert","Cnam","Migratie","De Franse overheid noemt FranceTransfert bij de aangekondigde invoering bij Cnam.",1],
 ];
+
+// Functionele indeling binnen Oplossingen; één hoofdgroep per dossier.
+const solutionGroups = new Map([
+  [
+    "Werkpleksuites",
+    [
+      "SURF Works",
+      "Microsoft 365",
+      "Murena",
+      "Proton Workspace",
+      "Infomaniak kSuite",
+      "Office.eu",
+      "Cloudwise"
+    ]
+  ],
+  [
+    "Documenten",
+    [
+      "LibreOffice",
+      "Collabora Online",
+      "ONLYOFFICE Docs",
+      "Euro-Office",
+      "La Suite Docs"
+    ]
+  ],
+  [
+    "Bestanden",
+    [
+      "Nextcloud",
+      "Seafile",
+      "ownCloud Infinite Scale",
+      "La Suite Fichiers",
+      "FranceTransfert"
+    ]
+  ],
+  [
+    "Communicatie",
+    [
+      "Element",
+      "Rocket.Chat",
+      "Jitsi",
+      "OpenTalk",
+      "La Suite Visio",
+      "Tchap"
+    ]
+  ],
+  [
+    "Mail & agenda",
+    [
+      "Zimbra",
+      "grommunio",
+      "mailcow",
+      "EGroupware",
+      "OX App Suite",
+      "GroupOffice"
+    ]
+  ],
+  [
+    "Projecten & kennis",
+    [
+      "OpenProject",
+      "XWiki",
+      "Grist",
+      "CryptPad",
+      "Nordeck/Neoboard",
+      "L'Assistant",
+      "F13"
+    ]
+  ],
+  [
+    "Identiteit",
+    [
+      "Keycloak",
+      "Univention Nubus"
+    ]
+  ],
+  [
+    "Infrastructuur",
+    [
+      "OpenStack",
+      "Debian",
+      "Proxmox VE",
+      "Proxmox Backup Server",
+      "Soevereine overheidscloud",
+      "Nuvem Brasileira"
+    ]
+  ]
+]);
+const infrastructureGroups = new Map([
+  [
+    "Virtualisatie",
+    [
+      "Proxmox VE"
+    ]
+  ],
+  [
+    "Cloudplatform",
+    [
+      "OpenStack"
+    ]
+  ],
+  [
+    "Besturingssysteem",
+    [
+      "Debian"
+    ]
+  ],
+  [
+    "Back-up",
+    [
+      "Proxmox Backup Server"
+    ]
+  ],
+  [
+    "Clouddienst",
+    [
+      "Soevereine overheidscloud",
+      "Nuvem Brasileira"
+    ]
+  ]
+]);

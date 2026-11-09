@@ -113,6 +113,7 @@ aside{bottom:max(var(--atlas-bottom),2.5vw)}
   <div class="atlas-filters">
     <label>Naam, onderwerp of land<input type="search" id="atlas-query"></label>
     <label>Stelsel<select id="atlas-system"><option value="">Alle stelsels</option></select></label>
+    <label>Subcategorie<select id="atlas-subcategory"><option value="">Alle subcategorieën</option></select></label>
     <label>Land of regio<select id="atlas-region"><option value="">Alle regio’s</option></select></label>
     <label>Ontwikkelfase<select id="atlas-phase"><option value="">Alle fasen</option><option value="unknown">Nog te controleren</option></select></label>
     <label>Rol<select id="atlas-role"><option value="">Alle rollen</option></select></label>
@@ -1159,6 +1160,21 @@ for(const [from,to,kind,description,reference=0] of atlasAdditionRelations){
   links.push([from,to,description,{kind,source:{title,url}}]);
 }
 
+const solutionSystem=systems.findIndex(system=>system.name==='Oplossingen');
+for(const [subcategory,names] of solutionGroups){
+  for(const name of names){
+    const node=nodes.get(name);
+    if(node?.system===solutionSystem)node.subcategory=subcategory;
+  }
+}
+for(const [infrastructureType,names] of infrastructureGroups){
+  for(const name of names){
+    const node=nodes.get(name);
+    if(node?.subcategory==='Infrastructuur')node.infrastructureType=infrastructureType;
+  }
+}
+function solutionLabel(world){return [world.subcategory,world.infrastructureType].filter(Boolean).join(' · ');}
+
 const centers = [
   [-365,-185,-.42],[115,-235,.27],[-180,175,.55],
   [345,120,-.29],[25,365,-.36],[-140,-360,.42],
@@ -1433,7 +1449,7 @@ function openWorld(world,showOverview=false){
     info.style.setProperty('--tone',world.tone);
     detailBadge.hidden=true;
     info.querySelector('h2').textContent=world.name;
-    info.querySelector('p').textContent=world.hub?'Overzicht van de werkpleklagen':'Kies een item om de rolbeoordeling te lezen.';
+    info.querySelector('p').textContent=world.hub?'Overzicht van de werkpleklagen':world.system===solutionSystem?'Verken de oplossingen per subcategorie.':'Kies een item om het dossier te lezen.';
     const [explanation,examples]=world.hub?[
       'Het Soevereinestelsel brengt publieke projecten, software, infrastructuur en beleid rond de digitale werkplek in kaart. DAWO laat zien hoe een overheid een andere desktopbasis kan beproeven. MijnBureau brengt bestaande bouwstenen samen voor digitaal samenwerken. Open standaarden helpen beoordelen of bestanden tussen toepassingen uitgewisseld kunnen worden. Clouddossiers laten zien welke keuzes onder de toepassingen liggen, zoals waar bestanden worden opgeslagen en wie systemen beheert. De kaart maakt onderscheid tussen aantoonbare verbindingen, vergelijkingen en onderzoeksvragen. Daardoor kan een bezoeker per laag nagaan wat een organisatie kan kiezen, beheren of vervangen.',
       ['DAWO','MijnBureau','Open standaarden']
@@ -1446,13 +1462,24 @@ function openWorld(world,showOverview=false){
     info.querySelector('aside > small').textContent='';
     const list=info.querySelector('.relations');
     list.replaceChildren();
-    for(const item of mapWorlds.filter(item=>world.hub?item.sun&&!item.hub:!item.sun&&item.system===world.system)){
+    const categoryItems=(world.system===solutionSystem?worlds:mapWorlds).filter(item=>world.hub?item.sun&&!item.hub:!item.sun&&item.system===world.system);
+    const orderedItems=world.system===solutionSystem
+      ? [...categoryItems].sort((a,b)=>[...solutionGroups.keys()].indexOf(a.subcategory)-[...solutionGroups.keys()].indexOf(b.subcategory)||String(a.infrastructureType||'').localeCompare(b.infrastructureType||'','nl')||a.name.localeCompare(b.name,'nl'))
+      : categoryItems;
+    let previousGroup='',previousType='';
+    for(const item of orderedItems){
+      if(world.system===solutionSystem&&item.subcategory!==previousGroup){
+        const heading=document.createElement('h3');heading.textContent=item.subcategory;list.append(heading);previousGroup=item.subcategory;previousType='';
+      }
+      if(world.system===solutionSystem&&item.infrastructureType&&item.infrastructureType!==previousType){
+        const heading=document.createElement('h4');heading.textContent=item.infrastructureType;list.append(heading);previousType=item.infrastructureType;
+      }
       const button=document.createElement('button');
       button.className='relation';
       const title=document.createElement('strong');
       title.textContent=item.name;
       const role=document.createElement('small');
-      role.textContent=item.sun?'Stelsel':reviewedRoles.get(item.name).label;
+      role.textContent=item.sun?'Stelsel':item.role||reviewedRoles.get(item.name).label;
       button.append(title,role);
       button.onclick=()=>openWorld(item);
       list.append(button);
@@ -1473,7 +1500,7 @@ function openWorld(world,showOverview=false){
     ? 'Aangeleverd landschapsonderzoek · 8 november 2026'
     : 'Conceptkaart · verbanden om te toetsen';
   info.querySelector('h2').textContent=world.name;
-  info.querySelector('p').textContent=[world.role,world.region].filter(Boolean).join(' · ');
+  info.querySelector('p').textContent=[solutionLabel(world),world.role,world.region].filter(Boolean).join(' · ');
   const assessment=renderExplanation(dossierExplanations.get(world.name),sourcesForExplanation(world.name));
 
   const researchNotes=document.createElement('ul');
@@ -1696,6 +1723,13 @@ expandButton.onclick=()=>{
 const directory=document.querySelector('#atlas-directory');
 const query=document.querySelector('#atlas-query');
 const clusterFilter=document.querySelector('#atlas-system');
+const subcategoryFilter=document.querySelector('#atlas-subcategory');
+for(const subcategory of solutionGroups.keys()){
+  subcategoryFilter.add(new Option(subcategory,subcategory));
+  if(subcategory==='Infrastructuur'){
+    for(const type of infrastructureGroups.keys())subcategoryFilter.add(new Option('Infrastructuur · '+type,subcategory+'/'+type));
+  }
+}
 const roleFilter=document.querySelector('#atlas-role');
 const regionFilter=document.querySelector('#atlas-region');
 const phaseFilter=document.querySelector('#atlas-phase');
@@ -1729,16 +1763,17 @@ function renderDirectory(){
   for(const world of worldsById.values()){
     const role=reviewedRoles.get(world.name).label;
     if(clusterFilter.value&&String(world.system)!==clusterFilter.value)continue;
+    if(subcategoryFilter.value&&[world.subcategory,world.subcategory+'/'+world.infrastructureType].every(value=>value!==subcategoryFilter.value))continue;
     if(roleFilter.value&&role!==roleFilter.value)continue;
     if(regionFilter.value&&world.region!==regionFilter.value)continue;
     if(phaseFilter.value&&(phases.get(world.name)||'unknown')!==phaseFilter.value)continue;
-    const haystack=normalize([world.name,world.region,world.role,role,systems[world.system].name].join(' '));
+    const haystack=normalize([world.name,world.region,world.role,role,solutionLabel(world),systems[world.system].name].join(' '));
     if(!words.every(word=>haystack.includes(word)))continue;
     const button=document.createElement('button');
     button.type='button';
     button.textContent=world.name;
     const metadata=document.createElement('small');
-    metadata.textContent=systems[world.system].name+' · '+role;
+    metadata.textContent=[systems[world.system].name,solutionLabel(world),role].filter(Boolean).join(' · ');
     button.append(metadata);
     button.onclick=()=>{
       directory.close();
@@ -1752,12 +1787,18 @@ function renderDirectory(){
   document.querySelector('#atlas-count').textContent=count+' resultaten';
 }
 query.addEventListener('input',renderDirectory);
-clusterFilter.addEventListener('change',renderDirectory);
+clusterFilter.addEventListener('change',()=>{
+  subcategoryFilter.disabled=clusterFilter.value!==''&&Number(clusterFilter.value)!==solutionSystem;
+  if(subcategoryFilter.disabled)subcategoryFilter.value='';
+  renderDirectory();
+});
+subcategoryFilter.addEventListener('change',()=>{if(subcategoryFilter.value)clusterFilter.value=String(solutionSystem);renderDirectory();});
 roleFilter.addEventListener('change',renderDirectory);
 regionFilter.addEventListener('change',renderDirectory);
 phaseFilter.addEventListener('change',renderDirectory);
 document.querySelector('#atlas-reset').onclick=()=>{
-  for(const control of [query,clusterFilter,regionFilter,roleFilter,phaseFilter])control.value='';
+  for(const control of [query,clusterFilter,subcategoryFilter,regionFilter,roleFilter,phaseFilter])control.value='';
+  subcategoryFilter.disabled=false;
   renderDirectory();
   query.focus();
 };
@@ -1774,7 +1815,7 @@ function renderQuickSearch(){
   if(!text){closeQuickSearch();return;}
   const words=normalize(text).split(/\s+/);
   const matches=[...worldsById.values()].filter(world=>{
-    const haystack=normalize([world.name,world.region,world.role,reviewedRoles.get(world.name).label,systems[world.system].name].join(' '));
+    const haystack=normalize([world.name,world.region,world.role,reviewedRoles.get(world.name).label,solutionLabel(world),systems[world.system].name].join(' '));
     return words.every(word=>haystack.includes(word));
   });
   document.querySelector('#atlas-quick-count').textContent=matches.length?matches.length+' resultaten':'Geen resultaten. Probeer een andere naam of term.';
@@ -1783,7 +1824,7 @@ function renderQuickSearch(){
     button.type='button';
     button.textContent=world.name;
     const metadata=document.createElement('small');
-    metadata.textContent=systems[world.system].name+(world.region?' · '+world.region:'');
+    metadata.textContent=[systems[world.system].name,solutionLabel(world),world.region].filter(Boolean).join(' · ');
     button.append(metadata);
     button.onclick=()=>{closeQuickSearch();focusWorld(world);info.querySelector('button').focus();};
     quickResults.append(button);
