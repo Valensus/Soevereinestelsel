@@ -17,3 +17,5 @@ De eerdere versie staat in backup/index-voor-2.0.html.
 - De CSV-export bij Zoeken bevat de gefilterde bronrecords die als geraadpleegd zijn gemarkeerd.
 
 Wereldwijd bevat publieke initiatieven en praktijkvoorbeelden buiten Europa. Vermeld bij nieuwe dossiers een concrete `phase` en onderscheid historische voorbeelden, aankondigingen, scholing en aantoonbaar gebruik. De fase verschijnt bij wereldwijde dossiers naast rol en regio. Nationale regie en een opensourcebasis zijn afzonderlijke kenmerken; schrijf geen volledige migratie of herbruikbare licentie toe zonder bron.
+
+Beleid bevat beleidsvisies, wetgeving, contractvoorwaarden en handreikingen. Vermeld bij nieuwe beleidsdossiers het toepassingsgebied en de status expliciet in de toelichting en geef een passende `phase` op. De status verschijnt naast rol en regio. Een verplichting geldt alleen binnen het betreffende toepassingsgebied; presenteer een advies of modelvoorwaarde niet als wet of als bewijs van soevereiniteit.

@@ -209,7 +209,7 @@ const dossierExplanations = new Map([
   ["Europese cloudinkoop","De Europese Commissie gunde vier contracten voor clouddiensten voor EU-instellingen en gebruikte haar Cloud Sovereignty Framework om aanbiedingen te beoordelen. Zij koos meerdere leveranciers om de afhankelijkheid van één aanbieder te beperken. De Commissie meldt dat de geselecteerde diensten verschillende niveaus van zeggenschap bereikten. Voor een werkplek is de bijdrage indirect: als bestanden of samenwerking in de cloud worden ondergebracht, kan een opdrachtgever de zeggenschap over die infrastructuur al bij inkoop beoordelen. De gunning betreft clouddiensten voor EU-instellingen. Zij legt geen keuze voor een Nederlandse werkpleksuite vast."],
 ]);
 const systemExplanations = new Map([
-  ["Beleid",["Beleidskeuzes worden voor de werkplek concreet wanneer ze bepalen wat overheden inkopen en welke afhankelijkheden ze accepteren. Het Regeerakkoord geeft richting, de Nederlandse Digitaliseringsstrategie brengt bestuurslagen samen en Forum Standaardisatie vertaalt uitwisselbaarheid naar inkoopeisen. De rijksbrede ontwikkelopdracht laat zien hoe zulke keuzes bij uitvoerders terechtkomen. De bijdrage van dit stelsel is sturing: het maakt zichtbaar wie criteria stelt, wie opdracht geeft en hoe technische keuzes later getoetst kunnen worden. De feitelijke zeggenschap over software, gegevens en beheer moet vervolgens per geleverde dienst worden vastgesteld.",["Regeerakkoord","NDS","Forum Standaardisatie"]]],
+  ["Beleid",["Beleid verbindt ambities voor digitale autonomie met concrete keuzes voor de werkplek. Dit stelsel bevat beleidsvisies, wetgeving, contractvoorwaarden en praktische handreikingen. De kaarten maken duidelijk voor wie een kader bedoeld is en wat de status is. Open source, open standaarden, privacy, beveiliging, informatiebeheer en overstappen vragen elk eigen afwegingen. Niet elk kader geldt voor iedere organisatie of dienst. Gebruik de dossiers om passende eisen te formuleren voor inkoop, inrichting en beheer; geen van deze kaders bewijst op zichzelf dat een product volledig soeverein is.",["Visie digitale autonomie","Pas toe of leg uit","Gemeentelijke cloudeisen","Data Act","DUTO-raamwerk"]]],
   ["Rijksoverheid",["Hier staan organisaties en projecten die een publieke werkplek ontwikkelen, beproeven of in gebruik nemen. SSC-ICT bouwt met DAWO aan de desktoplaag. BZK brengt met MijnBureau bestaande samenwerkcomponenten bijeen. De gemeentepilot toetst de combinatie en de rijksopdracht brengt meerdere ICT-dienstverleners bij elkaar. De betekenis voor zeggenschap zit in het kunnen kiezen en aanpassen van werkpleklagen, onderbouwd met ervaringen van gebruikers. De dossiers maken onderscheid tussen een opdrachtgever, een ontwikkelaar en een deelnemer aan een proef. Ook bestaande werkplekkeuzes geven context voor wat bij een overstap moet worden meegenomen.",["DAWO","MijnBureau","Rijksbrede Soevereine Digitale Werkomgeving"]]],
   ["Technologie",["Technologie omvat software en infrastructuur voor de digitale werkplek: van bestanden, documenten, projectplanning en communicatie tot rekenkracht, opslag en hosting. De architectuur van openDesk laat zien hoe Nextcloud, OpenProject en Element verschillende functies vervullen en waar ze aan elkaar gekoppeld zijn. SURF Works laat zien hoe Nextcloud ook in een andere omgeving kan worden beproefd. Voor de werkplek is van belang welke componenten een organisatie zelf kan laten beheren en welke bestanden en instellingen bruikbaar blijven als zij één onderdeel vervangt. De dossiers onderscheiden software die zelf een werkplekfunctie levert van organisaties die de ontwikkeling daarvan ondersteunen.",["openDesk","Nextcloud","SURF Works"]]],
   ["Kennis",["Onderzoek en praktijkproeven helpen om aannames over een werkplek te toetsen. Zuyd is genoemd als partner bij SOLID, dat lokale infrastructuur voor samenwerking en AI onderzoekt. Radboud Universiteit beschrijft ervaringen met de Nextcloud-proef van SURF. Die casussen beantwoorden verschillende vragen: wat kan lokaal worden verwerkt en wat hebben gebruikers nodig om met alternatieve software te werken? De bijdrage van dit stelsel ligt bij bewijs voor ontwerp- en invoeringskeuzes. Een proef geeft informatie over de geteste omgeving en gebruikers. Voor andere organisaties blijft relevant welke eigen processen en koppelingen zij moeten beproeven.",["SOLID","SURF Works","Radboud Universiteit"]]],
@@ -248,6 +248,231 @@ const explanationSources = new Map([
   ["DAWO",[["DAWO-installatiecode","https://code.overheid.nl/MinBZK/DAWO-Installatie"]]],
 ]);
 const atlasAdditions = [
+  {
+    "name": "Visie digitale autonomie",
+    "system": "Beleid",
+    "region": "Nederland",
+    "role": "Beleidsvisie",
+    "phase": "Vastgestelde visie",
+    "scope": "Nederlandse overheid",
+    "classification": "Beleidsvisie",
+    "source": [
+      "Rijksoverheid: Visie digitale autonomie en soevereiniteit",
+      "https://www.rijksoverheid.nl/documenten/2025/12/18/bijlage-2-visie-digitale-autonomie-en-soevereiniteit-van-de-overheid"
+    ],
+    "explanation": "Voor wie: Nederlandse overheid. Status: Vastgestelde visie. De visie geeft richting aan het versterken van digitale autonomie en soevereiniteit van de Nederlandse overheid. Voor een werkplek helpt zij om afhankelijkheden van leveranciers, technologie en beheer te beoordelen. Het is een beleidsvisie en geen certificaat voor een product. Vertaal de richting naar eigen eisen voor zeggenschap, vervangbaarheid en continuïteit; een specifieke werkpleksuite wordt hiermee niet voorgeschreven."
+  },
+  {
+    "name": "Open, tenzij",
+    "system": "Beleid",
+    "region": "Nederland",
+    "role": "Opensourcebeleid",
+    "phase": "Beleidsuitgangspunt",
+    "scope": "Software ontwikkeld door of voor de overheid",
+    "classification": "Opensourcebeleid",
+    "source": [
+      "developer.overheid.nl: Open Source",
+      "https://developer.overheid.nl/kennisbank/open-source/"
+    ],
+    "explanation": "Voor wie: Software ontwikkeld door of voor de overheid. Status: Beleidsuitgangspunt. Open, tenzij is het beleidsuitgangspunt om software van de overheid zoveel mogelijk met een opensourcelicentie beschikbaar te maken, behalve wanneer goede redenen zich daartegen verzetten. Voor een eigen werkplek kunnen openbare broncode en hergebruik samenwerking en onafhankelijk onderhoud ondersteunen. Het gaat om overheidssoftware; hieruit volgt geen algemene wettelijke verplichting om uitsluitend opensourcepakketten in te kopen. Organiseer ook licenties, documentatie, onderhoud en een gemeenschap rond de code."
+  },
+  {
+    "name": "Pas toe of leg uit",
+    "system": "Beleid",
+    "region": "Nederland",
+    "role": "Openstandaardenbeleid",
+    "phase": "Verplicht binnen toepassingsgebied",
+    "scope": "Overheden en uitvoeringsorganisaties; overige publieke sector: advies",
+    "classification": "Openstandaardenbeleid",
+    "source": [
+      "Forum Standaardisatie: Pas toe of leg uit",
+      "https://www.forumstandaardisatie.nl/pas-toe-leg-uit-beleid"
+    ],
+    "explanation": "Voor wie: Overheden en uitvoeringsorganisaties; overige publieke sector: advies. Status: Verplicht binnen toepassingsgebied. Dit beleid verlangt bij ICT-aanschaf en ontwikkeling toepassing of uitvraag van relevante standaarden op de Pas toe of leg uit-lijst. Afwijkingen moeten worden verantwoord. Forum Standaardisatie beschrijft een verplichting voor overheden en uitvoeringsorganisaties en een dringend advies voor andere publieke organisaties. Voor een werkplek zijn uitwisselbare documenten, veilige verbindingen en toegankelijke diensten belangrijke onderwerpen. Controleer per standaard het functionele en organisatorische toepassingsgebied. Een open standaard en opensourceprogrammatuur zijn verschillende eigenschappen."
+  },
+  {
+    "name": "Gemeentelijke cloudeisen",
+    "system": "Beleid",
+    "region": "Nederland",
+    "role": "Inkoophandreiking",
+    "phase": "Advies en modelcriteria",
+    "scope": "Gemeenten; IaaS en PaaS",
+    "classification": "Inkoophandreiking",
+    "source": [
+      "VNG via PIANOo: Eisen aan gemeentelijke cloudvoorzieningen",
+      "https://www.pianoo.nl/nl/document/23873/eisen-aan-gemeentelijke-cloudvoorzieningen"
+    ],
+    "explanation": "Voor wie: Gemeenten; IaaS en PaaS. Status: Advies en modelcriteria. De VNG-handreiking uit juli 2026 ondersteunt gemeentelijke inkoop van infrastructuur- en platformclouddiensten (IaaS en PaaS). Zij combineert een strategisch kader met eisen en gunningscriteria voor onder meer rechtsmacht, portabiliteit en continuïteit. Voor werkplekken raakt dit de infrastructuur onder bestanden, samenwerking en identiteit. De VNG adviseert toepassing bij komende aanbestedingen. Het is geen algemene wettelijke plicht of rechtstreeks compleet eisenpakket voor iedere SaaS-werkpleksuite. Gebruik het om een latere overstap uitvoerbaar te houden."
+  },
+  {
+    "name": "Handreiking digitale autonomie",
+    "system": "Beleid",
+    "region": "Nederland",
+    "role": "ACM-handreiking",
+    "phase": "Richtinggevend hulpmiddel",
+    "scope": "Overheden, ondernemingen en afnemers van digitale diensten",
+    "classification": "ACM-handreiking",
+    "source": [
+      "ACM via PIANOo: Handreiking digitale autonomie",
+      "https://www.pianoo.nl/nl/document/24106/handreiking-digitale-autonomie"
+    ],
+    "explanation": "Voor wie: Overheden, ondernemingen en afnemers van digitale diensten. Status: Richtinggevend hulpmiddel. De ACM-handreiking van oktober 2026 beschrijft mogelijkheden om digitale afhankelijkheden te verminderen binnen de regels waarop de ACM toezicht houdt. Zij behandelt onder meer samenwerking, gezamenlijke inkoop, dataportabiliteit en overstappen. Voor een werkplek biedt dit aanknopingspunten om vraag te bundelen en alternatieven te ondersteunen. De handreiking richt zich op verschillende doelgroepen, waaronder overheden en bedrijven. Zij bevat geen algemene juridische conclusies: de ruimte voor een concrete samenwerking of inkoopkeuze hangt af van de omstandigheden."
+  },
+  {
+    "name": "Data Act",
+    "system": "Beleid",
+    "region": "Europa",
+    "role": "Europese wetgeving",
+    "phase": "Van toepassing; overgangsbepalingen",
+    "scope": "Onder meer aanbieders en klanten van dataverwerkingsdiensten",
+    "classification": "Europese wetgeving",
+    "source": [
+      "Europese Commissie: Data Act explained",
+      "https://digital-strategy.ec.europa.eu/en/factpages/data-act-explained"
+    ],
+    "explanation": "Voor wie: Onder meer aanbieders en klanten van dataverwerkingsdiensten. Status: Van toepassing; overgangsbepalingen. De Europese Data Act bevat onder meer regels voor overstappen tussen dataverwerkingsdiensten, waaronder clouddiensten. Voor de werkplek is dat relevant bij het terughalen van bestanden en digitale middelen of het vervangen van een aanbieder. Onderzoek bij inkoop welke export, ondersteuning en contractafspraken het overstappen mogelijk maken. Reikwijdte, uitzonderingen en overgangsbepalingen moeten per dienst worden bekeken. De verordening schrijft geen Europese leverancier of opensourcewerkplek voor en maakt verschillende pakketten niet automatisch functioneel uitwisselbaar."
+  },
+  {
+    "name": "AVG en internationale doorgifte",
+    "system": "Beleid",
+    "region": "Europa",
+    "role": "Privacywetgeving",
+    "phase": "Wettelijk kader",
+    "scope": "Organisaties die persoonsgegevens verwerken",
+    "classification": "Privacywetgeving",
+    "source": [
+      "Autoriteit Persoonsgegevens: Doorgifte buiten de EER",
+      "https://autoriteitpersoonsgegevens.nl/themas/internationaal/doorgifte-binnen-en-buiten-de-eer/doorgifte-persoonsgegevens-buiten-de-eer"
+    ],
+    "explanation": "Voor wie: Organisaties die persoonsgegevens verwerken. Status: Wettelijk kader. De AVG stelt eisen aan verwerking en bescherming van persoonsgegevens. Bij internationale doorgifte gelden aanvullende voorwaarden. Een werkplek verwerkt persoonsgegevens in mail, documenten, accounts en gebruiksgegevens; breng daarom ook beheer, ondersteuning en onderaannemers in beeld. Alleen een Europees datacentrum aanwijzen beantwoordt niet alle vragen over toegang en doorgifte. Controleer de verwerkingsafspraken en toepasselijke doorgiftegrond. Naleving van de AVG en digitale soevereiniteit zijn afzonderlijke beoordelingen; de AVG verplicht niet in het algemeen tot opensourcegebruik."
+  },
+  {
+    "name": "BIO2",
+    "system": "Beleid",
+    "region": "Nederland",
+    "role": "Beveiligingskader",
+    "phase": "Overheidsbaseline; wettelijke invulling waar toepasselijk",
+    "scope": "Overheidsorganisaties; wettelijke reikwijdte apart toetsen",
+    "classification": "Beveiligingskader",
+    "source": [
+      "Digitale Overheid: Baseline Informatiebeveiliging Overheid",
+      "https://www.digitaleoverheid.nl/overzicht-van-alle-onderwerpen/cybersecurity/bio-en-ensia/baseline-informatiebeveiliging-overheid/"
+    ],
+    "explanation": "Voor wie: Overheidsorganisaties; wettelijke reikwijdte apart toetsen. Status: Overheidsbaseline; wettelijke invulling waar toepasselijk. De BIO2 is de gezamenlijke risicogerichte beveiligingsbaseline voor de overheid, gebaseerd op internationale beveiligingsnormen en aanvullende overheidsmaatregelen. Voor organisaties onder de Cyberbeveiligingswet krijgt zij een wettelijke rol via de regeling voor de sector overheid. Voor de werkplek helpt dit eisen aan toegang, beheer, leveranciers, herstel en continuïteit te concretiseren. Bepaal welke verplichtingen voor de eigen organisatie gelden. Een beveiligingsbaseline kiest geen werkplekpakket en bewijst op zichzelf geen juridische of operationele soevereiniteit."
+  },
+  {
+    "name": "DUTO-raamwerk",
+    "system": "Beleid",
+    "region": "Nederland",
+    "role": "Informatiebeheerkader",
+    "phase": "Ontwerp- en beoordelingshulpmiddel",
+    "scope": "Overheidsinformatie en betrokken informatiesystemen",
+    "classification": "Informatiebeheerkader",
+    "source": [
+      "Nationaal Archief: DUTO-raamwerk",
+      "https://www.nationaalarchief.nl/archiveren/kennisbank/duto-raamwerk"
+    ],
+    "explanation": "Voor wie: Overheidsinformatie en betrokken informatiesystemen. Status: Ontwerp- en beoordelingshulpmiddel. Het DUTO-raamwerk helpt overheidsinformatie duurzaam toegankelijk te maken. Het werkt processen uit voor registreren, bewaren, migreren, vernietigen en beschikbaar stellen. Voor de digitale werkplek betekent dit dat mail en documenten ook na een overstap vindbaar, leesbaar en bruikbaar moeten blijven, met passende metagegevens en bewaartermijnen. Neem dit mee in ontwerp en inkoop. Het raamwerk ondersteunt informatiebeheer en de uitvoering van verplichtingen, maar is zelf geen afzonderlijke wet en geen keurmerk voor soevereine software."
+  },
+  {
+    "name": "Cyberbeveiligingswet",
+    "system": "Beleid",
+    "region": "Nederland",
+    "role": "Nederlandse wetgeving / NIS2",
+    "phase": "In werking sinds 15 augustus 2026",
+    "scope": "Organisaties binnen de wettelijke reikwijdte",
+    "classification": "Nederlandse wetgeving / NIS2",
+    "source": [
+      "NCTV: Cyberbeveiligingswet",
+      "https://www.nctv.nl/onderwerpen/c/cyberbeveiligingswet"
+    ],
+    "explanation": "Voor wie: Organisaties binnen de wettelijke reikwijdte. Status: In werking sinds 15 augustus 2026. De Cyberbeveiligingswet zet de NIS2-richtlijn om in Nederlandse wetgeving en geldt sinds 15 augustus 2026. Organisaties binnen de reikwijdte krijgen verplichtingen rond registratie, zorg voor beveiliging en het melden van significante incidenten. Voor een werkplek zijn continuïteit, toegangsbeheer, herstel en leveranciersafhankelijkheden concrete aandachtspunten. Controleer sector, uitzonderingen en eventuele ontheffingen voor de eigen organisatie. De wet bevat geen algemene verplichting om alle niet-Europese software te vervangen. Beveiliging en autonomie vragen ieder een eigen beoordeling."
+  },
+  {
+    "name": "Interoperable Europe Act",
+    "system": "Beleid",
+    "region": "Europa",
+    "role": "Europese wetgeving",
+    "phase": "Gerichte beoordelingsplicht",
+    "scope": "EU-instellingen en publieke organisaties bij relevante grensoverschrijdende diensten",
+    "classification": "Europese wetgeving",
+    "source": [
+      "Europese Commissie: Wanneer is een interoperabiliteitsbeoordeling verplicht?",
+      "https://interoperable-europe.ec.europa.eu/guidelines-chapter-2-when-interoperability-assessment-legally-required"
+    ],
+    "explanation": "Voor wie: EU-instellingen en publieke organisaties bij relevante grensoverschrijdende diensten. Status: Gerichte beoordelingsplicht. De Interoperable Europe Act bevordert uitwisselbare grensoverschrijdende digitale overheidsdiensten en hergebruik van oplossingen. Sinds 12 januari 2025 geldt een interoperabiliteitsbeoordeling bij bepaalde nieuwe of gewijzigde bindende eisen voor trans-Europese digitale publieke diensten. Voor een werkplek is dit vooral context voor architectuur en koppelingen naar zulke diensten. Gewone aanschaf van standaardapparatuur leidt doorgaans niet tot deze beoordelingsplicht. De verordening verplicht dus niet tot een beoordeling van iedere interne kantoorwerkplek of tot één opensourcesuite."
+  },
+  {
+    "name": "ARBIT",
+    "system": "Beleid",
+    "region": "Nederland",
+    "role": "Rijksinkoopvoorwaarden",
+    "phase": "Contractvoorwaarden; ARBIT 2022",
+    "scope": "IT-opdrachten van de Rijksoverheid",
+    "classification": "Rijksinkoopvoorwaarden",
+    "source": [
+      "Rijksoverheid: Voorwaarden voor Rijksopdrachten",
+      "https://www.rijksoverheid.nl/themas/overheid-en-democratie/zakendoen-met-het-rijk/voorwaarden-voor-rijksopdrachten"
+    ],
+    "explanation": "Voor wie: IT-opdrachten van de Rijksoverheid. Status: Contractvoorwaarden; ARBIT 2022. De Algemene Rijksvoorwaarden bij IT-overeenkomsten vormen contractvoorwaarden voor IT-opdrachten van het Rijk. De officiële overzichtspagina verwijst naar ARBIT 2022. Voor een werkplek zijn heldere afspraken over levering, gebruiksrechten, onderhoud en verantwoordelijkheden nodig om regie te kunnen uitoefenen. Leg de gewenste overdraagbaarheid en ondersteuning bij een overstap concreet vast in de overeenkomst. ARBIT is geen zelfstandige wet of soevereiniteitskeurmerk; de overeengekomen voorwaarden en aanvullende afspraken bepalen de contractuele positie."
+  },
+  {
+    "name": "GIBIT",
+    "system": "Beleid",
+    "region": "Nederland",
+    "role": "Gemeentelijke inkoopinstrumenten",
+    "phase": "Actuele versie: GIBIT 2025",
+    "scope": "Gemeenten en gemeentelijke IT-contracten",
+    "classification": "Gemeentelijke inkoopinstrumenten",
+    "source": [
+      "VNG: GIBIT",
+      "https://vng.nl/projecten/gibit"
+    ],
+    "explanation": "Voor wie: Gemeenten en gemeentelijke IT-contracten. Status: Actuele versie: GIBIT 2025. GIBIT is de gemeentelijke toolbox voor IT-inkoop en contractafspraken. De VNG vermeldt GIBIT 2025 als opvolger van GIBIT 2023 en adviseert deze bij nieuwe contracten. De herziene voorwaarden besteden aandacht aan onder meer AI, cloud, opensource en datagebruik. Voor een werkplek helpt dit om rechten en verantwoordelijkheden gericht overeen te komen. Pas de instrumenten proportioneel op de eigen situatie toe; de toolbox is geen kant-en-klaar contract voor iedere dienst en garandeert op zichzelf geen digitale soevereiniteit."
+  },
+  {
+    "name": "Standpunt generatieve AI",
+    "system": "Beleid",
+    "region": "Nederland",
+    "role": "Overheidsbreed AI-beleid",
+    "phase": "Beleidsstandpunt en handreiking",
+    "scope": "Overheidsorganisaties die generatieve AI inzetten",
+    "classification": "Overheidsbreed AI-beleid",
+    "source": [
+      "Rijksoverheid: Overheidsbreed standpunt generatieve AI",
+      "https://www.rijksoverheid.nl/documenten/2025/04/16/het-overheidsbrede-standpunt-voor-de-inzet-van-generatieve-ai"
+    ],
+    "explanation": "Voor wie: Overheidsorganisaties die generatieve AI inzetten. Status: Beleidsstandpunt en handreiking. Het overheidsbrede standpunt geeft richting aan waardevolle, verantwoorde en ethische inzet van generatieve AI. Voor de digitale werkplek raakt dit assistenten die documenten, berichten of andere organisatiegegevens verwerken. Beoordeel vooraf doel, risico’s, gegevensgebruik en organisatorische waarborgen en gebruik de bijbehorende handreiking. Een lokaal model, Europese aanbieder of opensourcelicentie neemt die beoordeling niet weg. Dit is een beleidsstandpunt; toepasselijke privacy-, beveiligings- en AI-wetgeving moet daarnaast afzonderlijk worden getoetst."
+  },
+  {
+    "name": "Algoritmekader",
+    "system": "Beleid",
+    "region": "Nederland",
+    "role": "AI-beoordelingshulpmiddel",
+    "phase": "Doorontwikkeld kennis- en toetsingskader",
+    "scope": "Overheden die algoritmes of AI gebruiken",
+    "classification": "AI-beoordelingshulpmiddel",
+    "source": [
+      "Nederlandse overheid: Over het Algoritmekader",
+      "https://algoritmes.overheid.nl/nl/algoritmekader/over-het-algoritmekader"
+    ],
+    "explanation": "Voor wie: Overheden die algoritmes of AI gebruiken. Status: Doorontwikkeld kennis- en toetsingskader. Het Algoritmekader bundelt eisen, uitleg en hulpmiddelen voor overheden die algoritmes en AI toepassen. Het ondersteunt afwegingen gedurende de levenscyclus van een toepassing. Voor de werkplek is dit relevant wanneer assistenten, zoekfuncties of andere AI-voorzieningen onderdeel worden van dagelijks werk. Gebruik het om verantwoordelijkheden en passende beoordelingen te bepalen. Het kader is een hulpmiddel met verwijzingen naar uiteenlopende normen en wetten; niet ieder advies daarin is zelf een wettelijke verplichting. Het verklaart geen model of leverancier automatisch soeverein."
+  },
+  {
+    "name": "NeRDS inkoopstrategie",
+    "system": "Beleid",
+    "region": "Nederland",
+    "role": "Praktische richtlijn",
+    "phase": "Richtinggevend hulpmiddel",
+    "scope": "Publieke teams die digitale systemen ontwikkelen of inkopen",
+    "classification": "Praktische richtlijn",
+    "source": [
+      "Nederlandse Richtlijn Digitale Systemen: Inkoopstrategie",
+      "https://nerds.digitaledienst.overheid.nl/richtlijnen/inkoop/"
+    ],
+    "explanation": "Voor wie: Publieke teams die digitale systemen ontwikkelen of inkopen. Status: Richtinggevend hulpmiddel. De Nederlandse Richtlijn Digitale Systemen biedt praktische richting voor technologiekeuzes. De inkooprichtlijn noemt onder meer het vermijden van leveranciersafhankelijkheid, risicobeheer, totale kosten en ruimte voor nieuwe aanbieders. Voor een werkplek helpt dit om vervangbaarheid en beheer al in de inkoopstrategie mee te nemen. De richtlijn verwijst ook naar opensource en verantwoord cloudgebruik. Zij is een praktisch hulpmiddel en geen nieuwe zelfstandige wet; aanbestedingsregels en organisatiespecifiek beleid blijven afzonderlijk van toepassing."
+  }
+,
   {
     "name": "MODA ODF-programma",
     "system": "Wereldwijd",
@@ -1532,6 +1757,11 @@ const atlasAdditions = [
 
 // [object, tegenpartij, soort, toelichting, optioneel nummer van aanvullende bron]
 const atlasAdditionRelations = [
+  ["GIBIT", "VNG", "Publicatie", "De VNG publiceert de GIBIT-toolbox en adviseert de versie 2025 voor nieuwe IT-contracten."],
+  ["Gemeentelijke cloudeisen", "VNG", "Publicatie", "PIANOo noemt de VNG als bron en beschrijft het advies aan gemeenten."],
+  ["Pas toe of leg uit", "Forum Standaardisatie", "Standaardisatie", "Forum Standaardisatie licht beleid en toepassingsgebied van de lijst toe."],
+  ["BIO2", "Cyberbeveiligingswet", "Wettelijk kader", "De overheidsbron beschrijft de rol van BIO2 in de regeling voor de sector overheid."],
+
   ["MODA ODF-programma", "LibreOffice", "Hergebruik", "De Taiwanese overheidsbron beschrijft LibreOffice als basis van de ODF-toepassingen.", 2],
   ["KITE GNU/Linux", "LibreOffice", "Implementatie", "Het overheidsrapport noemt LibreOffice als onderdeel van de schoolwerkplekken."],
   ["Expresso Livre (Paraná)", "EGroupware", "Historische basis", "Celepar beschrijft Expresso Livre als aangepaste versie van EGroupware.", 1],
@@ -2875,7 +3105,7 @@ systems.forEach((system,i)=>{
   const [x,y,tilt] = centers[i];
   const flatten = [.57,.68,.51,.74,.62,.55,.65,.52,.69][i];
   const members = [...nodes].filter(([,node])=>node.system===i&&(!node.parent||i===solutionSystem));
-  const outerRadius=system.name==='Wereldwijd'&&members.length>12?165:125;
+  const outerRadius=members.length>12&&['Beleid','Wereldwijd'].includes(system.name)?165:125;
   const sun = {...system,x,y,sun:true,tilt,flatten,outerRadius,system:i};
   worlds.push(sun);
   membership.push([hub,sun]);
@@ -3232,7 +3462,7 @@ function openWorld(world,showOverview=false){
   dossierNote.textContent=world.parent?'Onderdeel bij '+world.parent:'';
   dossierNote.hidden=!world.parent;
   info.querySelector('h2').textContent=world.name;
-  info.querySelector('p').textContent=[solutionLabel(world),world.role,world.region,systems[world.system].name==='Wereldwijd'?world.phase:null].filter(Boolean).join(' · ');
+  info.querySelector('p').textContent=[solutionLabel(world),world.role,world.region,['Beleid','Wereldwijd'].includes(systems[world.system].name)?world.phase:null].filter(Boolean).join(' · ');
   const assessment=renderExplanation(dossierExplanations.get(world.name),sourcesForExplanation(world.name));
 
   const researchNotes=document.createElement('ul');
