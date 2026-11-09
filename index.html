@@ -115,7 +115,7 @@ aside{bottom:max(var(--atlas-bottom),2.5vw)}
     <label>Stelsel<select id="atlas-system"><option value="">Alle stelsels</option></select></label>
     <label>Subcategorie<select id="atlas-subcategory"><option value="">Alle subcategorieën</option></select></label>
     <label>Land of regio<select id="atlas-region"><option value="">Alle regio’s</option></select></label>
-    <label>Ontwikkelfase<select id="atlas-phase"><option value="">Alle fasen</option><option value="unknown">Nog te controleren</option></select></label>
+    <label>Ontwikkelfase<select id="atlas-phase"><option value="">Alle fasen</option><option value="unknown">Niet vermeld</option></select></label>
     <label>Rol<select id="atlas-role"><option value="">Alle rollen</option></select></label>
   </div>
   <button id="atlas-reset" type="button">Wis filters</button> <button id="export-csv" type="button">Gefilterde bronrecords (CSV)</button><p id="atlas-count" role="status"></p><div class="atlas-results"></div>
@@ -125,10 +125,10 @@ aside{bottom:max(var(--atlas-bottom),2.5vw)}
   <h2 id="legend-title">Zo lees je de atlas</h2>
   <p>Sleep of gebruik de pijltjestoetsen om te bewegen. Zoom met scrollen, twee vingers of de toetsen + en −. Met de zoekbalk kun je elk dossier ook zonder kaart openen. Via Filters kun je uitgebreider zoeken.</p>
   <p>De centrale ster brengt je terug naar het overzicht. Grote planeten openen een stelsel. Kleine planeten openen een dossier.</p>
-  <p>Dunne lijnen tonen de indeling. Bij een geselecteerd dossier zijn onderbouwde verbindingen doorgetrokken, vergelijkingen gestippeld en onderzoeksvragen gestreept.</p>
+  <p>Dunne lijnen tonen de indeling. Bij een geselecteerd dossier zijn onderbouwde verbindingen doorgetrokken, vergelijkingen gestippeld en onbevestigde verbanden gestreept.</p>
   <ul id="legend-systems"></ul>
   <h3>Over deze atlas</h3>
-  <p>De atlas brengt openbare bronnen over de soevereine digitale werkplek samen. Generatieve AI heeft geholpen bij het ordenen en samenvatten van informatie. Bij gecontroleerde bevindingen staat de bron erbij. De atlas onderscheidt redactionele vergelijkingen en open onderzoeksvragen. De broncontrole loopt nog.</p>
+  <p>De atlas brengt openbare bronnen over de soevereine digitale werkplek samen. Generatieve AI heeft geholpen bij het ordenen en samenvatten van informatie. De toelichtingen verwijzen naar openbare bronnen. Vergelijkingen en onbevestigde verbanden worden afzonderlijk aangeduid.</p>
   <details><summary>Bronnenregister</summary><ul id="atlas-sources"></ul></details>
 </dialog>
 <script>
@@ -154,7 +154,7 @@ const dossierExplanations = new Map([
   ["Douane","Douane houdt toezicht op het goederenverkeer en valt binnen de werkplekvernieuwing die Financiën voor Belastingdienst, Douane en Toeslagen beschrijft. De relatie met het stelsel loopt via die gedeelde voorziening en het gebruik van Microsoft 365. De casus laat zien dat een keuze voor kantoorsoftware doorwerkt bij meerdere uitvoeringsorganisaties met verschillende taken. Voor een alternatief is daarom van belang welke dagelijkse handelingen afhangen van de gedeelde omgeving en welke in afzonderlijke vakapplicaties plaatsvinden. De Kamerbrief biedt geen grond om Douane als ontwikkelaar van een soevereine werkplek te beschrijven."],
   ["Toeslagen","Dienst Toeslagen voert toeslagenregelingen uit. De dienst wordt samen met de Belastingdienst en Douane genoemd in de Kamerinformatie over de vernieuwing van de werkplek bij Financiën. Het verband is de gezamenlijke voorziening met laptops ingericht voor Microsoft 365. Dat maakt de dienst relevant als gebruiker die bij een wijziging van de gedeelde omgeving geraakt wordt, bijvoorbeeld bij documentuitwisseling tussen afdelingen. De Kamerbron gaat over die werkplekvernieuwing. Zij onderbouwt geen zelfstandige pilot van Toeslagen met alternatieve kantoorsoftware of een afzonderlijke rol in DAWO."],
   ["SOLID","SOLID staat voor Soevereine Lokale Infrastructuur voor Digitale autonomie. YourData Network beschrijft een project met Zuyd Hogeschool en praktijkpartners uit de gemeentelijke en juridische sector. Het project onderzoekt een werkplek waarin samenwerking en AI op lokale infrastructuur kunnen draaien. Daarmee wordt een concreet ontwerpvraagstuk onderzocht: welke verwerking kan plaatsvinden op infrastructuur waarover de gebruikersorganisatie zelf zeggenschap heeft? De relatie met MijnBureau is een vergelijking tussen werkplekbenaderingen. De projectpagina beschrijft het doel en de deelnemers. Zij geeft geen onafhankelijke meting van de zeggenschap in een productieomgeving."],
-  ["Soevereine overheidscloud","Het Nederlandse traject verkent hoe overheid en markt samen cloudinfrastructuur kunnen vormgeven. Het gepubliceerde ontwerp en de marktconsultatie gaan over de infrastructuur waarop diensten kunnen draaien. De bijdrage aan een soevereine werkplek is daarom indirect: voor opslag, samenwerking en andere diensten bepaalt de cloud mede wie systemen kan beheren en welke mogelijkheden bestaan om over te stappen. Het dossier is te vergelijken met Nuvem Brasileira vanwege de publieke regievraag. Een aansluiting met de Open Cloud Alliantie is op de kaart een onderzoeksvraag. Het ontwerp bewijst geen aansluiting of gebruik door MijnBureau."],
+  ["Soevereine overheidscloud","Het Nederlandse traject verkent hoe overheid en markt samen cloudinfrastructuur kunnen vormgeven. Het gepubliceerde ontwerp en de marktconsultatie gaan over de infrastructuur waarop diensten kunnen draaien. De bijdrage aan een soevereine werkplek is daarom indirect: voor opslag, samenwerking en andere diensten bepaalt de cloud mede wie systemen kan beheren en welke mogelijkheden bestaan om over te stappen. Het dossier is te vergelijken met Nuvem Brasileira vanwege de publieke regievraag. Een aansluiting met de Open Cloud Alliantie is niet bevestigd. Het ontwerp bewijst geen aansluiting of gebruik door MijnBureau."],
   ["Digital Commons EDIC","Digital Commons EDIC organiseert Europese samenwerking rond gedeelde digitale bouwstenen. Het portfolio noemt onder meer de 100-Day Challenges en een proef met het EU Sovereign Tech Fund. De rol is ondersteunend: overheden kunnen gezamenlijk investeren in open technologie waarvan meerdere organisaties afhankelijk zijn, in plaats van elk hetzelfde onderhoud te organiseren. Voor werkplekken telt dat vooral bij onderdelen die door verschillende diensten worden hergebruikt. De projectpagina ondersteunt de relatie met de financieringsproef. Zij onderbouwt geen rol als leverancier van de Nederlandse werkplek of als beheerder van dossiers en bestanden."],
   ["openDesk","openDesk is de door ZenDiS ontwikkelde samenwerkomgeving voor het openbaar bestuur. De technische documentatie noemt Nextcloud voor bestanden, OpenProject voor projecten en Element voor communicatie. De directe bijdrage is dat deze functies samen kunnen worden ingericht op een door de organisatie gekozen infrastructuur. De Zwitserse PoC BOSS gebruikt openDesk als basis om onder meer documentbewerking, e-mail en samenwerking te beproeven. De Nederlandse relatie is hergebruik: BZK noemt openDesk als herkomst van bouwstenen voor MijnBureau. Dat laat zien hoe afzonderlijke componenten ook buiten de oorspronkelijke suite kunnen worden ingezet."],
   ["ZenDiS","Het Zentrum für Digitale Souveränität is de productorganisatie achter openDesk. Het bepaalt volgens de Zwitserse Bundeskanzlei de ontwikkelrichting van de suite voor het openbaar bestuur. De directe bijdrage is productregie over een samenwerkomgeving die verschillende opensourceproducten integreert. Die regie is relevant omdat organisaties ook bij open broncode iemand nodig hebben die versies, integratie en doorontwikkeling op elkaar afstemt. PoC BOSS laat zien dat een andere overheid de suite kan beproeven en ervaringen met ZenDiS kan uitwisselen. Via GovDigital kunnen publieke organisaties openDesk ook als dienst beproeven."],
@@ -162,7 +162,7 @@ const dossierExplanations = new Map([
   ["DINUM","De Direction interministérielle du numérique is de Franse dienst voor digitale overheid achter La Suite numérique. DINUM organiseert daarmee publiek productbeheer voor hulpmiddelen zoals Visio en gezamenlijke documentbewerking. Voor een soevereine werkplek is die bijdrage concreet: een overheidsorganisatie kan de ontwikkeling van samenwerkingsdiensten op publieke behoeften sturen. De openbare productdocumentatie maakt duidelijk wat onder de suite valt en welke eigenschappen per product worden beschreven. De relatie met MijnBureau loopt via hergebruik van bouwstenen uit La Suite, zoals BZK meldt. Daaruit volgt geen rol voor DINUM in de exploitatie van MijnBureau."],
   ["Sovereign Tech Agency","De Duitse Sovereign Tech Agency financiert onderhoud en versterking van open digitale infrastructuur. Het gaat om technologie die ook onder toepassingen van andere organisaties kan liggen. De bijdrage aan de werkplek is indirect: bruikbare broncode vraagt om onderhoud, beveiligingswerk en mensen die kwetsbaarheden kunnen oplossen. Financiering van zulke taken kan voorkomen dat een overheid voor alle ondersteuning van één commerciële leverancier afhankelijk is. Het Europese Sovereign Tech Fund is een vergelijkingspunt voor de financieringsvorm. Voor een concrete relatie met een onderdeel van DAWO of MijnBureau is een afzonderlijk projectbesluit nodig."],
   ["Denemarken","Denemarken is opgenomen als praktijkcasus voor een opensourcewerkplek in de publieke sector. Het Europese Open Source Observatory beschrijft hoe de Deense verkeersautoriteit SIA Open lanceerde als open variant van haar werkplek. De waarde van de casus ligt in de ervaringen van een bestaande overheidsorganisatie met een alternatieve omgeving voor medewerkers. Daarmee is zij vergelijkbaar met de Nederlandse DAWO-proef, waar de vraag eveneens is hoe een alternatief past bij dagelijks gebruik. De bron gaat over de verkeersautoriteit. Een uitrol bij de gehele Deense overheid volgt daar niet uit."],
-  ["Open Cloud Alliantie","De Open Cloud Alliantie presenteert zich als samenwerking rond open cloudinfrastructuur. Op de kaart hoort zij bij de infrastructuurlaag: een werkpleksuite heeft rekenkracht en opslag nodig, ook wanneer de applicaties zelf open source zijn. De betekenis van een open cloudaanbod zit in de mogelijkheid om interfaces, beheer en verhuisbaarheid te beoordelen voordat een werkplek erop wordt geplaatst. Het Nederlandse traject Soevereine overheidscloud stelt een verwante vraag over publieke regie en inzet van de markt. Een concrete gezamenlijke implementatie blijkt niet uit de aangehaalde bronnen. Die verbinding blijft een onderzoeksvraag."],
+  ["Open Cloud Alliantie","De Open Cloud Alliantie presenteert zich als samenwerking rond open cloudinfrastructuur. Op de kaart hoort zij bij de infrastructuurlaag: een werkpleksuite heeft rekenkracht en opslag nodig, ook wanneer de applicaties zelf open source zijn. De betekenis van een open cloudaanbod zit in de mogelijkheid om interfaces, beheer en verhuisbaarheid te beoordelen voordat een werkplek erop wordt geplaatst. Het Nederlandse traject Soevereine overheidscloud stelt een verwante vraag over publieke regie en inzet van de markt. Een concrete gezamenlijke implementatie blijkt niet uit de aangehaalde bronnen. Die verbinding is niet bevestigd."],
   ["KPN","KPN biedt zakelijke connectiviteit en clouddiensten aan. Een concreet voorbeeld op deze kaart is KPN Sovereign Cloud, waarvoor KPN STACKIT als technologiepartner vermeldt. Dat is een infrastructurele bijdrage: een organisatie kan een cloudomgeving kiezen waarop zij werkplekapplicaties of bestanden onderbrengt. Voor zeggenschap blijven de voorwaarden van de gekozen dienst van belang, waaronder operationele toegang en wat er bij vertrek kan worden overgedragen. De productinformatie onderbouwt de relatie tussen KPN en STACKIT. Zij geeft geen aanwijzing dat het aanbod gebruikt wordt voor DAWO, MijnBureau of de Soevereine overheidscloud."],
   ["Centric","Centric levert IT voor publieke organisaties en heeft samenwerking rond Nextcloud publiek bekendgemaakt. Daarmee is er een concreet verband met de samenwerkingslaag: Nextcloud kan bestanden en deelrechten beheren, terwijl een dienstverlener de inrichting en ondersteuning voor klanten kan verzorgen. De rol van Centric is marktgericht en ondersteunend bij implementatie. De aankondiging toont dat het aanbod bestaat of wordt ontwikkeld. Zij geeft op zichzelf geen bewijs dat de gemeenten in de DAWO-pilot deze implementatieroute kiezen. Voor de zeggenschap van een klant tellen de afspraken over beheer, toegang en overdracht van gegevens."],
   ["Info Support","Info Support levert softwareontwikkeling en IT-diensten. Het bedrijf is in het stelsel opgenomen als voorbeeld van uitvoeringscapaciteit aan de marktzijde. Een werkplek die uit verschillende bouwstenen bestaat, vraagt integratiewerk, bijvoorbeeld om bestaande applicaties te koppelen en wijzigingen reproduceerbaar uit te rollen. Een dienstverlener kan daarin een ondersteunende rol hebben. Voor zeggenschap telt of de opdrachtgever de configuratie, documentatie en code kan meenemen naar een andere beheerder. De publieke bedrijfsinformatie onderbouwt het algemene dienstenaanbod. Een opdracht voor MijnBureau, DAWO of een andere concrete werkplek op deze kaart blijkt daar niet uit."],
@@ -1453,7 +1453,7 @@ const roleReview = [
     'Microsoft 365|AWS|Google Cloud|Oracle'],
   ['Onderzoeksthema','Geeft een vraag voor de beoordeling van zeggenschap. De rol op de kaart is die van een thema.',
     'Werkplek|Cloud|Data|Governance|Beveiliging|Open standaarden'],
-  ['Rol nader onderbouwen','De kaart bevat achtergrondinformatie. Een concrete rol bij een soevereine werkplek vraagt om een specifiekere bron.',
+  ['Achtergrond','Geeft context bij beleid of bestaande werkplekken; een directe projectrol is hiermee niet vastgesteld.',
     'Regeerakkoord|Belastingdienst|Douane|Toeslagen']
 ];
 const reviewedRoles = new Map();
@@ -1537,7 +1537,7 @@ const development = {
     'Een werkplek op een Linux-laptop, in de gemeentepilot gecombineerd met MijnBureau.',
     'Pilot. Digitale Overheid kondigde op 3 april 2026 aan dat de proef tot eind 2026 loopt.',
     'De proef gaat ook over de laptop en het besturingssysteem. Wie in productie apparaten, accounts en gegevens beheert, is nog te verifiëren.',
-    'De pilot verzamelt gebruikerservaringen en onderzoekt aansluiting op bestaande systemen. Uitkomsten zijn nog niet opgenomen op deze kaart.'
+    'De pilot verzamelt gebruikerservaringen en onderzoekt aansluiting op bestaande systemen.'
   ],
   MijnBureau:[
     'BZK ontwikkelt. Gemeenten, VNG en SSC-ICT zijn betrokken bij de werkplekpilot. Structurele bekostiging en productiebeheer zijn nog te verifiëren.',
@@ -1551,21 +1551,21 @@ const development = {
     'Een websuite voor de publieke sector met bestanden, chat, kantoorsoftware en projectbeheer.',
     'Software en technische documentatie zijn beschikbaar. De invoering verschilt per organisatie.',
     'Organisaties kunnen de suite zelf hosten. Wie accounts, gegevens en updates beheert, hangt af van de installatie en afspraken.',
-    'De projectdocumentatie beschrijft de architectuur en installatie. Resultaten per organisatie zijn nog niet opgenomen op deze kaart.'
+    'De projectdocumentatie beschrijft de architectuur en installatie.'
   ],
   'La Suite':[
     'DINUM ontwikkelt La Suite voor de Franse overheid. Bekostiging en beheer kunnen per dienst verschillen.',
     'Een verzameling opensourcetools voor ambtenaren, met onder meer chat, videobellen en samenwerken aan documenten.',
     'In dagelijks gebruik volgens de officiële projectsite.',
     'Hosting en gegevensbeheer zijn per dienst te beoordelen. De projectsite vermeldt bijvoorbeeld dat Visio in Frankrijk wordt gehost.',
-    'De projectsite meldt gebruik bij meerdere ministeries en andere overheidsorganisaties. Onafhankelijke gebruiksevaluaties zijn nog niet opgenomen op deze kaart.'
+    'De projectsite meldt gebruik bij meerdere ministeries en andere overheidsorganisaties.'
   ],
   'Rijksbrede Soevereine Digitale Werkomgeving':[
     'ICBR is opdrachtgever. SSC-ICT, DICTU en DUO-ICT ontwikkelen samen. Structurele bekostiging en beheer zijn nog te verifiëren.',
     'Een ontwikkeltraject voor bestandsuitwisseling, e-mail en werkplekdiensten, voortbouwend op DAWO en MijnBureau.',
     'Ontwikkelopdracht uit juli 2026, bekendgemaakt door SSC-ICT op 6 augustus 2026.',
     'De opdracht beoogt minder afhankelijkheid van een beperkt aantal leveranciers. De uiteindelijke inrichting van hosting, toegang en beheer is nog te verifiëren.',
-    'De aankondiging beschrijft de ontwikkelsporen. Resultaten van een rijksbrede uitrol zijn nog niet opgenomen op deze kaart.'
+    'De aankondiging beschrijft de ontwikkelsporen.'
   ]
 };
 const pilotSource = ['Gemeentepilot bij Digitale Overheid','https://www.digitaleoverheid.nl/nieuws-nds/gemeenten-verkennen-autonome-digitale-werkomgeving/'];
@@ -1663,7 +1663,7 @@ const supplementalSources = [
     "relatedNodes": [
       "MijnBureau"
     ],
-    "researchNote": "Onderbouwt componenthergebruik, vervangbaarheid en modulaire architectuur."
+    "researchNote": "De architectuur beschrijft hergebruik en vervanging van componenten."
   },
   {
     "title": "MijnBureau: openbare businessarchitectuur",
@@ -1736,7 +1736,7 @@ const supplementalSources = [
     "relatedNodes": [
       "SURF Works"
     ],
-    "researchNote": "Onderbouwt samenwerking met AlgoSoc in een eerdere Nextcloud-pilot."
+    "researchNote": "SURF en AlgoSoc werkten samen in een eerdere Nextcloud-pilot."
   },
   {
     "title": "Radboud: Nextcloud-pilot",
@@ -1791,7 +1791,7 @@ const supplementalSources = [
     "relatedNodes": [
       "Soevereine overheidscloud"
     ],
-    "researchNote": "Onderbouwt marktverkenning met 69 deelnemers."
+    "researchNote": "Aan de marktverkenning namen volgens het verslag 69 partijen deel."
   },
   {
     "title": "NDS Cloud: samenwerkingsaanpak",
@@ -2011,7 +2011,7 @@ const supplementalSources = [
     "relatedNodes": [
       "Digital Commons EDIC"
     ],
-    "researchNote": "Aangescherpte actuele status, 100-Day Challenges en governance."
+    "researchNote": "Overzicht van de 100-Day Challenges en de bestuurlijke inrichting van Digital Commons EDIC."
   },
   {
     "title": "EU: rapport multilandenprojecten 2026",
@@ -2654,7 +2654,7 @@ function openWorld(world,showOverview=false){
     info.querySelector('h2').textContent=world.name;
     info.querySelector('p').textContent=world.hub?'Overzicht van de werkpleklagen':world.system===solutionSystem?'Verken de oplossingen per subcategorie.':'Kies een item om het dossier te lezen.';
     const [explanation,examples]=world.hub?[
-      'Het Soevereinestelsel brengt publieke projecten, software, infrastructuur en beleid rond de digitale werkplek in kaart. DAWO laat zien hoe een overheid een andere desktopbasis kan beproeven. MijnBureau brengt bestaande bouwstenen samen voor digitaal samenwerken. Open standaarden helpen beoordelen of bestanden tussen toepassingen uitgewisseld kunnen worden. Clouddossiers laten zien welke keuzes onder de toepassingen liggen, zoals waar bestanden worden opgeslagen en wie systemen beheert. De kaart maakt onderscheid tussen aantoonbare verbindingen, vergelijkingen en onderzoeksvragen. Daardoor kan een bezoeker per laag nagaan wat een organisatie kan kiezen, beheren of vervangen.',
+      'Het Soevereinestelsel brengt publieke projecten, software, infrastructuur en beleid rond de digitale werkplek in kaart. DAWO laat zien hoe een overheid een andere desktopbasis kan beproeven. MijnBureau brengt bestaande bouwstenen samen voor digitaal samenwerken. Open standaarden helpen beoordelen of bestanden tussen toepassingen uitgewisseld kunnen worden. Clouddossiers laten zien welke keuzes onder de toepassingen liggen, zoals waar bestanden worden opgeslagen en wie systemen beheert. De kaart maakt onderscheid tussen aantoonbare verbindingen, vergelijkingen en onbevestigde verbanden. Daardoor kan een bezoeker per laag nagaan wat een organisatie kan kiezen, beheren of vervangen.',
       ['DAWO','MijnBureau','Open standaarden']
     ]:systemExplanations.get(world.name);
     const sources=examples.flatMap(name=>sourcesForExplanation(name).slice(0,1));
@@ -2727,7 +2727,7 @@ function openWorld(world,showOverview=false){
     sourceLink.href=source.url;
   }else{
     sourceLink.removeAttribute('href');
-    dossierNote.textContent+=(dossierNote.textContent?' · ':'')+'Externe bron nog niet toegevoegd';
+    dossierNote.textContent+=(dossierNote.textContent?' · ':'')+'Geen bronverwijzing beschikbaar';
     dossierNote.hidden=false;
   }
   const extraSources=sourceRecord.querySelector('#dossier-extra-sources');
@@ -2739,7 +2739,7 @@ function openWorld(world,showOverview=false){
     const record=sourcesById.get(id);
     const item=document.createElement('li');
     item.append(sourceAnchor(record,record.title),' · '+record.publisher);
-    if(!record.checked)item.append(' · Te controleren');
+    if(!record.checked)item.append(' · Raadpleegdatum niet vermeld');
 
     extraList.append(item);
   }
@@ -2770,7 +2770,7 @@ function openWorld(world,showOverview=false){
     arrow.setAttribute('aria-hidden','true');
     const explanation=document.createElement('small');
     explanation.textContent=evidence.kind==='Te onderzoeken'
-      ? 'Te onderzoeken · '+(type.startsWith('Onderzoek:')?type.slice(10).trim():'Is dit verband publiek te onderbouwen? '+type)
+      ? 'Niet bevestigd · '+type.replace(/^Onderzoek:\s*/,'')
       : evidence.kind+' · '+type.replace(/^Vergelijkingsroute · /,'');
     button.append(title,arrow,explanation);
     button.onclick=()=>{
@@ -2952,10 +2952,12 @@ for(const [index,system] of systems.entries()){
 const sourceList=document.querySelector('#atlas-sources');
 for(const source of [...sourcesById.values()].sort((a,b)=>a.title.localeCompare(b.title,'nl'))){
   const item=document.createElement('li');
-  item.append(sourceAnchor(source,source.title),source.checked?' · Geraadpleegd '+source.checked:' · Broncontrole staat open');
+  item.append(sourceAnchor(source,source.title),source.checked?' · Geraadpleegd '+source.checked:' · Raadpleegdatum niet vermeld');
   sourceList.append(item);
 }
-for(const [label] of roleReview)roleFilter.add(new Option(label,label));
+for(const [label] of roleReview){
+  if([...worldsById.values()].some(world=>reviewedRoles.get(world.name).label===label))roleFilter.add(new Option(label,label));
+}
 const normalize=value=>value.normalize('NFD').replace(/\p{Diacritic}/gu,'').toLocaleLowerCase('nl');
 let filteredWorlds=[];
 function renderDirectory(){
