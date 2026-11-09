@@ -30,3 +30,12 @@ Onderbouwde productkenmerken staan in `documentedProfiles` en `verifiedCompariso
 Zoeken doorzoekt namen, rollen, regio’s, fasen, toelichtingen en productkenmerken. De snelle zoekbalk toont rechtstreekse naamtreffers bovenaan.
 
 De categorie Gemeenten bevat uitsluitend Nederlandse gemeenten en hun relevante samenwerkingsverbanden. Buitenlandse gemeentelijke voorbeelden staan geografisch bij Europa of Wereldwijd. Europa is ruimer dan de EU; Tirana staat dus bij Europa. Maak geen dubbele dossiers om een gemeente in meerdere stelsels te tonen. Markeer historische voorbeelden expliciet in naam en ontwikkelfase.
+
+
+## Logo’s en herkenning
+
+`logoAssets` bevat officiële beeldmerken en website-iconen als ingesloten PNG-afbeeldingen. De atlas vraagt bij het openen geen logo’s bij externe diensten op. De herkomst en raadpleegdatum staan in `logo-bronnen.json`; dit bestand is alleen de bronregistratie en hoeft niet naast de HTML te staan om de atlas te gebruiken.
+
+Logo’s worden in de kaart én het detailvenster getoond. De bestaande `badgeNames`/`badgeSource`-afbeelding blijft beschikbaar als reserve. De officiële beeldmerken hebben voorrang. Een document of project kan het beeldmerk van de betrokken organisatie gebruiken; `owner` benoemt dan die organisatie in de toegankelijke beschrijving. Voeg geen willekeurig logo van een bronuitgever toe aan een ander initiatief.
+
+Waar geen passend beeldmerk beschikbaar is, verschijnen initialen. Dat is een herkenningsteken, geen verzonnen officieel logo. Categorieoverzichten tonen geen dossierlogo. Bestaande koppelingen in `badgeNames` mogen niet worden verschoven: de index verwijst naar een vaste plaats in de oorspronkelijke afbeelding.
