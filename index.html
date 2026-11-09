@@ -249,6 +249,200 @@ const explanationSources = new Map([
 ]);
 const atlasAdditions = [
   {
+    "name": "Thunderbird",
+    "system": "Technologie",
+    "region": "Internationaal",
+    "role": "Desktopmail, agenda en contacten",
+    "phase": "Beschikbaar",
+    "source": [
+      "Thunderbird voor organisaties",
+      "https://enterprise.thunderbird.net/"
+    ],
+    "explanation": "Thunderbird is een opensource desktopclient voor e-mail, agenda en contacten. De officiële organisatiedocumentatie beschrijft centrale configuratie, beleidsinstellingen en ingebouwde ondersteuning voor berichtversleuteling. Voor een soevereine werkplek biedt dit keuze over de client waarmee medewerkers hun mailvoorziening gebruiken, ook op Linux. De client en de server zijn afzonderlijke onderdelen: Thunderbird levert zelf geen mailhosting en maakt een aangesloten dienst niet automatisch soeverein. Onderzoek daarom de gebruikte mailprotocollen, agenda-integratie, uitbreidingen en beheerinstellingen. De documentatie van BlueMind noemt Thunderbird als ondersteunde toegang tot zijn samenwerkingsfuncties.",
+    "classification": "Bouwsteen"
+  },
+  {
+    "name": "Firefox",
+    "system": "Technologie",
+    "region": "Internationaal",
+    "role": "Browser en zakelijke configuratie",
+    "phase": "Beschikbaar",
+    "source": [
+      "Firefox: uitrol en beheer in organisaties",
+      "https://firefox-admin-docs.mozilla.org/guides/getting-started/"
+    ],
+    "explanation": "Firefox is een opensourcebrowser met de eigen Mozilla-browserengine. Firefox en de Extended Support Release kunnen met zakelijke beleidsinstellingen worden ingericht en beheerd. Voor een digitale werkplek is de browser een belangrijke toegang tot samenwerksoftware en webapplicaties. Keuze over configuratie, uitbreidingen, externe verbindingen en updates helpt organisaties hun browseromgeving zelf te sturen. Dat staat los van de zeggenschap over de websites en diensten die ermee worden bezocht. Maak onderscheid tussen Firefox of ESR en het aanvullende Firefox Enterprise-aanbod: beheerproducten, ondersteuning en voorwaarden kunnen verschillen.",
+    "classification": "Bouwsteen"
+  },
+  {
+    "name": "Twake Workplace",
+    "system": "Technologie",
+    "region": "Internationaal",
+    "role": "Geïntegreerde samenwerkomgeving",
+    "phase": "Beschikbaar",
+    "source": [
+      "Twake Workplace: producten en on-premises aanbod",
+      "https://twake.app/en/"
+    ],
+    "explanation": "Twake Workplace van LINAGORA brengt onder meer chat, mail, bestanden, agenda en videocommunicatie samen. De leverancier biedt installatie op eigen servers; een openbare repository beschrijft de componenten en de inrichting met containers. De productpagina noemt ook integratie met ONLYOFFICE voor documentbewerking. Voor een soevereine werkplek is de combinatie relevant omdat organisaties samenwerking en de hosting daarvan als samenhangend geheel kunnen beoordelen. De afzonderlijke componenten, licenties en productie-inrichting blijven belangrijk. Het aanbod bewijst geen volledige uitwisselbaarheid met iedere bestaande werkpleksuite en er is hier geen invoering bij een specifieke Nederlandse overheid vastgesteld.",
+    "classification": "Vergelijkingsmateriaal",
+    "references": [
+      [
+        "Twake Workplace: installatie en componenten",
+        "https://github.com/linagora/twake-workplace-docker"
+      ]
+    ]
+  },
+  {
+    "name": "BlueMind",
+    "system": "Technologie",
+    "region": "Internationaal",
+    "role": "Collaboratieve mail, agenda en contacten",
+    "phase": "Beschikbaar",
+    "source": [
+      "BlueMind: mail en samenwerking voor publieke organisaties",
+      "https://www.bluemind.net/en/you-are-public-sector/"
+    ],
+    "explanation": "BlueMind is een mail- en samenwerkingsplatform dat zich onder meer richt op publieke organisaties. De leverancier beschrijft een opensourcebasis, toegang via web en mobiele clients en ondersteuning voor Thunderbird en Outlook. Daarmee is BlueMind relevant als alternatief voor de mail- en agendalaag zonder dat iedere gebruiker direct dezelfde client hoeft te gebruiken. Een organisatie moet hosting, beheer, migratie en compatibiliteit met de eigen processen afzonderlijk beoordelen. De opensourcebasis en het commerciële abonnement zijn niet hetzelfde aanbod. De kwalificatie soeverein in productinformatie is een leveranciersclaim en geen onafhankelijke beoordeling van iedere concrete installatie.",
+    "classification": "Vergelijkingsmateriaal"
+  },
+  {
+    "name": "Carbonio CE",
+    "system": "Technologie",
+    "region": "Internationaal",
+    "role": "Mail, agenda en samenwerking",
+    "phase": "Beschikbaar",
+    "source": [
+      "Carbonio CE: officiële beheer- en installatiehandleiding",
+      "https://docs.zextras.com/carbonio-ce/html/basics/general.html"
+    ],
+    "explanation": "Carbonio Community Edition is de opensource communicatie- en samenwerkingsomgeving van Zextras. De beheerdocumentatie beschrijft e-mail, contacten, agenda, chat, video en documentbewerking, met installatie op eigen infrastructuur. Daarmee kan een organisatie de exploitatie van meerdere werkplekfuncties onder eigen of gekozen beheer organiseren. Voor invoering moeten beschikbaarheid, beveiligingsupdates, migratie en ondersteuning worden ingericht. Maak onderscheid tussen de Community Edition en de commerciële Carbonio-edities: ondersteuning en beschikbare mogelijkheden kunnen verschillen. Eigen hosting biedt mogelijkheden voor zeggenschap, maar de feitelijke inrichting en afhankelijkheden bepalen hoe zelfstandig de omgeving kan worden gebruikt.",
+    "classification": "Vergelijkingsmateriaal"
+  },
+  {
+    "name": "OPSI",
+    "system": "Technologie",
+    "region": "Internationaal",
+    "role": "Apparaatbeheer en softwaredistributie",
+    "phase": "Beschikbaar",
+    "source": [
+      "OPSI: opensourcebeheer van werkplekapparaten",
+      "https://opsi.org/en/"
+    ],
+    "explanation": "OPSI is een opensourceplatform voor het beheren van Windows-, Linux- en macOS-apparaten. De officiële productinformatie beschrijft automatische softwaredistributie, patchbeheer, installatie van besturingssystemen en hardware- en software-inventarisatie. Dit vult een praktische laag van de soevereine werkplek in: de organisatie moet niet alleen alternatieve applicaties kiezen, maar ook apparaten kunnen installeren, bijwerken en beheren. Controleer welke basiscomponenten, uitbreidingen, pakketten en ondersteuning voor de gekozen inrichting nodig zijn. Opname op deze kaart betekent niet dat OPSI aantoonbaar wordt gebruikt in DAWO of een ander bestaand initiatief.",
+    "classification": "Bouwsteen"
+  },
+  {
+    "name": "RustDesk",
+    "system": "Technologie",
+    "region": "Internationaal",
+    "role": "Ondersteuning op afstand",
+    "phase": "Beschikbaar",
+    "source": [
+      "RustDesk: zelfbeheer en verschil tussen OSS en Pro",
+      "https://rustdesk.com/docs/en/self-host/"
+    ],
+    "explanation": "RustDesk ondersteunt toegang tot en ondersteuning van computers op afstand. De officiële documentatie onderscheidt RustDesk Server OSS van Server Pro en beschrijft hoe organisaties eigen ID- en relayservers kunnen inrichten. Voor een soevereine werkplek maakt dat het mogelijk de infrastructuur voor ondersteuning zelf te kiezen en te beheren. Dat vraagt expliciete configuratie van de clients; het gebruik van de app alleen bewijst niet dat alle verbindingen via eigen servers lopen. De OSS- en Pro-edities verschillen in beheermogelijkheden. Beoordeel daarnaast toestemming, toegangsrechten, registratie van beheersessies en beveiligingsupdates.",
+    "classification": "Bouwsteen"
+  },
+  {
+    "name": "Passbolt CE",
+    "system": "Technologie",
+    "region": "Internationaal",
+    "role": "Wachtwoordbeheer voor teams",
+    "phase": "Beschikbaar",
+    "source": [
+      "Passbolt Community Edition: installatie op eigen servers",
+      "https://www.passbolt.com/ce/ubuntu"
+    ],
+    "explanation": "Passbolt Community Edition is een opensource wachtwoordbeheerder voor teams. De officiële documentatie biedt installatie op een eigen Linux-server en beschrijft afzonderlijk de Pro- en cloudvarianten. Voor een digitale werkplek is gecontroleerd delen van accountgegevens een concrete bouwsteen, naast eenmalig aanmelden en het beheer van identiteiten. Zelfbeheer geeft keuze over waar de server draait en wie die beheert. Teamrechten, toegang bij vertrek, herstel en back-ups vragen een eigen inrichting. Extra professionele functies en ondersteuning moeten per editie worden beoordeeld. Een wachtwoordkluis vervangt geen identityprovider zoals Keycloak.",
+    "classification": "Bouwsteen"
+  },
+  {
+    "name": "KeePassXC",
+    "system": "Technologie",
+    "region": "Internationaal",
+    "role": "Lokale wachtwoordkluis",
+    "phase": "Beschikbaar",
+    "source": [
+      "KeePassXC: offline wachtwoordbeheer en open broncode",
+      "https://keepassxc.org/"
+    ],
+    "explanation": "KeePassXC is een opensource wachtwoordbeheerder voor Windows, Linux en macOS. De app bewaart gegevens in een versleuteld bestand en vereist geen account bij een clouddienst. Dat maakt haar relevant voor een werkplek waarbij de gebruiker of organisatie zelf kiest waar de wachtwoorddatabase staat en hoe die wordt beveiligd en geback-upt. Synchronisatie of delen via andere diensten is een aanvullende keuze. KeePassXC verschilt daarmee van een centraal beheerde teamkluis zoals Passbolt: toegang, delen en herstel moeten passend worden georganiseerd. De app alleen biedt geen volledige voorziening voor organisatiebreed identiteitsbeheer.",
+    "classification": "Bouwsteen"
+  },
+  {
+    "name": "BigBlueButton",
+    "system": "Technologie",
+    "region": "Internationaal",
+    "role": "Virtuele klaslokalen en interactieve bijeenkomsten",
+    "phase": "Beschikbaar",
+    "source": [
+      "BigBlueButton: installatie op eigen infrastructuur",
+      "https://docs.bigbluebutton.org/administration/install/"
+    ],
+    "explanation": "BigBlueButton is een opensourceplatform voor interactieve online bijeenkomsten met een sterke focus op onderwijs. De officiële documentatie beschrijft installatie op een eigen server en koppelingen met andere omgevingen. Dat biedt keuze over de exploitatie van de video- en lesvoorziening, naast bestaande oplossingen zoals Jitsi en OpenTalk. De functie is breder dan alleen een videogesprek: het platform is ingericht als virtueel klaslokaal. Servercapaciteit, netwerkverbindingen, toegangsbeheer en het bewaren van opnamen vragen afzonderlijke keuzes. De installatiehandleiding onderbouwt de mogelijkheid van eigen beheer; zij bewijst geen gebruik door een specifieke organisatie op deze kaart.",
+    "classification": "Vergelijkingsmateriaal"
+  },
+  {
+    "name": "eXo Platform",
+    "system": "Technologie",
+    "region": "Internationaal",
+    "role": "Intranet, samenwerking en kennisdeling",
+    "phase": "Beschikbaar",
+    "source": [
+      "eXo Platform: functies en installatievarianten",
+      "https://www.exoplatform.com/faq/"
+    ],
+    "explanation": "eXo Platform is een opensource digitaal werkplatform dat intranet, interne communicatie, samenwerking en kennisdeling combineert. De leverancier beschrijft verschillende exploitatievormen, waaronder installatie op eigen infrastructuur. Het vult daarmee vooral de gezamenlijke werkomgeving van medewerkers in, niet alleen een afzonderlijke editor of bestandsopslag. Voor zeggenschap moeten de gebruikte editie, opslag, toegangsvoorziening en mogelijkheden voor gegevensoverdracht worden beoordeeld. Maak onderscheid tussen het community-aanbod, Enterprise-functies en ondersteuning. De productinformatie onderbouwt het platform en de installatiekeuzes, zonder een specifieke inzet in DAWO of MijnBureau aan te tonen.",
+    "classification": "Vergelijkingsmateriaal"
+  },
+  {
+    "name": "Zulip",
+    "system": "Technologie",
+    "region": "Internationaal",
+    "role": "Teamchat met onderwerpen",
+    "phase": "Beschikbaar",
+    "source": [
+      "Zulip: zelfgehoste teamcommunicatie",
+      "https://zulip.com/self-hosting/"
+    ],
+    "explanation": "Zulip is opensource teamchat waarin gesprekken op kanalen en onderwerpen worden georganiseerd. De officiële documentatie beschrijft installatie op eigen infrastructuur; daarnaast bestaat een door de leverancier gehost aanbod. Voor een digitale werkplek is het een alternatief voor teamcommunicatie naast Element en Rocket.Chat, met een andere manier om gesprekken terugvindbaar te houden. Zelfbeheer geeft keuze over de exploitatie van de chatomgeving. Updates, back-ups, toegang, mobiele meldingen en ondersteuning blijven onderdelen van de gekozen inrichting. De vergelijking met andere chatplatforms veronderstelt geen gedeeld protocol of automatische overdracht van gespreksgeschiedenis.",
+    "classification": "Vergelijkingsmateriaal"
+  },
+  {
+    "name": "authentik",
+    "system": "Technologie",
+    "region": "Internationaal",
+    "role": "Eenmalig aanmelden en toegangsbeheer",
+    "phase": "Beschikbaar",
+    "source": [
+      "authentik: officiële broncode en projectbeschrijving",
+      "https://github.com/goauthentik/authentik"
+    ],
+    "explanation": "authentik is een zelf te hosten identityprovider voor eenmalig aanmelden en toegangsbeheer. De openbare projectrepository beschrijft ondersteuning voor onder meer OpenID Connect, SAML en LDAP. Voor een digitale werkplek kan de organisatie hiermee de authenticatievoorziening los van afzonderlijke applicaties organiseren. Het is een alternatief om naast Keycloak te beoordelen, geen complete werkpleksuite. De gebruikte protocollen, koppelingen, meervoudige authenticatie en herstelprocedures moeten bij de eigen omgeving passen. Controleer welke onderdelen onder de opensourcelicentie vallen en welke functies bij een Enterprise-aanbod horen. De vergelijking is geen vastgestelde technische integratie met Keycloak.",
+    "classification": "Bouwsteen"
+  },
+  {
+    "name": "Joplin",
+    "system": "Technologie",
+    "region": "Internationaal",
+    "role": "Persoonlijke notities en taken",
+    "phase": "Beschikbaar",
+    "source": [
+      "Joplin: synchronisatie met eigen Nextcloud",
+      "https://joplinapp.org/help/apps/sync/nextcloud/"
+    ],
+    "explanation": "Joplin is een opensourceapp voor notities en taken. De officiële documentatie beschrijft synchronisatie via een zelf beheerde Nextcloud-omgeving. Daardoor kan de keuze voor de notitie-app worden gescheiden van de exploitatie van de opslag- en synchronisatiedienst. Voor een digitale werkplek is dit een praktisch alternatief voor persoonlijke aantekeningen, met aandacht voor export, apparaten en eventueel delen. De app is niet hetzelfde als het afzonderlijke Joplin Server- of Business-aanbod: daarvoor moeten de gebruiks- en licentievoorwaarden apart worden bekeken. De Nextcloud-documentatie onderbouwt de koppeling, niet een invoering van Joplin bij de Nederlandse overheid.",
+    "classification": "Bouwsteen",
+    "references": [
+      [
+        "Joplin: opensource notities en taken",
+        "https://joplinapp.org/help/"
+      ]
+    ]
+  },
+  {
     "name": "COOL",
     "system": "Technologie",
     "region": "Nederland",
@@ -1088,6 +1282,14 @@ const atlasAdditions = [
 
 // [object, tegenpartij, soort, toelichting, optioneel nummer van aanvullende bron]
 const atlasAdditionRelations = [
+  ["Twake Workplace", "ONLYOFFICE Docs", "Techniek", "De productpagina van Twake noemt integratie met ONLYOFFICE voor documentbewerking."],
+  ["BlueMind", "Thunderbird", "Techniek", "BlueMind noemt Thunderbird met ondersteuning voor samenwerkingsfuncties."],
+  ["Carbonio CE", "Zimbra", "Vergelijking", "Vergelijking van mail en samenwerking; geen veronderstelde technische integratie."],
+  ["Zulip", "Element", "Vergelijking", "Vergelijking van zelf te hosten teamchat met verschillende gespreksstructuren."],
+  ["authentik", "Keycloak", "Vergelijking", "Vergelijking van identityproviders voor eenmalig aanmelden en toegangsbeheer."],
+  ["Joplin", "Nextcloud", "Techniek", "De officiële Joplin-documentatie beschrijft synchronisatie via Nextcloud."],
+  ["Passbolt CE", "KeePassXC", "Vergelijking", "Vergelijking van teamgericht wachtwoordbeheer met een lokale wachtwoordkluis."],
+
   ["COOL","Cloudwise","Leverancier","Cloudwise biedt COOL aan als digitaal leer- en werkplatform voor scholen."],
   ["Proxmox Backup Server","Proxmox VE","Techniek","De officiële productinformatie beschrijft integratie voor back-up en herstel van virtuele machines en containers."],
 
@@ -1154,7 +1356,10 @@ const solutionGroups = new Map([
       "Proton Workspace",
       "Infomaniak kSuite",
       "Office.eu",
-      "COOL"
+      "COOL",
+      "Twake Workplace",
+      "Carbonio CE",
+      "eXo Platform"
     ]
   ],
   [
@@ -1186,7 +1391,9 @@ const solutionGroups = new Map([
       "Jitsi",
       "OpenTalk",
       "La Suite Visio",
-      "Tchap"
+      "Tchap",
+      "BigBlueButton",
+      "Zulip"
     ]
   ],
   [
@@ -1197,7 +1404,9 @@ const solutionGroups = new Map([
       "mailcow",
       "EGroupware",
       "OX App Suite",
-      "GroupOffice"
+      "GroupOffice",
+      "Thunderbird",
+      "BlueMind"
     ]
   ],
   [
@@ -1206,14 +1415,18 @@ const solutionGroups = new Map([
       "OpenProject",
       "XWiki",
       "Grist",
-      "Nordeck/Neoboard"
+      "Nordeck/Neoboard",
+      "Joplin"
     ]
   ],
   [
     "Identiteit",
     [
       "Keycloak",
-      "Univention Nubus"
+      "Univention Nubus",
+      "Passbolt CE",
+      "KeePassXC",
+      "authentik"
     ]
   ],
   [
@@ -1231,6 +1444,19 @@ const solutionGroups = new Map([
     [
       "L'Assistant",
       "F13"
+    ]
+  ],
+  [
+    "Browsers",
+    [
+      "Firefox"
+    ]
+  ],
+  [
+    "Werkplekbeheer",
+    [
+      "OPSI",
+      "RustDesk"
     ]
   ]
 ]);
@@ -2362,7 +2588,7 @@ const centers = [
 ];
 // Vaste, asymmetrische compositie: elk groepje krijgt een eigen baan binnen de kleur van Technologie.
 const solutionClusterLayouts = [
-  [-40,-235,82,58,-.18],
+  [-40,-235,102,66,-.18],
   [190,-190,75,60,.38],
   [300,0,72,80,-.2],
   [210,220,90,58,-.3],
@@ -2370,7 +2596,9 @@ const solutionClusterLayouts = [
   [-220,230,66,70,-.4],
   [-300,40,48,78,.5],
   [-260,-170,100,70,.2],
-  [-130,110,45,35,.3]
+  [-130,110,45,35,.3],
+  [105,-5,52,42,-.25],
+  [-65,-85,72,48,.18]
 ];
 const hub = {name:'Soevereinestelsel van de Werkplek',x:0,y:0,tone:'#e2ebff',sun:true,hub:true};
 const planetArt = new Image();

@@ -6,7 +6,7 @@ De dossier- en stelseltoelichtingen staan in het eerste scriptblok van index.htm
 
 De oorspronkelijke objecten, bronrecords en verbindingen worden nog in index.html geregistreerd. Voeg een groene of rode bevinding pas toe als de gekoppelde openbare bron de precieze formulering ondersteunt. Laat een open vraag neutraal. De toelichting bij een verbinding vermeldt of die is onderbouwd, een vergelijking toont of nog onderzocht wordt.
 
-De functionele subcategorieën binnen Technologie staan in `solutionGroups` in het eerste scriptblok van index.html. Neem ieder oplossingsdossier in precies één groep op. `infrastructureGroups` verdeelt Infrastructuur verder naar type. De indeling verschijnt in het stelseloverzicht, de dossiermetadata en de zoekfilters. Onderdelen bij een hoofddossier zijn ook via deze groepen te openen.
+De functionele subcategorieën binnen Technologie staan in `solutionGroups` in het eerste scriptblok van index.html. Neem ieder technologiedossier in precies één groep op. Bij een nieuwe subcategorie moet ook een passende baan in `solutionClusterLayouts` worden toegevoegd. Browsers en Werkplekbeheer hebben een eigen groep; wachtwoordbeheerders staan bij Identiteit. `infrastructureGroups` verdeelt Infrastructuur verder naar type. De indeling verschijnt in het stelseloverzicht, de dossiermetadata en de zoekfilters. Onderdelen bij een hoofddossier zijn ook via deze groepen te openen.
 
 De eerdere versie staat in backup/index-voor-2.0.html.
 
