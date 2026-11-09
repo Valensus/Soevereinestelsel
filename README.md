@@ -12,10 +12,21 @@ De eerdere versie staat in backup/index-voor-2.0.html.
 
 ## Nog te controleren of uit te bouwen
 
-- Browsercontrole op de zes gevraagde schermmaten, inclusief aanraking, toetsenbord, dossierlinks en overlappende labels.
+- Aanvullende controle op echte aanraakapparaten en handmatige beoordeling van overlappende kaartlabels. De geautomatiseerde controle van 9 november 2026 omvat 360, 390, 768, 1024, 1280 en 1920 pixels, alle dossiers, leeswijzers, zoeken, filters en startpuntnavigatie.
 - Controle per dossier en per verbinding op brondekking, actualiteit en formulering. De bestaande inventaris is geen volledig geverifieerde inventaris.
 - De CSV-export bij Zoeken bevat de gefilterde bronrecords die als geraadpleegd zijn gemarkeerd.
 
 Wereldwijd bevat publieke initiatieven en praktijkvoorbeelden buiten Europa. Vermeld bij nieuwe dossiers een concrete `phase` en onderscheid historische voorbeelden, aankondigingen, scholing en aantoonbaar gebruik. De fase verschijnt bij wereldwijde dossiers naast rol en regio. Nationale regie en een opensourcebasis zijn afzonderlijke kenmerken; schrijf geen volledige migratie of herbruikbare licentie toe zonder bron.
 
 Beleid bevat beleidsvisies, wetgeving, contractvoorwaarden en handreikingen. Vermeld bij nieuwe beleidsdossiers het toepassingsgebied en de status expliciet in de toelichting en geef een passende `phase` op. De status verschijnt naast rol en regio. Een verplichting geldt alleen binnen het betreffende toepassingsgebied; presenteer een advies of modelvoorwaarde niet als wet of als bewijs van soevereiniteit.
+
+
+## Gebruik voor de eigen ontwikkeling
+
+Alle acht stelsels hebben een leeswijzer met drie vervolgstappen en aanklikbare startpunten. `developmentGuides` beheert deze teksten. Ieder dossier heeft in `developmentSteps` een eigen redactioneel advies, zichtbaar onder “Voor de eigen ontwikkeling”. Dit advies is een voorgestelde aanpak, geen gemeten projectresultaat. Bij nieuwe dossiers hoort ook een specifieke vervolgstap.
+
+`contributionRoles` verduidelijkt de bijdrage van opdrachtgevers, uitvoerders, leveranciers en praktijkgebruikers. `evidenceStages` benoemt wat de aangehaalde bron over de fase onderbouwt. Een bronfase is geen garantie op de actuele projectstatus. Ontwikkelfasen verschijnen bij alle categorieën en blijven filterbaar.
+
+`technologyQuestions` geeft vaste vergelijkingsvragen per technologische subcategorie. Onderbouwde productkenmerken staan in `documentedProfiles` en `verifiedComparisons`, met bronverwijzingen. Licenties en dienstvoorwaarden moeten per component en editie worden beoordeeld. Verzin geen kenmerken om een vergelijking te vullen.
+
+Zoeken doorzoekt namen, rollen, regio’s, fasen, toelichtingen, productkenmerken en vervolgstappen. De snelle zoekbalk toont rechtstreekse naamtreffers bovenaan. Het stelsel en de bestaande subcategorieën blijven behouden.
