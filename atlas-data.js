@@ -81,10 +81,9 @@ const dossierExplanations = new Map([
 const systemExplanations = new Map([
   ["Beleid",["Beleidskeuzes worden voor de werkplek concreet wanneer ze bepalen wat overheden inkopen en welke afhankelijkheden ze accepteren. Het Regeerakkoord geeft richting, de Nederlandse Digitaliseringsstrategie brengt bestuurslagen samen en Forum Standaardisatie vertaalt uitwisselbaarheid naar inkoopeisen. De rijksbrede ontwikkelopdracht laat zien hoe zulke keuzes bij uitvoerders terechtkomen. De bijdrage van dit stelsel is sturing: het maakt zichtbaar wie criteria stelt, wie opdracht geeft en hoe technische keuzes later getoetst kunnen worden. De feitelijke zeggenschap over software, gegevens en beheer moet vervolgens per geleverde dienst worden vastgesteld.",["Regeerakkoord","NDS","Forum Standaardisatie"]]],
   ["Rijksoverheid",["Hier staan organisaties en projecten die een publieke werkplek ontwikkelen, beproeven of in gebruik nemen. SSC-ICT bouwt met DAWO aan de desktoplaag. BZK brengt met MijnBureau bestaande samenwerkcomponenten bijeen. De gemeentepilot toetst de combinatie en de rijksopdracht brengt meerdere ICT-dienstverleners bij elkaar. De betekenis voor zeggenschap zit in het kunnen kiezen en aanpassen van werkpleklagen, onderbouwd met ervaringen van gebruikers. De dossiers maken onderscheid tussen een opdrachtgever, een ontwikkelaar en een deelnemer aan een proef. Ook bestaande werkplekkeuzes geven context voor wat bij een overstap moet worden meegenomen.",["DAWO","MijnBureau","Rijksbrede Soevereine Digitale Werkomgeving"]]],
-  ["Software",["De softwarelaag bevat de toepassingen die gebruikers nodig hebben voor bijvoorbeeld bestanden, documenten, projectplanning en communicatie. De architectuur van openDesk laat zien hoe Nextcloud, OpenProject en Element verschillende functies vervullen en waar ze aan elkaar gekoppeld zijn. SURF Works laat zien hoe Nextcloud ook in een andere omgeving kan worden beproefd. Voor de werkplek is van belang welke componenten een organisatie zelf kan laten beheren en welke bestanden en instellingen bruikbaar blijven als zij één onderdeel vervangt. De dossiers onderscheiden software die zelf een werkplekfunctie levert van organisaties die de ontwikkeling daarvan ondersteunen.",["openDesk","Nextcloud","SURF Works"]]],
-  ["Infrastructuur",["Samenwerksoftware heeft een technische omgeving nodig voor rekenkracht, opslag en beschikbaarheid. Dit stelsel bevat aanbieders en publieke trajecten die die omgeving kunnen vormgeven. De Soevereine overheidscloud brengt bijvoorbeeld het vraagstuk van publieke regie en inzet van marktpartijen in beeld. Een werkplekafnemer moet vaststellen wie de dienst exploiteert, wie toegang heeft tot beheerfuncties en hoe data en toepassingen kunnen worden verplaatst. Het publieke aanbod van een leverancier is daarvoor een startpunt. Een specifieke implementatie, inrichting of opdracht moet per afgenomen dienst uit afzonderlijke bronnen blijken.",["Soevereine overheidscloud","Rijkscloudbeleid","Open Cloud Alliantie"]]],
+  ["Oplossingen",["Oplossingen omvat software en infrastructuur voor de digitale werkplek: van bestanden, documenten, projectplanning en communicatie tot rekenkracht, opslag en hosting. De architectuur van openDesk laat zien hoe Nextcloud, OpenProject en Element verschillende functies vervullen en waar ze aan elkaar gekoppeld zijn. SURF Works laat zien hoe Nextcloud ook in een andere omgeving kan worden beproefd. Voor de werkplek is van belang welke componenten een organisatie zelf kan laten beheren en welke bestanden en instellingen bruikbaar blijven als zij één onderdeel vervangt. De dossiers onderscheiden software die zelf een werkplekfunctie levert van organisaties die de ontwikkeling daarvan ondersteunen.",["openDesk","Nextcloud","SURF Works"]]],
   ["Kennis",["Onderzoek en praktijkproeven helpen om aannames over een werkplek te toetsen. Zuyd is genoemd als partner bij SOLID, dat lokale infrastructuur voor samenwerking en AI onderzoekt. Radboud Universiteit beschrijft ervaringen met de Nextcloud-proef van SURF. Die casussen beantwoorden verschillende vragen: wat kan lokaal worden verwerkt en wat hebben gebruikers nodig om met alternatieve software te werken? De bijdrage van dit stelsel ligt bij bewijs voor ontwerp- en invoeringskeuzes. Een proef geeft informatie over de geteste omgeving en gebruikers. Voor andere organisaties blijft relevant welke eigen processen en koppelingen zij moeten beproeven.",["SOLID","SURF Works","Radboud Universiteit"]]],
-  ["Bigtech",["Grote platforms bieden diensten die een werkplek rechtstreeks of via de infrastructuur kunnen raken. Microsoft 365 bundelt kantoorsoftware en samenwerking. AWS, Google Cloud en Oracle bieden onder meer rekenkracht en opslag waarop toepassingen kunnen draaien. Voor een overstap telt welke afhankelijkheid werkelijk bestaat: een documentformaat vraagt een andere aanpak dan een beheerde database of een platformspecifieke koppeling. Dit stelsel geeft daarom referentiepunten om die afhankelijkheden in kaart te brengen. Het dossier van Financiën geeft een concreet voorbeeld van werkplekgebruik. Bij cloudplatforms moet gebruik in een bepaalde werkplek afzonderlijk worden vastgesteld.",["Microsoft 365","Belastingdienst","Cloud"]]],
+  ["Bedrijven",["Dit stelsel bevat bedrijven die software, cloudinfrastructuur, ontwikkeling en beheerdiensten leveren. Naast grote platforms staan hier onder meer KPN, Centric, Info Support en gespecialiseerde hostingaanbieders. Microsoft 365 bundelt kantoorsoftware en samenwerking. AWS, Google Cloud en Oracle bieden onder meer rekenkracht en opslag waarop toepassingen kunnen draaien. Voor een overstap telt welke afhankelijkheid werkelijk bestaat: een documentformaat vraagt een andere aanpak dan een beheerde database of een platformspecifieke koppeling. Dit stelsel geeft daarom referentiepunten om die afhankelijkheden in kaart te brengen. Het dossier van Financiën geeft een concreet voorbeeld van werkplekgebruik. Bij cloudplatforms moet gebruik in een bepaalde werkplek afzonderlijk worden vastgesteld.",["Microsoft 365","Belastingdienst","Cloud"]]],
   ["Gemeenten",["Amsterdam, Ede, Zaanstad en ’s-Hertogenbosch werken mee aan de proef met een Linux-laptop met DAWO en de samenwerkomgeving MijnBureau. De praktijkrol van gemeenten is belangrijk omdat een alternatieve werkplek pas bruikbaar wordt als medewerkers hun taken kunnen uitvoeren en bestaande systemen ermee kunnen samenwerken. De gezamenlijke proef verzamelt ervaringen voor verdere ontwikkeling en onderzoekt welke groepen als eerste met MijnBureau zouden kunnen werken. De VNG is betrokken bij de samenwerking. De openbare aankondiging beschrijft gezamenlijke doelen. De dossiers schrijven geen afzonderlijke uitkomsten toe aan gemeenten waarvoor die uitkomsten niet zijn gepubliceerd.",["VNG","DAWO","MijnBureau"]]],
   ["Europa",["Dit stelsel laat zien hoe Europese overheden en publieke organisaties alternatieven ontwikkelen, testen en organiseren. Het Zwitserse PoC BOSS beproefde openDesk. Frankrijk kondigde invoering van La Suite bij de zorgverzekering aan. Digital Commons EDIC organiseert daarnaast samenwerking rond gedeelde digitale bouwstenen. Voor een soevereine werkplek zijn dat verschillende vormen van bijdrage: praktijkbewijs, invoering bij een grote afnemer en gezamenlijk onderhoud van technologie. De landen en organisaties hebben hun eigen inrichting en voorwaarden. Een Europese herkomst of samenwerking geeft op zichzelf geen antwoord op wie een specifieke dienst beheert of gegevens kan overdragen.",["PoC BOSS","Cnam","Digital Commons EDIC"]]],
   ["Wereldwijd",["Dit stelsel bevat desktopprojecten van buiten Europa. Pardus, BOSS Linux en openKylin bieden elk een eigen technische Linuxbasis voor de werkplek. Daarmee wordt zichtbaar welke keuzes een organisatie kan maken over pakketten, updates en ondersteuning. De distributies leveren een besturingssysteem. Voor gebruik als werkplek moeten organisaties daarnaast bepalen welke kantoor- en vakapplicaties bruikbaar zijn en hoe gebruikers bij bestanden en samenwerking komen. De projecten dienen als vergelijkingsmateriaal voor DAWO. Hun publieke projectinformatie onderbouwt geen gezamenlijke ontwikkeling met de Nederlandse werkplek.",["Pardus","BOSS Linux","openKylin"]]],
@@ -123,7 +122,7 @@ const explanationSources = new Map([
 const atlasAdditions = [
   {
     "name": "Cleura",
-    "system": "Infrastructuur",
+    "system": "Bedrijven",
     "region": "Zweden",
     "role": "Cloudinfrastructuur",
     "phase": "Beschikbaar",
@@ -136,7 +135,7 @@ const atlasAdditions = [
   },
   {
     "name": "GroupOffice",
-    "system": "Software",
+    "system": "Oplossingen",
     "region": "Nederland",
     "role": "Groupware en CRM",
     "phase": "Beschikbaar",
@@ -149,7 +148,7 @@ const atlasAdditions = [
   },
   {
     "name": "Murena",
-    "system": "Software",
+    "system": "Oplossingen",
     "region": "Frankrijk",
     "role": "Mobiele werkplek en cloud",
     "phase": "Beschikbaar",
@@ -162,7 +161,7 @@ const atlasAdditions = [
   },
   {
     "name": "Proton Workspace",
-    "system": "Software",
+    "system": "Oplossingen",
     "region": "Zwitserland",
     "role": "Beheerde werkpleksuite",
     "phase": "Beschikbaar",
@@ -175,7 +174,7 @@ const atlasAdditions = [
   },
   {
     "name": "The Good Cloud",
-    "system": "Infrastructuur",
+    "system": "Bedrijven",
     "region": "Nederland",
     "role": "Beheerde Nextcloud",
     "phase": "Beschikbaar",
@@ -194,7 +193,7 @@ const atlasAdditions = [
   },
   {
     "name": "grommunio",
-    "system": "Software",
+    "system": "Oplossingen",
     "region": "Oostenrijk",
     "role": "Mail en groupware",
     "phase": "Beschikbaar",
@@ -207,7 +206,7 @@ const atlasAdditions = [
   },
   {
     "name": "mailcow",
-    "system": "Software",
+    "system": "Oplossingen",
     "region": "Duitsland",
     "role": "Zelfbeheerde mailserver",
     "phase": "Beschikbaar",
@@ -220,7 +219,7 @@ const atlasAdditions = [
   },
   {
     "name": "EGroupware",
-    "system": "Software",
+    "system": "Oplossingen",
     "region": "Duitsland",
     "role": "Groupware en samenwerking",
     "phase": "Beschikbaar",
@@ -233,7 +232,7 @@ const atlasAdditions = [
   },
   {
     "name": "Infomaniak kSuite",
-    "system": "Software",
+    "system": "Oplossingen",
     "region": "Zwitserland",
     "role": "Beheerde werkpleksuite",
     "phase": "Beschikbaar",
@@ -246,7 +245,7 @@ const atlasAdditions = [
   },
   {
     "name": "Office.eu",
-    "system": "Software",
+    "system": "Oplossingen",
     "region": "Nederland",
     "role": "Beheerde werkpleksuite",
     "phase": "Beschikbaar",
@@ -418,7 +417,7 @@ const atlasAdditions = [
   },
   {
     "name": "Cloudwise",
-    "system": "Software",
+    "system": "Oplossingen",
     "region": "Nederland",
     "role": "Digitale onderwijsomgeving en integratie",
     "phase": "Beschikbaar",
@@ -437,7 +436,7 @@ const atlasAdditions = [
   },
   {
     "name": "LibreOffice",
-    "system": "Software",
+    "system": "Oplossingen",
     "region": "Internationaal",
     "role": "Desktopkantoorsoftware",
     "phase": "Beschikbaar",
@@ -456,7 +455,7 @@ const atlasAdditions = [
   },
   {
     "name": "OpenTalk",
-    "system": "Software",
+    "system": "Oplossingen",
     "region": "Duitsland",
     "role": "Videoconferenties",
     "phase": "Beschikbaar",
@@ -476,7 +475,7 @@ const atlasAdditions = [
   },
   {
     "name": "Collabora Online",
-    "system": "Software",
+    "system": "Oplossingen",
     "region": "Verenigd Koninkrijk",
     "role": "Documentbewerking in de browser",
     "phase": "Beschikbaar",
@@ -496,7 +495,7 @@ const atlasAdditions = [
   },
   {
     "name": "OX App Suite",
-    "system": "Software",
+    "system": "Oplossingen",
     "region": "Duitsland",
     "role": "Mail, agenda en contacten",
     "phase": "Beschikbaar",
@@ -516,7 +515,7 @@ const atlasAdditions = [
   },
   {
     "name": "XWiki",
-    "system": "Software",
+    "system": "Oplossingen",
     "region": "Frankrijk",
     "role": "Wiki en kennisbeheer",
     "phase": "Beschikbaar",
@@ -530,7 +529,7 @@ const atlasAdditions = [
   },
   {
     "name": "Univention Nubus",
-    "system": "Software",
+    "system": "Oplossingen",
     "region": "Duitsland",
     "role": "Portaal en identiteitsbeheer",
     "phase": "Beschikbaar",
@@ -550,7 +549,7 @@ const atlasAdditions = [
   },
   {
     "name": "Jitsi",
-    "system": "Software",
+    "system": "Oplossingen",
     "region": "Internationaal",
     "role": "Videovergaderen",
     "phase": "Beschikbaar",
@@ -564,7 +563,7 @@ const atlasAdditions = [
   },
   {
     "name": "CryptPad",
-    "system": "Software",
+    "system": "Oplossingen",
     "region": "Frankrijk",
     "role": "Versleuteld samenwerken",
     "phase": "Beschikbaar",
@@ -577,7 +576,7 @@ const atlasAdditions = [
   },
   {
     "name": "Nordeck/Neoboard",
-    "system": "Software",
+    "system": "Oplossingen",
     "region": "Duitsland",
     "role": "Digitaal whiteboard",
     "phase": "Beschikbaar",
@@ -591,7 +590,7 @@ const atlasAdditions = [
   },
   {
     "name": "Tchap",
-    "system": "Software",
+    "system": "Oplossingen",
     "region": "Frankrijk",
     "role": "Berichten voor publieke organisaties",
     "phase": "Beschikbaar",
@@ -611,7 +610,7 @@ const atlasAdditions = [
   },
   {
     "name": "La Suite Docs",
-    "system": "Software",
+    "system": "Oplossingen",
     "region": "Frankrijk",
     "role": "Gezamenlijk schrijven",
     "phase": "Beschikbaar",
@@ -631,7 +630,7 @@ const atlasAdditions = [
   },
   {
     "name": "Grist",
-    "system": "Software",
+    "system": "Oplossingen",
     "region": "Internationaal",
     "role": "Tabellen en gestructureerde gegevens",
     "phase": "Beschikbaar",
@@ -645,7 +644,7 @@ const atlasAdditions = [
   },
   {
     "name": "La Suite Fichiers",
-    "system": "Software",
+    "system": "Oplossingen",
     "region": "Frankrijk",
     "role": "Bestandsopslag en delen",
     "phase": "Beschikbaar",
@@ -659,7 +658,7 @@ const atlasAdditions = [
   },
   {
     "name": "L'Assistant",
-    "system": "Software",
+    "system": "Oplossingen",
     "region": "Frankrijk",
     "role": "AI-ondersteuning binnen werkpleksoftware",
     "phase": "Beschikbaar",
@@ -673,7 +672,7 @@ const atlasAdditions = [
   },
   {
     "name": "FranceTransfert",
-    "system": "Software",
+    "system": "Oplossingen",
     "region": "Frankrijk",
     "role": "Overdracht van grote bestanden",
     "phase": "Beschikbaar",
@@ -693,7 +692,7 @@ const atlasAdditions = [
   },
   {
     "name": "F13",
-    "system": "Software",
+    "system": "Oplossingen",
     "region": "Duitsland",
     "role": "AI-assistent voor publieke medewerkers",
     "phase": "In gebruik",
@@ -736,7 +735,7 @@ const atlasAdditions = [
   },
   {
     "name": "Bundesdruckerei",
-    "system": "Infrastructuur",
+    "system": "Bedrijven",
     "region": "Duitsland",
     "role": "Beoogde samenwerking voor beveiligde werkplekken",
     "phase": "Samenwerking aangekondigd",
