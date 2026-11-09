@@ -8,8 +8,6 @@ De oorspronkelijke objecten, bronrecords en verbindingen worden nog in index.htm
 
 De functionele subcategorieën binnen Technologie staan in `solutionGroups` in het eerste scriptblok van index.html. Neem ieder technologiedossier in precies één groep op. Bij een nieuwe subcategorie moet ook een passende baan in `solutionClusterLayouts` worden toegevoegd. Browsers en Werkplekbeheer hebben een eigen groep; wachtwoordbeheerders staan bij Identiteit. `infrastructureGroups` verdeelt Infrastructuur verder naar type. De indeling verschijnt in het stelseloverzicht, de dossiermetadata en de zoekfilters. Onderdelen bij een hoofddossier zijn ook via deze groepen te openen.
 
-De eerdere versie staat in backup/index-voor-2.0.html.
-
 ## Nog te controleren of uit te bouwen
 
 - Aanvullende controle op echte aanraakapparaten en handmatige beoordeling van overlappende kaartlabels. De geautomatiseerde controle van 9 november 2026 omvat 360, 390, 768, 1024, 1280 en 1920 pixels, alle dossiers, zoeken, filters en kaartnavigatie.
@@ -34,7 +32,7 @@ De categorie Gemeenten bevat uitsluitend Nederlandse gemeenten en hun relevante 
 
 ## Logo’s en herkenning
 
-`logoAssets` bevat officiële beeldmerken en website-iconen als ingesloten PNG-afbeeldingen. De atlas vraagt bij het openen geen logo’s bij externe diensten op. De herkomst en raadpleegdatum staan in `logo-bronnen.json`; dit bestand is alleen de bronregistratie en hoeft niet naast de HTML te staan om de atlas te gebruiken.
+`logoAssets` bevat officiële beeldmerken en website-iconen als ingesloten PNG-afbeeldingen. De atlas vraagt bij het openen geen logo’s bij externe diensten op. De officiële website, afbeeldingsbron en raadpleegdatum staan per afbeelding in `logoAssets` (`site`, `source` en `checked`).
 
 Logo’s worden in de kaart én het detailvenster getoond. De bestaande `badgeNames`/`badgeSource`-afbeelding blijft beschikbaar als reserve. De officiële beeldmerken hebben voorrang. Een document of project kan het beeldmerk van de betrokken organisatie gebruiken; `owner` benoemt dan die organisatie in de toegankelijke beschrijving. Voeg geen willekeurig logo van een bronuitgever toe aan een ander initiatief.
 
