@@ -48,6 +48,7 @@ aside .context h3,aside .relations h3{font-size:1rem;margin:1.15rem 0 .5rem;colo
 aside .context dd{padding-bottom:.5rem;border-bottom:1px solid #ffffff14}
 
 .atlas-quick-search{position:fixed;z-index:3;top:150px;left:clamp(16px,3vw,42px);width:min(440px,calc(100% - 32px))}
+.atlas-total{width:fit-content;margin:8px 0 0;padding:4px 9px;border:1px solid #647b9f55;border-radius:20px;background:#101a30ed;color:#cfdbef;font-size:.78rem;font-variant-numeric:tabular-nums;box-shadow:0 3px 14px #0004}
 .quick-search-field input{box-sizing:border-box;width:100%;min-height:46px;padding:.75rem 1rem;font:inherit;font-size:.9rem;color:#eef3ff;background:#101a30f5;border:1px solid #647b9f;border-radius:12px;box-shadow:0 5px 24px #0005}
 .quick-search-field input::placeholder{color:#b6c9e9}
 .quick-search-field input:focus-visible{outline:2px solid #b9d7ff;outline-offset:2px}
@@ -112,6 +113,7 @@ aside{bottom:max(var(--atlas-bottom),2.5vw)}
 <nav class="atlas-tools" aria-label="Kaartnavigatie"><button id="atlas-search" type="button">Filters</button><button id="atlas-home" type="button">Centrum</button><button id="atlas-help" type="button">Legenda</button></nav>
 <section class="atlas-quick-search" aria-label="Zoeken op de kaart">
   <div class="quick-search-field"><input id="atlas-quick-query" type="search" aria-label="Zoek een organisatie, initiatief of oplossing" placeholder="Zoek een organisatie, initiatief of oplossing…" autocomplete="off" aria-controls="atlas-quick-results" aria-expanded="false"></div>
+  <p class="atlas-total" id="atlas-total" aria-label="Totaal aantal items in de atlas"></p>
   <div id="atlas-quick-results" class="quick-search-results" hidden><p id="atlas-quick-count" role="status"></p><div class="atlas-results"></div></div>
 </section>
 <footer class="atlas-note">Alle informatie in dit stelsel komt uit openbare bronnen. Research en development met hulp van generatieve AI.</footer>
@@ -10053,6 +10055,10 @@ function label(text,x,y,size,color='#edf4ff',weight=600){
   ctx.strokeStyle='#080d20';ctx.lineWidth=4;ctx.strokeText(text,x,y);
   ctx.fillStyle=color;ctx.fillText(text,x,y);
 }
+const dossierCounts=systems.map((system,index)=>worlds.filter(world=>!world.sun&&world.system===index).length);
+const totalItems=dossierCounts.reduce((total,count)=>total+count,0);
+function worldLabel(world){return world.sun&&!world.hub?world.name+' · '+dossierCounts[world.system]:world.name;}
+document.querySelector('#atlas-total').textContent=totalItems.toLocaleString('nl-NL')+' items in totaal';
 const worldsByName=new Map(worlds.map(world=>[world.name,world]));
 const relations=links.filter(([from,to])=>worldsByName.has(from)&&worldsByName.has(to)).map(([a,b,description,documented])=>{
   const from=worldsByName.get(a);
@@ -10215,8 +10221,8 @@ function draw(){
     ctx.restore();
   }
   labels.sort((a,b)=>b.priority-a.priority).forEach(({w,x,y,priority})=>{
-    const name=w.name;
-    const size=w.sun?14:12;
+    const name=worldLabel(w);
+    const size=w.sun&&width>760?14:12;
     const weight=w.sun?700:600;
     ctx.font=weight+' '+size+'px Segoe UI, system-ui, sans-serif';
     const half=ctx.measureText(name).width/2+4;
@@ -10248,7 +10254,7 @@ function flyTo(world,z){
 }
 function fittedView(target,worldWidth,worldHeight,sidebar=true){
   const right=sidebar&&width>760?Math.max(280,width-info.getBoundingClientRect().width-56):width;
-  const top=width<=760?260:210;
+  const top=width<=760?300:240;
   const bottom=height-70;
   const areaWidth=Math.max(180,right-40),areaHeight=Math.max(180,bottom-top);
   const z=Math.max(1.2,Math.min(12,areaWidth/(worldWidth*scale),areaHeight/(worldHeight*scale)));
@@ -10257,7 +10263,7 @@ function fittedView(target,worldWidth,worldHeight,sidebar=true){
 function appendWorldButton(list,world){
   const button=document.createElement('button');button.type='button';button.className='relation';
   const title=document.createElement('strong');title.textContent=world.name;
-  const role=document.createElement('small');role.textContent=world.sun?'Stelsel':world.role||reviewedRoles.get(world.name).label;
+  const role=document.createElement('small');role.textContent=world.sun?dossierCounts[world.system]+' items':world.role||reviewedRoles.get(world.name).label;
   button.append(title,role);button.onclick=()=>world.sun?openWorld(world):focusWorld(world);list.append(button);
 }
 function openSolutionGroup(name){
@@ -10299,7 +10305,7 @@ function openWorld(world,showOverview=false){
     info.style.setProperty('--tone',world.tone);
     detailBadge.hidden=true;
     info.querySelector('h2').textContent=world.name;
-    info.querySelector('p').textContent=world.hub?'Overzicht van de werkpleklagen':world.system===solutionSystem?'Verken de technologie per subcategorie.':'Kies een item om het dossier te lezen.';
+    info.querySelector('p').textContent=world.hub?totalItems+' items · Overzicht van de werkpleklagen':dossierCounts[world.system]+' items · Kies een item om het dossier te lezen.';
     const [explanation,examples]=world.hub?[
       'Het Soevereinestelsel brengt publieke projecten, software, infrastructuur en beleid rond de digitale werkplek in kaart. DAWO laat zien hoe een overheid een andere desktopbasis kan beproeven. MijnBureau brengt bestaande bouwstenen samen voor digitaal samenwerken. Open standaarden helpen beoordelen of bestanden tussen toepassingen uitgewisseld kunnen worden. Clouddossiers laten zien welke keuzes onder de toepassingen liggen, zoals waar bestanden worden opgeslagen en wie systemen beheert. De kaart maakt onderscheid tussen aantoonbare verbindingen, vergelijkingen en onbevestigde verbanden. Daardoor kan een bezoeker per laag nagaan wat een organisatie kan kiezen, beheren of vervangen.',
       ['DAWO','MijnBureau','Open standaarden']
@@ -10636,7 +10642,7 @@ const legend=document.querySelector('#atlas-legend');
 for(const [index,system] of systems.entries()){
   clusterFilter.add(new Option(system.name,String(index)));
   const item=document.createElement('li');
-  item.textContent=system.name;
+  item.textContent=system.name+' · '+dossierCounts[index]+' items';
   item.style.color=system.tone;
   legend.querySelector('#legend-systems').append(item);
 }
