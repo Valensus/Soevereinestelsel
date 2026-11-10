@@ -24,6 +24,7 @@ aside p{margin:.4rem 0 .55rem;color:#d0daee;font-size:.9rem;line-height:1.45}
 aside small{color:#aebcd9;font-size:.72rem}
 aside a{display:inline-block;margin:.4rem 0;color:#b9d7ff;font-size:.85rem}
 aside .context{border-left:2px solid var(--tone);padding-left:.65rem}
+.dossier-contribution{display:block;margin-bottom:.55rem;color:#f1f5ff;font-size:1.03rem;line-height:1.5}
 .assessment{padding:.55rem .7rem;background:#ffffff0a;border-radius:8px}
 .context dl{margin:.3rem 0}
 .context dt{font-weight:700;color:var(--tone);margin-top:.65rem}
@@ -9739,6 +9740,855 @@ for(const name of ['Centric','Info Support','Intermax','KPN','Nebul','Previder',
   links.push([name,'Open Cloud Alliantie','De leverancierspublicatie noemt deze partij bij het manifest van april 2026.',{kind:'Samenwerking',source:allianceSource}]);
 }
 
+function firstExplanationSentence(explanation){return explanation?.match(/^.*?[.!?](?=\s|$)/su)?.[0]||explanation||'';}
+const contributionOverrides = new Map([
+  [
+    "Visie digitale autonomie",
+    "De visie geeft overheden richting bij het vergroten van zeggenschap over software, gegevens en infrastructuur."
+  ],
+  [
+    "Open, tenzij",
+    "Open, tenzij bevordert het openbaar maken en hergebruiken van software die door of voor de overheid wordt ontwikkeld."
+  ],
+  [
+    "Pas toe of leg uit",
+    "Pas toe of leg uit verplicht overheden binnen het toepassingsgebied open standaarden toe te passen of een afwijking te verantwoorden."
+  ],
+  [
+    "Gemeentelijke cloudeisen",
+    "De gemeentelijke cloudeisen beschrijven inkoopcriteria voor de infrastructuur onder gemeentelijke toepassingen en werkplekdiensten."
+  ],
+  [
+    "Handreiking digitale autonomie",
+    "De handreiking legt uit hoe organisaties binnen bestaande marktregels meer zeggenschap over digitale diensten kunnen organiseren."
+  ],
+  [
+    "Data Act",
+    "De Data Act bevat regels voor overstappen tussen dataverwerkingsdiensten en het verminderen van belemmeringen voor gegevensoverdracht."
+  ],
+  [
+    "AVG en internationale doorgifte",
+    "De AVG stelt voorwaarden aan het verwerken en internationaal doorgeven van persoonsgegevens uit de digitale werkomgeving."
+  ],
+  [
+    "BIO2",
+    "BIO2 beschrijft beveiligingsmaatregelen voor overheidsinformatie en de systemen waarop medewerkers werken."
+  ],
+  [
+    "DUTO-raamwerk",
+    "Het DUTO-raamwerk helpt overheidsinformatie duurzaam toegankelijk te houden bij het inrichten en veranderen van systemen."
+  ],
+  [
+    "Cyberbeveiligingswet",
+    "De Cyberbeveiligingswet stelt binnen haar reikwijdte eisen aan beveiligingszorg en het melden van incidenten."
+  ],
+  [
+    "Interoperable Europe Act",
+    "De Interoperable Europe Act organiseert samenwerking en gerichte beoordelingen voor interoperabele grensoverschrijdende publieke diensten."
+  ],
+  [
+    "ARBIT",
+    "ARBIT legt contractuele voorwaarden vast voor de aanschaf van IT-producten en diensten door het Rijk."
+  ],
+  [
+    "GIBIT",
+    "GIBIT biedt gemeenten inkoopvoorwaarden en hulpmiddelen voor afspraken met IT-leveranciers."
+  ],
+  [
+    "Standpunt generatieve AI",
+    "Het overheidsbrede standpunt geeft voorwaarden en afwegingen voor het inzetten van generatieve AI in het werk van overheidsorganisaties."
+  ],
+  [
+    "Algoritmekader",
+    "Het Algoritmekader verzamelt eisen en hulpmiddelen voor overheden die algoritmes en AI ontwikkelen, inkopen of gebruiken."
+  ],
+  [
+    "NeRDS inkoopstrategie",
+    "De NeRDS-inkooprichtlijn beschrijft hoe publieke teams afhankelijkheden en publieke waarden kunnen meenemen bij digitale inkoop."
+  ],
+  [
+    "NDS",
+    "De Nederlandse Digitaliseringsstrategie organiseert gezamenlijke overheidsacties, waaronder meer digitale weerbaarheid en autonomie."
+  ],
+  [
+    "EU Open Source Strategy 2026",
+    "De Europese opensourcestrategie stimuleert open alternatieven voor onder meer werkpleksoftware, veilige e-mail en cloudinfrastructuur."
+  ],
+  [
+    "EUPL",
+    "De EUPL regelt hoe software onder deze Europese opensourcelicentie kan worden gebruikt, aangepast en gedeeld."
+  ],
+  [
+    "DUO-ICT",
+    "DUO-ICT werkt met SSC-ICT en DICTU aan de ontwikkeling van een soevereine digitale werkomgeving voor het Rijk."
+  ],
+  [
+    "DAWO",
+    "DAWO biedt een door SSC-ICT ontwikkelde Linux-werkplek die samen met MijnBureau in gemeentelijke pilots wordt beproefd."
+  ],
+  [
+    "DAWO-NixOS",
+    "DAWO-NixOS maakt de configuratie en installatie van de op NixOS gebaseerde DAWO-werkplek openbaar."
+  ],
+  [
+    "Bureaublad",
+    "Bureaublad geeft medewerkers via één portaal toegang tot toepassingen binnen MijnBureau."
+  ],
+  [
+    "Beter Samen Werken",
+    "Beter Samen Werken verbindt digitale samenwerking met de informatiehuishouding van het Rijk."
+  ],
+  [
+    "code.overheid.nl",
+    "code.overheid.nl beproeft een gedeelde Forgejo-omgeving waarin overheidsorganisaties samen broncode kunnen beheren en ontwikkelen."
+  ],
+  [
+    "SOLID",
+    "SOLID ontwikkelt en beproeft een werkplek die lokale infrastructuur, samenwerken en AI combineert."
+  ],
+  [
+    "Denemarken",
+    "De Deense verkeersautoriteit beproeft met SIA Open een opensourcealternatief voor haar digitale werkplek."
+  ],
+  [
+    "Schleswig-Holstein",
+    "Schleswig-Holstein vervangt onderdelen van zijn overheidswerkplek stapsgewijs door open alternatieven."
+  ],
+  [
+    "Cnam",
+    "Cnam is betrokken bij de aangekondigde uitrol van La Suite numérique voor circa 80.000 medewerkers van de Franse zorgverzekering."
+  ],
+  [
+    "GovDigital",
+    "GovDigital organiseert met ZenDiS een SaaS-pilot waarmee publieke organisaties openDesk als dienst kunnen beproeven."
+  ],
+  [
+    "Dataport",
+    "Dataport levert en beheert digitale infrastructuur en toepassingen voor Duitse overheden."
+  ],
+  [
+    "Zwitserse federale werkplek",
+    "De Zwitserse Bondskanselarij werkt na een haalbaarheidsproef aan een programma voor soevereine werkpleksoftware."
+  ],
+  [
+    "Zuyd Hogeschool",
+    "Zuyd Hogeschool onderzoekt binnen SOLID lokale gegevensverwerking en AI op de digitale werkplek."
+  ],
+  [
+    "Open Cloud Alliantie",
+    "De Open Cloud Alliantie brengt leveranciers samen rond een voorstel voor open cloudinfrastructuur onder Nederlandse en Europese jurisdictie."
+  ],
+  [
+    "DINL",
+    "DINL bundelt sectorale kennis over de infrastructuur waarop digitale diensten en werkomgevingen draaien."
+  ],
+  [
+    "The Document Foundation",
+    "The Document Foundation organiseert de ontwikkeling en continuïteit van LibreOffice als vrije kantoorsoftware."
+  ],
+  [
+    "NOSAD",
+    "NOSAD deelt praktijkkennis, richtlijnen en voorbeelden over opensource en open data in de publieke sector."
+  ],
+  [
+    "DoCoNEXT",
+    "DoCoNEXT werkt binnen SOLID mee aan de ontwikkeling en beproeving van een digitale werkplek met lokale verwerking en AI."
+  ],
+  [
+    "KPN",
+    "KPN levert connectiviteit en clouddiensten voor de infrastructuur onder digitale werkomgevingen."
+  ],
+  [
+    "Previder",
+    "Previder levert datacenter-, cloud- en beheerdiensten voor digitale toepassingen en werkomgevingen."
+  ],
+  [
+    "Nebul",
+    "Nebul biedt private cloudinfrastructuur op basis van OpenStack en diensten voor AI-verwerking."
+  ],
+  [
+    "Serpro",
+    "Serpro werkt als Braziliaanse publieke IT-dienstverlener mee aan Nuvem Brasileira."
+  ],
+  [
+    "Heinlein Gruppe",
+    "De Heinlein Gruppe brengt leveranciers van e-mail, videovergaderen en bestandsdeling samen."
+  ],
+  [
+    "Conduction",
+    "Conduction verbindt publieke opensource-applicaties met integratie- en hostingpartners, onder meer rond Nextcloud."
+  ],
+  [
+    "MITIC — Software Factory",
+    "MITIC ontwikkelt gedeelde overheidstoepassingen, waaronder een dienst voor interne dossierafhandeling."
+  ],
+  [
+    "Pardus",
+    "Pardus biedt een door TÜBİTAK ULAKBİM ontwikkelde Linux-basis voor desktops en publieke toepassingen."
+  ],
+  [
+    "BOSS Linux",
+    "C-DAC ontwikkelt BOSS Linux als een Indiase Linux-basis voor werkplekken en andere systemen."
+  ],
+  [
+    "Nuvem Brasileira",
+    "Nuvem Brasileira werkt aan nationale cloudinfrastructuur voor digitale diensten van de Braziliaanse overheid."
+  ],
+  [
+    "AGETIC / EGPP",
+    "AGETIC en EGPP organiseren opleiding in vrije software en open standaarden voor de Boliviaanse publieke sector."
+  ],
+  [
+    "Maya OS — defensietraining",
+    "De Indiase defensieadministratie documenteert een training voor medewerkers in het gebruik van Maya OS."
+  ],
+  [
+    "Soevereine overheidscloud",
+    "Het Nederlandse cloudtraject werkt aan gemeenschappelijke infrastructuur met meer overheidsregie over gegevens en beheer."
+  ],
+  [
+    "Ubuntu Desktop",
+    "Ubuntu Desktop biedt een Linux-werkplek met mogelijkheden voor commerciële ondersteuning."
+  ],
+  [
+    "openSUSE",
+    "openSUSE biedt Linux-werkplekken met verschillende distributie- en onderhoudsmodellen."
+  ],
+  [
+    "Fedora Workstation",
+    "Fedora Workstation biedt een Linux-desktop met GNOME en actuele vrije software."
+  ],
+  [
+    "Linux Mint",
+    "Linux Mint biedt een Linux-desktop voor dagelijkse werkplektoepassingen."
+  ],
+  [
+    "Qubes OS",
+    "Qubes OS isoleert werkzaamheden in afzonderlijke domeinen op dezelfde desktop."
+  ],
+  [
+    "GrapheneOS",
+    "GrapheneOS biedt een Android-variant met aanvullende privacy- en beveiligingsfuncties."
+  ],
+  [
+    "/e/OS",
+    "/e/OS biedt een mobiel besturingssysteem met eigen diensten en synchronisatie."
+  ],
+  [
+    "LibreWolf",
+    "LibreWolf biedt een op Firefox gebaseerde browser met privacygerichte standaardinstellingen."
+  ],
+  [
+    "Brave Browser",
+    "Brave Browser biedt webtoegang met eigen privacy- en beheerfuncties."
+  ],
+  [
+    "Salt Project",
+    "Salt automatiseert systeemconfiguratie en de uitvoering van centrale beheertaken."
+  ],
+  [
+    "Rudder",
+    "Rudder beheert systeemconfiguraties en controleert of instellingen aan het vastgelegde beleid voldoen."
+  ],
+  [
+    "Fleet",
+    "Fleet inventariseert en beheert apparaten en software in de organisatie."
+  ],
+  [
+    "Snipe-IT",
+    "Snipe-IT registreert welke apparatuur aanwezig is en aan wie die is uitgegeven."
+  ],
+  [
+    "Foreman",
+    "Foreman ondersteunt het installeren en beheren van systemen gedurende hun levenscyclus."
+  ],
+  [
+    "Uyuni",
+    "Uyuni beheert Linux-systemen, softwarepakketten en updates vanuit een centrale omgeving."
+  ],
+  [
+    "MeshCentral",
+    "MeshCentral maakt beheer en ondersteuning van apparaten op afstand via een webomgeving mogelijk."
+  ],
+  [
+    "Xpra",
+    "Xpra geeft op afstand toegang tot afzonderlijke applicaties en desktops."
+  ],
+  [
+    "Remmina",
+    "Remmina verbindt de desktop met systemen op afstand via verschillende protocollen."
+  ],
+  [
+    "FreeRDP",
+    "FreeRDP levert een client en bibliotheken voor toegang op afstand via RDP."
+  ],
+  [
+    "xrdp",
+    "xrdp maakt Linux-systemen op afstand toegankelijk via het RDP-protocol."
+  ],
+  [
+    "noVNC",
+    "noVNC maakt toegang tot een VNC-desktop via de browser mogelijk."
+  ],
+  [
+    "Authelia",
+    "Authelia voegt authenticatie en toegangsbeleid toe aan webapplicaties."
+  ],
+  [
+    "LLDAP",
+    "LLDAP beheert accounts en groepen in een lichte LDAP-directory."
+  ],
+  [
+    "Kanidm",
+    "Kanidm beheert digitale identiteiten en authenticatie voor gebruikers en toepassingen."
+  ],
+  [
+    "LemonLDAP::NG",
+    "LemonLDAP::NG organiseert eenmalig aanmelden en toegangsbeheer voor toepassingen."
+  ],
+  [
+    "ZITADEL",
+    "ZITADEL levert identiteits- en toegangsbeheer met ondersteuning voor eigen hosting."
+  ],
+  [
+    "Psono",
+    "Psono laat teams wachtwoorden en andere geheimen gezamenlijk beheren."
+  ],
+  [
+    "step-ca",
+    "step-ca maakt een eigen certificaatautoriteit voor gebruikers, apparaten en diensten mogelijk."
+  ],
+  [
+    "Headscale",
+    "Headscale biedt een zelf te beheren besturingsserver voor een Tailscale-compatibel netwerk."
+  ],
+  [
+    "OpenWrt",
+    "OpenWrt biedt open firmware en beheerfuncties voor geschikte routers."
+  ],
+  [
+    "Suricata",
+    "Suricata analyseert netwerkverkeer en detecteert mogelijke aanvallen."
+  ],
+  [
+    "CrowdSec",
+    "CrowdSec detecteert misbruik en gebruikt gedeelde signalen om infrastructuur te beschermen."
+  ],
+  [
+    "AdGuard Home",
+    "AdGuard Home filtert DNS-verkeer op eigen infrastructuur."
+  ],
+  [
+    "Unbound",
+    "Unbound verzorgt en valideert DNS-antwoorden voor het eigen netwerk."
+  ],
+  [
+    "Technitium DNS Server",
+    "Technitium DNS Server biedt een zelf te beheren DNS-dienst met een webinterface."
+  ],
+  [
+    "Stalwart",
+    "Stalwart biedt een mail- en samenwerkingsserver met ondersteuning voor moderne mailprotocollen."
+  ],
+  [
+    "SOGo",
+    "SOGo biedt webmail, agenda’s en adresboeken voor een eigen samenwerkomgeving."
+  ],
+  [
+    "Postfix",
+    "Postfix verzorgt het verzenden en ontvangen van e-mail op een eigen mailserver."
+  ],
+  [
+    "Dovecot",
+    "Dovecot biedt gebruikers en mailclients toegang tot mailboxen en mailopslag."
+  ],
+  [
+    "Cyrus IMAP",
+    "Cyrus IMAP beheert mailboxen, opslag en toegang binnen een eigen mailomgeving."
+  ],
+  [
+    "Roundcube",
+    "Roundcube geeft gebruikers via de browser toegang tot hun bestaande mailbox."
+  ],
+  [
+    "SnappyMail",
+    "SnappyMail biedt een webinterface voor het lezen en beheren van e-mail."
+  ],
+  [
+    "Synapse",
+    "Synapse biedt een Matrix-homeserver waarmee een organisatie haar chatinfrastructuur kan beheren."
+  ],
+  [
+    "Prosody",
+    "Prosody biedt een XMPP-server voor een eigen berichtenvoorziening."
+  ],
+  [
+    "ejabberd",
+    "ejabberd levert een XMPP-server voor berichtenuitwisseling en realtimesamenwerking."
+  ],
+  [
+    "Jami",
+    "Jami laat gebruikers communiceren via een gedistribueerde architectuur."
+  ],
+  [
+    "Mumble",
+    "Mumble biedt spraakcommunicatie via een zelf te beheren server."
+  ],
+  [
+    "Delta Chat",
+    "Delta Chat biedt chatfuncties via bestaande e-mailinfrastructuur."
+  ],
+  [
+    "SimpleX Chat",
+    "SimpleX Chat biedt berichtenuitwisseling met relays die ook zelf kunnen worden ingezet."
+  ],
+  [
+    "Wire",
+    "Wire biedt zakelijke communicatie met mogelijkheden voor eigen hosting."
+  ],
+  [
+    "Wiki.js",
+    "Wiki.js biedt een zelf te beheren wiki voor gedeelde organisatiekennis."
+  ],
+  [
+    "DokuWiki",
+    "DokuWiki legt gedeelde kennis vast in een wiki die bestanden als opslagbasis gebruikt."
+  ],
+  [
+    "HedgeDoc",
+    "HedgeDoc laat medewerkers gezamenlijk Markdown-documenten bewerken."
+  ],
+  [
+    "Etherpad",
+    "Etherpad laat medewerkers gelijktijdig aan teksten schrijven in de browser."
+  ],
+  [
+    "AppFlowy",
+    "AppFlowy biedt een werkruimte voor notities, documenten en samenwerking."
+  ],
+  [
+    "AFFiNE",
+    "AFFiNE brengt documenten, kennis en whiteboards samen in een werkruimte."
+  ],
+  [
+    "Trilium Notes",
+    "Trilium Notes organiseert notities en kennis met een zelf te hosten server."
+  ],
+  [
+    "Logseq",
+    "Logseq organiseert notities en kennis in een lokale omgeving."
+  ],
+  [
+    "SilverBullet",
+    "SilverBullet biedt een zelf te beheren kennisomgeving op basis van Markdown."
+  ],
+  [
+    "Standard Notes",
+    "Standard Notes bewaart versleutelde notities en ondersteunt eigen hosting."
+  ],
+  [
+    "Notesnook",
+    "Notesnook biedt versleutelde notities en synchronisatie tussen apparaten."
+  ],
+  [
+    "Mayan EDMS",
+    "Mayan EDMS beheert documenten, versies, metadata en bijbehorende werkstromen."
+  ],
+  [
+    "Vikunja",
+    "Vikunja organiseert taken en projecten voor individuele medewerkers en teams."
+  ],
+  [
+    "Taiga",
+    "Taiga ondersteunt teams bij projectplanning en agile werkprocessen."
+  ],
+  [
+    "Redmine",
+    "Redmine beheert projecten, taken en meldingen in een eigen omgeving."
+  ],
+  [
+    "Kanboard",
+    "Kanboard maakt werk zichtbaar op zelf te beheren kanbanborden."
+  ],
+  [
+    "Wekan",
+    "Wekan organiseert teamwerk op gedeelde kanbanborden."
+  ],
+  [
+    "Plane",
+    "Plane organiseert projecten en meldingen voor teams."
+  ],
+  [
+    "Leantime",
+    "Leantime ondersteunt projectbeheer, planning en de organisatie van werkzaamheden."
+  ],
+  [
+    "Forgejo",
+    "Forgejo biedt Git-hosting, codebeoordeling en versiebeheer voor software en documentatie."
+  ],
+  [
+    "Gitea",
+    "Gitea biedt Git-hosting en samenwerking rond broncode en documentatie."
+  ],
+  [
+    "Node-RED",
+    "Node-RED automatiseert gegevensstromen en koppelingen tussen systemen via een visuele editor."
+  ],
+  [
+    "Activepieces",
+    "Activepieces automatiseert werkstromen en koppelt toepassingen aan elkaar."
+  ],
+  [
+    "Windmill",
+    "Windmill laat teams scripts, automatiseringen en interne applicaties aanbieden."
+  ],
+  [
+    "Formbricks",
+    "Formbricks verzamelt enquêtes en feedback via een omgeving die ook zelf kan worden gehost."
+  ],
+  [
+    "Syncthing",
+    "Syncthing synchroniseert bestanden rechtstreeks tussen eigen apparaten."
+  ],
+  [
+    "Rclone",
+    "Rclone kopieert, synchroniseert en verplaatst bestanden tussen opslagdiensten."
+  ],
+  [
+    "age",
+    "age versleutelt bestanden voor overdracht en geautomatiseerde werkprocessen."
+  ],
+  [
+    "Kopia",
+    "Kopia maakt back-ups en snapshots naar zelf gekozen opslag."
+  ],
+  [
+    "Duplicati",
+    "Duplicati maakt versleutelde back-ups en biedt daarvoor een beheerinterface."
+  ],
+  [
+    "UrBackup",
+    "UrBackup verzorgt centrale back-ups van bestanden en systeemimages op werkplekken."
+  ],
+  [
+    "Bareos",
+    "Bareos organiseert back-ups voor verschillende systemen en opslagdoelen."
+  ],
+  [
+    "LocalSend",
+    "LocalSend deelt bestanden rechtstreeks tussen apparaten op het lokale netwerk."
+  ],
+  [
+    "PairDrop",
+    "PairDrop verstuurt bestanden tussen apparaten via de browser."
+  ],
+  [
+    "PDFsam Basic",
+    "PDFsam Basic splitst en combineert PDF-bestanden op de eigen werkplek."
+  ],
+  [
+    "Documenso",
+    "Documenso organiseert zelf te beheren ondertekenprocessen voor documenten."
+  ],
+  [
+    "OpenSign",
+    "OpenSign biedt elektronische ondertekenprocessen in een zelf te beheren omgeving."
+  ],
+  [
+    "LibreSign",
+    "LibreSign voegt elektronische ondertekening en certificaatfuncties toe aan Nextcloud."
+  ],
+  [
+    "llama.cpp",
+    "llama.cpp voert taalmodellen uit op eigen apparaten en servers."
+  ],
+  [
+    "vLLM",
+    "vLLM biedt een server om taalmodellen aan toepassingen beschikbaar te stellen."
+  ],
+  [
+    "Jan",
+    "Jan biedt een desktopassistent die met lokale taalmodellen kan werken."
+  ],
+  [
+    "GPT4All",
+    "GPT4All maakt het mogelijk taalmodellen vanuit een desktopomgeving lokaal te gebruiken."
+  ],
+  [
+    "AnythingLLM",
+    "AnythingLLM combineert AI-assistenten met zoeken in eigen documenten."
+  ],
+  [
+    "RAGFlow",
+    "RAGFlow verwerkt documenten voor zoeken en antwoorden met AI."
+  ],
+  [
+    "Khoj",
+    "Khoj biedt een AI-assistent voor eigen documenten en kennis."
+  ],
+  [
+    "Onyx",
+    "Onyx doorzoekt organisatiekennis en biedt daarop gebaseerde AI-assistenten."
+  ],
+  [
+    "whisper.cpp",
+    "whisper.cpp zet spraak om naar tekst op eigen apparaten."
+  ],
+  [
+    "Speech Note",
+    "Speech Note verzorgt lokale spraakherkenning en transcriptie op Linux."
+  ],
+  [
+    "Xen Orchestra",
+    "Xen Orchestra beheert Xen- en XCP-ng-omgevingen en hun back-ups."
+  ],
+  [
+    "Incus",
+    "Incus beheert systeemcontainers en virtuele machines op eigen infrastructuur."
+  ],
+  [
+    "KVM",
+    "KVM voegt virtualisatie toe aan de Linux-kernel."
+  ],
+  [
+    "QEMU",
+    "QEMU emuleert en virtualiseert systemen voor het uitvoeren van virtuele machines."
+  ],
+  [
+    "Apache CloudStack",
+    "Apache CloudStack organiseert het beheer van private en publieke cloudinfrastructuur."
+  ],
+  [
+    "Kubernetes",
+    "Kubernetes organiseert de uitvoering en het beheer van containerapplicaties."
+  ],
+  [
+    "K3s",
+    "K3s biedt een compacte Kubernetes-distributie voor containerapplicaties."
+  ],
+  [
+    "Podman",
+    "Podman voert containers uit en beheert ze op Linux-systemen."
+  ],
+  [
+    "Podman Desktop",
+    "Podman Desktop biedt een desktopinterface voor containers en ontwikkelomgevingen."
+  ],
+  [
+    "Harvester",
+    "Harvester combineert het beheer van virtuele machines en opslag op eigen infrastructuur."
+  ],
+  [
+    "TrueNAS",
+    "TrueNAS biedt een opslagplatform voor bestanden en andere gegevens op eigen infrastructuur."
+  ],
+  [
+    "OpenMediaVault",
+    "OpenMediaVault richt een eigen server in voor netwerkopslag en bestandsdeling."
+  ],
+  [
+    "Ceph",
+    "Ceph verdeelt bestands-, object- en blokopslag over meerdere systemen."
+  ],
+  [
+    "Garage",
+    "Garage biedt S3-compatibele objectopslag op eigen servers."
+  ],
+  [
+    "SeaweedFS",
+    "SeaweedFS verdeelt bestanden en objectopslag over meerdere systemen."
+  ],
+  [
+    "OpenTofu",
+    "OpenTofu legt infrastructuur vast als code en kan die reproduceerbaar uitrollen."
+  ],
+  [
+    "Rancher",
+    "Rancher beheert Kubernetes-clusters vanuit een centrale omgeving."
+  ],
+  [
+    "Portainer Community Edition",
+    "Portainer Community Edition biedt een beheerinterface voor containeromgevingen."
+  ],
+  [
+    "Zabbix",
+    "Zabbix bewaakt de werking van infrastructuur en digitale diensten."
+  ],
+  [
+    "Prometheus",
+    "Prometheus verzamelt meetgegevens over systemen en diensten."
+  ],
+  [
+    "Grafana",
+    "Grafana maakt meetgegevens over systemen en diensten zichtbaar in dashboards."
+  ],
+  [
+    "Grafana Loki",
+    "Grafana Loki verzamelt logs centraal en maakt ze doorzoekbaar."
+  ],
+  [
+    "OpenSearch",
+    "OpenSearch doorzoekt en analyseert gegevens en logs."
+  ],
+  [
+    "OpenObserve",
+    "OpenObserve slaat logs, meetgegevens en traces op en maakt ze analyseerbaar."
+  ],
+  [
+    "Uptime Kuma",
+    "Uptime Kuma bewaakt of digitale diensten bereikbaar zijn."
+  ],
+  [
+    "NetBox",
+    "NetBox registreert netwerkapparatuur, verbindingen en andere infrastructuurgegevens."
+  ],
+  [
+    "LibreNMS",
+    "LibreNMS bewaakt netwerkapparatuur en verzamelt gegevens over de werking ervan."
+  ],
+  [
+    "Netdata",
+    "Netdata toont actuele meetgegevens over systemen en applicaties."
+  ],
+  [
+    "Greenbone Community Edition",
+    "Greenbone Community Edition onderzoekt kwetsbaarheden met zelf te beheren scaninfrastructuur."
+  ],
+  [
+    "Trivy",
+    "Trivy controleert software en containers op kwetsbaarheden en configuratieproblemen."
+  ],
+  [
+    "Penpot",
+    "Penpot laat teams gezamenlijk interfaces en prototypes ontwerpen."
+  ],
+  [
+    "Excalidraw",
+    "Excalidraw laat medewerkers samen schetsen en ideeën uitwerken op een whiteboard."
+  ],
+  [
+    "diagrams.net / draw.io",
+    "diagrams.net maakt diagrammen die ook lokaal kunnen worden opgeslagen."
+  ],
+  [
+    "Inkscape",
+    "Inkscape maakt vectorafbeeldingen en illustraties op de eigen werkplek."
+  ],
+  [
+    "GIMP",
+    "GIMP bewerkt afbeeldingen en foto’s op de eigen werkplek."
+  ],
+  [
+    "Krita",
+    "Krita biedt gereedschap voor digitaal tekenen en schilderen."
+  ],
+  [
+    "Scribus",
+    "Scribus verzorgt de opmaak van publicaties en drukwerk op de eigen werkplek."
+  ],
+  [
+    "OBS Studio",
+    "OBS Studio neemt schermbeelden en video op en verzorgt live-uitzendingen."
+  ],
+  [
+    "Kdenlive",
+    "Kdenlive monteert video op de eigen werkplek."
+  ],
+  [
+    "Audacity",
+    "Audacity neemt geluid op en bewerkt audiobestanden."
+  ],
+  [
+    "Blender",
+    "Blender ondersteunt 3D-ontwerp, animatie en rendering op de eigen werkplek."
+  ],
+  [
+    "FreeCAD",
+    "FreeCAD biedt technisch en parametrisch ontwerpen op de eigen werkplek."
+  ],
+  [
+    "QGIS",
+    "QGIS analyseert geografische gegevens en maakt kaarten op de eigen werkplek."
+  ],
+  [
+    "OVHcloud Public Cloud",
+    "OVHcloud Public Cloud levert cloudcapaciteit waarop organisaties toepassingen en diensten kunnen draaien."
+  ],
+  [
+    "Scaleway",
+    "Scaleway levert rekenkracht, opslag en AI-diensten als cloudvoorzieningen."
+  ],
+  [
+    "Hetzner Cloud",
+    "Hetzner Cloud biedt virtuele servers en opslag voor eigen toepassingen en diensten."
+  ],
+  [
+    "IONOS Cloud",
+    "IONOS Cloud biedt cloudinfrastructuur voor het draaien van toepassingen en het opslaan van gegevens."
+  ],
+  [
+    "Open Telekom Cloud",
+    "Open Telekom Cloud levert een op OpenStack gebaseerde clouddienst van T-Systems."
+  ],
+  [
+    "Exoscale",
+    "Exoscale biedt cloudinfrastructuur met Europese locaties voor toepassingen en gegevens."
+  ],
+  [
+    "UpCloud",
+    "UpCloud levert cloudinfrastructuur voor toepassingen, opslag en digitale diensten."
+  ],
+  [
+    "Aruba Cloud",
+    "Aruba Cloud biedt cloudinfrastructuur voor het draaien en beheren van digitale toepassingen."
+  ],
+  [
+    "SFTPGo",
+    "SFTPGo beheert bestandsoverdracht via SFTP, WebDAV en een webinterface."
+  ],
+  [
+    "Asterisk",
+    "Asterisk vormt de softwarebasis voor een eigen telefooncentrale."
+  ],
+  [
+    "FreeSWITCH",
+    "FreeSWITCH verwerkt spraak en media voor telefonie- en communicatiediensten."
+  ],
+  [
+    "Kamailio",
+    "Kamailio biedt een SIP-server voor eigen telefonie-infrastructuur."
+  ],
+  [
+    "OCS Inventory NG",
+    "OCS Inventory NG inventariseert apparaten en de software die daarop is geïnstalleerd."
+  ],
+  [
+    "FOG Project",
+    "FOG Project installeert werkplekken en rolt systeemimages uit."
+  ],
+  [
+    "Clonezilla",
+    "Clonezilla kloont en herstelt schijven en complete systemen."
+  ],
+  [
+    "Baïkal",
+    "Baïkal synchroniseert agenda’s en contacten via een eigen CalDAV- en CardDAV-server."
+  ],
+  [
+    "Easy!Appointments",
+    "Easy!Appointments organiseert afspraken en boekingen via een zelf te beheren dienst."
+  ],
+  [
+    "Framadate",
+    "Framadate verzamelt beschikbaarheid en voorkeuren voor afspraken en eenvoudige peilingen."
+  ],
+  [
+    "Huly",
+    "Huly brengt projecten, chat en documenten samen in een samenwerkingsplatform."
+  ]
+]);
+const dossierContributions=new Map([...dossierExplanations].filter(([name])=>nodes.has(name)).map(([name,explanation])=>[name,contributionOverrides.get(name)||firstExplanationSentence(explanation)]));
+
 const solutionSystem=systems.findIndex(system=>system.name==='Technologie');
 for(const [subcategory,names] of solutionGroups){
   for(const name of names){
@@ -10056,6 +10906,995 @@ const dossierCounts=systems.map((system,index)=>worlds.filter(world=>!world.sun&
 const totalItems=dossierCounts.reduce((total,count)=>total+count,0);
 function worldLabel(world){return world.sun&&!world.hub?world.name+' · '+dossierCounts[world.system]:world.name;}
 document.querySelector('#atlas-total').textContent=totalItems.toLocaleString('nl-NL')+' items in totaal';
+// De publiek toegankelijke deelnemerpublicatie vervangt een pilot-FAQ die aanmelding vraagt.
+const surfPublicSource={id:'https://www.ru.nl/vervolgstappen-pilot-surf-nextcloud',url:'https://www.ru.nl/vervolgstappen-pilot-surf-nextcloud',title:'Radboud Universiteit: deelname aan de SURF Works-pilot',publisher:'Radboud Universiteit',type:'Publieke pilotinformatie',checked:'2026-11-10'};
+const surfPreviousSource=sourceByNode.get('SURF Works');
+sourcesById.set(surfPublicSource.url,surfPublicSource);sourceByNode.set('SURF Works',surfPublicSource);
+explanationSources.set('SURF Works',[[surfPublicSource.title,surfPublicSource.url]]);
+if(documentedProfiles.has('SURF Works'))documentedProfiles.get('SURF Works')[0]=surfPublicSource.url;
+if(surfPreviousSource){supplementalByNode.get('SURF Works')?.delete(surfPreviousSource.url);sourcesById.delete(surfPreviousSource.url);}
+
+const verifiedConnections = [
+  {
+    "fromName": "ZenDiS",
+    "toName": "openDesk",
+    "kind": "Productregie",
+    "description": "ZenDiS ontwikkelt en beheert openDesk als samenwerkomgeving voor de publieke sector.",
+    "source": {
+      "title": "ZenDiS: documentatie over openDesk",
+      "url": "https://www.zendis.de/",
+      "publisher": "www.zendis.de",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "DINUM",
+    "toName": "La Suite",
+    "kind": "Productregie",
+    "description": "DINUM ontwikkelt en organiseert La Suite numérique voor Franse overheidsmedewerkers.",
+    "source": {
+      "title": "DINUM: documentatie over La Suite",
+      "url": "https://lasuite.numerique.gouv.fr/",
+      "publisher": "lasuite.numerique.gouv.fr",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "openDesk",
+    "toName": "Nextcloud",
+    "kind": "Techniek",
+    "description": "De architectuur van openDesk noemt Nextcloud als geïntegreerde bouwsteen.",
+    "source": {
+      "title": "openDesk: documentatie over Nextcloud",
+      "url": "https://docs.opendesk.eu/operations/architecture/",
+      "publisher": "docs.opendesk.eu",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "openDesk",
+    "toName": "OpenProject",
+    "kind": "Techniek",
+    "description": "De architectuur van openDesk noemt OpenProject als geïntegreerde bouwsteen.",
+    "source": {
+      "title": "openDesk: documentatie over OpenProject",
+      "url": "https://docs.opendesk.eu/operations/architecture/",
+      "publisher": "docs.opendesk.eu",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "openDesk",
+    "toName": "Element",
+    "kind": "Techniek",
+    "description": "De architectuur van openDesk noemt Element als geïntegreerde bouwsteen.",
+    "source": {
+      "title": "openDesk: documentatie over Element",
+      "url": "https://docs.opendesk.eu/operations/architecture/",
+      "publisher": "docs.opendesk.eu",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "VNG",
+    "toName": "Amsterdam",
+    "kind": "Pilot",
+    "description": "VNG en Amsterdam werken mee aan de gezamenlijke praktijkproef met DAWO en MijnBureau.",
+    "source": {
+      "title": "VNG: documentatie over Amsterdam",
+      "url": "https://www.digitaleoverheid.nl/nieuws-nds/gemeenten-verkennen-autonome-digitale-werkomgeving/",
+      "publisher": "www.digitaleoverheid.nl",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "VNG",
+    "toName": "Ede",
+    "kind": "Pilot",
+    "description": "VNG en Ede werken mee aan de gezamenlijke praktijkproef met DAWO en MijnBureau.",
+    "source": {
+      "title": "VNG: documentatie over Ede",
+      "url": "https://www.digitaleoverheid.nl/nieuws-nds/gemeenten-verkennen-autonome-digitale-werkomgeving/",
+      "publisher": "www.digitaleoverheid.nl",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "VNG",
+    "toName": "Zaanstad",
+    "kind": "Pilot",
+    "description": "VNG en Zaanstad werken mee aan de gezamenlijke praktijkproef met DAWO en MijnBureau.",
+    "source": {
+      "title": "VNG: documentatie over Zaanstad",
+      "url": "https://www.digitaleoverheid.nl/nieuws-nds/gemeenten-verkennen-autonome-digitale-werkomgeving/",
+      "publisher": "www.digitaleoverheid.nl",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "VNG",
+    "toName": "’s-Hertogenbosch",
+    "kind": "Pilot",
+    "description": "VNG en ’s-Hertogenbosch werken mee aan de gezamenlijke praktijkproef met DAWO en MijnBureau.",
+    "source": {
+      "title": "VNG: documentatie over ’s-Hertogenbosch",
+      "url": "https://www.digitaleoverheid.nl/nieuws-nds/gemeenten-verkennen-autonome-digitale-werkomgeving/",
+      "publisher": "www.digitaleoverheid.nl",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "BZK",
+    "toName": "MijnBureau",
+    "kind": "Ontwikkeling",
+    "description": "BZK ontwikkelt MijnBureau als opensource-samenwerkomgeving.",
+    "source": {
+      "title": "BZK: documentatie over MijnBureau",
+      "url": "https://www.digitaleoverheid.nl/nieuws-nds/gemeenten-verkennen-autonome-digitale-werkomgeving/",
+      "publisher": "www.digitaleoverheid.nl",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "VNG",
+    "toName": "MijnBureau",
+    "kind": "Pilot",
+    "description": "De VNG werkt mee aan de gemeentelijke praktijkproef met MijnBureau.",
+    "source": {
+      "title": "VNG: documentatie over MijnBureau",
+      "url": "https://www.digitaleoverheid.nl/nieuws-nds/gemeenten-verkennen-autonome-digitale-werkomgeving/",
+      "publisher": "www.digitaleoverheid.nl",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "VNG",
+    "toName": "DAWO",
+    "kind": "Pilot",
+    "description": "De VNG werkt mee aan de gemeentelijke praktijkproef met de Linux-werkplek DAWO.",
+    "source": {
+      "title": "VNG: documentatie over DAWO",
+      "url": "https://www.digitaleoverheid.nl/nieuws-nds/gemeenten-verkennen-autonome-digitale-werkomgeving/",
+      "publisher": "www.digitaleoverheid.nl",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "SURF Works",
+    "toName": "Nextcloud",
+    "kind": "Pilot",
+    "description": "SURF Works beproeft een samenwerkomgeving op basis van Nextcloud.",
+    "source": {
+      "title": "SURF Works: documentatie over Nextcloud",
+      "url": "https://www.ru.nl/vervolgstappen-pilot-surf-nextcloud",
+      "publisher": "www.ru.nl",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "Radboud Universiteit",
+    "toName": "SURF Works",
+    "kind": "Pilot",
+    "description": "Radboud beschrijft deelname van medewerkers aan de SURF-pilot met Nextcloud.",
+    "source": {
+      "title": "Radboud Universiteit: documentatie over SURF Works",
+      "url": "https://www.ru.nl/vervolgstappen-pilot-surf-nextcloud",
+      "publisher": "www.ru.nl",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "Centric",
+    "toName": "Nextcloud",
+    "kind": "Samenwerking",
+    "description": "Centric en Nextcloud ontwikkelen samen een werkplekaanbod voor de Nederlandse publieke sector.",
+    "source": {
+      "title": "Centric: documentatie over Nextcloud",
+      "url": "https://centric.eu/nl/nieuws/centric-en-nextcloud-ontwikkelen-soevereine-digitale-werkplek-voor-nederlandse-publieke-sector/",
+      "publisher": "centric.eu",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "Nuvem Brasileira",
+    "toName": "Serpro",
+    "kind": "Samenwerking",
+    "description": "De Braziliaanse overheid noemt Serpro als partner in Nuvem Brasileira.",
+    "source": {
+      "title": "Nuvem Brasileira: documentatie over Serpro",
+      "url": "https://www.gov.br/governodigital/pt-br/infraestrutura-nacional-de-dados/ambiente-tecnologico/nuvem/nuvem-brasileira",
+      "publisher": "www.gov.br",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "DAWO",
+    "toName": "DAWO-NixOS",
+    "kind": "Techniek",
+    "description": "De openbare DAWO-installatierepository legt de op NixOS gebaseerde werkplekinstallatie vast.",
+    "source": {
+      "title": "DAWO: documentatie over DAWO-NixOS",
+      "url": "https://code.overheid.nl/MinBZK/DAWO-Installatie",
+      "publisher": "code.overheid.nl",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "DAWO-NixOS",
+    "toName": "NixOS",
+    "kind": "Technische basis",
+    "description": "De DAWO-installatierepository bevat de configuratie van de NixOS-werkplek.",
+    "source": {
+      "title": "DAWO-NixOS: documentatie over NixOS",
+      "url": "https://code.overheid.nl/MinBZK/DAWO-Installatie",
+      "publisher": "code.overheid.nl",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "Denemarken",
+    "toName": "SIA Open",
+    "kind": "Praktijkcasus",
+    "description": "De Deense verkeersautoriteit beproeft de opensourcewerkplek SIA Open.",
+    "source": {
+      "title": "Denemarken: documentatie over SIA Open",
+      "url": "https://interoperable-europe.ec.europa.eu/collection/open-source-observatory-osor/news/denmarks-open-source-desktop-pilot-ten-months",
+      "publisher": "interoperable-europe.ec.europa.eu",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "Cnam",
+    "toName": "La Suite",
+    "kind": "Aangekondigde uitrol",
+    "description": "DINUM kondigde La Suite numérique aan voor circa 80.000 medewerkers van de Assurance Maladie.",
+    "source": {
+      "title": "Cnam: documentatie over La Suite",
+      "url": "https://www.numerique.gouv.fr/sinformer/espace-presse/lassurance-maladie-va-deployer-la-suite-numerique-collaborative-de-letat-aupres-de-ses-80-000-agents/",
+      "publisher": "www.numerique.gouv.fr",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "GovDigital",
+    "toName": "openDesk",
+    "kind": "Dienstverlening",
+    "description": "GovDigital en ZenDiS bieden een SaaS-pilot voor openDesk; productieaanbod is aangekondigd voor januari 2027.",
+    "source": {
+      "title": "GovDigital: documentatie over openDesk",
+      "url": "https://www.zendis.de/newsroom/presse/pressemeldung-zendis-govdigital-opendesk-saas",
+      "publisher": "www.zendis.de",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "GovDigital",
+    "toName": "ZenDiS",
+    "kind": "Samenwerking",
+    "description": "GovDigital en ZenDiS organiseren samen een afnameroute voor openDesk als dienst.",
+    "source": {
+      "title": "GovDigital: documentatie over ZenDiS",
+      "url": "https://www.zendis.de/newsroom/presse/pressemeldung-zendis-govdigital-opendesk-saas",
+      "publisher": "www.zendis.de",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "Euro-Office",
+    "toName": "Nextcloud",
+    "kind": "Integratie",
+    "description": "Nextcloud beschrijft de bundeling van Euro-Office met Nextcloud Hub.",
+    "source": {
+      "title": "Euro-Office: documentatie over Nextcloud",
+      "url": "https://nextcloud.com/nl/blog/press_releases/hub-26-summer/",
+      "publisher": "nextcloud.com",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "EU Sovereign Tech Fund",
+    "toName": "Digital Commons EDIC",
+    "kind": "Financieringsproef",
+    "description": "Digital Commons EDIC neemt het EU Sovereign Tech Fund op als proef in zijn projectenportfolio.",
+    "source": {
+      "title": "EU Sovereign Tech Fund: documentatie over Digital Commons EDIC",
+      "url": "https://digital-commons-edic.eu/projects/",
+      "publisher": "digital-commons-edic.eu",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "Europese cloudinkoop",
+    "toName": "Cloud Sovereignty Framework",
+    "kind": "Inkoopkader",
+    "description": "De Europese Commissie beoordeelde de cloudaanbiedingen met haar Cloud Sovereignty Framework.",
+    "source": {
+      "title": "Europese cloudinkoop: documentatie over Cloud Sovereignty Framework",
+      "url": "https://commission.europa.eu/news-and-media/news/commission-advances-cloud-sovereignty-through-strategic-procurement-2026-04-17_en",
+      "publisher": "commission.europa.eu",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "YourData",
+    "toName": "SOLID",
+    "kind": "Projectpartner",
+    "description": "YourData Network is technologiepartner in SOLID, rond lokale infrastructuur, samenwerken en AI.",
+    "source": {
+      "title": "YourData: documentatie over SOLID",
+      "url": "https://yourdata.network/nl/digitale-autonomie-solid/",
+      "publisher": "yourdata.network",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "Zuyd Hogeschool",
+    "toName": "SOLID",
+    "kind": "Onderzoek",
+    "description": "De SOLID-projectbeschrijving noemt Zuyd Hogeschool als onderzoekspartner.",
+    "source": {
+      "title": "Zuyd Hogeschool: documentatie over SOLID",
+      "url": "https://yourdata.network/nl/digitale-autonomie-solid/",
+      "publisher": "yourdata.network",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "DAZM",
+    "toName": "BB Open",
+    "kind": "Onderzoekssamenwerking",
+    "description": "De Universiteit Maastricht noemt BB Open als samenwerkingspartner in het DAZM-onderzoek.",
+    "source": {
+      "title": "DAZM: documentatie over BB Open",
+      "url": "https://www.maastrichtuniversity.nl/news/interdisciplinary-team-receives-funding-dazm-project",
+      "publisher": "www.maastrichtuniversity.nl",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "BB Open",
+    "toName": "Univention Nubus",
+    "kind": "Integratiemogelijkheid",
+    "description": "BB Open beschrijft Univention Nubus als optie voor accounts en rechten bij zijn beheerde Linux-werkplek.",
+    "source": {
+      "title": "BB Open: documentatie over Univention Nubus",
+      "url": "https://bb-open.com/en/services/workplace",
+      "publisher": "bb-open.com",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "BB Open",
+    "toName": "ZITADEL",
+    "kind": "Integratiemogelijkheid",
+    "description": "BB Open beschrijft ZITADEL als optie voor accounts en rechten bij zijn beheerde Linux-werkplek.",
+    "source": {
+      "title": "BB Open: documentatie over ZITADEL",
+      "url": "https://bb-open.com/en/services/workplace",
+      "publisher": "bb-open.com",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "ProcoliX",
+    "toName": "Nextcloud",
+    "kind": "Dienstverlening",
+    "description": "De partnerinformatie van Conduction beschrijft door ProcoliX beheerde Nextcloud-omgevingen op eigen EU-infrastructuur.",
+    "source": {
+      "title": "ProcoliX: documentatie over Nextcloud",
+      "url": "https://www.conduction.nl/nl/partners/",
+      "publisher": "www.conduction.nl",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "Conduction",
+    "toName": "Nextcloud",
+    "kind": "Integratie",
+    "description": "Conduction beschrijft opensource-applicaties en partners rond het Nextcloud-platform.",
+    "source": {
+      "title": "Conduction: documentatie over Nextcloud",
+      "url": "https://www.conduction.nl/nl/partners/",
+      "publisher": "www.conduction.nl",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "LINAGORA",
+    "toName": "Twake Workplace",
+    "kind": "Ontwikkeling",
+    "description": "LINAGORA ontwikkelt de Twake-samenwerkomgeving.",
+    "source": {
+      "title": "LINAGORA: documentatie over Twake Workplace",
+      "url": "https://github.com/linagora",
+      "publisher": "github.com",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "Alinto",
+    "toName": "SOGo",
+    "kind": "Ontwikkeling",
+    "description": "Alinto beschrijft SOGo als onderdeel van zijn opensource-mailactiviteiten.",
+    "source": {
+      "title": "Alinto: documentatie over SOGo",
+      "url": "https://www.alinto.com/",
+      "publisher": "www.alinto.com",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "Savoir-faire Linux",
+    "toName": "Jami",
+    "kind": "Ontwikkeling",
+    "description": "De Jami-documentatie noemt Savoir-faire Linux als leider van het project.",
+    "source": {
+      "title": "Savoir-faire Linux: documentatie over Jami",
+      "url": "https://docs.jami.net/fr/user/introduction.html",
+      "publisher": "docs.jami.net",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "Canonical",
+    "toName": "OpenStack",
+    "kind": "Dienstverlening",
+    "description": "Canonical biedt OpenStack-software en ondersteuning voor private cloudinfrastructuur.",
+    "source": {
+      "title": "Canonical: documentatie over OpenStack",
+      "url": "https://canonical.com/openstack",
+      "publisher": "canonical.com",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "SUSE",
+    "toName": "Rancher",
+    "kind": "Productontwikkeling",
+    "description": "SUSE levert Rancher voor het beheren van Kubernetes-omgevingen.",
+    "source": {
+      "title": "SUSE: documentatie over Rancher",
+      "url": "https://www.suse.com/products/suse-rancher/",
+      "publisher": "www.suse.com",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "LINBIT",
+    "toName": "Proxmox VE",
+    "kind": "Integratiemogelijkheid",
+    "description": "LINBIT publiceert een LINSTOR-plugin voor het beheren van opslag vanuit Proxmox VE.",
+    "source": {
+      "title": "LINBIT: documentatie over Proxmox VE",
+      "url": "https://github.com/LINBIT/linstor-proxmox",
+      "publisher": "github.com",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "Nextcloud",
+    "toName": "Collabora Online",
+    "kind": "Integratiemogelijkheid",
+    "description": "De Nextcloud-documentatie beschrijft gezamenlijke documentbewerking met Collabora Online.",
+    "source": {
+      "title": "Nextcloud: documentatie over Collabora Online",
+      "url": "https://docs.nextcloud.com/server/stable/admin_manual/office/collabora_online.html",
+      "publisher": "docs.nextcloud.com",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "Nextcloud",
+    "toName": "ONLYOFFICE Docs",
+    "kind": "Integratiemogelijkheid",
+    "description": "De officiële connector documenteert bewerken en samenwerken met ONLYOFFICE Docs vanuit Nextcloud.",
+    "source": {
+      "title": "Nextcloud: documentatie over ONLYOFFICE Docs",
+      "url": "https://api.onlyoffice.com/docs/docs-api/get-started/ready-to-use-connectors/nextcloud-integration",
+      "publisher": "api.onlyoffice.com",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "OpenProject",
+    "toName": "Nextcloud",
+    "kind": "Integratiemogelijkheid",
+    "description": "OpenProject documenteert bestandskoppelingen en samenwerking met Nextcloud.",
+    "source": {
+      "title": "OpenProject: documentatie over Nextcloud",
+      "url": "https://www.openproject.org/docs/system-admin-guide/integrations/nextcloud/",
+      "publisher": "www.openproject.org",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "mailcow",
+    "toName": "Postfix",
+    "kind": "Technische bouwsteen",
+    "description": "De mailcow-documentatie noemt Postfix als onderdeel van de mailomgeving.",
+    "source": {
+      "title": "mailcow: documentatie over Postfix",
+      "url": "https://docs.mailcow.email/",
+      "publisher": "docs.mailcow.email",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "mailcow",
+    "toName": "Dovecot",
+    "kind": "Technische bouwsteen",
+    "description": "De mailcow-documentatie noemt Dovecot als onderdeel van de mailomgeving.",
+    "source": {
+      "title": "mailcow: documentatie over Dovecot",
+      "url": "https://docs.mailcow.email/",
+      "publisher": "docs.mailcow.email",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "mailcow",
+    "toName": "SOGo",
+    "kind": "Technische bouwsteen",
+    "description": "De mailcow-documentatie noemt SOGo als onderdeel van de mailomgeving.",
+    "source": {
+      "title": "mailcow: documentatie over SOGo",
+      "url": "https://docs.mailcow.email/",
+      "publisher": "docs.mailcow.email",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "FreePBX",
+    "toName": "Asterisk",
+    "kind": "Technische basis",
+    "description": "FreePBX biedt een beheerinterface en modules voor een Asterisk-telefooncentrale.",
+    "source": {
+      "title": "FreePBX: documentatie over Asterisk",
+      "url": "https://community.freepbx.org/about",
+      "publisher": "community.freepbx.org",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "NetBird",
+    "toName": "WireGuard",
+    "kind": "Technische basis",
+    "description": "NetBird gebruikt WireGuard voor versleutelde netwerkverbindingen.",
+    "source": {
+      "title": "NetBird: documentatie over WireGuard",
+      "url": "https://netbird.io/",
+      "publisher": "netbird.io",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "OPNsense",
+    "toName": "WireGuard",
+    "kind": "Integratiemogelijkheid",
+    "description": "OPNsense documenteert het inrichten van WireGuard-tunnels.",
+    "source": {
+      "title": "OPNsense: documentatie over WireGuard",
+      "url": "https://docs.opnsense.org/manual/vpnet.html",
+      "publisher": "docs.opnsense.org",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "OpenWrt",
+    "toName": "WireGuard",
+    "kind": "Ondersteuning",
+    "description": "OpenWrt bevat WireGuard-gereedschappen voor het inrichten van VPN-verbindingen.",
+    "source": {
+      "title": "OpenWrt: documentatie over WireGuard",
+      "url": "https://github.com/openwrt/openwrt/blob/main/package/network/utils/wireguard-tools/Makefile",
+      "publisher": "github.com",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "Proxmox VE",
+    "toName": "KVM",
+    "kind": "Technische basis",
+    "description": "Proxmox VE gebruikt QEMU en KVM voor het uitvoeren van virtuele machines.",
+    "source": {
+      "title": "Proxmox VE: documentatie over KVM",
+      "url": "https://pve.proxmox.com/pve-docs/pve-admin-guide.html",
+      "publisher": "pve.proxmox.com",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "Proxmox VE",
+    "toName": "QEMU",
+    "kind": "Technische basis",
+    "description": "Proxmox VE gebruikt QEMU en KVM voor het uitvoeren van virtuele machines.",
+    "source": {
+      "title": "Proxmox VE: documentatie over QEMU",
+      "url": "https://pve.proxmox.com/pve-docs/pve-admin-guide.html",
+      "publisher": "pve.proxmox.com",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "Proxmox VE",
+    "toName": "Debian",
+    "kind": "Technische basis",
+    "description": "Proxmox VE is gebaseerd op Debian GNU/Linux.",
+    "source": {
+      "title": "Proxmox VE: documentatie over Debian",
+      "url": "https://pve.proxmox.com/pve-docs/pve-admin-guide.html",
+      "publisher": "pve.proxmox.com",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "Proxmox VE",
+    "toName": "Ceph",
+    "kind": "Integratiemogelijkheid",
+    "description": "Proxmox VE documenteert het gebruik van Ceph voor gedeelde opslag.",
+    "source": {
+      "title": "Proxmox VE: documentatie over Ceph",
+      "url": "https://pve.proxmox.com/pve-docs/pve-admin-guide.html",
+      "publisher": "pve.proxmox.com",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "Incus",
+    "toName": "QEMU",
+    "kind": "Technische basis",
+    "description": "Incus gebruikt QEMU voor zijn virtuele machines.",
+    "source": {
+      "title": "Incus: documentatie over QEMU",
+      "url": "https://linuxcontainers.org/incus/docs/main/explanation/instances/",
+      "publisher": "linuxcontainers.org",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "Harvester",
+    "toName": "Kubernetes",
+    "kind": "Technische basis",
+    "description": "Harvester bouwt zijn virtualisatieplatform op Kubernetes.",
+    "source": {
+      "title": "Harvester: documentatie over Kubernetes",
+      "url": "https://docs.harvesterhci.io/v1.7/",
+      "publisher": "docs.harvesterhci.io",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "OpenStack",
+    "toName": "KVM",
+    "kind": "Ondersteunde virtualisatie",
+    "description": "De Nova-documentatie beschrijft KVM als virtualisatieoptie binnen OpenStack.",
+    "source": {
+      "title": "OpenStack: documentatie over KVM",
+      "url": "https://docs.openstack.org/nova/latest/admin/configuration/hypervisor-kvm.html",
+      "publisher": "docs.openstack.org",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "Murena",
+    "toName": "/e/OS",
+    "kind": "Productaanbod",
+    "description": "Murena biedt smartphones met het mobiele besturingssysteem /e/OS.",
+    "source": {
+      "title": "Murena: documentatie over /e/OS",
+      "url": "https://murena.com/",
+      "publisher": "murena.com",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "Schleswig-Holstein",
+    "toName": "LibreOffice",
+    "kind": "Gebruik",
+    "description": "De deelstaat meldt dat de overstap naar LibreOffice in 2025 is uitgevoerd.",
+    "source": {
+      "title": "Schleswig-Holstein: documentatie over LibreOffice",
+      "url": "https://www.schleswig-holstein.de/DE/landesregierung/ministerien-behoerden/I/Presse/PI/2026/cds/260919_cds_linux_stk",
+      "publisher": "www.schleswig-holstein.de",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "Schleswig-Holstein",
+    "toName": "Nextcloud",
+    "kind": "Geplande invoering",
+    "description": "De deelstaat noemt de volledige invoering van Nextcloud als vervolgstap in zijn werkplekmigratie.",
+    "source": {
+      "title": "Schleswig-Holstein: documentatie over Nextcloud",
+      "url": "https://www.schleswig-holstein.de/DE/landesregierung/ministerien-behoerden/I/Presse/PI/2026/cds/260919_cds_linux_stk",
+      "publisher": "www.schleswig-holstein.de",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "Schleswig-Holstein",
+    "toName": "Open-Xchange",
+    "kind": "Mailsoftware",
+    "description": "De deelstaat meldt de overstap van zijn mailsysteem naar software van Open-Xchange.",
+    "source": {
+      "title": "Schleswig-Holstein: documentatie over Open-Xchange",
+      "url": "https://www.schleswig-holstein.de/DE/landesregierung/ministerien-behoerden/I/Presse/PI/2026/cds/260919_cds_linux_stk",
+      "publisher": "www.schleswig-holstein.de",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "Stadt Zürich/BFH",
+    "toName": "ZenDiS",
+    "kind": "Uitwisseling",
+    "description": "De evaluatie beschrijft uitwisseling tussen Zürich en ZenDiS over openDesk.",
+    "source": {
+      "title": "Stadt Zürich/BFH: documentatie over ZenDiS",
+      "url": "https://www.bfh.ch/ahb/de/forschung/forschungsprojekte/2025-867-514-540/",
+      "publisher": "www.bfh.ch",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "PoC BOSS",
+    "toName": "openDesk",
+    "kind": "Evaluatie",
+    "description": "De Zwitserse PoC BOSS beproeft openDesk als basis voor een opensourcewerkplek.",
+    "source": {
+      "title": "PoC BOSS: documentatie over openDesk",
+      "url": "https://www.bk.admin.ch/de/machbarkeitsstudie-poc-boss",
+      "publisher": "www.bk.admin.ch",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "Zwitserse federale werkplek",
+    "toName": "PoC BOSS",
+    "kind": "Vervolgonderzoek",
+    "description": "Het Zwitserse werkplekprogramma bouwt voort op de haalbaarheidsproef PoC BOSS.",
+    "source": {
+      "title": "Zwitserse federale werkplek: documentatie over PoC BOSS",
+      "url": "https://www.bazg.admin.ch/de/newnsb/EgX1XHIfGtUN",
+      "publisher": "www.bazg.admin.ch",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "openDesk",
+    "toName": "CryptPad",
+    "kind": "Techniek",
+    "description": "openDesk gebruikt het CryptPad-framework voor gezamenlijk bewerken van diagrammen.",
+    "source": {
+      "title": "openDesk: documentatie over CryptPad",
+      "url": "https://docs.opendesk.eu/operations/architecture/",
+      "publisher": "docs.opendesk.eu",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "openDesk",
+    "toName": "diagrams.net / draw.io",
+    "kind": "Techniek",
+    "description": "openDesk documenteert het bewerken van diagrams.net-documenten met CryptPad.",
+    "source": {
+      "title": "openDesk: documentatie over diagrams.net / draw.io",
+      "url": "https://docs.opendesk.eu/operations/architecture/",
+      "publisher": "docs.opendesk.eu",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "openDesk",
+    "toName": "Synapse",
+    "kind": "Techniek",
+    "description": "De openDesk-architectuur gebruikt Synapse als Matrix-homeserver voor Element Web.",
+    "source": {
+      "title": "openDesk: documentatie over Synapse",
+      "url": "https://docs.opendesk.eu/operations/architecture/",
+      "publisher": "docs.opendesk.eu",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "Element",
+    "toName": "Synapse",
+    "kind": "Integratie in openDesk",
+    "description": "In de openDesk-architectuur verzorgt Element Web de gebruikersinterface voor de Synapse-server.",
+    "source": {
+      "title": "Element: documentatie over Synapse",
+      "url": "https://docs.opendesk.eu/operations/architecture/",
+      "publisher": "docs.opendesk.eu",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "openDesk",
+    "toName": "Keycloak",
+    "kind": "Identiteit",
+    "description": "De openDesk-architectuur beschrijft Keycloak als OIDC-provider voor de geïntegreerde toepassingen.",
+    "source": {
+      "title": "openDesk: documentatie over Keycloak",
+      "url": "https://docs.opendesk.eu/operations/architecture/",
+      "publisher": "docs.opendesk.eu",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "openDesk",
+    "toName": "Dovecot",
+    "kind": "Groupwareconfiguratie",
+    "description": "Bij inzet van de groupware-stack gebruikt openDesk Dovecot als IMAP-mailbackend.",
+    "source": {
+      "title": "openDesk: documentatie over Dovecot",
+      "url": "https://docs.opendesk.eu/operations/architecture/",
+      "publisher": "docs.opendesk.eu",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "SOLID",
+    "toName": "Nextcloud",
+    "kind": "Proefopzet",
+    "description": "De projectbeschrijving noemt Nextcloud als bouwsteen voor de werkplek die binnen SOLID wordt ontwikkeld en getest.",
+    "source": {
+      "title": "SOLID: documentatie over Nextcloud",
+      "url": "https://yourdata.network/nl/digitale-autonomie-solid/",
+      "publisher": "yourdata.network",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "Schleswig-Holstein",
+    "toName": "OpenTalk",
+    "kind": "Gebruik",
+    "description": "De deelstaat meldt dat videovergaderingen in 2025 naar OpenTalk zijn overgezet.",
+    "source": {
+      "title": "Schleswig-Holstein: documentatie over OpenTalk",
+      "url": "https://www.schleswig-holstein.de/DE/landesregierung/ministerien-behoerden/I/Presse/PI/2026/cds/260919_cds_linux_stk",
+      "publisher": "www.schleswig-holstein.de",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "Schleswig-Holstein",
+    "toName": "Univention Nubus",
+    "kind": "Geplande invoering",
+    "description": "De deelstaat noemt de invoering van een directorydienst op basis van Univention Nubus als vervolgstap.",
+    "source": {
+      "title": "Schleswig-Holstein: documentatie over Univention Nubus",
+      "url": "https://www.schleswig-holstein.de/DE/landesregierung/ministerien-behoerden/I/Presse/PI/2026/cds/260919_cds_linux_stk",
+      "publisher": "www.schleswig-holstein.de",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "Schleswig-Holstein",
+    "toName": "Thunderbird",
+    "kind": "Gebruik",
+    "description": "De deelstaat beschrijft de afgeronde mailmigratie naar Open-Xchange en Thunderbird.",
+    "source": {
+      "title": "Schleswig-Holstein: documentatie over Thunderbird",
+      "url": "https://www.schleswig-holstein.de/DE/landesregierung/ministerien-behoerden/I/Presse/PI/2025/cds/251006_cds_ox",
+      "publisher": "www.schleswig-holstein.de",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "Universiteit Utrecht — autonomie",
+    "toName": "DAAF autonomiemeetlat",
+    "kind": "Ontwikkeling",
+    "description": "De Universiteit Utrecht ontwikkelt en deelt de DAAF-meetlat om digitale afhankelijkheden in kaart te brengen.",
+    "source": {
+      "title": "Universiteit Utrecht — autonomie: documentatie over DAAF autonomiemeetlat",
+      "url": "https://www.uu.nl/organisatie/digitale-autonomie/aanpak",
+      "publisher": "www.uu.nl",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "Logius",
+    "toName": "EUPL",
+    "kind": "Licentiebeleid",
+    "description": "Logius beschrijft dat nieuwe producten in principe opensource worden ontwikkeld onder de EUPL.",
+    "source": {
+      "title": "Logius: documentatie over EUPL",
+      "url": "https://www.logius.nl/over-ons/open-source",
+      "publisher": "www.logius.nl",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  },
+  {
+    "fromName": "OpenDocument Format",
+    "toName": "LibreOffice",
+    "kind": "Bestandsformaat",
+    "description": "LibreOffice documenteert ODF als standaardformaat voor zijn documenten.",
+    "source": {
+      "title": "OpenDocument Format: documentatie over LibreOffice",
+      "url": "https://help.libreoffice.org/latest/en-GB/text/shared/00/00000021.html?DbPAR=SHARED",
+      "publisher": "help.libreoffice.org",
+      "type": "Relatieonderbouwing",
+      "checked": "2026-11-10"
+    }
+  }
+];
+for(const entry of verifiedConnections){
+  if(!sourcesById.has(entry.source.url))sourcesById.set(entry.source.url,{id:entry.source.url,...entry.source});
+  sourcesById.get(entry.source.url).checked=entry.source.checked;
+}
 const worldsByName=new Map(worlds.map(world=>[world.name,world]));
 const relations=links.filter(([from,to])=>worldsByName.has(from)&&worldsByName.has(to)).map(([a,b,description,documented])=>{
   const from=worldsByName.get(a);
@@ -10066,6 +11905,13 @@ const relations=links.filter(([from,to])=>worldsByName.has(from)&&worldsByName.h
     : relationEvidence(a,b,description));
   return {id:from.id+'--'+to.id,from,to,description,...evidence};
 });
+for(const entry of verifiedConnections){
+  const from=worldsByName.get(entry.fromName),to=worldsByName.get(entry.toName);
+  const source=sourcesById.get(entry.source.url);
+  const existing=relations.find(relation=>(relation.from===from&&relation.to===to)||(relation.from===to&&relation.to===from));
+  if(existing)Object.assign(existing,{kind:entry.kind,description:entry.description,source});
+  else relations.push({id:from.id+'--'+to.id,from,to,kind:entry.kind,description:entry.description,source});
+}
 function drawRoute(from,to,secondary,relation){
   if(from.parent||to.parent)return;
   const [x,y]=screen(from.x,from.y);
@@ -10363,7 +12209,7 @@ function openWorld(world,showOverview=false){
   info.querySelector('h2').textContent=world.name;
   info.querySelector('p').textContent=[solutionLabel(world),world.role,world.region,world.phase].filter(Boolean).join(' · ');
   clearDocumentedFacts();
-  const assessment=renderExplanation(dossierExplanations.get(world.name),sourcesForExplanation(world.name));
+  const assessment=renderExplanation(dossierExplanations.get(world.name),sourcesForExplanation(world.name),dossierContributions.get(world.name));
   renderSourcedCharacteristics(world);
 
   const researchNotes=document.createElement('ul');
@@ -10580,15 +12426,23 @@ function clearDocumentedFacts(){
 function searchCorpus(world){
   const fields=documentedProfiles.get(world.name)?.[1]||{};
   return normalize([world.name,world.region,world.role,reviewedRoles.get(world.name).label,
-    solutionLabel(world),systems[world.system].name,world.phase,dossierExplanations.get(world.name),
+    solutionLabel(world),systems[world.system].name,world.phase,dossierContributions.get(world.name),dossierExplanations.get(world.name),
     ...Object.values(fields)].join(' '));
 }
 
-function renderExplanation(explanation,sources){
+function renderExplanation(explanation,sources,contribution){
   const assessment=info.querySelector('.assessment');
   const heading=document.createElement('strong');
-  heading.textContent='Waarom op de kaart?';
-  assessment.replaceChildren(heading,document.createElement('br'),explanation);
+  if(contribution){
+    heading.className='dossier-contribution';heading.textContent=contribution;
+    let context=explanation;
+    if(context.startsWith(contribution))context=context.slice(contribution.length).trimStart();
+    else if(context.startsWith('Functie:'))context=context.slice(firstExplanationSentence(context).length).trimStart();
+    assessment.replaceChildren(heading,document.createTextNode(context));
+  }else{
+    heading.textContent='Waarom op de kaart?';
+    assessment.replaceChildren(heading,document.createElement('br'),explanation);
+  }
   const uniqueSources=new Map(sources.map(source=>[source.url,source]));
   for(const source of uniqueSources.values()){
     assessment.append(document.createElement('br'),sourceAnchor(source,source.title));
