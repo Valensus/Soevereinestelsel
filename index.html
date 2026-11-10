@@ -9755,175 +9755,175 @@ for(const [infrastructureType,names] of infrastructureGroups){
 function solutionLabel(world){return [world.subcategory,world.infrastructureType].filter(Boolean).join(' · ');}
 
 const centers = [[-500, -550, -0.42], [280, -550, 0.27], [0, 900, 0.55], [1050, 150, -0.29], [1050, 950, -0.36], [0, -1000, 0.42], [-1050, 150, 0.28], [-1050, 1000, -0.48]];
-// Vaste, asymmetrische compositie: elk groepje krijgt een eigen baan binnen de kleur van Technologie.
+// Een vaste, ontspannen spiraal met ongelijke afstanden, groottes en kantelingen.
 const solutionClusterLayouts = [
   [
-    -524.0,
-    -710.0,
-    139.31,
-    90.37,
-    -0.18
+    167.77,
+    108.49,
+    131.33,
+    86.63,
+    0.01
   ],
   [
-    -184.0,
-    -686.0,
-    133.95,
-    94.14,
+    -202.33,
+    90.45,
+    144.48,
+    94.06,
     0.22
   ],
   [
-    156.0,
-    -706.0,
-    125.39,
-    89.15,
-    -0.12
+    120.13,
+    -265.33,
+    138.32,
+    67.34,
+    -0.11
   ],
   [
-    496.0,
-    -692.0,
-    146.54,
-    94.26,
-    0.26
+    71.22,
+    352.06,
+    136.31,
+    88.93,
+    0.6
   ],
   [
-    -501.0,
-    -430.0,
-    137.57,
-    96.25,
-    -0.22
+    -242.1,
+    -257.77,
+    133.9,
+    99.76,
+    -0.21
   ],
   [
-    -161.0,
-    -406.0,
-    122.83,
-    87.65,
-    0.12
+    363.81,
+    -58.28,
+    106.1,
+    84.56,
+    0.52
   ],
   [
-    179.0,
-    -426.0,
-    151.3,
-    96.83,
-    -0.18
+    -225.97,
+    369.5,
+    147.2,
+    83.52,
+    0.47
   ],
   [
-    519.0,
-    -412.0,
-    122.83,
-    87.65,
+    -7.04,
+    -512.08,
+    103.48,
+    77.96,
+    0.25
+  ],
+  [
+    332.67,
+    394.45,
+    109.78,
+    91.36,
+    0.64
+  ],
+  [
+    -455.61,
+    -66.02,
+    145.58,
+    84.75,
+    -0.52
+  ],
+  [
+    367.88,
+    -393.92,
+    136.21,
+    75.75,
+    -0.29
+  ],
+  [
+    -68.53,
+    619.37,
+    121.04,
+    86.37,
+    -0.09
+  ],
+  [
+    -300.56,
+    -541.64,
+    156.63,
+    98.63,
+    -0.17
+  ],
+  [
+    531.99,
+    157.03,
+    152.23,
+    92.06,
+    0.42
+  ],
+  [
+    -541.27,
+    377.62,
+    141.28,
+    79.55,
+    -0.1
+  ],
+  [
+    167.84,
+    -687.66,
+    123.13,
+    89.46,
+    -0.17
+  ],
+  [
+    245.99,
+    682.4,
+    141.26,
+    69.87,
     0.22
   ],
   [
-    -494.0,
-    -150.0,
-    127.75,
-    90.52,
-    -0.12
+    -571.48,
+    -311.24,
+    126.77,
+    93.91,
+    -0.37
   ],
   [
-    -154.0,
-    -126.0,
-    135.14,
-    88.13,
+    619.62,
+    -248.32,
+    146.73,
+    89.97,
+    -0.37
+  ],
+  [
+    -316.33,
+    715.0,
+    114.19,
+    74.67,
+    -0.08
+  ],
+  [
+    -162.72,
+    -805.93,
+    141.93,
+    82.2,
+    -0.06
+  ],
+  [
+    571.99,
+    468.69,
+    114.77,
+    72.28,
+    -0.57
+  ],
+  [
+    -630,
+    147.22,
+    134.77,
+    82.28,
+    -0.47
+  ],
+  [
+    462.02,
+    -695.94,
+    134.56,
+    104.74,
     0.26
-  ],
-  [
-    186.0,
-    -146.0,
-    139.27,
-    97.24,
-    -0.22
-  ],
-  [
-    526.0,
-    -132.0,
-    135.8,
-    95.22,
-    0.12
-  ],
-  [
-    -517.0,
-    130.0,
-    146.54,
-    94.26,
-    -0.18
-  ],
-  [
-    -177.0,
-    154.0,
-    145.48,
-    100.86,
-    0.22
-  ],
-  [
-    163.0,
-    134.0,
-    144.0,
-    100.0,
-    -0.12
-  ],
-  [
-    503.0,
-    148.0,
-    146.54,
-    94.26,
-    0.26
-  ],
-  [
-    -524.0,
-    410.0,
-    129.94,
-    91.8,
-    -0.22
-  ],
-  [
-    -184.0,
-    434.0,
-    132.0,
-    93.0,
-    0.12
-  ],
-  [
-    156.0,
-    414.0,
-    151.3,
-    96.83,
-    -0.18
-  ],
-  [
-    496.0,
-    428.0,
-    116.78,
-    84.12,
-    0.22
-  ],
-  [
-    -501.0,
-    690.0,
-    139.27,
-    97.24,
-    -0.12
-  ],
-  [
-    -161.0,
-    714.0,
-    135.14,
-    88.13,
-    0.26
-  ],
-  [
-    179.0,
-    694.0,
-    129.94,
-    91.8,
-    -0.22
-  ],
-  [
-    519.0,
-    708.0,
-    142.48,
-    99.11,
-    0.12
   ]
 ];
 const hub = {name:'Soevereinestelsel van de Werkplek',x:0,y:0,tone:'#e2ebff',sun:true,hub:true};
@@ -9939,6 +9939,7 @@ planetArt.src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABM8AAAPUCAIAAAA1w4l
 const worlds = [hub];
 const membership = [];
 const solutionClusters = [];
+const clusterLabelBounds = [];
 systems.forEach((system,i)=>{
   const [x,y,tilt] = centers[i];
   const flatten = [.57,.68,.51,.74,.62,.55,.65,.52,.69][i];
@@ -9971,12 +9972,8 @@ systems.forEach((system,i)=>{
       cluster=clusters.find(group=>group.name===node.subcategory);
       const peers=members.filter(([,peer])=>peer.subcategory===node.subcategory);
       const index=peers.findIndex(([peer])=>peer===name);
-      const innerCount=peers.length>10?Math.min(6,Math.round(peers.length*.38)):0;
-      const innerRing=innerCount&&index<innerCount;
-      const ringCount=innerRing?innerCount:peers.length-innerCount;
-      const ringIndex=innerRing?index:index-innerCount;
-      const localAngle=ringIndex/ringCount*Math.PI*2+cluster.rotation+(innerRing?.35:0);
-      const spread=peers.length===1?0:innerRing?.38:.79+(index%2)*.035;
+      const localAngle=index*Math.PI*(3-Math.sqrt(5))+cluster.index*.83;
+      const spread=peers.length===1?0:Math.sqrt((index+.55)/peers.length)*(.82+.045*Math.sin(index*2.7+cluster.index));
       const dx=Math.cos(localAngle)*cluster.rx*spread,dy=Math.sin(localAngle)*cluster.ry*spread;
       px=cluster.x+dx*Math.cos(cluster.rotation)-dy*Math.sin(cluster.rotation);
       py=cluster.y+dx*Math.sin(cluster.rotation)+dy*Math.cos(cluster.rotation);
@@ -10207,16 +10204,32 @@ function draw(){
   });
   ctx.globalAlpha=1;
   const occupied=[];
+  clusterLabelBounds.length=0;
   if(camera.z>1.1){
     ctx.save();ctx.globalAlpha=Math.max(.85,Math.min(1,detail*1.5));
     for(const cluster of solutionClusters){
-      const [x,y]=screen(cluster.x,cluster.labelY);
-      const size=detail<.3?10:13;ctx.font='700 '+size+'px Segoe UI, system-ui, sans-serif';
-      const half=ctx.measureText(cluster.name).width/2+7;
-      if(x+half<0||x-half>width||y<0||y>height)continue;
-      ctx.fillStyle='#090f23e8';ctx.fillRect(x-half,y-size-3,half*2,size+10);
-      label(cluster.name,x,y,size,cluster.tone,700);
-      occupied.push([x-half,y-size-3,x+half,y+7]);
+      const [x,anchorY]=screen(cluster.x,cluster.labelY);
+      const size=detail<.3?10:13,lineHeight=size+3;
+      ctx.font='700 '+size+'px Segoe UI, system-ui, sans-serif';
+      const lines=[];let line='';
+      for(const word of cluster.name.split(' ')){
+        const next=line?line+' '+word:word;
+        if(line&&ctx.measureText(next).width>(detail<.3?110:200)){lines.push(line);line=word;}else line=next;
+      }
+      lines.push(line);
+      const half=Math.max(...lines.map(text=>ctx.measureText(text).width))/2+7;
+      let y=anchorY;
+      const bounds=()=>[x-half,y-(lines.length-1)*lineHeight-size-3,x+half,y+7];
+      for(let attempt=0;attempt<3;attempt++){
+        const box=bounds();
+        if(!occupied.some(([l,t,r,b])=>box[0]<r&&box[2]>l&&box[1]<b&&box[3]>t))break;
+        y-=lineHeight+4;
+      }
+      const box=bounds();
+      if(box[2]<0||box[0]>width||box[3]<0||box[1]>height)continue;
+      ctx.fillStyle='#090f23e8';ctx.fillRect(box[0],box[1],half*2,box[3]-box[1]);
+      lines.forEach((text,index)=>label(text,x,y-(lines.length-1-index)*lineHeight,size,cluster.tone,700));
+      occupied.push(box);clusterLabelBounds.push({cluster,box});
     }
     ctx.restore();
   }
@@ -10476,6 +10489,10 @@ canvas.addEventListener('pointermove',e=>{
   p.x=x;p.y=y;
 });
 function worldAt(px,py){
+  if(camera.z>1.1){
+    const hit=clusterLabelBounds.find(({box:[left,top,right,bottom]})=>px>=left&&px<=right&&py>=top&&py<=bottom);
+    if(hit)return hit.cluster;
+  }
   const match=mapWorlds.map(w=>{
     const [x,y]=screen(w.x,w.y);
     return [w,Math.min(Math.hypot(x-px,y-py),w.sun?Math.hypot(x-px,y+24-py):Infinity)];
@@ -10484,11 +10501,6 @@ function worldAt(px,py){
     return d<=radius;
   }).sort((a,b)=>a[1]-b[1])[0]?.[0]||null;
   if(match)return match;
-  if(camera.z>1.1){
-    ctx.save();ctx.font='700 13px Segoe UI, system-ui, sans-serif';
-    const group=solutionClusters.find(cluster=>{const [x,y]=screen(cluster.x,cluster.labelY);return Math.abs(px-x)<=ctx.measureText(cluster.name).width/2+9&&py>=y-17&&py<=y+8;});
-    ctx.restore();if(group)return group;
-  }
   return null;
 }
 canvas.addEventListener('pointerleave',()=>{if(hovered){hovered=null;draw()}});
